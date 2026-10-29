@@ -1,0 +1,12 @@
+[
+  {"name":"p-limit","repo":"sindresorhus/p-limit","ref":"v6.2.0","split":"development"},
+  {"name":"p-queue","repo":"sindresorhus/p-queue","ref":"v8.1.0","split":"development"},
+  {"name":"click","repo":"pallets/click","ref":"8.1.8","split":"development"},
+  {"name":"itsdangerous","repo":"pallets/itsdangerous","ref":"2.2.0","split":"development"},
+  {"name":"commander","repo":"tj/commander.js","ref":"v13.1.0","split":"development"},
+  {"name":"chi","repo":"go-chi/chi","ref":"v5.2.1","split":"development"},
+  {"name":"toml","repo":"BurntSushi/toml","ref":"v1.4.0","split":"development"},
+  {"name":"log","repo":"rust-lang/log","ref":"0.4.27","split":"development"},
+  {"name":"requests","repo":"psf/requests","ref":"v2.32.3","split":"test"},
+  {"name":"express","repo":"expressjs/express","ref":"v5.1.0","split":"test"}
+]

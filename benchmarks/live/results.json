@@ -1,0 +1,1836 @@
+{
+  "createdAt": "2026-10-28T17:10:05.089Z",
+  "seed": "6f0e7b7a3b",
+  "model": "auto",
+  "protocol": "Four fresh mutated questions, four arms per question; whole relevant file oracle baseline vs 3000-token pack; default vs concise instruction. No tools. Exact required-string grading, not full answer correctness. No tuning on these results.",
+  "results": [
+    {
+      "task": 1,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In merge_environment_settings, which environment variable names are checked for CA bundle selection, in precedence order?",
+      "expected": [
+        "RSQ_CA_6f0e7b7a3b",
+        "RSQ_FALLBACK_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": false
+      },
+      "promptTokensO200k": 6465,
+      "response": "In `merge_environment_settings`, CA bundle selection checks **`RSQ_CA_6f0e7b7a3b` first**, then **`RSQ_FALLBACK_6f0e7b7a3b`** (`src/requests/sessions.py`). The first truthy value is used; these checks run only when `trust_env` is enabled and `verify` is `True` or `None`.\n\n",
+      "correct": true,
+      "elapsedMs": 13490,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 221330000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 17004
+          },
+          "output": {
+            "tokenCount": 175
+          }
+        },
+        "totalApiDurationMs": 3375,
+        "sessionStartTime": "2026-10-28T17:07:12.698Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 17007,
+              "outputTokens": 175,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 17004,
+              "reasoningTokens": 80
+            },
+            "cacheExpiresAt": "2026-10-28T17:37:19.008Z",
+            "totalNanoAiu": 221330000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 17004
+              },
+              "output": {
+                "tokenCount": 175
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3375,
+            "totalNanoAiu": 221330000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 17007,
+                  "outputTokens": 175,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 17004,
+                  "reasoningTokens": 80
+                },
+                "totalNanoAiu": 221330000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 17004
+                  },
+                  "output": {
+                    "tokenCount": 175
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 17007,
+        "lastCallOutputTokens": 175
+      }
+    },
+    {
+      "task": 1,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In merge_environment_settings, which environment variable names are checked for CA bundle selection, in precedence order?",
+      "expected": [
+        "RSQ_CA_6f0e7b7a3b",
+        "RSQ_FALLBACK_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": false
+      },
+      "promptTokensO200k": 3022,
+      "response": "In `merge_environment_settings`, CA bundle selection checks **`RSQ_CA_6f0e7b7a3b` first**, then **`RSQ_FALLBACK_6f0e7b7a3b`**. The second is used if the first is unset or empty; this lookup applies when `trust_env` is enabled and `verify` is `True` or `None` (`src/requests/sessions.py:750–779`).\n\n",
+      "correct": true,
+      "elapsedMs": 9874,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 179192500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13557
+          },
+          "output": {
+            "tokenCount": 194
+          }
+        },
+        "totalApiDurationMs": 3302,
+        "sessionStartTime": "2026-10-28T17:07:25.484Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13560,
+              "outputTokens": 194,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13557,
+              "reasoningTokens": 91
+            },
+            "cacheExpiresAt": "2026-10-28T17:37:28.974Z",
+            "totalNanoAiu": 179192500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13557
+              },
+              "output": {
+                "tokenCount": 194
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3302,
+            "totalNanoAiu": 179192500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13560,
+                  "outputTokens": 194,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13557,
+                  "reasoningTokens": 91
+                },
+                "totalNanoAiu": 179192500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13557
+                  },
+                  "output": {
+                    "tokenCount": 194
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13560,
+        "lastCallOutputTokens": 194
+      }
+    },
+    {
+      "task": 1,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In merge_environment_settings, which environment variable names are checked for CA bundle selection, in precedence order?",
+      "expected": [
+        "RSQ_CA_6f0e7b7a3b",
+        "RSQ_FALLBACK_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": true
+      },
+      "promptTokensO200k": 6491,
+      "response": "`merge_environment_settings` checks `RSQ_CA_6f0e7b7a3b` first, then `RSQ_FALLBACK_6f0e7b7a3b` (`src/requests/sessions.py`). This applies when `trust_env` is enabled and `verify` is `True` or `None`.\n\n",
+      "correct": true,
+      "elapsedMs": 11508,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 221530000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 17028
+          },
+          "output": {
+            "tokenCount": 173
+          }
+        },
+        "totalApiDurationMs": 4774,
+        "sessionStartTime": "2026-10-28T17:07:35.302Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 17031,
+              "outputTokens": 173,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 17028,
+              "reasoningTokens": 95
+            },
+            "cacheExpiresAt": "2026-10-28T17:37:38.998Z",
+            "totalNanoAiu": 221530000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 17028
+              },
+              "output": {
+                "tokenCount": 173
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 4774,
+            "totalNanoAiu": 221530000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 17031,
+                  "outputTokens": 173,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 17028,
+                  "reasoningTokens": 95
+                },
+                "totalNanoAiu": 221530000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 17028
+                  },
+                  "output": {
+                    "tokenCount": 173
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 17031,
+        "lastCallOutputTokens": 173
+      }
+    },
+    {
+      "task": 1,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In merge_environment_settings, which environment variable names are checked for CA bundle selection, in precedence order?",
+      "expected": [
+        "RSQ_CA_6f0e7b7a3b",
+        "RSQ_FALLBACK_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": true
+      },
+      "promptTokensO200k": 3048,
+      "response": "`merge_environment_settings` checks `RSQ_CA_6f0e7b7a3b` first, then `RSQ_FALLBACK_6f0e7b7a3b` if the first is unset or empty (`src/requests/sessions.py:766–770`).\n\n",
+      "correct": true,
+      "elapsedMs": 8792,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 173167500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13587
+          },
+          "output": {
+            "tokenCount": 66
+          }
+        },
+        "totalApiDurationMs": 2311,
+        "sessionStartTime": "2026-10-28T17:07:46.850Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13590,
+              "outputTokens": 66,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13587,
+              "reasoningTokens": 0
+            },
+            "cacheExpiresAt": "2026-10-28T17:37:50.280Z",
+            "totalNanoAiu": 173167500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13587
+              },
+              "output": {
+                "tokenCount": 66
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 2311,
+            "totalNanoAiu": 173167500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13590,
+                  "outputTokens": 66,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13587,
+                  "reasoningTokens": 0
+                },
+                "totalNanoAiu": 173167500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13587
+                  },
+                  "output": {
+                    "tokenCount": 66
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13590,
+        "lastCallOutputTokens": 66
+      }
+    },
+    {
+      "task": 2,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In rebuild_auth, which exact request header key is deleted when should_strip_auth is true?",
+      "expected": [
+        "RSQ-Auth-6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": false
+      },
+      "promptTokensO200k": 3026,
+      "response": "When `should_strip_auth` is true, `rebuild_auth` deletes the `RSQ-Auth-6f0e7b7a3b` request header (`src/requests/sessions.py`, lines 289–295).\n\n",
+      "correct": true,
+      "elapsedMs": 11465,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 174142500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13565
+          },
+          "output": {
+            "tokenCount": 91
+          }
+        },
+        "totalApiDurationMs": 2712,
+        "sessionStartTime": "2026-10-28T17:07:55.714Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13568,
+              "outputTokens": 91,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13565,
+              "reasoningTokens": 36
+            },
+            "cacheExpiresAt": "2026-10-28T17:38:01.438Z",
+            "totalNanoAiu": 174142500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13565
+              },
+              "output": {
+                "tokenCount": 91
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 2712,
+            "totalNanoAiu": 174142500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13568,
+                  "outputTokens": 91,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13565,
+                  "reasoningTokens": 36
+                },
+                "totalNanoAiu": 174142500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13565
+                  },
+                  "output": {
+                    "tokenCount": 91
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13568,
+        "lastCallOutputTokens": 91
+      }
+    },
+    {
+      "task": 2,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In rebuild_auth, which exact request header key is deleted when should_strip_auth is true?",
+      "expected": [
+        "RSQ-Auth-6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": true
+      },
+      "promptTokensO200k": 6497,
+      "response": "`rebuild_auth` deletes the `RSQ-Auth-6f0e7b7a3b` request header when `should_strip_auth` is true (`src/requests/sessions.py`).\n\n",
+      "correct": true,
+      "elapsedMs": 11418,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 219267500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 17035
+          },
+          "output": {
+            "tokenCount": 126
+          }
+        },
+        "totalApiDurationMs": 4910,
+        "sessionStartTime": "2026-10-28T17:08:07.222Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 17038,
+              "outputTokens": 126,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 17035,
+              "reasoningTokens": 78
+            },
+            "cacheExpiresAt": "2026-10-28T17:38:10.638Z",
+            "totalNanoAiu": 219267500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 17035
+              },
+              "output": {
+                "tokenCount": 126
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 4910,
+            "totalNanoAiu": 219267500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 17038,
+                  "outputTokens": 126,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 17035,
+                  "reasoningTokens": 78
+                },
+                "totalNanoAiu": 219267500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 17035
+                  },
+                  "output": {
+                    "tokenCount": 126
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 17038,
+        "lastCallOutputTokens": 126
+      }
+    },
+    {
+      "task": 2,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In rebuild_auth, which exact request header key is deleted when should_strip_auth is true?",
+      "expected": [
+        "RSQ-Auth-6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": true
+      },
+      "promptTokensO200k": 3052,
+      "response": "It deletes the exact header key `\"RSQ-Auth-6f0e7b7a3b\"` when `should_strip_auth` is true (`src/requests/sessions.py`, lines 288–294).\n\n",
+      "correct": true,
+      "elapsedMs": 11374,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 172330000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13588
+          },
+          "output": {
+            "tokenCount": 49
+          }
+        },
+        "totalApiDurationMs": 4500,
+        "sessionStartTime": "2026-10-28T17:08:18.713Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13591,
+              "outputTokens": 49,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13588,
+              "reasoningTokens": 0
+            },
+            "cacheExpiresAt": "2026-10-28T17:38:22.434Z",
+            "totalNanoAiu": 172330000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13588
+              },
+              "output": {
+                "tokenCount": 49
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 4500,
+            "totalNanoAiu": 172330000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13591,
+                  "outputTokens": 49,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13588,
+                  "reasoningTokens": 0
+                },
+                "totalNanoAiu": 172330000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13588
+                  },
+                  "output": {
+                    "tokenCount": 49
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13591,
+        "lastCallOutputTokens": 49
+      }
+    },
+    {
+      "task": 2,
+      "repo": "requests",
+      "path": "src/requests/sessions.py",
+      "query": "In rebuild_auth, which exact request header key is deleted when should_strip_auth is true?",
+      "expected": [
+        "RSQ-Auth-6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": false
+      },
+      "promptTokensO200k": 6471,
+      "response": "When `should_strip_auth` is true, `rebuild_auth` deletes the request header **`RSQ-Auth-6f0e7b7a3b`** (`src/requests/sessions.py`).\n\n",
+      "correct": true,
+      "elapsedMs": 11112,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 217830000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 17008
+          },
+          "output": {
+            "tokenCount": 104
+          }
+        },
+        "totalApiDurationMs": 4674,
+        "sessionStartTime": "2026-10-28T17:08:30.000Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 17011,
+              "outputTokens": 104,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 17008,
+              "reasoningTokens": 53
+            },
+            "cacheExpiresAt": "2026-10-28T17:38:33.362Z",
+            "totalNanoAiu": 217830000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 17008
+              },
+              "output": {
+                "tokenCount": 104
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 4674,
+            "totalNanoAiu": 217830000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 17011,
+                  "outputTokens": 104,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 17008,
+                  "reasoningTokens": 53
+                },
+                "totalNanoAiu": 217830000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 17008
+                  },
+                  "output": {
+                    "tokenCount": 104
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 17011,
+        "lastCallOutputTokens": 104
+      }
+    },
+    {
+      "task": 3,
+      "repo": "express",
+      "path": "lib/application.js",
+      "query": "In defaultConfiguration, what exact environment string is used when NODE_ENV is unset?",
+      "expected": [
+        "stage_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": true
+      },
+      "promptTokensO200k": 3655,
+      "response": "When `NODE_ENV` is unset, `defaultConfiguration` uses the exact string `'stage_6f0e7b7a3b'` as the environment fallback (`lib/application.js`).\n\n",
+      "correct": true,
+      "elapsedMs": 10300,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 179655000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 14194
+          },
+          "output": {
+            "tokenCount": 44
+          }
+        },
+        "totalApiDurationMs": 3879,
+        "sessionStartTime": "2026-10-28T17:08:41.211Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 14197,
+              "outputTokens": 44,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 14194,
+              "reasoningTokens": 0
+            },
+            "cacheExpiresAt": "2026-10-28T17:38:44.553Z",
+            "totalNanoAiu": 179655000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 14194
+              },
+              "output": {
+                "tokenCount": 44
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3879,
+            "totalNanoAiu": 179655000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 14197,
+                  "outputTokens": 44,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 14194,
+                  "reasoningTokens": 0
+                },
+                "totalNanoAiu": 179655000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 14194
+                  },
+                  "output": {
+                    "tokenCount": 44
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 14197,
+        "lastCallOutputTokens": 44
+      }
+    },
+    {
+      "task": 3,
+      "repo": "express",
+      "path": "lib/application.js",
+      "query": "In defaultConfiguration, what exact environment string is used when NODE_ENV is unset?",
+      "expected": [
+        "stage_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": true
+      },
+      "promptTokensO200k": 3041,
+      "response": "`defaultConfiguration` uses the exact fallback string `'stage_6f0e7b7a3b'` when `NODE_ENV` is unset (`lib/application.js`).\n\n",
+      "correct": true,
+      "elapsedMs": 15580,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 192942500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13581
+          },
+          "output": {
+            "tokenCount": 463
+          }
+        },
+        "totalApiDurationMs": 9177,
+        "sessionStartTime": "2026-10-28T17:08:51.488Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13584,
+              "outputTokens": 463,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13581,
+              "reasoningTokens": 421
+            },
+            "cacheExpiresAt": "2026-10-28T17:38:54.830Z",
+            "totalNanoAiu": 192942500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13581
+              },
+              "output": {
+                "tokenCount": 463
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 9177,
+            "totalNanoAiu": 192942500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13584,
+                  "outputTokens": 463,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13581,
+                  "reasoningTokens": 421
+                },
+                "totalNanoAiu": 192942500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13581
+                  },
+                  "output": {
+                    "tokenCount": 463
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13584,
+        "lastCallOutputTokens": 463
+      }
+    },
+    {
+      "task": 3,
+      "repo": "express",
+      "path": "lib/application.js",
+      "query": "In defaultConfiguration, what exact environment string is used when NODE_ENV is unset?",
+      "expected": [
+        "stage_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": false
+      },
+      "promptTokensO200k": 3629,
+      "response": "When `NODE_ENV` is unset, `defaultConfiguration` uses the exact string **`stage_6f0e7b7a3b`** as the environment (`lib/application.js`, `app.defaultConfiguration`).\n\n",
+      "correct": true,
+      "elapsedMs": 10830,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 181880000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 14164
+          },
+          "output": {
+            "tokenCount": 96
+          }
+        },
+        "totalApiDurationMs": 4149,
+        "sessionStartTime": "2026-10-28T17:09:07.158Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 14167,
+              "outputTokens": 96,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 14164,
+              "reasoningTokens": 45
+            },
+            "cacheExpiresAt": "2026-10-28T17:39:10.798Z",
+            "totalNanoAiu": 181880000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 14164
+              },
+              "output": {
+                "tokenCount": 96
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 4149,
+            "totalNanoAiu": 181880000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 14167,
+                  "outputTokens": 96,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 14164,
+                  "reasoningTokens": 45
+                },
+                "totalNanoAiu": 181880000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 14164
+                  },
+                  "output": {
+                    "tokenCount": 96
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 14167,
+        "lastCallOutputTokens": 96
+      }
+    },
+    {
+      "task": 3,
+      "repo": "express",
+      "path": "lib/application.js",
+      "query": "In defaultConfiguration, what exact environment string is used when NODE_ENV is unset?",
+      "expected": [
+        "stage_6f0e7b7a3b"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": false
+      },
+      "promptTokensO200k": 3015,
+      "response": "When `NODE_ENV` is unset, `defaultConfiguration` uses the exact string `'stage_6f0e7b7a3b'` as the environment value (`lib/application.js`, line 91).\n\n",
+      "correct": true,
+      "elapsedMs": 8219,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 171842500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13553
+          },
+          "output": {
+            "tokenCount": 48
+          }
+        },
+        "totalApiDurationMs": 2099,
+        "sessionStartTime": "2026-10-28T17:09:17.944Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13556,
+              "outputTokens": 48,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13553,
+              "reasoningTokens": 0
+            },
+            "cacheExpiresAt": "2026-10-28T17:39:20.966Z",
+            "totalNanoAiu": 171842500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13553
+              },
+              "output": {
+                "tokenCount": 48
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 2099,
+            "totalNanoAiu": 171842500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13556,
+                  "outputTokens": 48,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13553,
+                  "reasoningTokens": 0
+                },
+                "totalNanoAiu": 171842500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13553
+                  },
+                  "output": {
+                    "tokenCount": 48
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13556,
+        "lastCallOutputTokens": 48
+      }
+    },
+    {
+      "task": 4,
+      "repo": "express",
+      "path": "lib/response.js",
+      "query": "In res.json, what exact default Content-Type is set when one has not already been set?",
+      "expected": [
+        "application/vnd.rsq-6f0e7b7a3b+json"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": true
+      },
+      "promptTokensO200k": 3061,
+      "response": "`res.json()` sets the default Content-Type to `application/vnd.rsq-6f0e7b7a3b+json` when none is already set (`lib/response.js:241–245`).\n\n",
+      "correct": true,
+      "elapsedMs": 9665,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 175867500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13599
+          },
+          "output": {
+            "tokenCount": 117
+          }
+        },
+        "totalApiDurationMs": 3620,
+        "sessionStartTime": "2026-10-28T17:09:26.173Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13602,
+              "outputTokens": 117,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13599,
+              "reasoningTokens": 67
+            },
+            "cacheExpiresAt": "2026-10-28T17:39:29.179Z",
+            "totalNanoAiu": 175867500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13599
+              },
+              "output": {
+                "tokenCount": 117
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3620,
+            "totalNanoAiu": 175867500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13602,
+                  "outputTokens": 117,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13599,
+                  "reasoningTokens": 67
+                },
+                "totalNanoAiu": 175867500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13599
+                  },
+                  "output": {
+                    "tokenCount": 117
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13602,
+        "lastCallOutputTokens": 117
+      }
+    },
+    {
+      "task": 4,
+      "repo": "express",
+      "path": "lib/response.js",
+      "query": "In res.json, what exact default Content-Type is set when one has not already been set?",
+      "expected": [
+        "application/vnd.rsq-6f0e7b7a3b+json"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": false
+      },
+      "promptTokensO200k": 6573,
+      "response": "`res.json` sets the default to **`application/vnd.rsq-6f0e7b7a3b+json`** when no `Content-Type` is already set (`lib/response.js`, `res.json`).\n\n",
+      "correct": true,
+      "elapsedMs": 10305,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 226955000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 17110
+          },
+          "output": {
+            "tokenCount": 261
+          }
+        },
+        "totalApiDurationMs": 3929,
+        "sessionStartTime": "2026-10-28T17:09:35.836Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 17113,
+              "outputTokens": 261,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 17110,
+              "reasoningTokens": 207
+            },
+            "cacheExpiresAt": "2026-10-28T17:39:39.166Z",
+            "totalNanoAiu": 226955000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 17110
+              },
+              "output": {
+                "tokenCount": 261
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3929,
+            "totalNanoAiu": 226955000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 17113,
+                  "outputTokens": 261,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 17110,
+                  "reasoningTokens": 207
+                },
+                "totalNanoAiu": 226955000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 17110
+                  },
+                  "output": {
+                    "tokenCount": 261
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 17113,
+        "lastCallOutputTokens": 261
+      }
+    },
+    {
+      "task": 4,
+      "repo": "express",
+      "path": "lib/response.js",
+      "query": "In res.json, what exact default Content-Type is set when one has not already been set?",
+      "expected": [
+        "application/vnd.rsq-6f0e7b7a3b+json"
+      ],
+      "arm": {
+        "packed": true,
+        "concise": false
+      },
+      "promptTokensO200k": 3035,
+      "response": "`res.json()` sets the default `Content-Type` to **`application/vnd.rsq-6f0e7b7a3b+json`** when no Content-Type is already set (`lib/response.js`, lines 241–304).\n\n",
+      "correct": true,
+      "elapsedMs": 9572,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 176830000,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 13572
+          },
+          "output": {
+            "tokenCount": 143
+          }
+        },
+        "totalApiDurationMs": 3563,
+        "sessionStartTime": "2026-10-28T17:09:46.156Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 13575,
+              "outputTokens": 143,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 13572,
+              "reasoningTokens": 85
+            },
+            "cacheExpiresAt": "2026-10-28T17:39:49.119Z",
+            "totalNanoAiu": 176830000,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 13572
+              },
+              "output": {
+                "tokenCount": 143
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3563,
+            "totalNanoAiu": 176830000,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 13575,
+                  "outputTokens": 143,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 13572,
+                  "reasoningTokens": 85
+                },
+                "totalNanoAiu": 176830000,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 13572
+                  },
+                  "output": {
+                    "tokenCount": 143
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 13575,
+        "lastCallOutputTokens": 143
+      }
+    },
+    {
+      "task": 4,
+      "repo": "express",
+      "path": "lib/response.js",
+      "query": "In res.json, what exact default Content-Type is set when one has not already been set?",
+      "expected": [
+        "application/vnd.rsq-6f0e7b7a3b+json"
+      ],
+      "arm": {
+        "packed": false,
+        "concise": true
+      },
+      "promptTokensO200k": 6599,
+      "response": "When `Content-Type` is not already set, `res.json` sets it to **`application/vnd.rsq-6f0e7b7a3b+json`** (`lib/response.js`, `res.json`).\n\n",
+      "correct": true,
+      "elapsedMs": 10327,
+      "usage": {
+        "totalPremiumRequestCost": 1,
+        "totalUserRequests": 1,
+        "totalNanoAiu": 220267500,
+        "tokenDetails": {
+          "input": {
+            "tokenCount": 3
+          },
+          "cache_read": {
+            "tokenCount": 0
+          },
+          "cache_write": {
+            "tokenCount": 17139
+          },
+          "output": {
+            "tokenCount": 120
+          }
+        },
+        "totalApiDurationMs": 3835,
+        "sessionStartTime": "2026-10-28T17:09:55.766Z",
+        "codeChanges": {
+          "linesAdded": 0,
+          "linesRemoved": 0,
+          "filesModifiedCount": 0,
+          "filesModified": []
+        },
+        "modelMetrics": {
+          "gpt-6-luna": {
+            "requests": {
+              "count": 1,
+              "cost": 1
+            },
+            "usage": {
+              "inputTokens": 17142,
+              "outputTokens": 120,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 17139,
+              "reasoningTokens": 66
+            },
+            "cacheExpiresAt": "2026-10-28T17:39:59.170Z",
+            "totalNanoAiu": 220267500,
+            "tokenDetails": {
+              "input": {
+                "tokenCount": 3
+              },
+              "cache_read": {
+                "tokenCount": 0
+              },
+              "cache_write": {
+                "tokenCount": 17139
+              },
+              "output": {
+                "tokenCount": 120
+              }
+            }
+          }
+        },
+        "agentMetrics": {
+          "main": {
+            "totalApiDurationMs": 3835,
+            "totalNanoAiu": 220267500,
+            "modelMetrics": {
+              "gpt-6-luna": {
+                "requests": {
+                  "count": 1,
+                  "cost": 1
+                },
+                "usage": {
+                  "inputTokens": 17142,
+                  "outputTokens": 120,
+                  "cacheReadTokens": 0,
+                  "cacheWriteTokens": 17139,
+                  "reasoningTokens": 66
+                },
+                "totalNanoAiu": 220267500,
+                "tokenDetails": {
+                  "input": {
+                    "tokenCount": 3
+                  },
+                  "cache_read": {
+                    "tokenCount": 0
+                  },
+                  "cache_write": {
+                    "tokenCount": 17139
+                  },
+                  "output": {
+                    "tokenCount": 120
+                  }
+                }
+              }
+            }
+          }
+        },
+        "currentModel": "gpt-6-luna",
+        "lastCallInputTokens": 17142,
+        "lastCallOutputTokens": 120
+      }
+    }
+  ]
+}

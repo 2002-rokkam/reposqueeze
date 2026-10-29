@@ -1,0 +1,59 @@
+{
+  "models": [
+    "gpt-6-luna"
+  ],
+  "rows": [
+    {
+      "packed": false,
+      "concise": false,
+      "n": 4,
+      "correct": 4,
+      "input": 65298,
+      "output": 636,
+      "cacheRead": 0,
+      "cacheWrite": 65286,
+      "reasoning": 385,
+      "visibleO200k": 230,
+      "nanoAiu": 847995000
+    },
+    {
+      "packed": false,
+      "concise": true,
+      "n": 4,
+      "correct": 4,
+      "input": 65408,
+      "output": 463,
+      "cacheRead": 0,
+      "cacheWrite": 65396,
+      "reasoning": 239,
+      "visibleO200k": 205,
+      "nanoAiu": 840720000
+    },
+    {
+      "packed": true,
+      "concise": false,
+      "n": 4,
+      "correct": 4,
+      "input": 54259,
+      "output": 476,
+      "cacheRead": 0,
+      "cacheWrite": 54247,
+      "reasoning": 212,
+      "visibleO200k": 243,
+      "nanoAiu": 702007500
+    },
+    {
+      "packed": true,
+      "concise": true,
+      "n": 4,
+      "correct": 4,
+      "input": 54367,
+      "output": 695,
+      "cacheRead": 0,
+      "cacheWrite": 54355,
+      "reasoning": 488,
+      "visibleO200k": 190,
+      "nanoAiu": 714307500
+    }
+  ]
+}

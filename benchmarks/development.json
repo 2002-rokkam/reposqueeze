@@ -1,0 +1,6491 @@
+{
+  "phase": "development",
+  "protocol": "80:20 repository-disjoint development/test. Hand-authored source-location questions; evidence recall is NOT answer accuracy. Baseline is full indexed repo, not optimized Copilot. Equal-budget BM25 and no-graph ablations included.",
+  "fingerprint": "d5609f9270bc9e485a10e0372bdc31401d3d49c822ef74425e1c39bb8cc0ab27",
+  "settings": {
+    "graphWeight": 0.12,
+    "symbolWeight": 2,
+    "diversity": 0.15
+  },
+  "semanticModel": "all-minilm",
+  "repoCount": 8,
+  "groups": [
+    {
+      "variant": "bm25",
+      "budget": 1500,
+      "tasks": 40,
+      "completeEvidenceRate": 0.65,
+      "meanEvidenceRecall": 0.65,
+      "inputTokens": 3776900,
+      "outputTokens": 58596,
+      "weightedReduction": 0.9844856893219307,
+      "meanQueryMs": 49.58361352500006
+    },
+    {
+      "variant": "bm25",
+      "budget": 3000,
+      "tasks": 40,
+      "completeEvidenceRate": 0.775,
+      "meanEvidenceRecall": 0.775,
+      "inputTokens": 3776900,
+      "outputTokens": 118623,
+      "weightedReduction": 0.9685924964918319,
+      "meanQueryMs": 60.41398117499973
+    },
+    {
+      "variant": "structural",
+      "budget": 1500,
+      "tasks": 40,
+      "completeEvidenceRate": 0.85,
+      "meanEvidenceRecall": 0.85,
+      "inputTokens": 3776900,
+      "outputTokens": 58782,
+      "weightedReduction": 0.9844364425851889,
+      "meanQueryMs": 30.76311350000058
+    },
+    {
+      "variant": "structural",
+      "budget": 3000,
+      "tasks": 40,
+      "completeEvidenceRate": 0.9,
+      "meanEvidenceRecall": 0.9,
+      "inputTokens": 3776900,
+      "outputTokens": 118724,
+      "weightedReduction": 0.9685657549842464,
+      "meanQueryMs": 66.89376874999941
+    },
+    {
+      "variant": "no_graph",
+      "budget": 1500,
+      "tasks": 40,
+      "completeEvidenceRate": 0.85,
+      "meanEvidenceRecall": 0.85,
+      "inputTokens": 3776900,
+      "outputTokens": 58794,
+      "weightedReduction": 0.9844332653763669,
+      "meanQueryMs": 28.93158022500065
+    },
+    {
+      "variant": "no_graph",
+      "budget": 3000,
+      "tasks": 40,
+      "completeEvidenceRate": 0.9,
+      "meanEvidenceRecall": 0.9,
+      "inputTokens": 3776900,
+      "outputTokens": 118603,
+      "weightedReduction": 0.9685977918398687,
+      "meanQueryMs": 63.144216624999856
+    },
+    {
+      "variant": "hybrid",
+      "budget": 1500,
+      "tasks": 40,
+      "completeEvidenceRate": 0.825,
+      "meanEvidenceRecall": 0.825,
+      "inputTokens": 3776900,
+      "outputTokens": 58725,
+      "weightedReduction": 0.9844515343270936,
+      "meanQueryMs": 28.42106037500077
+    },
+    {
+      "variant": "hybrid",
+      "budget": 3000,
+      "tasks": 40,
+      "completeEvidenceRate": 0.9,
+      "meanEvidenceRecall": 0.9,
+      "inputTokens": 3776900,
+      "outputTokens": 118629,
+      "weightedReduction": 0.9685909078874209,
+      "meanQueryMs": 69.57445107500055
+    }
+  ],
+  "rows": [
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1465,
+      "reduction": 0.6595398559144783,
+      "elapsedMs": 62.23162500000012,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1454,
+      "reduction": 0.6620962119451546,
+      "elapsedMs": 25.423708000000033,
+      "paths": [
+        "index.js",
+        "test.js",
+        "index.d.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1462,
+      "reduction": 0.6602370439228445,
+      "elapsedMs": 21.130916999999954,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1467,
+      "reduction": 0.6590750639089007,
+      "elapsedMs": 15.706500000000005,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2957,
+      "reduction": 0.31280501975366026,
+      "elapsedMs": 59.12083400000006,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2954,
+      "reduction": 0.31350220776202653,
+      "elapsedMs": 64.94716700000004,
+      "paths": [
+        "index.js",
+        "test.js",
+        "index.d.ts",
+        "readme.md",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2936,
+      "reduction": 0.317685335812224,
+      "elapsedMs": 44.54733299999998,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2956,
+      "reduction": 0.31303741575644894,
+      "elapsedMs": 63.92754100000002,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1467,
+      "reduction": 0.6590750639089007,
+      "elapsedMs": 18.13824999999997,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1467,
+      "reduction": 0.6590750639089007,
+      "elapsedMs": 20.814999999999827,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1467,
+      "reduction": 0.6590750639089007,
+      "elapsedMs": 18.461499999999887,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1439,
+      "reduction": 0.6655821519869858,
+      "elapsedMs": 17.74008300000014,
+      "paths": [
+        "index.d.ts",
+        "index.js",
+        "test.js",
+        "readme.md",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2783,
+      "reduction": 0.3532419242389031,
+      "elapsedMs": 43.73983399999997,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.js",
+        "index.test-d.ts",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2783,
+      "reduction": 0.3532419242389031,
+      "elapsedMs": 65.77250000000004,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.js",
+        "index.test-d.ts",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2783,
+      "reduction": 0.3532419242389031,
+      "elapsedMs": 53.58054200000015,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.js",
+        "index.test-d.ts",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2965,
+      "reduction": 0.31094585173135025,
+      "elapsedMs": 81.39820800000007,
+      "paths": [
+        "index.d.ts",
+        "index.js",
+        "test.js",
+        "readme.md",
+        "index.test-d.ts",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1476,
+      "reduction": 0.656983499883802,
+      "elapsedMs": 25.409250000000156,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "index.js",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1473,
+      "reduction": 0.6576806878921683,
+      "elapsedMs": 20.896291999999903,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1450,
+      "reduction": 0.6630257959563095,
+      "elapsedMs": 20.896999999999935,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1452,
+      "reduction": 0.662561003950732,
+      "elapsedMs": 16.846250000000055,
+      "paths": [
+        "index.d.ts",
+        "index.js",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2938,
+      "reduction": 0.31722054380664655,
+      "elapsedMs": 57.74175000000014,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "index.js",
+        "test.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2979,
+      "reduction": 0.3076923076923077,
+      "elapsedMs": 68.84512500000028,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2979,
+      "reduction": 0.3076923076923077,
+      "elapsedMs": 93.06220799999983,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2963,
+      "reduction": 0.31141064373692773,
+      "elapsedMs": 111.68554099999983,
+      "paths": [
+        "index.d.ts",
+        "index.js",
+        "test.js",
+        "readme.md",
+        "index.test-d.ts"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1441,
+      "reduction": 0.6651173599814083,
+      "elapsedMs": 25.303042000000005,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "index.js",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1460,
+      "reduction": 0.660701835928422,
+      "elapsedMs": 43.655791999999565,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1446,
+      "reduction": 0.6639553799674646,
+      "elapsedMs": 25.82654199999979,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1468,
+      "reduction": 0.658842667906112,
+      "elapsedMs": 19.566583000000264,
+      "paths": [
+        "index.d.ts",
+        "index.js",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2941,
+      "reduction": 0.3165233557982803,
+      "elapsedMs": 58.604541000000154,
+      "paths": [
+        "index.d.ts",
+        "readme.md",
+        "index.js",
+        "test.js"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2987,
+      "reduction": 0.3058331396699977,
+      "elapsedMs": 97.71687500000007,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2963,
+      "reduction": 0.31141064373692773,
+      "elapsedMs": 61.690250000000106,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "readme.md",
+        "test.js",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2980,
+      "reduction": 0.3074599116895189,
+      "elapsedMs": 65.88166699999965,
+      "paths": [
+        "index.d.ts",
+        "index.js",
+        "test.js",
+        "readme.md",
+        "index.test-d.ts",
+        "package.json"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1459,
+      "reduction": 0.6609342319312108,
+      "elapsedMs": 27.76566700000012,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1482,
+      "reduction": 0.6555891238670695,
+      "elapsedMs": 52.545708000000104,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1459,
+      "reduction": 0.6609342319312108,
+      "elapsedMs": 28.351540999999997,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 1470,
+      "reduction": 0.6583778759005345,
+      "elapsedMs": 29.044416999999612,
+      "paths": [
+        "index.js",
+        "test.js",
+        "index.d.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2981,
+      "reduction": 0.30722751568673023,
+      "elapsedMs": 50.375082999999904,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2931,
+      "reduction": 0.31884731582616777,
+      "elapsedMs": 96.12016600000015,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2981,
+      "reduction": 0.30722751568673023,
+      "elapsedMs": 62.31958300000042,
+      "paths": [
+        "index.js",
+        "index.d.ts",
+        "test.js",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 4303,
+      "outputTokens": 2989,
+      "reduction": 0.3053683476644202,
+      "elapsedMs": 106.6120420000002,
+      "paths": [
+        "index.js",
+        "test.js",
+        "index.d.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1459,
+      "reduction": 0.9194412235657887,
+      "elapsedMs": 44.079125000000204,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1473,
+      "reduction": 0.9186682126884214,
+      "elapsedMs": 20.7573339999999,
+      "paths": [
+        "source/index.ts",
+        "bench.ts",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1489,
+      "reduction": 0.9177847716857158,
+      "elapsedMs": 15.662790999999743,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1480,
+      "reduction": 0.9182817072497378,
+      "elapsedMs": 17.614832999999635,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2980,
+      "reduction": 0.8354591132460936,
+      "elapsedMs": 35.8100000000004,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2941,
+      "reduction": 0.8376125006901882,
+      "elapsedMs": 45.5142079999996,
+      "paths": [
+        "source/index.ts",
+        "bench.ts",
+        "test/test.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2979,
+      "reduction": 0.8355143283087626,
+      "elapsedMs": 40.100625000000036,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2992,
+      "reduction": 0.8347965324940644,
+      "elapsedMs": 37.24933400000009,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1472,
+      "reduction": 0.9187234277510905,
+      "elapsedMs": 14.475207999999839,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/index.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1483,
+      "reduction": 0.9181160620617305,
+      "elapsedMs": 17.223707999999533,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/index.ts",
+        "source/queue.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1489,
+      "reduction": 0.9177847716857158,
+      "elapsedMs": 13.191125000000284,
+      "paths": [
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1487,
+      "reduction": 0.917895201811054,
+      "elapsedMs": 15.7295409999997,
+      "paths": [
+        "readme.md",
+        "source/options.ts",
+        "test/test.ts",
+        "source/index.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2986,
+      "reduction": 0.8351278228700789,
+      "elapsedMs": 49.564290999999685,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/index.ts",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2970,
+      "reduction": 0.8360112638727845,
+      "elapsedMs": 78.38966600000003,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/index.ts",
+        "source/queue.ts",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2982,
+      "reduction": 0.8353486831207553,
+      "elapsedMs": 76.67870799999946,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/index.ts",
+        "source/queue.ts",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2963,
+      "reduction": 0.8363977693114681,
+      "elapsedMs": 49.621540999999525,
+      "paths": [
+        "readme.md",
+        "source/options.ts",
+        "test/test.ts",
+        "source/index.ts",
+        "source/queue.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1437,
+      "reduction": 0.9206559549445088,
+      "elapsedMs": 11.489708999999493,
+      "paths": [
+        "readme.md",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1480,
+      "reduction": 0.9182817072497378,
+      "elapsedMs": 17.492833000000246,
+      "paths": [
+        "source/index.ts",
+        "readme.md",
+        "test/test.ts",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1480,
+      "reduction": 0.9182817072497378,
+      "elapsedMs": 18.24066700000003,
+      "paths": [
+        "source/index.ts",
+        "readme.md",
+        "test/test.ts",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1452,
+      "reduction": 0.9198277290044724,
+      "elapsedMs": 13.171916000000238,
+      "paths": [
+        "source/index.ts",
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2974,
+      "reduction": 0.8357904036221081,
+      "elapsedMs": 46.93229199999951,
+      "paths": [
+        "readme.md",
+        "test/test.ts",
+        "source/options.ts",
+        "source/index.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2987,
+      "reduction": 0.8350726078074099,
+      "elapsedMs": 47.944000000000415,
+      "paths": [
+        "source/index.ts",
+        "readme.md",
+        "test/test.ts",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2957,
+      "reduction": 0.8367290596874828,
+      "elapsedMs": 40.4800409999998,
+      "paths": [
+        "source/index.ts",
+        "readme.md",
+        "test/test.ts",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2952,
+      "reduction": 0.8370051350008283,
+      "elapsedMs": 38.62291699999969,
+      "paths": [
+        "source/index.ts",
+        "source/options.ts",
+        "readme.md",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1473,
+      "reduction": 0.9186682126884214,
+      "elapsedMs": 24.004167000000052,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1488,
+      "reduction": 0.917839986748385,
+      "elapsedMs": 26.611917000000176,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1465,
+      "reduction": 0.9191099331897742,
+      "elapsedMs": 22.069124999999985,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1483,
+      "reduction": 0.9181160620617305,
+      "elapsedMs": 23.39416600000004,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2979,
+      "reduction": 0.8355143283087626,
+      "elapsedMs": 53.873375000000124,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2992,
+      "reduction": 0.8347965324940644,
+      "elapsedMs": 52.23833300000024,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2958,
+      "reduction": 0.8366738446248136,
+      "elapsedMs": 51.05937499999982,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2952,
+      "reduction": 0.8370051350008283,
+      "elapsedMs": 49.16954199999964,
+      "paths": [
+        "source/index.ts",
+        "test/test.ts",
+        "readme.md",
+        "source/options.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1458,
+      "reduction": 0.9194964386284579,
+      "elapsedMs": 21.804124999999658,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/priority-queue.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1477,
+      "reduction": 0.918447352437745,
+      "elapsedMs": 38.08349999999973,
+      "paths": [
+        "source/priority-queue.ts",
+        "source/queue.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "source/index.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1478,
+      "reduction": 0.918392137375076,
+      "elapsedMs": 29.469750000000204,
+      "paths": [
+        "source/priority-queue.ts",
+        "source/queue.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "readme.md"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 1479,
+      "reduction": 0.9183369223124068,
+      "elapsedMs": 26.326458000000457,
+      "paths": [
+        "source/options.ts",
+        "source/priority-queue.ts",
+        "source/queue.ts",
+        "readme.md",
+        "source/index.ts",
+        "test/test.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2963,
+      "reduction": 0.8363977693114681,
+      "elapsedMs": 45.94170800000029,
+      "paths": [
+        "source/options.ts",
+        "readme.md",
+        "source/priority-queue.ts",
+        "source/index.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2976,
+      "reduction": 0.8356799734967699,
+      "elapsedMs": 65.82695799999965,
+      "paths": [
+        "source/priority-queue.ts",
+        "source/queue.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "source/index.ts",
+        "readme.md",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2952,
+      "reduction": 0.8370051350008283,
+      "elapsedMs": 66.91258299999936,
+      "paths": [
+        "source/priority-queue.ts",
+        "source/queue.ts",
+        "test/test.ts",
+        "source/options.ts",
+        "readme.md",
+        "source/index.ts"
+      ]
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 18111,
+      "outputTokens": 2977,
+      "reduction": 0.8356247584341008,
+      "elapsedMs": 46.40695799999958,
+      "paths": [
+        "source/options.ts",
+        "source/priority-queue.ts",
+        "source/queue.ts",
+        "readme.md",
+        "source/index.ts",
+        "test/test.ts",
+        "bench.ts"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1483,
+      "reduction": 0.9925467274454323,
+      "elapsedMs": 239.9551250000004,
+      "paths": [
+        "src/click/termui.py",
+        "docs/prompts.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1463,
+      "reduction": 0.9926472435958648,
+      "elapsedMs": 41.948334000000614,
+      "paths": [
+        "src/click/termui.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "tests/test_utils.py",
+        "tests/test_commands.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1464,
+      "reduction": 0.9926422177883432,
+      "elapsedMs": 36.24175000000105,
+      "paths": [
+        "src/click/termui.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "tests/test_utils.py",
+        "tests/test_commands.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1439,
+      "reduction": 0.9927678629763838,
+      "elapsedMs": 44.593250000005355,
+      "paths": [
+        "src/click/termui.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "src/click/decorators.py",
+        "tests/test_utils.py",
+        "tests/test_commands.py",
+        "docs/prompts.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2988,
+      "reduction": 0.9849828871253888,
+      "elapsedMs": 66.71512499999517,
+      "paths": [
+        "src/click/termui.py",
+        "docs/prompts.rst",
+        "src/click/decorators.py",
+        "tests/test_utils.py",
+        "src/click/__init__.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "tests/test_termui.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2950,
+      "reduction": 0.9851738678112105,
+      "elapsedMs": 117.39220899999782,
+      "paths": [
+        "src/click/termui.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "tests/test_utils.py",
+        "tests/test_commands.py",
+        "src/click/decorators.py",
+        "src/click/__init__.py",
+        "docs/prompts.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2966,
+      "reduction": 0.9850934548908646,
+      "elapsedMs": 89.93800000000192,
+      "paths": [
+        "src/click/termui.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "tests/test_utils.py",
+        "tests/test_commands.py",
+        "docs/prompts.rst",
+        "src/click/decorators.py",
+        "src/click/__init__.py",
+        "tests/test_termui.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2976,
+      "reduction": 0.9850431968156483,
+      "elapsedMs": 84.95879099999729,
+      "paths": [
+        "src/click/termui.py",
+        "src/click/core.py",
+        "src/click/exceptions.py",
+        "src/click/decorators.py",
+        "tests/test_utils.py",
+        "tests/test_commands.py",
+        "docs/prompts.rst",
+        "docs/exceptions.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1470,
+      "reduction": 0.9926120629432134,
+      "elapsedMs": 41.16029100000014,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/_compat.py",
+        "src/click/testing.py",
+        "docs/utils.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1490,
+      "reduction": 0.992511546792781,
+      "elapsedMs": 34.55583299999853,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/testing.py",
+        "src/click/_compat.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1490,
+      "reduction": 0.992511546792781,
+      "elapsedMs": 31.39845900000364,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/testing.py",
+        "src/click/_compat.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1491,
+      "reduction": 0.9925065209852593,
+      "elapsedMs": 38.71941599999991,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/testing.py",
+        "src/click/_compat.py",
+        "docs/utils.rst",
+        "examples/colors/colors.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2986,
+      "reduction": 0.9849929387404321,
+      "elapsedMs": 78.31975000000239,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/_compat.py",
+        "src/click/testing.py",
+        "docs/utils.rst",
+        "src/click/termui.py",
+        "src/click/_termui_impl.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2973,
+      "reduction": 0.9850582742382132,
+      "elapsedMs": 67.37508300000627,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/testing.py",
+        "src/click/_compat.py",
+        "tests/test_compat.py",
+        "tests/test_utils.py",
+        "src/click/termui.py",
+        "docs/utils.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2975,
+      "reduction": 0.9850482226231699,
+      "elapsedMs": 73.0465419999964,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/testing.py",
+        "src/click/_compat.py",
+        "tests/test_compat.py",
+        "docs/utils.rst",
+        "src/click/termui.py",
+        "tests/test_utils.py",
+        "src/click/_termui_impl.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2980,
+      "reduction": 0.9850230935855618,
+      "elapsedMs": 85.9342089999991,
+      "paths": [
+        "src/click/utils.py",
+        "src/click/testing.py",
+        "src/click/_compat.py",
+        "docs/utils.rst",
+        "examples/colors/colors.py",
+        "examples/termui/termui.py",
+        "src/click/termui.py",
+        "tests/test_utils.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1455,
+      "reduction": 0.9926874500560378,
+      "elapsedMs": 59.82112500000221,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "docs/advanced.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1472,
+      "reduction": 0.9926020113281702,
+      "elapsedMs": 80.81466600000567,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "tests/test_shell_completion.py",
+        "tests/test_termui.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1472,
+      "reduction": 0.9926020113281702,
+      "elapsedMs": 45.66291600000113,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "tests/test_shell_completion.py",
+        "tests/test_termui.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1484,
+      "reduction": 0.9925417016379107,
+      "elapsedMs": 55.97395900000265,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "tests/test_shell_completion.py",
+        "tests/test_normalization.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2990,
+      "reduction": 0.9849728355103456,
+      "elapsedMs": 127.74595799999952,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "docs/advanced.rst",
+        "docs/options.rst",
+        "tests/test_termui.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2965,
+      "reduction": 0.9850984806983862,
+      "elapsedMs": 138.99841600000218,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "tests/test_shell_completion.py",
+        "tests/test_termui.py",
+        "tests/test_normalization.py",
+        "tests/test_basic.py",
+        "src/click/parser.py",
+        "src/click/core.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2967,
+      "reduction": 0.9850884290833429,
+      "elapsedMs": 92.45966600000247,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "tests/test_shell_completion.py",
+        "tests/test_termui.py",
+        "src/click/parser.py",
+        "src/click/core.py",
+        "tests/test_normalization.py",
+        "docs/advanced.rst",
+        "docs/options.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2952,
+      "reduction": 0.9851638161961673,
+      "elapsedMs": 95.12766700000066,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_options.py",
+        "tests/test_shell_completion.py",
+        "tests/test_normalization.py",
+        "docs/options.rst",
+        "src/click/core.py",
+        "src/click/parser.py",
+        "tests/test_termui.py",
+        "tests/test_info_dict.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1437,
+      "reduction": 0.992777914591427,
+      "elapsedMs": 36.9731249999968,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "docs/options.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1468,
+      "reduction": 0.9926221145582567,
+      "elapsedMs": 38.360625000001164,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "tests/test_info_dict.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1491,
+      "reduction": 0.9925065209852593,
+      "elapsedMs": 34.91937499999767,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "docs/options.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1487,
+      "reduction": 0.9925266242153458,
+      "elapsedMs": 48.53333399999974,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "docs/options.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2992,
+      "reduction": 0.9849627838953023,
+      "elapsedMs": 69.45579100000032,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "docs/options.rst",
+        "tests/test_info_dict.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2977,
+      "reduction": 0.9850381710081267,
+      "elapsedMs": 66.62566700000025,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "tests/test_info_dict.py",
+        "docs/options.rst",
+        "src/click/core.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2991,
+      "reduction": 0.984967809702824,
+      "elapsedMs": 59.59754200000316,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "docs/options.rst",
+        "tests/test_info_dict.py",
+        "tests/test_utils.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2970,
+      "reduction": 0.9850733516607781,
+      "elapsedMs": 57.308583000005456,
+      "paths": [
+        "src/click/types.py",
+        "tests/test_types.py",
+        "docs/options.rst",
+        "tests/test_options.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1461,
+      "reduction": 0.9926572952109081,
+      "elapsedMs": 43.62116699999751,
+      "paths": [
+        "tests/test_commands.py",
+        "src/click/core.py",
+        "docs/arguments.rst",
+        "docs/advanced.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1473,
+      "reduction": 0.9925969855206486,
+      "elapsedMs": 50.08495799999946,
+      "paths": [
+        "tests/test_commands.py",
+        "tests/test_basic.py",
+        "examples/aliases/aliases.py",
+        "tests/typing/typing_aliased_group.py",
+        "src/click/core.py",
+        "tests/test_options.py",
+        "src/click/shell_completion.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1441,
+      "reduction": 0.9927578113613404,
+      "elapsedMs": 47.10633300000336,
+      "paths": [
+        "tests/test_commands.py",
+        "tests/test_basic.py",
+        "examples/aliases/aliases.py",
+        "tests/typing/typing_aliased_group.py",
+        "src/click/core.py",
+        "tests/test_options.py",
+        "src/click/shell_completion.py",
+        "tests/test_arguments.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 1484,
+      "reduction": 0.9925417016379107,
+      "elapsedMs": 54.94604100000288,
+      "paths": [
+        "examples/aliases/aliases.py",
+        "tests/test_commands.py",
+        "tests/typing/typing_aliased_group.py",
+        "src/click/core.py",
+        "src/click/shell_completion.py",
+        "docs/complex.rst"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2964,
+      "reduction": 0.9851035065059078,
+      "elapsedMs": 91.32929100000183,
+      "paths": [
+        "tests/test_commands.py",
+        "src/click/core.py",
+        "docs/arguments.rst",
+        "docs/advanced.rst",
+        "docs/complex.rst",
+        "tests/test_options.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2989,
+      "reduction": 0.9849778613178672,
+      "elapsedMs": 119.203042000001,
+      "paths": [
+        "tests/test_commands.py",
+        "tests/test_basic.py",
+        "examples/aliases/aliases.py",
+        "tests/typing/typing_aliased_group.py",
+        "src/click/core.py",
+        "tests/test_options.py",
+        "src/click/shell_completion.py",
+        "tests/test_formatting.py",
+        "src/click/decorators.py",
+        "tests/test_arguments.py",
+        "tests/test_custom_classes.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2982,
+      "reduction": 0.9850130419705186,
+      "elapsedMs": 143.07700000000477,
+      "paths": [
+        "tests/test_commands.py",
+        "tests/test_basic.py",
+        "examples/aliases/aliases.py",
+        "tests/typing/typing_aliased_group.py",
+        "src/click/core.py",
+        "tests/test_options.py",
+        "src/click/shell_completion.py",
+        "tests/test_arguments.py",
+        "tests/test_types.py",
+        "src/click/types.py",
+        "src/click/globals.py",
+        "src/click/_textwrap.py",
+        "tests/test_formatting.py",
+        "src/click/decorators.py"
+      ]
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 198973,
+      "outputTokens": 2982,
+      "reduction": 0.9850130419705186,
+      "elapsedMs": 97.58220900000015,
+      "paths": [
+        "examples/aliases/aliases.py",
+        "tests/test_commands.py",
+        "tests/typing/typing_aliased_group.py",
+        "src/click/core.py",
+        "src/click/shell_completion.py",
+        "docs/complex.rst",
+        "tests/test_basic.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1486,
+      "reduction": 0.946789844952913,
+      "elapsedMs": 180.80670899999677,
+      "paths": [
+        "docs/serializer.rst",
+        ".github/ISSUE_TEMPLATE/feature-request.md",
+        "LICENSE.txt",
+        "docs/Makefile",
+        "CHANGES.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1491,
+      "reduction": 0.9466108067461596,
+      "elapsedMs": 75.55204100000265,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "src/itsdangerous/timed.py",
+        "docs/serializer.rst",
+        ".github/ISSUE_TEMPLATE/feature-request.md",
+        "LICENSE.txt",
+        "docs/Makefile",
+        "CHANGES.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1491,
+      "reduction": 0.9466108067461596,
+      "elapsedMs": 52.427167000001646,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "src/itsdangerous/timed.py",
+        "docs/serializer.rst",
+        ".github/ISSUE_TEMPLATE/feature-request.md",
+        "LICENSE.txt",
+        "docs/Makefile",
+        "CHANGES.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1479,
+      "reduction": 0.9470404984423676,
+      "elapsedMs": 30.502291000004334,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "docs/timed.rst",
+        "CHANGES.rst",
+        "docs/serializer.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2990,
+      "reduction": 0.892935152361514,
+      "elapsedMs": 74.24054199999955,
+      "paths": [
+        "docs/serializer.rst",
+        ".github/ISSUE_TEMPLATE/feature-request.md",
+        "LICENSE.txt",
+        "docs/Makefile",
+        "CHANGES.rst",
+        "src/itsdangerous/serializer.py",
+        ".github/pull_request_template.md",
+        "docs/timed.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2983,
+      "reduction": 0.8931858058509686,
+      "elapsedMs": 67.96941699999297,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "src/itsdangerous/timed.py",
+        "docs/serializer.rst",
+        ".github/ISSUE_TEMPLATE/feature-request.md",
+        "LICENSE.txt",
+        "docs/Makefile",
+        "src/itsdangerous/serializer.py",
+        "CHANGES.rst",
+        ".github/pull_request_template.md"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2977,
+      "reduction": 0.8934006516990726,
+      "elapsedMs": 81.21529200000077,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "src/itsdangerous/timed.py",
+        "docs/serializer.rst",
+        ".github/ISSUE_TEMPLATE/feature-request.md",
+        "LICENSE.txt",
+        "docs/Makefile",
+        "CHANGES.rst",
+        "src/itsdangerous/serializer.py",
+        ".github/pull_request_template.md",
+        "docs/timed.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2983,
+      "reduction": 0.8931858058509686,
+      "elapsedMs": 77.21854200000234,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "docs/timed.rst",
+        "CHANGES.rst",
+        "docs/serializer.rst",
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_timed.py",
+        "src/itsdangerous/serializer.py",
+        "docs/concepts.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1459,
+      "reduction": 0.9477566512693809,
+      "elapsedMs": 32.34583399999974,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "docs/timed.rst",
+        "src/itsdangerous/exc.py",
+        "tests/test_itsdangerous/test_timed.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1482,
+      "reduction": 0.9469330755183156,
+      "elapsedMs": 25.28283299999748,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "tests/test_itsdangerous/test_timed.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1482,
+      "reduction": 0.9469330755183156,
+      "elapsedMs": 53.22795800000313,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "tests/test_itsdangerous/test_timed.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1443,
+      "reduction": 0.9483295735309916,
+      "elapsedMs": 36.47212500000023,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "src/itsdangerous/exc.py",
+        "tests/test_itsdangerous/test_timed.py",
+        "docs/timed.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2980,
+      "reduction": 0.8932932287750206,
+      "elapsedMs": 87.75533400000131,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "docs/timed.rst",
+        "src/itsdangerous/exc.py",
+        "tests/test_itsdangerous/test_timed.py",
+        "CHANGES.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2973,
+      "reduction": 0.8935438822644752,
+      "elapsedMs": 63.608541999994486,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "tests/test_itsdangerous/test_timed.py",
+        "src/itsdangerous/signer.py",
+        "src/itsdangerous/exc.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2973,
+      "reduction": 0.8935438822644752,
+      "elapsedMs": 76.84125000000495,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "tests/test_itsdangerous/test_timed.py",
+        "src/itsdangerous/signer.py",
+        "src/itsdangerous/exc.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2942,
+      "reduction": 0.8946539191463458,
+      "elapsedMs": 56.04829199999949,
+      "paths": [
+        "src/itsdangerous/timed.py",
+        "src/itsdangerous/exc.py",
+        "tests/test_itsdangerous/test_timed.py",
+        "docs/timed.rst",
+        "src/itsdangerous/signer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1489,
+      "reduction": 0.946682422028861,
+      "elapsedMs": 27.24374999999418,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/__init__.py",
+        "docs/index.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1457,
+      "reduction": 0.9478282665520822,
+      "elapsedMs": 22.803500000001804,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/encoding.py",
+        "src/itsdangerous/serializer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1486,
+      "reduction": 0.946789844952913,
+      "elapsedMs": 25.513624999999593,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/serializer.py",
+        "src/itsdangerous/__init__.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1473,
+      "reduction": 0.9472553442904715,
+      "elapsedMs": 30.194374999999127,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/encoding.py",
+        "README.md"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2952,
+      "reduction": 0.8942958427328391,
+      "elapsedMs": 64.06850000000122,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/__init__.py",
+        "docs/index.rst",
+        "docs/serializer.rst",
+        "src/itsdangerous/encoding.py",
+        "README.md"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2985,
+      "reduction": 0.8931141905682672,
+      "elapsedMs": 76.54108399999677,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/encoding.py",
+        "src/itsdangerous/serializer.py",
+        "src/itsdangerous/__init__.py",
+        "docs/index.rst",
+        "docs/serializer.rst",
+        "src/itsdangerous/exc.py",
+        "src/itsdangerous/_json.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2946,
+      "reduction": 0.8945106885809432,
+      "elapsedMs": 70.23208299999533,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/serializer.py",
+        "src/itsdangerous/__init__.py",
+        "docs/index.rst",
+        "docs/serializer.rst",
+        "src/itsdangerous/encoding.py",
+        "README.md",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/exc.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2975,
+      "reduction": 0.893472266981774,
+      "elapsedMs": 77.79604200000176,
+      "paths": [
+        "src/itsdangerous/url_safe.py",
+        "docs/url_safe.rst",
+        "tests/test_itsdangerous/test_url_safe.py",
+        "src/itsdangerous/encoding.py",
+        "README.md",
+        "src/itsdangerous/serializer.py",
+        "docs/index.rst",
+        "docs/serializer.rst",
+        "src/itsdangerous/__init__.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1473,
+      "reduction": 0.9472553442904715,
+      "elapsedMs": 22.552083000002312,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "docs/serializer.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1486,
+      "reduction": 0.946789844952913,
+      "elapsedMs": 25.69812500000262,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/signer.py",
+        "docs/serializer.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1447,
+      "reduction": 0.9481863429655889,
+      "elapsedMs": 24.424749999998312,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/signer.py",
+        "docs/serializer.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1479,
+      "reduction": 0.9470404984423676,
+      "elapsedMs": 38.35683300000528,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/exc.py",
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "src/itsdangerous/timed.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2961,
+      "reduction": 0.8939735739606832,
+      "elapsedMs": 51.79570799999783,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "docs/serializer.rst",
+        "CHANGES.rst",
+        "tests/test_itsdangerous/test_serializer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2983,
+      "reduction": 0.8931858058509686,
+      "elapsedMs": 57.04383300000336,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/signer.py",
+        "docs/serializer.rst",
+        "src/itsdangerous/timed.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2990,
+      "reduction": 0.892935152361514,
+      "elapsedMs": 55.585625000006985,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/signer.py",
+        "docs/serializer.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2936,
+      "reduction": 0.8948687649944498,
+      "elapsedMs": 81.48062499999651,
+      "paths": [
+        "src/itsdangerous/serializer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/exc.py",
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "src/itsdangerous/timed.py",
+        "docs/serializer.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1440,
+      "reduction": 0.9484369964550435,
+      "elapsedMs": 23.07537500000035,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "tests/test_itsdangerous/test_serializer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1466,
+      "reduction": 0.9475059977799263,
+      "elapsedMs": 20.935749999996915,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1466,
+      "reduction": 0.9475059977799263,
+      "elapsedMs": 21.56233400000201,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 1444,
+      "reduction": 0.9482937658896409,
+      "elapsedMs": 25.980374999999185,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "tests/test_itsdangerous/test_serializer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2978,
+      "reduction": 0.8933648440577219,
+      "elapsedMs": 69.01158299999952,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "docs/concepts.rst"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2981,
+      "reduction": 0.8932574211336699,
+      "elapsedMs": 46.47741700000188,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "tests/test_itsdangerous/test_serializer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2982,
+      "reduction": 0.8932216134923192,
+      "elapsedMs": 60.165290999997524,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "tests/test_itsdangerous/test_serializer.py"
+      ]
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 27927,
+      "outputTokens": 2980,
+      "reduction": 0.8932932287750206,
+      "elapsedMs": 54.94220800000039,
+      "paths": [
+        "src/itsdangerous/signer.py",
+        "tests/test_itsdangerous/test_signer.py",
+        "tests/test_itsdangerous/test_serializer.py",
+        "src/itsdangerous/serializer.py"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1445,
+      "reduction": 0.99294281974643,
+      "elapsedMs": 272.6264999999985,
+      "paths": [
+        "lib/option.js",
+        "lib/command.js",
+        "tests/option.bad-flags.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1482,
+      "reduction": 0.9927621168610443,
+      "elapsedMs": 26.494833999997354,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1482,
+      "reduction": 0.9927621168610443,
+      "elapsedMs": 22.915292000005138,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1466,
+      "reduction": 0.9928402586493192,
+      "elapsedMs": 24.687458000000333,
+      "paths": [
+        "lib/command.js",
+        "lib/option.js",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2939,
+      "reduction": 0.9856463302662681,
+      "elapsedMs": 46.324249999997846,
+      "paths": [
+        "lib/option.js",
+        "lib/command.js",
+        "tests/option.bad-flags.test.js",
+        "examples/color-help-replacement.mjs",
+        "Readme.md",
+        "docs/parsing-and-hooks.md"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2958,
+      "reduction": 0.9855535368926918,
+      "elapsedMs": 45.939375000001746,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/option.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2985,
+      "reduction": 0.985421672624978,
+      "elapsedMs": 52.174582999999984,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/option.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2937,
+      "reduction": 0.9856560979898025,
+      "elapsedMs": 57.52170800000022,
+      "paths": [
+        "lib/command.js",
+        "lib/option.js",
+        "typings/index.d.ts",
+        "tests/option.bad-flags.test.js",
+        "Readme.md"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1465,
+      "reduction": 0.9928451425110864,
+      "elapsedMs": 32.957792000001064,
+      "paths": [
+        "tests/options.mandatory.test.js",
+        "lib/command.js",
+        "examples/options-required.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1463,
+      "reduction": 0.9928549102346207,
+      "elapsedMs": 24.85225000000355,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/option.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1463,
+      "reduction": 0.9928549102346207,
+      "elapsedMs": 20.663208000005397,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/option.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1492,
+      "reduction": 0.9927132782433726,
+      "elapsedMs": 30.31999999999971,
+      "paths": [
+        "lib/command.js",
+        "lib/option.js",
+        "typings/index.d.ts",
+        "examples/options-required.js",
+        "tests/options.mandatory.test.js",
+        "Readme.md"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2990,
+      "reduction": 0.9853972533161421,
+      "elapsedMs": 58.124416999999085,
+      "paths": [
+        "tests/options.mandatory.test.js",
+        "lib/command.js",
+        "examples/options-required.js",
+        "lib/option.js",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2951,
+      "reduction": 0.985587723925062,
+      "elapsedMs": 45.548125000001164,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/option.js",
+        "tests/help.optionDescription.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2980,
+      "reduction": 0.9854460919338139,
+      "elapsedMs": 48.95733299999847,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/option.js",
+        "tests/options.mandatory.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2938,
+      "reduction": 0.9856512141280354,
+      "elapsedMs": 65.44475000000239,
+      "paths": [
+        "lib/command.js",
+        "lib/option.js",
+        "typings/index.d.ts",
+        "examples/options-required.js",
+        "tests/options.mandatory.test.js",
+        "Readme.md",
+        "lib/argument.js",
+        "lib/help.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1479,
+      "reduction": 0.9927767684463459,
+      "elapsedMs": 27.097999999998137,
+      "paths": [
+        "tests/args.variadic.test.js",
+        "tests/argument.variadic.test.js",
+        "examples/options-variadic.js",
+        "tests/command.argumentVariations.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1458,
+      "reduction": 0.9928793295434566,
+      "elapsedMs": 24.256458000003477,
+      "paths": [
+        "lib/argument.js",
+        "lib/command.js",
+        "typings/index.d.ts",
+        "tests/help.argumentDescription.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1488,
+      "reduction": 0.9927328136904413,
+      "elapsedMs": 28.38054099999863,
+      "paths": [
+        "lib/argument.js",
+        "lib/command.js",
+        "typings/index.d.ts",
+        "tests/args.variadic.test.js",
+        "tests/argument.variadic.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1475,
+      "reduction": 0.9927963038934146,
+      "elapsedMs": 29.208833000004233,
+      "paths": [
+        "tests/args.variadic.test.js",
+        "lib/argument.js",
+        "lib/command.js",
+        "tests/command.argumentVariations.test.js",
+        "tests/argument.variadic.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2944,
+      "reduction": 0.9856219109574322,
+      "elapsedMs": 60.55745800000295,
+      "paths": [
+        "tests/args.variadic.test.js",
+        "tests/argument.variadic.test.js",
+        "examples/options-variadic.js",
+        "tests/command.argumentVariations.test.js",
+        "lib/command.js",
+        "Readme.md"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2963,
+      "reduction": 0.9855291175838559,
+      "elapsedMs": 57.48958299999504,
+      "paths": [
+        "lib/argument.js",
+        "lib/command.js",
+        "typings/index.d.ts",
+        "tests/help.argumentDescription.test.js",
+        "tests/args.variadic.test.js",
+        "tests/argument.variadic.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2948,
+      "reduction": 0.9856023755103636,
+      "elapsedMs": 72.22879199999443,
+      "paths": [
+        "lib/argument.js",
+        "lib/command.js",
+        "typings/index.d.ts",
+        "tests/args.variadic.test.js",
+        "tests/argument.variadic.test.js",
+        "tests/help.argumentDescription.test.js",
+        "examples/options-variadic.js",
+        "tests/command.argumentVariations.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2985,
+      "reduction": 0.985421672624978,
+      "elapsedMs": 56.40141700000095,
+      "paths": [
+        "tests/args.variadic.test.js",
+        "lib/argument.js",
+        "lib/command.js",
+        "tests/command.argumentVariations.test.js",
+        "tests/argument.variadic.test.js",
+        "examples/options-variadic.js",
+        "Readme.md",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1469,
+      "reduction": 0.9928256070640177,
+      "elapsedMs": 26.58654199999728,
+      "paths": [
+        "lib/argument.js",
+        "lib/option.js",
+        "typings/index.d.ts",
+        "tests/options.variadic.test.js",
+        "tests/options.choices.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1476,
+      "reduction": 0.9927914200316474,
+      "elapsedMs": 31.693458000001556,
+      "paths": [
+        "lib/option.js",
+        "lib/argument.js",
+        "typings/index.d.ts",
+        "tests/help.optionDescription.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1480,
+      "reduction": 0.9927718845845788,
+      "elapsedMs": 32.425374999998894,
+      "paths": [
+        "lib/option.js",
+        "lib/argument.js",
+        "typings/index.d.ts",
+        "tests/help.optionDescription.test.js",
+        "lib/command.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1472,
+      "reduction": 0.9928109554787161,
+      "elapsedMs": 25.164458999999624,
+      "paths": [
+        "lib/option.js",
+        "tests/help.optionDescription.test.js",
+        "lib/argument.js",
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/help.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2981,
+      "reduction": 0.9854412080720467,
+      "elapsedMs": 49.696499999998196,
+      "paths": [
+        "lib/argument.js",
+        "lib/option.js",
+        "typings/index.d.ts",
+        "tests/options.variadic.test.js",
+        "tests/options.choices.test.js",
+        "tests/argument.choices.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2985,
+      "reduction": 0.985421672624978,
+      "elapsedMs": 46.480250000000524,
+      "paths": [
+        "lib/option.js",
+        "lib/argument.js",
+        "typings/index.d.ts",
+        "tests/help.optionDescription.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2989,
+      "reduction": 0.9854021371779094,
+      "elapsedMs": 48.85204199999862,
+      "paths": [
+        "lib/option.js",
+        "lib/argument.js",
+        "typings/index.d.ts",
+        "tests/help.optionDescription.test.js",
+        "lib/command.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2992,
+      "reduction": 0.9853874855926078,
+      "elapsedMs": 67.59412500000326,
+      "paths": [
+        "lib/option.js",
+        "tests/help.optionDescription.test.js",
+        "lib/argument.js",
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/help.js",
+        "tests/options.choices.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1439,
+      "reduction": 0.992972122917033,
+      "elapsedMs": 26.146208000005572,
+      "paths": [
+        "tests/command.asterisk.test.js",
+        "CONTRIBUTING.md",
+        "tests/help.visibleCommands.test.js",
+        "tests/help.sortCommands.test.js",
+        "examples/nestedCommands.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1469,
+      "reduction": 0.9928256070640177,
+      "elapsedMs": 26.30633400000079,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1469,
+      "reduction": 0.9928256070640177,
+      "elapsedMs": 23.727958000003127,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 1476,
+      "reduction": 0.9927914200316474,
+      "elapsedMs": 22.439375000001746,
+      "paths": [
+        "typings/index.d.ts",
+        "lib/command.js",
+        "tests/help.suggestion.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2975,
+      "reduction": 0.9854705112426498,
+      "elapsedMs": 62.64329100000032,
+      "paths": [
+        "tests/command.asterisk.test.js",
+        "CONTRIBUTING.md",
+        "tests/help.visibleCommands.test.js",
+        "tests/help.sortCommands.test.js",
+        "examples/nestedCommands.js",
+        "CHANGELOG.md",
+        "lib/help.js",
+        "lib/command.js",
+        "tests/command.commandHelp.test.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2968,
+      "reduction": 0.9855046982750201,
+      "elapsedMs": 40.12541699999565,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/help.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2968,
+      "reduction": 0.9855046982750201,
+      "elapsedMs": 39.534208999997645,
+      "paths": [
+        "lib/command.js",
+        "typings/index.d.ts",
+        "lib/help.js"
+      ]
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 204756,
+      "outputTokens": 2984,
+      "reduction": 0.9854265564867452,
+      "elapsedMs": 51.19429200000013,
+      "paths": [
+        "typings/index.d.ts",
+        "lib/command.js",
+        "tests/help.suggestion.test.js",
+        "CHANGELOG.md",
+        "lib/help.js",
+        "docs/terminology.md"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1492,
+      "reduction": 0.9844599520883242,
+      "elapsedMs": 133.42929100000765,
+      "paths": [
+        "middleware/timeout.go",
+        "mux_test.go",
+        "_examples/limits/main.go",
+        "_examples/graceful/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1481,
+      "reduction": 0.9845745234871368,
+      "elapsedMs": 21.375583000000915,
+      "paths": [
+        "middleware/timeout.go",
+        "mux_test.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1484,
+      "reduction": 0.984543276742006,
+      "elapsedMs": 26.60758400001214,
+      "paths": [
+        "middleware/timeout.go",
+        "mux_test.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "context.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1449,
+      "reduction": 0.9849078221018643,
+      "elapsedMs": 21.7982500000071,
+      "paths": [
+        "middleware/timeout.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "mux_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2979,
+      "reduction": 0.9689719820851994,
+      "elapsedMs": 37.21870800000033,
+      "paths": [
+        "middleware/timeout.go",
+        "mux_test.go",
+        "_examples/limits/main.go",
+        "_examples/graceful/main.go",
+        "middleware/throttle.go",
+        "middleware/throttle_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2986,
+      "reduction": 0.9688990730132278,
+      "elapsedMs": 46.94183300000441,
+      "paths": [
+        "middleware/timeout.go",
+        "mux_test.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "_examples/graceful/main.go",
+        "middleware/throttle.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2968,
+      "reduction": 0.9690865534840121,
+      "elapsedMs": 45.56433399999514,
+      "paths": [
+        "middleware/timeout.go",
+        "mux_test.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "_examples/graceful/main.go",
+        "middleware/throttle.go",
+        "context.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2938,
+      "reduction": 0.9693990209353193,
+      "elapsedMs": 46.47612500000105,
+      "paths": [
+        "middleware/timeout.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "mux_test.go",
+        "middleware/throttle.go",
+        "_examples/graceful/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1487,
+      "reduction": 0.9845120299968754,
+      "elapsedMs": 21.117874999996275,
+      "paths": [
+        "middleware/throttle.go",
+        "middleware/throttle_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1486,
+      "reduction": 0.9845224455785856,
+      "elapsedMs": 19.804166000001715,
+      "paths": [
+        "middleware/throttle_test.go",
+        "middleware/throttle.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1484,
+      "reduction": 0.984543276742006,
+      "elapsedMs": 19.39512499999546,
+      "paths": [
+        "middleware/throttle_test.go",
+        "middleware/throttle.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1471,
+      "reduction": 0.9846786793042391,
+      "elapsedMs": 21.077999999994063,
+      "paths": [
+        "middleware/throttle.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2991,
+      "reduction": 0.9688469951046766,
+      "elapsedMs": 88.5054999999993,
+      "paths": [
+        "middleware/throttle.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "README.md",
+        "tree.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2975,
+      "reduction": 0.9690136444120404,
+      "elapsedMs": 52.339915999997174,
+      "paths": [
+        "middleware/throttle_test.go",
+        "middleware/throttle.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2975,
+      "reduction": 0.9690136444120404,
+      "elapsedMs": 65.56237499999406,
+      "paths": [
+        "middleware/throttle_test.go",
+        "middleware/throttle.go",
+        "_examples/limits/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2988,
+      "reduction": 0.9688782418498073,
+      "elapsedMs": 141.84845800000767,
+      "paths": [
+        "middleware/throttle.go",
+        "middleware/throttle_test.go",
+        "_examples/limits/main.go",
+        "README.md"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1449,
+      "reduction": 0.9849078221018643,
+      "elapsedMs": 24.527708000008715,
+      "paths": [
+        "middleware/recoverer_test.go",
+        "middleware/recoverer.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1482,
+      "reduction": 0.9845641079054265,
+      "elapsedMs": 37.528332999994745,
+      "paths": [
+        "middleware/recoverer_test.go",
+        "middleware/recoverer.go",
+        "mux.go",
+        "chain.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1458,
+      "reduction": 0.9848140818664722,
+      "elapsedMs": 83.12908400000015,
+      "paths": [
+        "middleware/recoverer_test.go",
+        "middleware/recoverer.go",
+        "mux.go",
+        "chain.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1462,
+      "reduction": 0.9847724195396312,
+      "elapsedMs": 54.16808299999684,
+      "paths": [
+        "middleware/recoverer.go",
+        "middleware/recoverer_test.go",
+        "_examples/rest/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2970,
+      "reduction": 0.9690657223205916,
+      "elapsedMs": 119.43733400000201,
+      "paths": [
+        "middleware/recoverer_test.go",
+        "middleware/recoverer.go",
+        "_examples/custom-handler/main.go",
+        "CHANGELOG.md",
+        "_examples/rest/main.go",
+        "middleware/profiler.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2979,
+      "reduction": 0.9689719820851994,
+      "elapsedMs": 95.63508300000103,
+      "paths": [
+        "middleware/recoverer_test.go",
+        "middleware/recoverer.go",
+        "mux.go",
+        "chain.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go",
+        "mux_test.go",
+        "_examples/custom-handler/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2979,
+      "reduction": 0.9689719820851994,
+      "elapsedMs": 85.84883299999638,
+      "paths": [
+        "middleware/recoverer_test.go",
+        "middleware/recoverer.go",
+        "mux.go",
+        "chain.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go",
+        "mux_test.go",
+        "_examples/custom-handler/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2948,
+      "reduction": 0.9692948651182168,
+      "elapsedMs": 62.6447499999922,
+      "paths": [
+        "middleware/recoverer.go",
+        "middleware/recoverer_test.go",
+        "_examples/rest/main.go",
+        "middleware/logger.go",
+        "middleware/compress.go",
+        "_examples/rest/routes.md"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1446,
+      "reduction": 0.9849390688469951,
+      "elapsedMs": 27.121375000002445,
+      "paths": [
+        "mux.go",
+        "mux_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1449,
+      "reduction": 0.9849078221018643,
+      "elapsedMs": 29.77004199998919,
+      "paths": [
+        "mux.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go",
+        "chain.go",
+        "mux_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1467,
+      "reduction": 0.9847203416310801,
+      "elapsedMs": 28.028999999994994,
+      "paths": [
+        "mux.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go",
+        "chain.go",
+        "mux_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1482,
+      "reduction": 0.9845641079054265,
+      "elapsedMs": 22.502916000012192,
+      "paths": [
+        "mux.go",
+        "mux_test.go",
+        "_examples/custom-handler/main.go",
+        "chi.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2960,
+      "reduction": 0.969169878137694,
+      "elapsedMs": 67.54091700000572,
+      "paths": [
+        "mux.go",
+        "mux_test.go",
+        "_examples/versions/main.go",
+        "README.md",
+        "chi.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2967,
+      "reduction": 0.9690969690657223,
+      "elapsedMs": 118.60195899999235,
+      "paths": [
+        "mux.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go",
+        "chain.go",
+        "mux_test.go",
+        "chi.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2948,
+      "reduction": 0.9692948651182168,
+      "elapsedMs": 67.29491700000654,
+      "paths": [
+        "mux.go",
+        "middleware/compress.go",
+        "middleware/route_headers.go",
+        "chain.go",
+        "mux_test.go",
+        "_examples/versions/main.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2989,
+      "reduction": 0.9688678262680971,
+      "elapsedMs": 78.75237499999639,
+      "paths": [
+        "mux.go",
+        "mux_test.go",
+        "_examples/custom-handler/main.go",
+        "chi.go",
+        "chain.go",
+        "middleware/compress.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1489,
+      "reduction": 0.9844911988334548,
+      "elapsedMs": 26.659708999999566,
+      "paths": [
+        "context.go",
+        "middleware/url_format.go",
+        "mux_test.go",
+        "README.md"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1443,
+      "reduction": 0.9849703155921258,
+      "elapsedMs": 24.893124999987776,
+      "paths": [
+        "context.go",
+        "middleware/route_headers.go",
+        "mux.go",
+        "middleware/url_format.go",
+        "mux_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1443,
+      "reduction": 0.9849703155921258,
+      "elapsedMs": 25.42020799999591,
+      "paths": [
+        "context.go",
+        "middleware/route_headers.go",
+        "mux.go",
+        "middleware/url_format.go",
+        "mux_test.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 1462,
+      "reduction": 0.9847724195396312,
+      "elapsedMs": 18.287083999995957,
+      "paths": [
+        "context.go",
+        "middleware/url_format.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2990,
+      "reduction": 0.9688574106863869,
+      "elapsedMs": 65.7862499999901,
+      "paths": [
+        "context.go",
+        "middleware/url_format.go",
+        "mux_test.go",
+        "README.md",
+        "middleware/clean_path.go",
+        "middleware/get_head.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2965,
+      "reduction": 0.9691178002291428,
+      "elapsedMs": 62.57595899999433,
+      "paths": [
+        "context.go",
+        "middleware/route_headers.go",
+        "mux.go",
+        "middleware/url_format.go",
+        "mux_test.go",
+        "_examples/fileserver/main.go",
+        "README.md",
+        "middleware/clean_path.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2965,
+      "reduction": 0.9691178002291428,
+      "elapsedMs": 63.97641699999804,
+      "paths": [
+        "context.go",
+        "middleware/route_headers.go",
+        "mux.go",
+        "middleware/url_format.go",
+        "mux_test.go",
+        "_examples/fileserver/main.go",
+        "README.md",
+        "middleware/clean_path.go"
+      ]
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 96010,
+      "outputTokens": 2949,
+      "reduction": 0.9692844495365066,
+      "elapsedMs": 64.38554200000362,
+      "paths": [
+        "context.go",
+        "middleware/url_format.go",
+        "context_test.go",
+        "README.md",
+        "tree.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1474,
+      "reduction": 0.9887830269085596,
+      "elapsedMs": 131.44183299998986,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "cmd/toml-test-decoder/main.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1468,
+      "reduction": 0.9888286862291489,
+      "elapsedMs": 25.55441700000665,
+      "paths": [
+        "encode_test.go",
+        "decode.go",
+        "encode.go",
+        "decode_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1485,
+      "reduction": 0.9886993181541459,
+      "elapsedMs": 29.487208999998984,
+      "paths": [
+        "encode_test.go",
+        "decode.go",
+        "encode.go",
+        "decode_test.go",
+        "cmd/toml-test-decoder/main.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1487,
+      "reduction": 0.9886840983806161,
+      "elapsedMs": 23.958708999998635,
+      "paths": [
+        "decode.go",
+        "internal/toml-test/runner.go",
+        "decode_test.go",
+        "cmd/toml-test-decoder/main.go",
+        "toml_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2944,
+      "reduction": 0.9775964933641788,
+      "elapsedMs": 57.67904099999578,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "cmd/toml-test-decoder/main.go",
+        "encode.go",
+        "encode_test.go",
+        "cmd/toml-test-decoder/README.md",
+        "deprecated.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2970,
+      "reduction": 0.9773986363082917,
+      "elapsedMs": 59.2743749999936,
+      "paths": [
+        "encode_test.go",
+        "decode.go",
+        "encode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "cmd/toml-test-decoder/main.go",
+        "cmd/toml-test-decoder/README.md"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2970,
+      "reduction": 0.9773986363082917,
+      "elapsedMs": 57.688083000000915,
+      "paths": [
+        "encode_test.go",
+        "decode.go",
+        "encode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "cmd/toml-test-decoder/main.go",
+        "cmd/toml-test-decoder/README.md"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2972,
+      "reduction": 0.9773834165347619,
+      "elapsedMs": 67.71558299999742,
+      "paths": [
+        "decode.go",
+        "internal/toml-test/runner.go",
+        "decode_test.go",
+        "cmd/toml-test-decoder/main.go",
+        "cmd/toml-test-decoder/README.md",
+        "toml_test.go",
+        "cmd/toml-test-encoder/main.go",
+        "cmd/toml-test-encoder/README.md",
+        "encode.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1463,
+      "reduction": 0.9888667356629733,
+      "elapsedMs": 21.159708000006503,
+      "paths": [
+        "meta.go",
+        "example_test.go",
+        "decode.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1479,
+      "reduction": 0.9887449774747352,
+      "elapsedMs": 28.086292000007234,
+      "paths": [
+        "meta.go",
+        "internal/toml-test/toml.go",
+        "example_test.go",
+        "decode.go",
+        "_example/example.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1479,
+      "reduction": 0.9887449774747352,
+      "elapsedMs": 31.139790999994148,
+      "paths": [
+        "meta.go",
+        "decode.go",
+        "internal/toml-test/toml.go",
+        "example_test.go",
+        "_example/example.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1488,
+      "reduction": 0.9886764884938513,
+      "elapsedMs": 47.38066599999729,
+      "paths": [
+        "meta.go",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-2.toml",
+        "internal/toml-test/tests/valid/spec/keys-7.toml",
+        "internal/toml-test/tests/valid/spec/keys-0.toml",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-1.toml",
+        "_example/example.toml",
+        "internal/toml-test/tests/invalid/spec/keys-2.toml",
+        "internal/toml-test/tests/valid/spec/keys-1.toml",
+        "internal/toml-test/tests/invalid/key/empty.toml",
+        "internal/toml-test/tests/valid/spec/keys-3.toml",
+        "internal/toml-test/tests/valid/spec/keys-7.json",
+        "internal/toml-test/tests/invalid/key/without-value-3.toml",
+        "internal/toml-test/tests/invalid/key/without-value-1.toml",
+        "example_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2936,
+      "reduction": 0.9776573724582979,
+      "elapsedMs": 58.3784580000065,
+      "paths": [
+        "meta.go",
+        "example_test.go",
+        "decode.go",
+        "_example/example.go",
+        "internal/toml-test/toml.go",
+        "internal/toml-test/json.go",
+        "_example/example.toml"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2990,
+      "reduction": 0.977246438572994,
+      "elapsedMs": 55.20804099999077,
+      "paths": [
+        "meta.go",
+        "internal/toml-test/toml.go",
+        "example_test.go",
+        "decode.go",
+        "_example/example.go",
+        "decode_test.go",
+        "encode.go",
+        "internal/toml-test/runner.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2950,
+      "reduction": 0.9775508340435894,
+      "elapsedMs": 67.04812500000116,
+      "paths": [
+        "meta.go",
+        "decode.go",
+        "internal/toml-test/toml.go",
+        "example_test.go",
+        "_example/example.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "internal/toml-test/json.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2838,
+      "reduction": 0.9784031413612565,
+      "elapsedMs": 145.39700000001176,
+      "paths": [
+        "meta.go",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-2.toml",
+        "internal/toml-test/tests/valid/spec/keys-7.toml",
+        "internal/toml-test/tests/valid/spec/keys-0.toml",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-1.toml",
+        "_example/example.toml",
+        "internal/toml-test/tests/invalid/spec/keys-2.toml",
+        "internal/toml-test/tests/valid/spec/keys-1.toml",
+        "internal/toml-test/tests/invalid/key/empty.toml",
+        "internal/toml-test/tests/valid/spec/keys-3.toml",
+        "internal/toml-test/tests/valid/spec/keys-7.json",
+        "internal/toml-test/tests/invalid/key/without-value-3.toml",
+        "internal/toml-test/tests/invalid/key/without-value-1.toml",
+        "example_test.go",
+        "internal/toml-test/tests/invalid/key/without-value-2.toml",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-3.toml",
+        "internal/toml-test/toml.go",
+        "internal/toml-test/tests/valid/key/empty-3.toml",
+        "internal/toml-test/tests/invalid/key/without-value-7.toml",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-4.toml",
+        "internal/toml-test/tests/invalid/key/without-value-4.toml",
+        "internal/toml-test/tests/invalid/key/quoted-unclosed-1.toml",
+        "internal/toml-test/tests/invalid/key/without-value-5.toml",
+        "internal/toml-test/tests/invalid/key/quoted-unclosed-2.toml",
+        "internal/toml-test/tests/invalid/key/hash.toml",
+        "internal/toml-test/tests/valid/key/zero.toml",
+        "internal/toml-test/tests/valid/spec/keys-0.json",
+        "internal/toml-test/tests/invalid/key/without-value-6.toml",
+        "internal/toml-test/tests/invalid/table/append-with-dotted-keys-2.toml",
+        "decode.go",
+        "internal/toml-test/tests/valid/key/empty-1.toml",
+        "internal/toml-test/tests/invalid/key/bare-invalid-character.toml"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1481,
+      "reduction": 0.9887297577012054,
+      "elapsedMs": 29.973207999995793,
+      "paths": [
+        "encode.go",
+        "internal/toml-test/toml.go",
+        "meta.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1439,
+      "reduction": 0.9890493729453306,
+      "elapsedMs": 23.883625000002212,
+      "paths": [
+        "internal/toml-test/toml.go",
+        "encode.go",
+        "meta.go",
+        "example_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1483,
+      "reduction": 0.9887145379276756,
+      "elapsedMs": 23.33062500000233,
+      "paths": [
+        "internal/toml-test/toml.go",
+        "encode.go",
+        "meta.go",
+        "example_test.go",
+        "toml_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1437,
+      "reduction": 0.9890645927188604,
+      "elapsedMs": 23.403999999994994,
+      "paths": [
+        "encode.go",
+        "internal/toml-test/toml.go",
+        "parse.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2982,
+      "reduction": 0.9773073176671131,
+      "elapsedMs": 50.54316600000311,
+      "paths": [
+        "encode.go",
+        "internal/toml-test/toml.go",
+        "internal/toml-test/json.go",
+        "parse.go",
+        "meta.go",
+        "internal/toml-test/runner.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2966,
+      "reduction": 0.9774290758553513,
+      "elapsedMs": 42.86800000000221,
+      "paths": [
+        "internal/toml-test/toml.go",
+        "encode.go",
+        "meta.go",
+        "example_test.go",
+        "internal/toml-test/json.go",
+        "toml_test.go",
+        "decode_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2977,
+      "reduction": 0.9773453671009376,
+      "elapsedMs": 42.60216599999694,
+      "paths": [
+        "internal/toml-test/toml.go",
+        "encode.go",
+        "meta.go",
+        "example_test.go",
+        "toml_test.go",
+        "decode_test.go",
+        "internal/toml-test/json.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2967,
+      "reduction": 0.9774214659685864,
+      "elapsedMs": 70.93374999999651,
+      "paths": [
+        "encode.go",
+        "internal/toml-test/toml.go",
+        "parse.go",
+        "cmd/toml-test-encoder/README.md",
+        "internal/toml-test/tests/valid/spec/keys-1.toml",
+        "example_test.go",
+        "internal/toml-test/tests/valid/spec/keys-0.toml",
+        "internal/toml-test/tests/valid/spec/keys-7.toml",
+        "meta.go",
+        "internal/toml-test/tests/valid/spec/keys-7.json",
+        "internal/toml-test/tests/invalid/key/duplicate-keys-2.toml",
+        "internal/toml-test/tests/valid/key/start.toml"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1457,
+      "reduction": 0.9889123949835626,
+      "elapsedMs": 18.32204100000672,
+      "paths": [
+        "decode.go",
+        "encode.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1464,
+      "reduction": 0.9888591257762085,
+      "elapsedMs": 23.111166999995476,
+      "paths": [
+        "decode.go",
+        "encode_test.go",
+        "type_fields.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1480,
+      "reduction": 0.9887373675879703,
+      "elapsedMs": 22.89208299999882,
+      "paths": [
+        "decode.go",
+        "type_fields.go",
+        "encode_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1448,
+      "reduction": 0.9889808839644466,
+      "elapsedMs": 28.08533400000306,
+      "paths": [
+        "decode.go",
+        "type_fields.go",
+        "internal/toml-test/tests/valid/table/names.toml",
+        "internal/toml-test/tests/valid/table/names.json",
+        "encode_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2966,
+      "reduction": 0.9774290758553513,
+      "elapsedMs": 53.27387499999895,
+      "paths": [
+        "decode.go",
+        "encode.go",
+        "internal/toml-test/tests/valid/datetime/datetime.toml",
+        "type_fields.go",
+        "encode_test.go",
+        "lex.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2987,
+      "reduction": 0.9772692682332886,
+      "elapsedMs": 41.44166700000642,
+      "paths": [
+        "decode.go",
+        "encode_test.go",
+        "type_fields.go",
+        "encode.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2987,
+      "reduction": 0.9772692682332886,
+      "elapsedMs": 43.677542000004905,
+      "paths": [
+        "decode.go",
+        "type_fields.go",
+        "encode_test.go",
+        "encode.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2986,
+      "reduction": 0.9772768781200536,
+      "elapsedMs": 51.27120800000557,
+      "paths": [
+        "decode.go",
+        "type_fields.go",
+        "internal/toml-test/tests/valid/table/names.toml",
+        "internal/toml-test/tests/valid/table/names.json",
+        "encode_test.go",
+        "encode.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1479,
+      "reduction": 0.9887449774747352,
+      "elapsedMs": 21.015417000002344,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "bench_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1442,
+      "reduction": 0.9890265432850359,
+      "elapsedMs": 21.631124999999884,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "bench_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1442,
+      "reduction": 0.9890265432850359,
+      "elapsedMs": 21.747709000002942,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "bench_test.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 1453,
+      "reduction": 0.9889428345306222,
+      "elapsedMs": 21.45837500000198,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2951,
+      "reduction": 0.9775432241568246,
+      "elapsedMs": 37.53187500000058,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "bench_test.go",
+        "internal/toml-test/tests/invalid/key/open-bracket.toml"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2988,
+      "reduction": 0.9772616583465238,
+      "elapsedMs": 66.72599999999511,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "bench_test.go",
+        "internal/toml-test/tests/invalid/key/open-bracket.toml",
+        "internal/toml-test/tests/invalid/key/single-open-bracket.toml"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2988,
+      "reduction": 0.9772616583465238,
+      "elapsedMs": 63.65633299999172,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "toml_test.go",
+        "bench_test.go",
+        "internal/toml-test/tests/invalid/key/open-bracket.toml",
+        "internal/toml-test/tests/invalid/key/single-open-bracket.toml"
+      ]
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 131408,
+      "outputTokens": 2965,
+      "reduction": 0.9774366857421162,
+      "elapsedMs": 49.98354200000176,
+      "paths": [
+        "decode.go",
+        "decode_test.go",
+        "internal/toml-test/runner.go",
+        "bench_test.go"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1454,
+      "reduction": 0.9803226330319926,
+      "elapsedMs": 77.67508299999463,
+      "paths": [
+        "src/lib.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1448,
+      "reduction": 0.9804038326205814,
+      "elapsedMs": 32.939375000001746,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/__private_api.rs",
+        "tests/integration.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1448,
+      "reduction": 0.9804038326205814,
+      "elapsedMs": 30.647125000003143,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/__private_api.rs",
+        "tests/integration.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1451,
+      "reduction": 0.980363232826287,
+      "elapsedMs": 19.88887499998964,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2952,
+      "reduction": 0.9600498024143345,
+      "elapsedMs": 40.493416999990586,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2985,
+      "reduction": 0.9596032046770963,
+      "elapsedMs": 67.95233400000143,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/__private_api.rs",
+        "tests/integration.rs",
+        "tests/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2937,
+      "reduction": 0.9602528013858063,
+      "elapsedMs": 62.178834000005736,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/__private_api.rs",
+        "tests/integration.rs",
+        "tests/macros.rs",
+        "test_max_level_features/Cargo.toml"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2986,
+      "reduction": 0.9595896714123315,
+      "elapsedMs": 56.414749999996275,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs",
+        "CHANGELOG.md",
+        "src/__private_api.rs",
+        "src/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1447,
+      "reduction": 0.9804173658853462,
+      "elapsedMs": 19.19825000000128,
+      "paths": [
+        "src/lib.rs",
+        "src/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1463,
+      "reduction": 0.9802008336491095,
+      "elapsedMs": 28.37683300000208,
+      "paths": [
+        "src/__private_api.rs",
+        "src/lib.rs",
+        "tests/macros.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1463,
+      "reduction": 0.9802008336491095,
+      "elapsedMs": 28.79891700000735,
+      "paths": [
+        "src/__private_api.rs",
+        "src/lib.rs",
+        "tests/macros.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1439,
+      "reduction": 0.9805256320034645,
+      "elapsedMs": 33.0259170000063,
+      "paths": [
+        "src/lib.rs",
+        "src/__private_api.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs",
+        "tests/macros.rs",
+        "src/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2980,
+      "reduction": 0.9596708710009203,
+      "elapsedMs": 48.72445900000457,
+      "paths": [
+        "src/lib.rs",
+        "src/macros.rs",
+        "src/__private_api.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2959,
+      "reduction": 0.9599550695609809,
+      "elapsedMs": 61.47287500000675,
+      "paths": [
+        "src/__private_api.rs",
+        "src/lib.rs",
+        "tests/macros.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs",
+        "src/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2992,
+      "reduction": 0.9595084718237428,
+      "elapsedMs": 61.1541670000006,
+      "paths": [
+        "src/__private_api.rs",
+        "src/lib.rs",
+        "tests/macros.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs",
+        "src/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2966,
+      "reduction": 0.9598603367076274,
+      "elapsedMs": 65.37670799999614,
+      "paths": [
+        "src/lib.rs",
+        "src/__private_api.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs",
+        "tests/macros.rs",
+        "src/macros.rs",
+        "README.md"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1488,
+      "reduction": 0.9798625020299897,
+      "elapsedMs": 16.487750000000233,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1488,
+      "reduction": 0.9798625020299897,
+      "elapsedMs": 30.00954100000672,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/kv/error.rs",
+        "src/__private_api.rs",
+        "tests/macros.rs",
+        "tests/integration.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1481,
+      "reduction": 0.9799572348833433,
+      "elapsedMs": 23.18866600000183,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/kv/error.rs",
+        "src/__private_api.rs",
+        "tests/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1460,
+      "reduction": 0.9802414334434039,
+      "elapsedMs": 22.380458999992697,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs",
+        "src/__private_api.rs",
+        "src/kv/error.rs",
+        "CHANGELOG.md",
+        "tests/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2965,
+      "reduction": 0.9598738699723921,
+      "elapsedMs": 37.53216699999757,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "CHANGELOG.md",
+        ".github/workflows/main.yml"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2980,
+      "reduction": 0.9596708710009203,
+      "elapsedMs": 65.81324999999197,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/kv/error.rs",
+        "src/__private_api.rs",
+        "tests/macros.rs",
+        "tests/integration.rs",
+        ".github/workflows/main.yml",
+        "CHANGELOG.md"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2978,
+      "reduction": 0.9596979375304499,
+      "elapsedMs": 42.155541000000085,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "src/kv/error.rs",
+        "src/__private_api.rs",
+        "tests/macros.rs",
+        "tests/integration.rs",
+        ".github/workflows/main.yml"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2971,
+      "reduction": 0.9597926703838033,
+      "elapsedMs": 52.964584000001196,
+      "paths": [
+        "src/lib.rs",
+        "test_max_level_features/main.rs",
+        "tests/integration.rs",
+        "src/__private_api.rs",
+        "src/kv/error.rs",
+        "CHANGELOG.md",
+        "tests/macros.rs",
+        "src/macros.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1487,
+      "reduction": 0.9798760352947545,
+      "elapsedMs": 26.494707999998354,
+      "paths": [
+        "src/serde.rs",
+        "src/lib.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1457,
+      "reduction": 0.9802820332376982,
+      "elapsedMs": 27.160375000006752,
+      "paths": [
+        "src/lib.rs",
+        "src/serde.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1457,
+      "reduction": 0.9802820332376982,
+      "elapsedMs": 25.90820900000108,
+      "paths": [
+        "src/lib.rs",
+        "src/serde.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1483,
+      "reduction": 0.9799301683538136,
+      "elapsedMs": 19.98745900001086,
+      "paths": [
+        "src/lib.rs",
+        "src/serde.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2987,
+      "reduction": 0.9595761381475667,
+      "elapsedMs": 50.44241599999077,
+      "paths": [
+        "src/serde.rs",
+        "src/lib.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2977,
+      "reduction": 0.9597114707952147,
+      "elapsedMs": 51.804917000001296,
+      "paths": [
+        "src/lib.rs",
+        "src/serde.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2941,
+      "reduction": 0.9601986683267472,
+      "elapsedMs": 58.890832999997656,
+      "paths": [
+        "src/lib.rs",
+        "src/serde.rs",
+        "tests/integration.rs",
+        "src/kv/value.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2983,
+      "reduction": 0.9596302712066259,
+      "elapsedMs": 55.041417000000365,
+      "paths": [
+        "src/lib.rs",
+        "src/serde.rs",
+        "tests/integration.rs",
+        "test_max_level_features/main.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 1500,
+      "variant": "bm25",
+      "evidenceRecall": 0,
+      "allEvidenceFound": false,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1446,
+      "reduction": 0.980430899150111,
+      "elapsedMs": 21.05079100000148,
+      "paths": [
+        "src/lib.rs",
+        "src/kv/mod.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 1500,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1460,
+      "reduction": 0.9802414334434039,
+      "elapsedMs": 23.254750000007334,
+      "paths": [
+        "src/lib.rs",
+        "src/__private_api.rs",
+        "src/kv/mod.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 1500,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1443,
+      "reduction": 0.9804714989444053,
+      "elapsedMs": 23.643874999994296,
+      "paths": [
+        "src/lib.rs",
+        "src/kv/mod.rs",
+        "src/__private_api.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 1500,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 1492,
+      "reduction": 0.9798083689709306,
+      "elapsedMs": 28.205417000004672,
+      "paths": [
+        "src/lib.rs",
+        "src/__private_api.rs",
+        "rfcs/0296-structured-logging.md",
+        "src/kv/mod.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 3000,
+      "variant": "bm25",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2978,
+      "reduction": 0.9596979375304499,
+      "elapsedMs": 43.98445800000627,
+      "paths": [
+        "src/lib.rs",
+        "src/kv/mod.rs",
+        "src/__private_api.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 3000,
+      "variant": "structural",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2966,
+      "reduction": 0.9598603367076274,
+      "elapsedMs": 46.962083000005805,
+      "paths": [
+        "src/lib.rs",
+        "src/__private_api.rs",
+        "src/kv/mod.rs"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 3000,
+      "variant": "no_graph",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2959,
+      "reduction": 0.9599550695609809,
+      "elapsedMs": 44.13366700000188,
+      "paths": [
+        "src/lib.rs",
+        "src/kv/mod.rs",
+        "src/__private_api.rs",
+        "rfcs/0296-structured-logging.md"
+      ]
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "budget": 3000,
+      "variant": "hybrid",
+      "evidenceRecall": 1,
+      "allEvidenceFound": true,
+      "faithful": true,
+      "inputTokens": 73892,
+      "outputTokens": 2982,
+      "reduction": 0.9596438044713906,
+      "elapsedMs": 56.64350000000559,
+      "paths": [
+        "src/lib.rs",
+        "src/__private_api.rs",
+        "rfcs/0296-structured-logging.md",
+        "src/kv/mod.rs",
+        "tests/integration.rs"
+      ]
+    }
+  ]
+}

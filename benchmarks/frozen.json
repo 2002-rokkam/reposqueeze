@@ -1,0 +1,14 @@
+{
+  "fingerprint": "d5609f9270bc9e485a10e0372bdc31401d3d49c822ef74425e1c39bb8cc0ab27",
+  "settings": {
+    "graphWeight": 0.12,
+    "symbolWeight": 2,
+    "diversity": 0.15
+  },
+  "budgets": [
+    1500,
+    3000
+  ],
+  "semanticModel": "all-minilm",
+  "rule": "No retuning after test results. BM25 is an equal-budget ablation, not an external competitor run."
+}

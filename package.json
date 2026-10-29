@@ -1,0 +1,179 @@
+{
+  "name": "reposqueeze",
+  "displayName": "RepoSqueeze",
+  "description": "Local, budgeted repository context for Copilot and MCP coding agents.",
+  "version": "0.1.0",
+  "publisher": "2002-rokkam",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0",
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "main": "./dist/extension.cjs",
+  "bin": {
+    "reposqueeze": "./dist/cli.cjs"
+  },
+  "files": [
+    "dist/*.cjs",
+    "assets",
+    "skills",
+    "README.md",
+    "LICENSE",
+    "docs/*.md",
+    "third_party",
+    "src",
+    "scripts/build.mjs",
+    "scripts/import-meta.js",
+    "THIRD_PARTY_NOTICES.md",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "bench": "node --import tsx scripts/benchmark.ts",
+    "bench:fetch": "node scripts/fetch-bench.mjs",
+    "package": "npm run build && vsce package --no-dependencies --allow-missing-repository -o releases/reposqueeze-0.1.0.vsix",
+    "prepare": "npm run build",
+    "test:editor": "node scripts/test-extension.mjs",
+    "bench:live": "node --import tsx scripts/live-eval.ts",
+    "bench:formats": "node --import tsx scripts/format-benchmark.ts"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "reposqueeze.pack",
+        "title": "RepoSqueeze: Build Context Pack"
+      },
+      {
+        "command": "reposqueeze.map",
+        "title": "RepoSqueeze: Show Repository Map"
+      },
+      {
+        "command": "reposqueeze.setup",
+        "title": "RepoSqueeze: Install Copilot Instructions"
+      }
+    ],
+    "configuration": {
+      "title": "RepoSqueeze",
+      "properties": {
+        "reposqueeze.tokenBudget": {
+          "type": "number",
+          "default": 3000,
+          "minimum": 256,
+          "maximum": 32000,
+          "description": "Maximum o200k_base tokens in a context pack. Provider token counts may differ."
+        },
+        "reposqueeze.semanticModel": {
+          "type": "string",
+          "default": "",
+          "description": "Optional local Ollama embedding model (for example all-minilm). Sends indexed code only to localhost:11434 and stores vectors in .reposqueeze/. Empty disables embeddings."
+        }
+      }
+    },
+    "languageModelTools": [
+      {
+        "name": "reposqueeze_context",
+        "displayName": "RepoSqueeze Context",
+        "modelDescription": "Retrieve a compact repository map and query-relevant, verbatim source excerpts before broad file reads. Local read-only search. Includes citations and explicit omissions. Use reposqueeze_expand to inspect missing context before editing. Search can miss semantic matches.",
+        "canBeReferencedInPrompt": true,
+        "toolReferenceName": "reposqueeze",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "budget": {
+              "type": "integer",
+              "minimum": 256,
+              "maximum": 32000
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "reposqueeze_expand",
+        "displayName": "RepoSqueeze Expand",
+        "modelDescription": "Read an exact current source range by repository-relative path and one-based line numbers. Respects the same file exclusions as context search. Use this to verify complete definitions before edits.",
+        "canBeReferencedInPrompt": true,
+        "toolReferenceName": "squeezeRead",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "start": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "end": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "budget": {
+              "type": "integer",
+              "minimum": 256,
+              "maximum": 32000
+            }
+          },
+          "required": [
+            "path",
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@toon-format/toon": "^4.4.0",
+    "ignore": "^7.0.5",
+    "js-tiktoken": "^1.0.21",
+    "lossless-json": "^4.3.3",
+    "web-tree-sitter": "^0.22.6",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.100.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.0",
+    "esbuild": "^0.25.0",
+    "tree-sitter-wasms": "0.1.13",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "overrides": {
+    "@azure/msal-node": "^7.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2002-rokkam/reposqueeze.git"
+  },
+  "homepage": "https://github.com/2002-rokkam/reposqueeze#readme",
+  "bugs": {
+    "url": "https://github.com/2002-rokkam/reposqueeze/issues"
+  }
+}

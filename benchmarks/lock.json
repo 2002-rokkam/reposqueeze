@@ -1,0 +1,72 @@
+[
+  {
+    "name": "p-limit",
+    "repo": "sindresorhus/p-limit",
+    "ref": "v6.2.0",
+    "split": "development",
+    "sha": "7d14b3f04aa990f621a853e24e2a4b796baf1ec9"
+  },
+  {
+    "name": "p-queue",
+    "repo": "sindresorhus/p-queue",
+    "ref": "v8.1.0",
+    "split": "development",
+    "sha": "70dd11f35ae1853f002e017f3ed06a2497715d99"
+  },
+  {
+    "name": "click",
+    "repo": "pallets/click",
+    "ref": "8.1.8",
+    "split": "development",
+    "sha": "934813e4d421071a1b3db3973c02fe2721359a6e"
+  },
+  {
+    "name": "itsdangerous",
+    "repo": "pallets/itsdangerous",
+    "ref": "2.2.0",
+    "split": "development",
+    "sha": "096c8d42545d3b68ea21a4f890fb2b2d8979c0bd"
+  },
+  {
+    "name": "commander",
+    "repo": "tj/commander.js",
+    "ref": "v13.1.0",
+    "split": "development",
+    "sha": "e6f56c888c96d1339c2b974fee7e6ba4f2e3d218"
+  },
+  {
+    "name": "chi",
+    "repo": "go-chi/chi",
+    "ref": "v5.2.1",
+    "split": "development",
+    "sha": "71307f9b7e4e9527638bc951c42b782cd1560331"
+  },
+  {
+    "name": "toml",
+    "repo": "BurntSushi/toml",
+    "ref": "v1.4.0",
+    "split": "development",
+    "sha": "1e2c053f442c0ac99df1f5b56bae3feab98caa4f"
+  },
+  {
+    "name": "log",
+    "repo": "rust-lang/log",
+    "ref": "0.4.27",
+    "split": "development",
+    "sha": "35161d0d25838a62d518dabe1e34e84b607446b3"
+  },
+  {
+    "name": "requests",
+    "repo": "psf/requests",
+    "ref": "v2.32.3",
+    "split": "test",
+    "sha": "0e322af87745eff34caffe4df68456ebc20d9068"
+  },
+  {
+    "name": "express",
+    "repo": "expressjs/express",
+    "ref": "v5.1.0",
+    "split": "test",
+    "sha": "cd7d4397c398a3f3ecadeaf9ef6ac1377bd414c4"
+  }
+]

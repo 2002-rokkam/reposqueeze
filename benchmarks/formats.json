@@ -1,0 +1,145 @@
+{
+  "protocol": "Six fresh synthetic JSON shapes, each minified and pretty; semantic round-trip equality checked. Three synthetic logs; log truncation is explicitly lossy and is not an accuracy benchmark.",
+  "structured": [
+    {
+      "name": "uniform-table",
+      "pretty": false,
+      "format": "toon",
+      "inputTokens": 1902,
+      "outputTokens": 1118,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "uniform-table",
+      "pretty": true,
+      "format": "toon",
+      "inputTokens": 3402,
+      "outputTokens": 1118,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "nested-config",
+      "pretty": false,
+      "format": "json",
+      "inputTokens": 43,
+      "outputTokens": 43,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "nested-config",
+      "pretty": true,
+      "format": "json-minified",
+      "inputTokens": 89,
+      "outputTokens": 43,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "heterogeneous",
+      "pretty": false,
+      "format": "json",
+      "inputTokens": 30,
+      "outputTokens": 30,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "heterogeneous",
+      "pretty": true,
+      "format": "json-minified",
+      "inputTokens": 60,
+      "outputTokens": 30,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "small",
+      "pretty": false,
+      "format": "json",
+      "inputTokens": 5,
+      "outputTokens": 5,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "small",
+      "pretty": true,
+      "format": "json-minified",
+      "inputTokens": 8,
+      "outputTokens": 5,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "empty",
+      "pretty": false,
+      "format": "json",
+      "inputTokens": 1,
+      "outputTokens": 1,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "empty",
+      "pretty": true,
+      "format": "json",
+      "inputTokens": 1,
+      "outputTokens": 1,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "unicode",
+      "pretty": false,
+      "format": "toon",
+      "inputTokens": 642,
+      "outputTokens": 455,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    },
+    {
+      "name": "unicode",
+      "pretty": true,
+      "format": "toon",
+      "inputTokens": 1122,
+      "outputTokens": 455,
+      "tokenizer": "o200k_base",
+      "roundTripVerified": true
+    }
+  ],
+  "logs": [
+    {
+      "name": "repeated",
+      "text": "worker heartbeat: healthy\n[Previous line repeated 120 times total]\nERROR final request failed: ECONNRESET",
+      "stats": {
+        "inputTokens": 608,
+        "outputTokens": 22,
+        "tokenizer": "o200k_base",
+        "lossy": false
+      }
+    },
+    {
+      "name": "mixed",
+      "text": "[LOSSY LOG: omitted lines; inspect raw output before concluding success or diagnosing missing details.]\n1: PASS case 0: checked 0 values\n2: PASS case 1: checked 7 values\n3: PASS case 2: checked 14 values\n4: PASS case 3: checked 21 values\n[210 lines omitted]\n215: PASS case 214: checked 1498 values\n216: PASS case 215: checked 1505 values\n217: FAIL test validates authentication\n218: PASS case 217: checked 1519 values\n219: PASS case 218: checked 1526 values\n[173 lines omitted]\n393: PASS case 392: checked 2744 values\n394: PASS case 393: checked 2751 values\n395: PASS case 394: checked 2758 values\n396: PASS case 395: checked 2765 values\n397: PASS case 396: checked 2772 values\n398: PASS case 397: checked 2779 values\n399: PASS case 398: checked 2786 values\n400: PASS case 399: checked 2793 values",
+      "stats": {
+        "inputTokens": 4250,
+        "outputTokens": 239,
+        "tokenizer": "o200k_base",
+        "lossy": true
+      }
+    },
+    {
+      "name": "short",
+      "text": "PASS all checks\n",
+      "stats": {
+        "inputTokens": 4,
+        "outputTokens": 4,
+        "tokenizer": "o200k_base",
+        "lossy": false
+      }
+    }
+  ]
+}
