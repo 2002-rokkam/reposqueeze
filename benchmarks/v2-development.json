@@ -1,0 +1,6588 @@
+{
+  "protocol": "Development-only: 40 existing questions from eight repositories, four deterministic query forms. Used to choose/freeze V2 before independent ARB trace2code evaluation.",
+  "fingerprint": "28d487d42a9f6d2d82c3f89cd2a7042fd18e70ea6a8ce8860291eb583cd78156",
+  "groups": [
+    {
+      "variant": "v1",
+      "budget": 1500,
+      "perturbation": "original",
+      "n": 40,
+      "completeRate": 0.85,
+      "meanRecall": 0.85,
+      "meanTokens": 1469.55
+    },
+    {
+      "variant": "v1",
+      "budget": 1500,
+      "perturbation": "dropout",
+      "n": 40,
+      "completeRate": 0.825,
+      "meanRecall": 0.825,
+      "meanTokens": 1462
+    },
+    {
+      "variant": "v1",
+      "budget": 1500,
+      "perturbation": "telegraphic",
+      "n": 40,
+      "completeRate": 0.85,
+      "meanRecall": 0.85,
+      "meanTokens": 1469.55
+    },
+    {
+      "variant": "v1",
+      "budget": 1500,
+      "perturbation": "reordered",
+      "n": 40,
+      "completeRate": 0.85,
+      "meanRecall": 0.85,
+      "meanTokens": 1469.55
+    },
+    {
+      "variant": "v1",
+      "budget": 1500,
+      "perturbation": "all",
+      "n": 160,
+      "completeRate": 0.84375,
+      "meanRecall": 0.84375,
+      "meanTokens": 1467.6625
+    },
+    {
+      "variant": "v1",
+      "budget": 3000,
+      "perturbation": "original",
+      "n": 40,
+      "completeRate": 0.9,
+      "meanRecall": 0.9,
+      "meanTokens": 2968.1
+    },
+    {
+      "variant": "v1",
+      "budget": 3000,
+      "perturbation": "dropout",
+      "n": 40,
+      "completeRate": 0.9,
+      "meanRecall": 0.9,
+      "meanTokens": 2933.65
+    },
+    {
+      "variant": "v1",
+      "budget": 3000,
+      "perturbation": "telegraphic",
+      "n": 40,
+      "completeRate": 0.9,
+      "meanRecall": 0.9,
+      "meanTokens": 2968.1
+    },
+    {
+      "variant": "v1",
+      "budget": 3000,
+      "perturbation": "reordered",
+      "n": 40,
+      "completeRate": 0.9,
+      "meanRecall": 0.9,
+      "meanTokens": 2968.1
+    },
+    {
+      "variant": "v1",
+      "budget": 3000,
+      "perturbation": "all",
+      "n": 160,
+      "completeRate": 0.9,
+      "meanRecall": 0.9,
+      "meanTokens": 2959.4875
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "perturbation": "original",
+      "n": 40,
+      "completeRate": 0.8,
+      "meanRecall": 0.8,
+      "meanTokens": 1467.775
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "perturbation": "dropout",
+      "n": 40,
+      "completeRate": 0.775,
+      "meanRecall": 0.775,
+      "meanTokens": 1459.65
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "perturbation": "telegraphic",
+      "n": 40,
+      "completeRate": 0.8,
+      "meanRecall": 0.8,
+      "meanTokens": 1467.775
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "perturbation": "reordered",
+      "n": 40,
+      "completeRate": 0.8,
+      "meanRecall": 0.8,
+      "meanTokens": 1467.825
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "perturbation": "all",
+      "n": 160,
+      "completeRate": 0.79375,
+      "meanRecall": 0.79375,
+      "meanTokens": 1465.75625
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "perturbation": "original",
+      "n": 40,
+      "completeRate": 0.925,
+      "meanRecall": 0.925,
+      "meanTokens": 2962
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "perturbation": "dropout",
+      "n": 40,
+      "completeRate": 0.9,
+      "meanRecall": 0.9,
+      "meanTokens": 2929.6
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "perturbation": "telegraphic",
+      "n": 40,
+      "completeRate": 0.925,
+      "meanRecall": 0.925,
+      "meanTokens": 2962
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "perturbation": "reordered",
+      "n": 40,
+      "completeRate": 0.925,
+      "meanRecall": 0.925,
+      "meanTokens": 2962.85
+    },
+    {
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "perturbation": "all",
+      "n": 160,
+      "completeRate": 0.91875,
+      "meanRecall": 0.91875,
+      "meanTokens": 2954.1125
+    }
+  ],
+  "rows": [
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1454
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1462
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2954
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1462
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2931
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1454
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1462
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2954
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1454
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1462
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2954
+    },
+    {
+      "repo": "p-limit",
+      "query": "Which values are accepted by validateConcurrency?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2783
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2929
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2783
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2929
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2783
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2929
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2783
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does clearQueue discard pending work?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2929
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1447
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2979
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2956
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1447
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2979
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2956
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1447
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2979
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2956
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1447
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2979
+    },
+    {
+      "repo": "p-limit",
+      "query": "Where does the number of running tasks decrease after completion?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2956
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-limit",
+      "query": "How does limitFunction wrap a function with its own concurrency limit?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1437
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2931
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1437
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2931
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1437
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2931
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1437
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2931
+    },
+    {
+      "repo": "p-limit",
+      "query": "What happens when the concurrency property is increased?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2940
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2941
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2945
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2967
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2941
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2941
+    },
+    {
+      "repo": "p-queue",
+      "query": "When does onIdle resolve compared to onEmpty?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1483
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1483
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1483
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1483
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1467
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is an AbortSignal used to cancel a running queue operation?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1480
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1471
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2964
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1470
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1478
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2972
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1480
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1471
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2964
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1480
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1471
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "p-queue",
+      "query": "How does pause stop starting new tasks?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2964
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2946
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1456
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1436
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2946
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "p-queue",
+      "query": "How is carryoverConcurrencyCount applied at each interval?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2946
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2976
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2984
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2976
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1477
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2976
+    },
+    {
+      "repo": "p-queue",
+      "query": "Where is queue priority assigned when enqueueing work?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2950
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1451
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2950
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2963
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2950
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2950
+    },
+    {
+      "repo": "click",
+      "query": "How does confirm abort on a negative answer?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1490
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1475
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2973
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1485
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1490
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1475
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2973
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1490
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1475
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2973
+    },
+    {
+      "repo": "click",
+      "query": "Where does echo strip ANSI color codes?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1472
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1484
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1477
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2979
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1472
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1472
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "click",
+      "query": "How does Choice normalize case insensitive choices?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1492
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1492
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1492
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1492
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "click",
+      "query": "How does IntRange clamp out of range values?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1476
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2989
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2952
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1458
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1484
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2990
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1476
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2989
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2952
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1473
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1476
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2989
+    },
+    {
+      "repo": "click",
+      "query": "How does resolve_command handle an unknown subcommand?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2952
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1489
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2988
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1489
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2988
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1489
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2988
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1489
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How are signatures compared without timing leaks?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2988
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1454
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2973
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2969
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1464
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2948
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1454
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2973
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2969
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1454
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2973
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does TimestampSigner reject expired max_age values?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2969
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1457
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1469
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2961
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1469
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2962
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1457
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1469
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2961
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1457
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1469
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How is a compressed URL safe payload decompressed?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2961
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1444
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2962
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1444
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2962
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1444
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2962
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1444
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2983
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "Where are fallback_signers used to try older signatures?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2962
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1466
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1487
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2937
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1466
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1487
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2937
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1466
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1487
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2937
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1466
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1487
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "itsdangerous",
+      "query": "How does derive_key handle the hmac key derivation mode?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2937
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2984
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2984
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2984
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2958
+    },
+    {
+      "repo": "commander",
+      "query": "How does parseOptions stop parsing after a double dash?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2984
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2951
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1451
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1460
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2961
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2970
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2951
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1491
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2951
+    },
+    {
+      "repo": "commander",
+      "query": "How does requiredOption mark an option mandatory?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1458
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2963
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1458
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2963
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1458
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2963
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1458
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1456
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2963
+    },
+    {
+      "repo": "commander",
+      "query": "How are variadic arguments accumulated?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1444
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2953
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2990
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1444
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2953
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1444
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "commander",
+      "query": "Where does an option reject values outside its choices?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2953
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1469
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2968
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2987
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1191
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1212
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1558
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1579
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1469
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2968
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2987
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1469
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1482
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2968
+    },
+    {
+      "repo": "commander",
+      "query": "How are suggestions calculated for misspelled commands?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 0,
+      "complete": false,
+      "tokens": 2987
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1481
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1455
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1481
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1462
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1481
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1455
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1481
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1455
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2986
+    },
+    {
+      "repo": "chi",
+      "query": "How does Timeout cancel a request context?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2975
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2955
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2975
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2955
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2975
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2955
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2975
+    },
+    {
+      "repo": "chi",
+      "query": "How does Throttle reject requests when the backlog is full?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2955
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1490
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2979
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1490
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2979
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1490
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2979
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2949
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1492
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2979
+    },
+    {
+      "repo": "chi",
+      "query": "How does Recoverer handle ErrAbortHandler panics?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2983
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1449
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2967
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2951
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2971
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1449
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2967
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2951
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1449
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2967
+    },
+    {
+      "repo": "chi",
+      "query": "Where does Mount reject a nil handler?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2951
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1443
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1443
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2989
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1443
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1443
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1486
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "chi",
+      "query": "How is a URL parameter looked up in the route Context?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2983
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2983
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2983
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1468
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2970
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML Decoder validate a pointer destination?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2983
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1484
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2990
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1484
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2990
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1484
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2990
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1479
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1484
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2990
+    },
+    {
+      "repo": "toml",
+      "query": "Where are unmapped TOML keys returned by Undecoded?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1447
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1471
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2989
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1439
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1476
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "toml",
+      "query": "How does the TOML encoder ensure sorted map keys?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2978
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1464
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1441
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 0,
+      "complete": false,
+      "tokens": 1446
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2991
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2992
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1464
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1464
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "toml",
+      "query": "How does unifyStruct match case insensitive field names?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2987
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1442
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1485
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1442
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1485
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1442
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1485
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1442
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1485
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "toml",
+      "query": "How does DecodeFS open a file from a filesystem?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2965
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1472
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2943
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1450
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1478
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2981
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2984
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1472
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2943
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1472
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2985
+    },
+    {
+      "repo": "log",
+      "query": "How does set_max_level store the maximum log level?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2943
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1451
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2939
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1451
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2939
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1451
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2939
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1463
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1451
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2959
+    },
+    {
+      "repo": "log",
+      "query": "Where is the global logger returned for uninitialized logging?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2939
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1465
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1465
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1465
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1488
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1465
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2980
+    },
+    {
+      "repo": "log",
+      "query": "How does set_boxed_logger install a boxed logger?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2938
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1457
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1448
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1471
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2982
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2964
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1457
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1457
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1482
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2977
+    },
+    {
+      "repo": "log",
+      "query": "How does LevelFilter to_level handle the Off value?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2988
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1478
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "original",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "original",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2945
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1478
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "dropout",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "dropout",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2945
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1478
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "telegraphic",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "telegraphic",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2945
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1460
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 1500,
+      "recall": 1,
+      "complete": true,
+      "tokens": 1478
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "reordered",
+      "variant": "v1",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2966
+    },
+    {
+      "repo": "log",
+      "query": "How does a RecordBuilder build a Record?",
+      "perturbation": "reordered",
+      "variant": "v2-pcr",
+      "budget": 3000,
+      "recall": 1,
+      "complete": true,
+      "tokens": 2945
+    }
+  ]
+}

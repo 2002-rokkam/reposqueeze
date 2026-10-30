@@ -13,24 +13,24 @@ async function main() {
   const {values,positionals} = parseArgs({allowPositionals:true,options:{root:{type:'string',default:'.'},query:{type:'string',short:'q'},budget:{type:'string',short:'b',default:'3000'},'semantic-model':{type:'string'},json:{type:'boolean'},path:{type:'string'},start:{type:'string',default:'1'},end:{type:'string',default:'100'},help:{type:'boolean',short:'h'}}});
   const command = positionals[0];
   if (values.help || !command) {
-    console.log(`RepoSqueeze 0.1.0 — local context, measurable budgets
+    console.log(`RepoSqueeze V2 2.1.0 — local context, measurable budgets
 
-reposqueeze context --root REPO --query "task or identifiers" --budget 3000 [--json]
-reposqueeze map --root REPO [--budget 1500]
-reposqueeze expand --root REPO --path src/file.ts --start 1 --end 100
-reposqueeze compact --budget 2000 < test-output.log
-reposqueeze json < data.json
-reposqueeze mcp --root REPO
-reposqueeze init --root REPO
+reposqueeze-v2 context --root REPO --query "task or identifiers" --budget 3000 [--json]
+reposqueeze-v2 map --root REPO [--budget 1500]
+reposqueeze-v2 expand --root REPO --path src/file.ts --start 1 --end 100
+reposqueeze-v2 compact --budget 2000 < test-output.log
+reposqueeze-v2 json < data.json
+reposqueeze-v2 mcp --root REPO
+reposqueeze-v2 init --root REPO
 
 Add --semantic-model all-minilm to context/mcp for local Ollama embeddings (opt-in, localhost).
 Token counts use o200k_base, not provider billing. Default mode makes no network calls. Excerpts may omit relevant code.
-init creates .github/instructions/reposqueeze.instructions.md without overwriting existing files.`); return;
+init creates .github/instructions/reposqueeze-v2.instructions.md without overwriting existing files.`); return;
   }
   const root = resolve(values.root!);
   if (command === 'mcp') { await serve(root,values['semantic-model']); return; }
   if (command === 'init') {
-    const path = join(root,'.github/instructions/reposqueeze.instructions.md');
+    const path = join(root,'.github/instructions/reposqueeze-v2.instructions.md');
     await mkdir(dirname(path),{recursive:true});
     await writeFile(path,`---\napplyTo: "**"\n---\n${INSTRUCTIONS}`,{flag:'wx'});
     console.log(`Created ${path}`); return;
@@ -53,8 +53,8 @@ init creates .github/instructions/reposqueeze.instructions.md without overwritin
     if (!values.json) console.error(JSON.stringify(pack.stats));
     return;
   }
-  const s = await repo.snapshot();
+  const s = await repo.snapshot(command==='expand'?(values.path??''):'__repository_map__');
   if (command === 'map') console.log(repositoryMap(s,budget));
   if (command === 'expand') console.log(expand(s,values.path ?? '',Number(values.start),Number(values.end),budget));
 }
-main().catch(error => {console.error(`RepoSqueeze: ${error instanceof Error ? error.message : String(error)}`);process.exitCode=1;});
+main().catch(error => {console.error(`RepoSqueeze V2: ${error instanceof Error ? error.message : String(error)}`);process.exitCode=1;});

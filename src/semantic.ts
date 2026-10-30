@@ -8,7 +8,7 @@ import type { Snapshot } from './types.js';
 const endpoint = 'http://127.0.0.1:11434/api/embed';
 function validVector(v: unknown): v is number[] { return Array.isArray(v) && v.length>0 && v.length<=16384 && v.every(n=>typeof n==='number' && Number.isFinite(n)); }
 function cosine(a: number[], b: number[]) {
-  if (a.length!==b.length) throw new Error('Embedding dimensions changed; clear .reposqueeze and reindex');
+  if (a.length!==b.length) throw new Error('Embedding dimensions changed; clear .reposqueeze-v2 and reindex');
   let dot=0,aa=0,bb=0;
   for(let i=0;i<a.length;i++) {dot+=a[i]*b[i];aa+=a[i]*a[i];bb+=b[i]*b[i];}
   return aa && bb ? dot/Math.sqrt(aa*bb) : 0;
@@ -28,7 +28,7 @@ export class SemanticIndex {
     const tags=await response.json() as {models?:{name:string;model?:string;digest?:string}[]};
     const identity=tags.models?.find(m=>m.name===this.model || m.name===`${this.model}:latest` || m.model===this.model)?.digest;
     if(!identity) throw new Error('Install the embedding model in local Ollama before enabling semantic retrieval');
-    const dir=join(s.root,'.reposqueeze');
+    const dir=join(s.root,'.reposqueeze-v2');
     try { if((await lstat(dir)).isSymbolicLink()) throw new Error('Refusing symlinked semantic cache'); } catch(e) { if((e as NodeJS.ErrnoException).code!=='ENOENT') throw e; }
     await mkdir(dir,{recursive:true,mode:0o700});
     const file=join(dir,`embeddings-${hash(this.model+identity).slice(0,16)}.json`);

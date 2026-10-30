@@ -1,0 +1,240 @@
+{
+  "method": "Deterministic paired bootstrap with 20,000 sample-level resamples and seed 0x52535632; exact two-sided McNemar test for binary outcomes.",
+  "fingerprint": "a06c988f7aa6187ceeb6b626f3463749d8e7998ea7fadd79fb0912689b9ac1e2",
+  "arbArchiveSha256": "19b252e8cfff42107fedc74005dbb6972f2970af33651ce0c1571546819e41c4",
+  "developmentSamples": 80,
+  "heldOutSamples": 21,
+  "comparisons": [
+    {
+      "metric": "MRR",
+      "key": "mrr",
+      "v1": 0.2926227815698259,
+      "v2": 0.46737888166459596,
+      "difference": 0.17475610009477005,
+      "bootstrap95": [
+        0.09912745716317146,
+        0.2556780634982606
+      ]
+    },
+    {
+      "metric": "Any@5",
+      "key": "any5",
+      "v1": 0.47619047619047616,
+      "v2": 0.6190476190476191,
+      "difference": 0.1428571428571429,
+      "bootstrap95": [
+        0,
+        0.2857142857142857
+      ],
+      "exactMcNemar": {
+        "v1Only": 0,
+        "v2Only": 3,
+        "twoSidedP": 0.25
+      }
+    },
+    {
+      "metric": "Any@10",
+      "key": "any10",
+      "v1": 0.5238095238095238,
+      "v2": 0.8095238095238095,
+      "difference": 0.2857142857142857,
+      "bootstrap95": [
+        0.09523809523809523,
+        0.47619047619047616
+      ],
+      "exactMcNemar": {
+        "v1Only": 0,
+        "v2Only": 6,
+        "twoSidedP": 0.03125
+      }
+    },
+    {
+      "metric": "Any@20",
+      "key": "any20",
+      "v1": 0.8095238095238095,
+      "v2": 0.9047619047619048,
+      "difference": 0.09523809523809523,
+      "bootstrap95": [
+        0,
+        0.23809523809523808
+      ],
+      "exactMcNemar": {
+        "v1Only": 0,
+        "v2Only": 2,
+        "twoSidedP": 0.5
+      }
+    },
+    {
+      "metric": "Recall@20",
+      "key": "recall20",
+      "v1": 0.7857142857142857,
+      "v2": 0.8809523809523809,
+      "difference": 0.09523809523809523,
+      "bootstrap95": [
+        0,
+        0.23809523809523808
+      ]
+    },
+    {
+      "metric": "Hard-negative hit@5",
+      "key": "hardNegative5",
+      "v1": 0.6666666666666666,
+      "v2": 0.38095238095238093,
+      "difference": -0.2857142857142857,
+      "bootstrap95": [
+        -0.47619047619047616,
+        -0.09523809523809523
+      ],
+      "exactMcNemar": {
+        "v1Only": 6,
+        "v2Only": 0,
+        "twoSidedP": 0.03125
+      }
+    },
+    {
+      "metric": "Line recall at 4K",
+      "key": "lineRecall",
+      "v1": 0.16056210372717508,
+      "v2": 0.3098934016822241,
+      "difference": 0.14933129795504904,
+      "bootstrap95": [
+        0.05048339647988976,
+        0.27135162373257615
+      ]
+    },
+    {
+      "metric": "Line precision at 4K",
+      "key": "linePrecision",
+      "v1": 0.00928971055670302,
+      "v2": 0.018404433201827046,
+      "difference": 0.009114722645124026,
+      "bootstrap95": [
+        0.003069084404880549,
+        0.016373015736521872
+      ]
+    },
+    {
+      "metric": "Packed tokens",
+      "key": "packedTokens",
+      "v1": 3989.9523809523807,
+      "v2": 3993.6190476190477,
+      "difference": 3.66666666666697,
+      "bootstrap95": [
+        -4.571428571428571,
+        18.095238095238095
+      ]
+    }
+  ],
+  "perturbationGroups": [
+    {
+      "variant": "v1",
+      "kind": "all",
+      "n": 84,
+      "mrr": 0.29122336882769406,
+      "any5": 0.47619047619047616,
+      "any10": 0.5238095238095238,
+      "any20": 0.8214285714285714,
+      "recall20": 0.7936507936507937,
+      "hardNegative5": 0.6666666666666666,
+      "lineRecall4k": 0.16186172805451798,
+      "linePrecision4k": 0.009404958625654745,
+      "meanPackedTokens": 3989.6428571428573
+    },
+    {
+      "variant": "v2-pcr",
+      "kind": "all",
+      "n": 84,
+      "mrr": 0.46736646803238824,
+      "any5": 0.6190476190476191,
+      "any10": 0.8095238095238095,
+      "any20": 0.8928571428571429,
+      "recall20": 0.8690476190476191,
+      "hardNegative5": 0.40476190476190477,
+      "lineRecall4k": 0.3028387279608837,
+      "linePrecision4k": 0.017530921087345358,
+      "meanPackedTokens": 3994.214285714286
+    }
+  ],
+  "failures": {
+    "v2Any10Misses": [
+      {
+        "sampleId": "de059c1c2e3ffc63820ce0e4",
+        "repo": "caddyserver/caddy",
+        "v1Mrr": 0.010416666666666666,
+        "v2Mrr": 0.013513513513513514,
+        "hardNegative5": true
+      },
+      {
+        "sampleId": "d0551ed5a2d63c99e3bbfcd5",
+        "repo": "gin-gonic/gin",
+        "v1Mrr": 0.06666666666666667,
+        "v2Mrr": 0.09090909090909091,
+        "hardNegative5": false
+      },
+      {
+        "sampleId": "d3fe4d1559febe2ac282cced",
+        "repo": "gin-gonic/gin",
+        "v1Mrr": 0.038461538461538464,
+        "v2Mrr": 0.045454545454545456,
+        "hardNegative5": true
+      },
+      {
+        "sampleId": "f4fccd0dc58a48c09a195d6b",
+        "repo": "pallets/click",
+        "v1Mrr": 0.034482758620689655,
+        "v2Mrr": 0.05555555555555555,
+        "hardNegative5": true
+      }
+    ],
+    "v1OnlyAny10Successes": [],
+    "v2HardNegative5Hits": [
+      {
+        "sampleId": "d4149b3f568dfe275250b62e",
+        "repo": "caddyserver/caddy",
+        "any10": true
+      },
+      {
+        "sampleId": "de059c1c2e3ffc63820ce0e4",
+        "repo": "caddyserver/caddy",
+        "any10": false
+      },
+      {
+        "sampleId": "eb750774632943e952f09d40",
+        "repo": "caddyserver/caddy",
+        "any10": true
+      },
+      {
+        "sampleId": "f7d79ec3fd20e651c379facb",
+        "repo": "caddyserver/caddy",
+        "any10": true
+      },
+      {
+        "sampleId": "d3fe4d1559febe2ac282cced",
+        "repo": "gin-gonic/gin",
+        "any10": false
+      },
+      {
+        "sampleId": "e843a55e790138194506b76a",
+        "repo": "gin-gonic/gin",
+        "any10": true
+      },
+      {
+        "sampleId": "fa19b2ec3770df1f1285f072",
+        "repo": "gin-gonic/gin",
+        "any10": true
+      },
+      {
+        "sampleId": "f4fccd0dc58a48c09a195d6b",
+        "repo": "pallets/click",
+        "any10": false
+      }
+    ],
+    "v2MrrRegressions": []
+  },
+  "cautions": [
+    "The 80:20 partition is sample-level, not repository-disjoint.",
+    "The 21 held-out samples are a small test set.",
+    "Four query forms from one sample are correlated and are not independent observations.",
+    "Retrieval metrics do not measure answer correctness, patch success, or billed provider credits."
+  ]
+}

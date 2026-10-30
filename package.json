@@ -1,8 +1,8 @@
 {
-  "name": "reposqueeze",
-  "displayName": "RepoSqueeze",
-  "description": "Local, budgeted repository context for Copilot and MCP coding agents.",
-  "version": "0.1.0",
+  "name": "reposqueeze-v2",
+  "displayName": "RepoSqueeze V2",
+  "description": "Robust, local repository context using perturbation-consensus retrieval for Copilot and MCP coding agents.",
+  "version": "2.1.0",
   "publisher": "2002-rokkam",
   "license": "MIT",
   "type": "module",
@@ -16,7 +16,7 @@
   ],
   "main": "./dist/extension.cjs",
   "bin": {
-    "reposqueeze": "./dist/cli.cjs"
+    "reposqueeze-v2": "./dist/cli.cjs"
   },
   "files": [
     "dist/*.cjs",
@@ -38,11 +38,16 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "bench": "node --import tsx scripts/benchmark.ts",
     "bench:fetch": "node scripts/fetch-bench.mjs",
-    "package": "npm run build && vsce package --no-dependencies --allow-missing-repository -o releases/reposqueeze-0.1.0.vsix",
+    "package": "npm run build && vsce package --no-dependencies --allow-missing-repository -o releases/reposqueeze-v2-2.1.0.vsix",
     "prepare": "npm run build",
     "test:editor": "node scripts/test-extension.mjs",
     "bench:live": "node --import tsx scripts/live-eval.ts",
-    "bench:formats": "node --import tsx scripts/format-benchmark.ts"
+    "bench:formats": "node --import tsx scripts/format-benchmark.ts",
+    "bench:v2:development": "node --import tsx scripts/benchmark-v2-arb.ts development",
+    "bench:v2:test": "node --import tsx scripts/benchmark-v2-arb.ts test",
+    "bench:v2:summary": "node --import tsx scripts/summarize-v2.ts",
+    "bench:scale:development": "node --import tsx scripts/benchmark-scale.ts development",
+    "bench:scale:test": "node --import tsx scripts/benchmark-scale.ts test"
   },
   "activationEvents": [
     "onStartupFinished"
@@ -56,42 +61,42 @@
   "contributes": {
     "commands": [
       {
-        "command": "reposqueeze.pack",
-        "title": "RepoSqueeze: Build Context Pack"
+        "command": "reposqueeze-v2.pack",
+        "title": "RepoSqueeze V2: Build Context Pack"
       },
       {
-        "command": "reposqueeze.map",
-        "title": "RepoSqueeze: Show Repository Map"
+        "command": "reposqueeze-v2.map",
+        "title": "RepoSqueeze V2: Show Repository Map"
       },
       {
-        "command": "reposqueeze.setup",
-        "title": "RepoSqueeze: Install Copilot Instructions"
+        "command": "reposqueeze-v2.setup",
+        "title": "RepoSqueeze V2: Install Copilot Instructions"
       }
     ],
     "configuration": {
-      "title": "RepoSqueeze",
+      "title": "RepoSqueeze V2",
       "properties": {
-        "reposqueeze.tokenBudget": {
+        "reposqueezeV2.tokenBudget": {
           "type": "number",
           "default": 3000,
           "minimum": 256,
           "maximum": 32000,
           "description": "Maximum o200k_base tokens in a context pack. Provider token counts may differ."
         },
-        "reposqueeze.semanticModel": {
+        "reposqueezeV2.semanticModel": {
           "type": "string",
           "default": "",
-          "description": "Optional local Ollama embedding model (for example all-minilm). Sends indexed code only to localhost:11434 and stores vectors in .reposqueeze/. Empty disables embeddings."
+          "description": "Optional local Ollama embedding model (for example all-minilm). Sends indexed code only to localhost:11434 and stores vectors in .reposqueeze-v2/. Empty disables embeddings."
         }
       }
     },
     "languageModelTools": [
       {
-        "name": "reposqueeze_context",
-        "displayName": "RepoSqueeze Context",
-        "modelDescription": "Retrieve a compact repository map and query-relevant, verbatim source excerpts before broad file reads. Local read-only search. Includes citations and explicit omissions. Use reposqueeze_expand to inspect missing context before editing. Search can miss semantic matches.",
+        "name": "reposqueeze_v2_context",
+        "displayName": "RepoSqueeze V2 Context",
+        "modelDescription": "Retrieve a compact repository map and query-relevant, verbatim source excerpts before broad file reads. Local read-only search. Includes citations and explicit omissions. Use reposqueeze_v2_expand to inspect missing context before editing. Search can miss semantic matches.",
         "canBeReferencedInPrompt": true,
-        "toolReferenceName": "reposqueeze",
+        "toolReferenceName": "reposqueezeV2",
         "inputSchema": {
           "type": "object",
           "properties": {
@@ -111,8 +116,8 @@
         }
       },
       {
-        "name": "reposqueeze_expand",
-        "displayName": "RepoSqueeze Expand",
+        "name": "reposqueeze_v2_expand",
+        "displayName": "RepoSqueeze V2 Expand",
         "modelDescription": "Read an exact current source range by repository-relative path and one-based line numbers. Respects the same file exclusions as context search. Use this to verify complete definitions before edits.",
         "canBeReferencedInPrompt": true,
         "toolReferenceName": "squeezeRead",
@@ -170,10 +175,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/2002-rokkam/reposqueeze.git"
+    "url": "https://github.com/2002-rokkam/reposqueeze-v2.git"
   },
-  "homepage": "https://github.com/2002-rokkam/reposqueeze#readme",
+  "homepage": "https://github.com/2002-rokkam/reposqueeze-v2#readme",
   "bugs": {
-    "url": "https://github.com/2002-rokkam/reposqueeze/issues"
+    "url": "https://github.com/2002-rokkam/reposqueeze-v2/issues"
   }
 }

@@ -22,7 +22,7 @@ jobs:
       - run: npm pack --pack-destination releases
       - uses: actions/upload-artifact@v4
         with:
-          name: reposqueeze-${{ matrix.os }}
+          name: reposqueeze-v2-${{ matrix.os }}
           path: releases/*
   editor:
     runs-on: ubuntu-latest
