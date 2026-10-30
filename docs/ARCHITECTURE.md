@@ -1,53 +1,55 @@
-# How RepoSqueeze works
+# RepoSqueeze V2 architecture
 
 ```mermaid
 flowchart LR
   A[Repository files] --> B[Ignore and safety filters]
-  B --> C[Hash and parse]
-  C --> D[AST chunks and overlapping windows]
-  Q[Task query] --> E[Lexical and symbol ranking]
+  B --> C[Hash, parse and chunk]
+  Q[Task or trace] --> D[Up to six deterministic query views]
+  C --> E[Lexical and structural ranker]
   D --> E
-  D -. opt in .-> F[Local embeddings]
-  F --> G[Rank fusion]
-  E --> G
-  G --> H[Budgeted source packing]
-  H --> I[Verbatim excerpts and receipts]
-  I --> J[Copilot or MCP agent]
-  J --> K[Expand cited range when needed]
-  K --> B
+  E --> F[Chunk and file rank consensus]
+  Q --> G[Rare evidence obligations]
+  Q --> H[Trace-aware source inversion]
+  F --> I[Budgeted source packing]
+  G --> I
+  H --> I
+  I --> J[Verbatim excerpts, line citations and receipts]
+  J --> K[Copilot, MCP client or CLI]
+  K --> L[Expand exact ranges when evidence is incomplete]
 ```
 
-## Meaningful memory
+## Index and source fidelity
 
-The source of truth is the current repository. Tree-sitter extracts structural units and identifiers; overlapping windows provide coverage when definitions are too large or the language is unsupported. An in-process cache reuses parsed chunks by content hash. Every snapshot enumerates and hashes current files, so edits and deletion are observed without trusting stale timestamps.
+The current repository is the source of truth. Tree-sitter extracts structural units and identifiers for supported languages; overlapping line windows provide coverage for large definitions, unsupported files and parse failures. Source is cached only by its content hash. Every snapshot enumerates and hashes current files, so edits and deletion invalidate the affected entries.
 
-Optional embeddings encode each eligible source chunk locally. Cache entries are keyed by source content and the Ollama model digest. Query vectors are computed afresh. Source changes invalidate affected entries; model changes invalidate the model namespace. Vectors supply semantic similarity, while exact source is re-read for output. This avoids relying on a generated prose summary that may have silently dropped a condition.
+The returned evidence is copied from current source rather than rewritten as a prose summary. Each range has a path, one-based lines and a content receipt. Expansion re-reads the current file and applies the same path, secret, size and symlink filters.
 
-This is retrieval memory, not an autonomous knowledge graph with verified facts. A vector may retrieve the wrong meaning; a symbol may refer to several definitions. The actual held-out misses are retained in the evaluation report.
+## Perturbation-consensus retrieval
 
-## Evidence budget packing
+PCR constructs up to six deterministic views: the complete request, diagnostic lines, identifier-heavy text and three leave-one-term-bucket-out views. Each view passes through the same BM25-style lexical ranker with bounded identifier, path and reference signals. Reciprocal ranks are accumulated at both chunk and file level. A stability value records how often a chunk remains near the top across views.
 
-1. BM25 scores query terms against chunks. Identifier and path matches add a bounded structural signal.
-2. A capped, one-hop boost uses identifier-reference overlap. These edges do not resolve imports, types, dynamic dispatch or execution order.
-3. Optional semantic retrieval fuses lexical and embedding rankings using reciprocal ranks. Scores are ordering signals, not calibrated probabilities.
-4. Packing rewards query coverage and file diversity and avoids heavily overlapping excerpts. If a whole chunk does not fit, progressively smaller contiguous windows can fit around relevant lines.
-5. The final serialized text is counted, including labels, citations and omission instructions. It must stay within the requested budget.
-6. Receipts hash the exact source range actually returned. A caller may explicitly mark a full chunk as retained; changed content is sent again. After conversation compaction or session changes, callers must discard old retained receipts.
+Rare query terms that occur in the corpus become evidence obligations. Packing favors coverage but reports obligations it cannot include. For failure traces, visible test paths guide navigation and same-stem implementation files receive a bounded boost. Test chunks receive a penalty unless the request explicitly concerns tests.
 
-This combination is an engineering design, not an established novel research contribution. In this evaluation, removing the reference boost did not change complete-evidence rates. We therefore make no demonstrated improvement claim for that component.
+Optional local embeddings are an additional rank signal after PCR. They are requested only from Ollama on `127.0.0.1:11434`; cached vectors live under `.reposqueeze-v2/` and are keyed by content and model identity. PCR itself requires no model or network call.
 
-## Integration boundary
+## Budget and recovery
 
-The CLI, MCP tools and VS Code tools call the same engine. All repository tools are read-only. The `init` command and VS Code setup command explicitly write one new instructions file, never overwrite it. MCP exposes context, expansion, map, log compaction and JSON conversion. The VS Code extension exposes context and expansion as native language-model tools plus three commands.
+Packing removes heavily overlapping ranges, rewards query coverage and file diversity, and counts the final serialized text including headings and omission instructions. If a whole chunk does not fit, smaller contiguous windows are considered. The configured `o200k_base` count limits only tool output; it does not include provider prompts, tool schemas, reasoning, retries or later reads.
 
-The extension cannot force Copilot to replace its own reads or change hidden prompts. Instructions encourage a concise answer before generation. They do not impose a provider output limit or reduce already-generated tokens. A task requiring many expansion calls can be more expensive than one direct read.
+Consensus can agree on the wrong code. Stability is therefore a retrieval diagnostic rather than calibrated confidence. Missing obligations or weak evidence tell the caller to expand exact ranges or use ordinary repository search.
 
-## Operational boundaries
+## Integrations and writes
 
-No hosted API key is required for indexing. Default retrieval makes no network requests. Opt-in embedding requests are restricted to the fixed localhost Ollama endpoint. A model used by your coding agent still receives the excerpts returned by its tools.
+The CLI, stdio MCP server and VS Code native tools share the same engine. Repository search, map and expansion calls are read-only. `reposqueeze-v2 init` and the VS Code setup command can create `.github/instructions/reposqueeze-v2.instructions.md`; they refuse to overwrite an existing file.
 
-File selection uses Git's tracked/untracked listing where possible, with a filesystem fallback and ignore processing. Paths are checked against the root; symlinks are excluded. Secret heuristics are incomplete by design, and source comments are labelled untrusted data. No prompt-injection classifier is claimed.
+V2 uses separate command IDs, settings, cache paths and MCP tool names from V1. Both packages can be installed at once.
 
-Scans have explicit file/size limits; partial indexes report warnings. Embeddings are capped separately to control latency. Invalid input budgets and ranges fail early. Expansion respects the same source filters. JSON conversion verifies decode equality and declines unsafe numbers; log truncation explicitly reports loss.
+## Large-repository cascade
 
-For very large repositories, use a narrower root. This release does not offer a daemon, database-backed cross-repository index, editor incremental file watcher, resolved call graph, remote embedding fallback, or automatic billing dashboard integration.
+Parsing every definition in a 50,000-file repository for every question is wasteful. Above 5,000 eligible files, RepoSqueeze builds a compressed file-sketch index under `.reposqueeze-v2/`. Each entry contains the path, content hash, size, modification time, language, line count, exact local token count and sorted hashes of normalized terms. Source text is not stored in the index.
+
+The query is evaluated against every sketch using corpus rarity plus path and foundation-file signals. The strongest bounded candidate set is re-read from disk, checked again for secrets and symlinks, parsed with Tree-sitter and then passed to PCR. This separates cheap repository-wide filtering from expensive structural ranking.
+
+The approach follows the established large-code-search principle of a persistent cheap index followed by exact verification. [Zoekt](https://github.com/sourcegraph/zoekt/blob/main/doc/design.md) and [GitHub Code Search](https://github.blog/engineering/architecture-optimization/the-technology-behind-githubs-new-code-search/) use positional n-gram indexes at a much larger scale; RepoSqueeze uses smaller per-file term sketches because its output is a limited context pack rather than a general regular-expression search service.
+
+Modification time and size avoid rereading unchanged files. Exact evidence is always re-read. Timestamp-preserving external edits require `REPOSQUEEZE_REFRESH_INDEX=1`; this boundary is reported in every cascade-mode context pack.

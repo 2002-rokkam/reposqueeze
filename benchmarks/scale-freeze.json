@@ -1,0 +1,6 @@
+{
+  "fingerprint": "2ad34e1103ac9267471a9eaf376e643e86a520b177e9e5aa675077c73a3ef0a4",
+  "rule": "No scale retrieval, PCR, packing, or evaluator changes before held-out execution.",
+  "developmentTasks": 80,
+  "testTasks": 20
+}

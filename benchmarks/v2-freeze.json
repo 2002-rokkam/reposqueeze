@@ -1,0 +1,6 @@
+{
+  "fingerprint": "a06c988f7aa6187ceeb6b626f3463749d8e7998ea7fadd79fb0912689b9ac1e2",
+  "rule": "No code, weights, query views, or evaluator changes after development; test run must match exactly.",
+  "developmentSamples": 80,
+  "testSamples": 21
+}

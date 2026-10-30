@@ -1,144 +1,150 @@
-# RepoSqueeze
+# RepoSqueeze V2
 
-Local, budgeted repository context for Copilot and MCP coding agents. Runs as a **VS Code extension**, **Node.js CLI**, or **MCP server**. MIT licensed.
+Robust, local repository context for Copilot and MCP coding agents. V2 is a separate Node package and VS Code extension, so the original [RepoSqueeze](https://github.com/2002-rokkam/reposqueeze) continues to work.
 
-RepoSqueeze finds task-relevant code, packs verbatim excerpts into a token budget, and lets the agent expand any cited range. Optional local embeddings add semantic retrieval. Structured JSON can be converted to TOON when a verified round trip is smaller. Concise-answer instructions address output length before generation.
+V2 introduces **perturbation-consensus retrieval (PCR)**. It ranks repository evidence from up to six deterministic views of the same request, rewards evidence that survives wording removal, tracks rare query obligations, and treats failure traces as a workflow signal rather than ordinary semantic search. Version 2.1 adds a persistent two-stage index for repositories with tens of thousands of files. Source excerpts remain verbatim and line-cited.
 
-**This is an evaluated prototype, not a guarantee of perfect repository understanding or reduced bills on every task.** It does not intercept all Copilot prompts or inline completions. The agent must use its tools; additional reads and retries can offset savings.
+This is a research implementation with reproducible evidence. “New” means the technique is specified and tested here. It does not claim patent novelty, universal 100% accuracy, or guaranteed Copilot credit savings.
 
-## What was measured
+## Install alongside V1
 
-An 80:20 repository-disjoint development/test split uses 10 pinned open-source repositories and 50 source-location questions. No model is trained. On the 10 held-out questions at a 3,000-token budget:
-
-| Retrieval method | Complete expected evidence found |
-| --- | ---: |
-| Equal-budget BM25 baseline | 6/10 |
-| RepoSqueeze structural retrieval | 8/10 |
-| RepoSqueeze + local embeddings | 9/10 |
-
-All tested excerpts matched source and respected the configured `o200k_base` budget. This is **evidence retrieval**, not answer accuracy. The 99% size reduction against entire repositories is an intentionally broad baseline and **must not be quoted as 99% Copilot credit savings**. See [evaluation and raw results](docs/EVALUATION.md), including the separate live Copilot experiment.
-
-In a separate 16-call Copilot experiment on four fresh randomized-value questions, packed context with ordinary instructions used **16.9% fewer provider input tokens** than whole relevant files, with all requested facts recovered. The concise-instruction arm did **not** reliably save output tokens because reasoning increased. Read the [complete results and negative findings](docs/LIVE_RESULTS.md) before extrapolating to your workload.
-
-## Install and use
-
-Requires Node.js 20.19 or newer. Node 22 is the CI target. The npm registry and VS Code Marketplace releases are not published yet; use this GitHub source or the built packages.
+Requires Node.js 20.19 or newer.
 
 ```sh
-git clone https://github.com/2002-rokkam/reposqueeze.git
-cd reposqueeze
-npm ci
-npm run check
-npm test
-node dist/cli.cjs context --root /absolute/path/to/your/repo --query "Where is authentication checked?" --budget 3000
+npm install -g git+https://github.com/2002-rokkam/reposqueeze-v2.git
+reposqueeze-v2 --help
 ```
 
-`npm ci` builds the CLI and extension through the `prepare` script. You can also install directly from GitHub:
+The commands do not collide:
+
+| Package | CLI | VS Code extension ID | Native tools |
+| --- | --- | --- | --- |
+| V1 `reposqueeze` | `reposqueeze` | `2002-rokkam.reposqueeze` | `reposqueeze_context`, `reposqueeze_expand` |
+| V2 `reposqueeze-v2` | `reposqueeze-v2` | `2002-rokkam.reposqueeze-v2` | `reposqueeze_v2_context`, `reposqueeze_v2_expand` |
+
+V2 settings use `reposqueezeV2.*`, its instruction file is `.github/instructions/reposqueeze-v2.instructions.md`, and optional embeddings are stored in `.reposqueeze-v2/`. V1 remains independent.
+
+## Use
 
 ```sh
-npm install -g github:2002-rokkam/reposqueeze
-reposqueeze --help
+reposqueeze-v2 context --root /path/to/repo --query "failure or task" --budget 3000
+reposqueeze-v2 expand --root /path/to/repo --path src/file.ts --start 1 --end 120
+reposqueeze-v2 map --root /path/to/repo --budget 1500
+reposqueeze-v2 init --root /path/to/repo
 ```
 
-For a reproducible installation, replace the GitHub branch with a reviewed commit: `github:2002-rokkam/reposqueeze#COMMIT_SHA`. Do not use `npx reposqueeze` until a registry release is announced here: an unrelated package could own that name.
-
-### VS Code and Copilot
+For local semantic fusion:
 
 ```sh
-npm run package
-code --install-extension releases/reposqueeze-0.1.0.vsix
+ollama pull all-minilm
+reposqueeze-v2 context --root /path/to/repo --query "task" --semantic-model all-minilm
 ```
 
-Open your repository in a trusted VS Code workspace. In Copilot Chat's agent mode, enable **RepoSqueeze Context** and **RepoSqueeze Expand** in the tool picker. Start a prompt with `#reposqueeze`, for example: `#reposqueeze Find the retry policy and explain where to change its limit.`
+PCR itself makes no model or network calls. Embeddings are optional, explicitly sent only to Ollama at `127.0.0.1:11434`, and fused as another ranking signal.
 
-Run **RepoSqueeze: Install Copilot Instructions** from the Command Palette to add a repository instruction file. It asks the agent to retrieve first, expand incomplete evidence, and answer concisely. Existing instruction files are never overwritten. This is guidance, not enforcement. **Build Context Pack** and **Show Repository Map** also work without a model account.
+### MCP
 
-Settings: `reposqueeze.tokenBudget` defaults to 3000; `reposqueeze.semanticModel` is empty by default. The extension supplies two native tools. Use the MCP integration instead if you need all five tools; avoid enabling duplicate tools unnecessarily.
-
-### Copilot CLI and other MCP clients
-
-After installing the CLI, add this entry to `~/.copilot/mcp-config.json`, merging with any existing configuration:
+Merge this into your client's MCP configuration:
 
 ```json
 {
   "mcpServers": {
-    "reposqueeze": {
+    "reposqueeze-v2": {
       "type": "stdio",
-      "command": "reposqueeze",
-      "args": ["mcp", "--root", "/absolute/path/to/your/repo"],
+      "command": "reposqueeze-v2",
+      "args": ["mcp", "--root", "/absolute/path/to/repository"],
       "tools": ["*"]
     }
   }
 }
 ```
 
-If your client cannot find global binaries, use `"command": "node"` with `"args": ["/absolute/path/to/reposqueeze/dist/cli.cjs", "mcp", "--root", "/absolute/path/to/your/repo"]`.
+The server exposes `reposqueeze_v2_context`, `reposqueeze_v2_expand`, `reposqueeze_v2_map`, `reposqueeze_v2_compact`, and `reposqueeze_v2_json`.
 
-Other stdio MCP clients use the same command and arguments; follow their configuration format. For VS Code MCP, place the entry under `"servers"` in `.vscode/mcp.json` and omit `tools`. See the official [Copilot CLI configuration](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers) and [VS Code configuration](https://code.visualstudio.com/docs/agent-customization/mcp-servers).
-
-```sh
-reposqueeze init --root /absolute/path/to/your/repo
-```
-
-Then ask your agent to use `reposqueeze_context` before broad file reads and `reposqueeze_expand` for missing definitions or before editing. The supplied [skill](skills/reposqueeze/SKILL.md) can also be copied into your client's supported skill directory.
-
-### Local semantic retrieval
-
-Install [Ollama](https://ollama.com), then:
+### VS Code
 
 ```sh
-ollama pull all-minilm
-reposqueeze context --root /path/to/repo --query "Where are credentials removed after redirects?" --semantic-model all-minilm
+npm ci
+npm run package
+code --install-extension releases/reposqueeze-v2-2.1.0.vsix
 ```
 
-For the extension, set `reposqueeze.semanticModel` to `all-minilm`; for MCP append `--semantic-model all-minilm` to the server arguments. This explicitly sends eligible source chunks to **localhost:11434**, not a hosted embedding service. The local embedding service must already be running. An embedding failure is surfaced as an error; clear the setting to use lexical retrieval.
+Enable **RepoSqueeze V2 Context** and **RepoSqueeze V2 Expand** in Copilot's tool picker. Use `#reposqueezeV2` in a prompt to request the context tool. Run **RepoSqueeze V2: Install Copilot Instructions** once per repository if you want retrieval-first guidance.
 
-Vectors are persisted in `.reposqueeze/`, keyed by source hash and model digest. Changed and deleted code refreshes; the cache stores vectors, not summaries or raw source. Add `.reposqueeze/` to your repository's `.gitignore`. Treat vectors as sensitive derived data. The lexical index and AST chunks are refreshed in memory, and full source remains available through expansion.
+## V2 technique
 
-## CLI commands
-
-```sh
-reposqueeze map --root . --budget 1500
-reposqueeze context --root . --query "connection timeout retries" --budget 3000 --json
-reposqueeze expand --root . --path src/client.ts --start 20 --end 90
-reposqueeze json < data.json
-reposqueeze compact --budget 1500 < test-output.log
+```mermaid
+flowchart LR
+  Q[Task or failure trace] --> V[Deterministic query views]
+  V --> R[Lexical and structural ranking per view]
+  R --> C[Rank consensus and stability]
+  Q --> O[Rare evidence obligations]
+  Q --> W[Workflow cues and visible test paths]
+  C --> P[Budgeted verbatim evidence]
+  O --> P
+  W --> P
+  P --> E[Exact source receipts and expansion]
 ```
 
-JSON output chooses the smallest of the original input, minified JSON and verified TOON, including its format header. Unsafe numeric conversions and duplicate object keys are rejected. Semantic values are preserved; original whitespace and number spelling are not.
+PCR uses the original request, diagnostic lines, identifier-heavy text, and three deterministic leave-one-bucket-out views. Reciprocal rank fusion rewards chunks and files that appear across views. Rare terms become evidence obligations used during packing. For failure traces, visible test files are treated as starting signals and same-stem implementation files are favored; tests remain available when the user asks for tests.
 
-Log compaction folds exact consecutive repeats. When the budget is too small, it selects diagnostic neighborhoods and marks the result **LOSSY/TRUNCATED**. Keep the original log and command exit status. Compress logs before sending them to the model; compressing something the model already read does not refund input tokens. Similarly, shortening an answer after generation does not refund output tokens.
+The reported stability value measures agreement between deterministic retrieval views. It is not a calibrated probability that an answer is correct. Missing obligations are surfaced in JSON statistics so callers can expand or use ordinary search.
 
-## Design and limits
+## Repositories with 50,000 files
 
-- Parses JavaScript, TypeScript/TSX, Python, Go, Rust, Java, C, C++, C# and Ruby. Other text uses overlapping line windows. Parsing does not equal full language-server understanding.
-- Combines lexical relevance, symbol/path matches, capped identifier-reference hints, diversity and contiguous source windows. Optional embeddings use reciprocal-rank fusion. The reference hints are not a resolved call graph.
-- Returns file/line citations and content-based receipts. Suppress repeated chunks only when the caller explicitly confirms that those exact receipts are still in the current conversation. No hidden cross-session assumption.
-- Honors ignore rules, skips symlinks, generated/dependency directories, common secret filenames and recognizable secret content. This is not a complete secret scanner. Review exclusions before using sensitive repositories.
-- Caps scanning at 12,000 files, 64 MiB total and 1 MiB per file; reports omissions. Semantic search covers at most 6,000 chunks, with lexical search over the full eligible index. Large monorepos need scoped roots.
-- Budgets count text with `o200k_base`; provider tokenizers, tool schemas, system prompts, thinking, cached tokens and later tool calls add costs outside that budget.
+Repositories with more than 5,000 eligible files automatically use the large-repository cascade:
 
-See [architecture](docs/ARCHITECTURE.md), [research and evidence review](docs/RESEARCH.md), [evaluation](docs/EVALUATION.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+1. Enumerate up to 100,000 eligible files while respecting Git and RepoSqueeze exclusions.
+2. Reuse a persistent file sketch containing hashes, language, line/token counts and compact term fingerprints. It stores no source text.
+3. Score the complete file inventory against the query.
+4. Re-read and parse only the strongest 600–1,800 candidates, depending on repository size and matches.
+5. Run PCR, evidence obligations and token packing over those exact candidate chunks.
 
-## Reproduce checks
+The cache is `.reposqueeze-v2/file-sketch-v1.json.gz`. Changed files are refreshed by size and modification time, and selected evidence is always re-read before output. Set `REPOSQUEEZE_REFRESH_INDEX=1` for one run after a tool performs timestamp-preserving edits. `REPOSQUEEZE_MAX_CANDIDATES=100..5000` can trade latency and memory for recall.
+
+Safety limits are 100,000 eligible files, 2 GiB of indexed text, 2 MiB per file and directory depth 60. Exceeding one produces an explicit incomplete-index warning.
+
+## Evaluation
+
+V2 has three evaluation layers:
+
+1. **Development stress suite:** 40 existing questions across eight repositories, each tested as original, 20% word dropout, telegraphic wording, and reordered wording. This was used before the external freeze.
+2. **Independent 80:20 evaluation:** the official Agent Retrieval Bench `trace2code` release, split deterministically at the sample level into 80 development and 21 held-out samples. Each sample is tested in four query forms at equal ranks and a 4,000-token packing budget.
+3. **Integration and invariants:** source fidelity, budgets, cache refresh, 11 parsers, MCP protocol, VS Code extension host, npm package installation, and cross-platform CI.
+4. **Scale evaluation:** a deterministic 50,000-file TypeScript repository with at least 1.2 million lines, 100 query/gold pairs and 20 distractors per task, frozen 80:20.
+
+Read [V2 evaluation](docs/V2_EVALUATION.md) for results, confidence limits, failures and raw report links. The external benchmark's repositories are not included in this package. Its archive SHA-256 and evaluator fingerprint are frozen in the reports.
+
+Read [scale evaluation](docs/SCALE_EVALUATION.md) for cold-index, warm-query, memory and held-out results.
+
+## Boundaries
+
+- PCR can preserve a consistently wrong match. Agreement is useful for robustness, not truth.
+- Static names and file stems do not resolve dynamic imports, reflection, runtime dispatch, generated code or cross-repository behavior.
+- Query obligations come from corpus frequency. A rare irrelevant log token can become an obligation; packaging still uses ranking and budget checks.
+- Trace-aware source preference is task-specific. It is disabled for explicit test requests but may still rank the wrong implementation counterpart.
+- `o200k_base` is a local text count. Provider system prompts, tool schemas, cache writes, reasoning, later reads and retries remain outside the pack budget.
+- Secret and ignore filters reduce accidental inclusion but are not a complete secret scanner.
+- Large-repository prefiltering can miss a relevant file that shares no query, path or indexed term signal. Files with more than 8,192 unique normalized terms use a deterministic term sample. Use explicit paths, expansion, ordinary search, or a larger candidate limit when evidence is weak.
+
+See [research and gap analysis](docs/V2_RESEARCH.md), [architecture](docs/ARCHITECTURE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+## Reproduce
 
 ```sh
 npm ci
 npm run check
 npm test
 npm run test:editor
-npm run bench:formats
-npm run bench:fetch
-REPOSQUEEZE_BENCH_EMBEDDING=all-minilm npm run bench -- development
-REPOSQUEEZE_BENCH_EMBEDDING=all-minilm npm run bench -- test
 npm run package
-npm pack --pack-destination releases
+
+# External benchmark downloaded separately; see docs/V2_EVALUATION.md
+ARB_TRACE_ROOT=/path/to/extracted/arb-trace node --import tsx scripts/benchmark-v2-arb.ts development
+ARB_TRACE_ROOT=/path/to/extracted/arb-trace node --import tsx scripts/benchmark-v2-arb.ts test
+
+# Generates /private/tmp/reposqueeze-scale-50000 on first run.
+npm run bench:scale:development
+npm run bench:scale:test
 ```
 
-The editor test opens an isolated VS Code test instance; Linux needs `xvfb-run`. `VSCODE_EXECUTABLE_PATH` can select an installed executable. The repository benchmark downloads only pinned source and does not run upstream code. A test run rejects a mismatched frozen fingerprint. Keep recorded results when experimenting, and reserve new repositories for a new held-out evaluation.
-
-`npm run bench:live` makes **16 billable Copilot calls** using your signed-in account, plus any separate smoke tests you choose to run. It creates fresh random constants and overwrites `benchmarks/live/results.json`; archive the existing report first. Set `REPOSQUEEZE_LIVE_MODEL` to a model available on your account. It uses no model tools and a 30-credit per-process ceiling, which is the CLI's minimum accepted ceiling—not a predicted cost. Review the script before running it.
-
-## Claims we do not make
-
-No universal 100% accuracy, guaranteed credit reduction, complete understanding of every repository, or proof that this combination has never been invented. This project makes its implementation, failures, test inputs, source pins and measurements inspectable. Contributions should improve accuracy at a fixed budget and measure end-to-end cost, including recovery reads.
+The held-out command refuses to run if retrieval or evaluator files differ from the frozen development fingerprint. The published blind ARB report is tied to V2.0 commit `190ef6d934af2cc21e3f70caf1431fb1e9e079e4`; use that commit for an exact reproduction. V2.1 keeps PCR ranking unchanged but has a separate frozen scale evaluation because repository enumeration and context reporting changed.

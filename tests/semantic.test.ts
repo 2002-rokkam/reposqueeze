@@ -19,7 +19,7 @@ test('semantic cache stores vectors, refreshes changed source and model digests'
   const repo=new Repository(root);const index=new SemanticIndex('fixture');const s=await repo.snapshot();
   const a=await index.scores(s,'total');assert(a.size>0);const first=embedded;
   await index.scores(s,'total');assert.equal(embedded,first+1,'unchanged document vectors should be reused; query is fresh');
-  const files=await readdir(join(root,'.reposqueeze'));const stored=await readFile(join(root,'.reposqueeze',files[0]),'utf8');assert(!stored.includes('calculate_total'));assert(!stored.includes('return sum'));
+  const files=await readdir(join(root,'.reposqueeze-v2'));const stored=await readFile(join(root,'.reposqueeze-v2',files[0]),'utf8');assert(!stored.includes('calculate_total'));assert(!stored.includes('return sum'));
   await writeFile(join(root,'a.py'),'def calculate_total(items):\n    return 0\n');const next=await repo.snapshot();
   const changed=await index.scores(next,'total');assert([...changed.keys()].every(k=>!a.has(k)));
   digest='model-v2';const before=embedded;await index.scores(next,'total');assert(embedded>before+1);
@@ -28,6 +28,6 @@ test('semantic cache refuses symlink directory',async t=>{
   const root=await mkdtemp(join(tmpdir(),'reposqueeze-link-'));t.after(()=>rm(root,{recursive:true,force:true}));
   const original=globalThis.fetch;t.after(()=>{globalThis.fetch=original;});
   globalThis.fetch=async()=>new Response(JSON.stringify({models:[{name:'fixture:latest',digest:'x'}]}));
-  await symlink(tmpdir(),join(root,'.reposqueeze'));
+  await symlink(tmpdir(),join(root,'.reposqueeze-v2'));
   await assert.rejects(()=>new SemanticIndex('fixture').scores({root,files:[],chunks:[],revision:'x',skipped:0,truncated:false,warnings:[],elapsedMs:0},'x'),/symlink/);
 });

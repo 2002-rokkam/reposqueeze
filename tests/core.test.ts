@@ -11,6 +11,7 @@ import { tokens } from '../src/tokens.js';
 import { compactLog } from '../src/compact.js';
 import { compactJson } from '../src/structured.js';
 import { decode } from '@toon-format/toon';
+import { contextPackV2, queryViews, rankV2 } from '../src/v2.js';
 
 async function fixture(t: TestContext, files:Record<string,string>) {
   const root=await mkdtemp(join(tmpdir(),'reposqueeze-test-'));
@@ -19,7 +20,7 @@ async function fixture(t: TestContext, files:Record<string,string>) {
   return root;
 }
 test('excludes ignored, secret, binary and symlinked files in non-git repositories',async t=>{
-  const root=await fixture(t,{'.gitignore':'ignored/\n','src/.gitignore':'local.ts\n','.reposqueezeignore':'custom.txt\n','main.ts':'export const publicValue=3;','ignored/private.ts':'do not index','src/local.ts':'private','custom.txt':'private','.env':'SECRET=123','key.pem':'private','data.bin':'abc\0xyz','secret-inline.ts':'const api_key="abcdefghijklmnopqrstuvwxyz0123456789";'});
+  const root=await fixture(t,{'.gitignore':'ignored/\n','src/.gitignore':'local.ts\n','.reposqueeze-v2ignore':'custom.txt\n','main.ts':'export const publicValue=3;','ignored/private.ts':'do not index','src/local.ts':'private','custom.txt':'private','.env':'SECRET=123','key.pem':'private','data.bin':'abc\0xyz','secret-inline.ts':'const api_key="abcdefghijklmnopqrstuvwxyz0123456789";'});
   await symlink('/etc/passwd',join(root,'outside.txt'));
   await symlink(join(root,'main.ts'),join(root,'alias.ts'));
   const s=await new Repository(root).snapshot();
@@ -42,6 +43,21 @@ test('content hash invalidates cache after edits and removes deleted source',asy
   const second=await repo.snapshot();assert.notEqual(first.revision,second.revision);assert.match(second.files[0].text,/a-b/);
   await rm(join(root,'a.py'));assert.equal((await repo.snapshot()).files.length,0);
 });
+test('large-repository cascade indexes all files, parses bounded candidates, and reuses sketches',async t=>{
+  const files:Record<string,string>={};
+  for(let i=0;i<240;i++)files[`modules/m${String(i).padStart(3,'0')}.ts`]=i===239?'export function nebulaCheckpoint() {\n return "held-out-sentinel";\n}\n':`export function ordinary${i}() {\n return ${i};\n}\n`;
+  const root=await fixture(t,files),oldThreshold=process.env.REPOSQUEEZE_LARGE_THRESHOLD,oldCandidates=process.env.REPOSQUEEZE_MAX_CANDIDATES;
+  process.env.REPOSQUEEZE_LARGE_THRESHOLD='10';process.env.REPOSQUEEZE_MAX_CANDIDATES='100';
+  try {
+    const repo=new Repository(root),first=await repo.snapshot('nebulaCheckpoint held-out-sentinel');
+    assert.equal(first.indexMode,'cascade');assert.equal(first.totalFiles,240);assert(first.files.length<=100);assert(first.files.some(file=>file.path==='modules/m239.ts'));assert(!first.truncated);
+    const second=await repo.snapshot('nebulaCheckpoint held-out-sentinel');
+    assert(second.warnings.some(warning=>/240 file sketches reused and 0 refreshed/.test(warning)));
+  } finally {
+    if(oldThreshold===undefined)delete process.env.REPOSQUEEZE_LARGE_THRESHOLD;else process.env.REPOSQUEEZE_LARGE_THRESHOLD=oldThreshold;
+    if(oldCandidates===undefined)delete process.env.REPOSQUEEZE_MAX_CANDIDATES;else process.env.REPOSQUEEZE_MAX_CANDIDATES=oldCandidates;
+  }
+});
 const languages:Record<string,string>={
   'a.ts':'export function greet(name: string) {\n return name;\n}',
   'a.tsx':'export function View() {\n return <div>Hello</div>;\n}',
@@ -61,6 +77,19 @@ for(const [path,source] of Object.entries(languages)) test(`AST grammar loads an
 });
 test('parse errors and unknown languages still retain searchable windows',async()=>{
   for(const path of ['invalid.py','code.custom']) {const p=await parseSource(path,'def invalid(:\nuniqueBoundary=42\n');assert(p.chunks.some(c=>c.text.includes('uniqueBoundary')));assert(!p.parsed);}
+});
+test('V2 query views are deterministic and trace retrieval prefers source counterparts over visible tests',async t=>{
+  const root=await fixture(t,{
+    'src/listeners.go':'package main\ntype sharedQUICState struct{}\nfunc (s *sharedQUICState) getEncryptedClientHelloKeys() {}\n',
+    'src/listeners_test.go':'package main\nfunc TestKeys() { sqs.getEncryptedClientHelloKeys() }\n',
+    'src/unrelated.go':'package main\nfunc unrelated() {}\n'
+  });
+  const s=await new Repository(root).snapshot();
+  const query='go test ./...\nFAIL src/listeners_test.go:19: sqs.getEncryptedClientHelloKeys undefined';
+  assert.deepEqual(queryViews(query),queryViews(query));assert(queryViews(query).length>=3);assert(queryViews(query).length<=6);
+  const paths=rankV2(s,query).map(r=>r.chunk.path);
+  assert(paths.indexOf('src/listeners.go')>=0);assert(paths.indexOf('src/listeners.go')<paths.indexOf('src/listeners_test.go'));
+  const pack=contextPackV2(s,query,512);assert(tokens(pack.text)<=512);assert(pack.stats.v2);assert(pack.stats.v2!.views>=3);
 });
 test('packs meet all budgets; every cited excerpt is verbatim and receipts cover actual ranges',async t=>{
   const root=await fixture(t,{'src/auth.ts':Array.from({length:180},(_,i)=>`// auth permission check ${i}`).join('\n'),'unrelated.py':'def weather():\n    return "sunny"\n'});
