@@ -54,3 +54,15 @@ test('tokenizer keeps Unicode letters and is linear on pathological input', () =
   terms(('word ' + 'A'.repeat(50) + ' ').repeat(40_000));
   assert.ok(performance.now() - started < 5000);
 });
+
+test('token counting is linear for unbroken runs and never undercounts', async () => {
+  const { tokens, fit } = await import('../src/tokens.js');
+  const run = 'AbCd0123'.repeat(25_000);
+  tokens('warm up the encoder');
+  const started = performance.now();
+  const count = tokens(run);
+  assert.ok(performance.now() - started < 8000, 'a 200,000-character run is counted quickly');
+  assert.ok(count >= tokens(run.slice(0, 1000)) * 150);
+  assert.ok(tokens(fit(run, 300)) <= 300);
+  assert.equal(tokens('plain short text'), tokens('plain short text'));
+});

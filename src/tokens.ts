@@ -7,7 +7,27 @@ export const TOKENIZER = 'o200k_base';
 let encoder: Tiktoken | undefined;
 const encoderInstance = () => encoder ??= new Tiktoken(o200k_base);
 export function warmTokenizer(): void { encoderInstance(); }
-export function tokens(text: string): number { return encoderInstance().encode(text, [], []).length; }
+const encodedLength = (text: string) => (text ? encoderInstance().encode(text, [], []).length : 0);
+const LONG_RUN = /\S{1500,}/g;
+const LONG_RUN_PROBE = /\S{1500}/;
+const RUN_PIECE = 1000;
+
+/**
+ * Token count of a text. BPE encoding is quadratic in the length of an unbroken run of non-space characters
+ * (minified bundles, base64 blobs), so such runs are counted in 1,000-character pieces. Piecewise counting can only
+ * add tokens at the seams, so budgets stay safe.
+ */
+export function tokens(text: string): number {
+  if (text.length < 1500 || !LONG_RUN_PROBE.test(text)) return encodedLength(text);
+  let total = 0;
+  let last = 0;
+  for (const match of text.matchAll(LONG_RUN)) {
+    total += encodedLength(text.slice(last, match.index));
+    for (let i = 0; i < match[0].length; i += RUN_PIECE) total += encodedLength(match[0].slice(i, i + RUN_PIECE));
+    last = match.index! + match[0].length;
+  }
+  return total + encodedLength(text.slice(last));
+}
 export function checkBudget(n: number): number {
   if (!Number.isInteger(n) || n < 256 || n > 32000) throw new Error('budget must be an integer from 256 to 32000');
   return n;
