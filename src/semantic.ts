@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir, lstat, rename } from 'node:fs/promises';
 import { join } from 'node:path';
 import { hash } from './parser.js';
 import { randomUUID } from 'node:crypto';
-import type { Snapshot } from './types.js';
+import type { Chunk, Snapshot } from './types.js';
 
 // Explicit opt-in. Code is sent only to this loopback Ollama instance.
 const endpoint = 'http://127.0.0.1:11434/api/embed';
@@ -22,7 +22,7 @@ export class SemanticIndex {
     if(!Array.isArray(body.embeddings) || body.embeddings.length!==input.length || !body.embeddings.every(validVector)) throw new Error('Invalid embedding response');
     return body.embeddings as number[][];
   }
-  async scores(s: Snapshot, query: string): Promise<Map<string,number>> {
+  async scores(s: Snapshot, query: string, candidates?: Chunk[]): Promise<Map<string,number>> {
     const response=await fetch('http://127.0.0.1:11434/api/tags',{signal:AbortSignal.timeout(10000),redirect:'error'});
     if(!response.ok) throw new Error('Cannot identify local embedding model');
     const tags=await response.json() as {models?:{name:string;model?:string;digest?:string}[]};
@@ -38,8 +38,8 @@ export class SemanticIndex {
       const parsed=JSON.parse(await readFile(file,'utf8'));
       if(parsed.model===this.model && parsed.identity===identity && parsed.version===1 && parsed.vectors && typeof parsed.vectors==='object') cache=parsed.vectors;
     } catch(e) { if((e as Error).message==='Unsafe semantic cache') throw e; }
-    const chunks=s.chunks.slice(0,6000);
-    if(s.chunks.length>chunks.length) s.warnings.push('Semantic index capped at 6000 chunks; lexical search still covers the scanned corpus.');
+    const chunks=(candidates ?? s.chunks).slice(0,6000);
+    if(!candidates && s.chunks.length>chunks.length) s.warnings.push('Semantic index capped at 6000 chunks; lexical search still covers the scanned corpus.');
     const missing=chunks.filter(c=>!validVector(cache[c.id]));
     for(let i=0;i<missing.length;i+=24) {
       const batch=missing.slice(i,i+24);
@@ -47,7 +47,9 @@ export class SemanticIndex {
       batch.forEach((c,j)=>{cache[c.id]=vectors[j];});
     }
     // Retain only current content hashes; deleted or edited code cannot be recalled as current.
-    const vectors=Object.fromEntries(chunks.map(c=>[c.id,cache[c.id]]));
+    // Keep vectors of every chunk that still exists (content-addressed ids); edited or deleted code cannot be recalled as current.
+    const live=new Set(s.chunks.map(c=>c.id));
+    const vectors=Object.fromEntries(Object.entries(cache).filter(([id,v])=>live.has(id)&&validVector(v)));
     const tmp=`${file}.${randomUUID()}.tmp`;
     await writeFile(tmp,JSON.stringify({version:1,model:this.model,identity,revision:s.revision,vectors}),{mode:0o600,flag:'wx'});
     await rename(tmp,file);
