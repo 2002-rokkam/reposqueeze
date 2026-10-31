@@ -1,0 +1,20 @@
+= Spring-style reference
+
+include::intro.adoc[]
+
+== Getting started
+
+[source,java]
+----
+@SpringBootApplication
+public class Demo { }
+----
+
+=== Properties
+
+....
+literal block with = signs
+== not a heading either
+....
+
+== Appendix

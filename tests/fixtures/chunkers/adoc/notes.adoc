@@ -1,0 +1,10 @@
+= Release notes
+
+== 3.2.0
+
+* New retriever
+* Faster index
+
+== 3.1.0
+
+* Bug fixes

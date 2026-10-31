@@ -1,0 +1,4 @@
+1-5|hcl_variable|var.region|var.region
+7-9|hcl_variable|var.project|var.project
+11-19|hcl_variable|var.instance_type|var.instance_type
+21-21|hcl_variable|var.vpc_cidr|var.vpc_cidr

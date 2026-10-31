@@ -5,6 +5,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import type { Chunk, ParseResult } from './types.js';
 import { terms } from './tokenize.js';
+import { chunkStructured } from './chunkers.js';
 import { detectGenerated } from './generated.js';
 import { profileForPath, profileByLanguage, type Profile, type Role } from './langs.js';
 import { docText, signatureText, stripComment, stripDocstring, stripElixirDoc } from './outline.js';
@@ -350,6 +351,11 @@ export async function parseSource(path: string, text: string, options: ParseOpti
       for (const span of result.spans) spans.push(span);
       parsed = result.parsed;
     } catch { spans.length = 0; parsed = false; }
+  } else if (!profile) {
+    // Markdown, JSON, YAML, XML, HTML, CSS, SQL, Dockerfiles and similar formats get structural spans.
+    for (const span of chunkStructured(path, text) ?? []) {
+      spans.push({ start: span.start, end: span.end, name: span.name, kind: span.kind, refs: span.refs ?? [], signature: span.signature, scope: span.scope });
+    }
   }
   // Every line remains searchable, including imports, comments and unsupported languages.
   for (let start = 1; start <= lines.length; start += WINDOW_STRIDE) {

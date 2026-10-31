@@ -1,0 +1,35 @@
+import { Tabs } from '@site/src/components';
+
+export const meta = { title: 'Configuration' };
+
+# Configuration
+
+Squeezer reads `squeezer.config.json` from the repository root.
+
+## Options reference
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `budget` | number | 3000 | Output token budget |
+| `include` | string[] | `[]` | Extra globs to index |
+| `exclude` | string[] | `[]` | Globs to skip |
+| `semantic` | boolean | false | Use local embeddings |
+| `ollamaUrl` | string | `http://127.0.0.1:11434` | Embedding endpoint |
+| `cache` | string | `.squeezer` | Cache directory |
+| `redact` | boolean | true | Mask secrets |
+| `maxFileBytes` | number | 2097152 | Skip larger files |
+
+## Example
+
+```json
+{
+  "budget": 4000,
+  "include": ["docs/**"],
+  "exclude": ["**/*.snap"],
+  "semantic": false
+}
+```
+
+<Tabs>
+  <Tab label="npm">Run `npm run pack`</Tab>
+</Tabs>

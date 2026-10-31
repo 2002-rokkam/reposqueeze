@@ -1,0 +1,4 @@
+4-6|conf_block|events|events
+8-31|conf_block|http|http
+12-15|conf_block|upstream app_backend|http > upstream app_backend
+17-30|conf_block|server|http > server

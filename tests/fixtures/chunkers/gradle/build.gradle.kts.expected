@@ -1,0 +1,6 @@
+3-6|gradle_block|plugins|plugins
+8-10|gradle_block|repositories|repositories
+12-16|gradle_block|dependencies|dependencies
+18-20|gradle_block|application|application
+22-24|gradle_block|tasks.withType<KotlinCompile>|tasks.withType<KotlinCompile>
+29-31|gradle_block|tasks.register showSha|tasks.register showSha

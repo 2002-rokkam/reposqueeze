@@ -1,0 +1,4 @@
+1-7|properties_key|greeting.hello, greeting.goodbye, greeting.welcome, error.required, error.email, error.length, error.unique|
+8-11|properties_key|button.ok, button.cancel, button.next, button.previous|
+12-15|properties_key|menu.file, menu.edit, menu.view, menu.help|
+16-18|properties_key|help.text|help.text

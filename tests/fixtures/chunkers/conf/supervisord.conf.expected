@@ -1,0 +1,3 @@
+1-2|ini_section|supervisord|supervisord
+4-7|ini_section|program:web|program:web
+9-11|ini_section|program:worker|program:worker

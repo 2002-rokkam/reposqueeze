@@ -1,0 +1,5 @@
+1-6|svelte_block|script|script
+8-29|html_element|div.catalog|div.catalog
+11-22|tpl_block|if visible.length === 0|div.catalog > if visible.length === 0
+24-28|tpl_block|await loadMore()|div.catalog > await loadMore()
+31-34|svelte_block|style|style

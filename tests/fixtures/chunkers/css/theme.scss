@@ -1,0 +1,52 @@
+@use "sass:math";
+@import "variables";
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+);
+$gutter: 1.5rem;
+$font-stack: "Inter", sans-serif;
+
+@mixin respond($name) {
+  @media (min-width: map-get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+%card-base {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  @extend %card-base;
+  padding: $gutter;
+
+  &__title {
+    font: #{$font-stack};
+    font-size: rem(20);
+  }
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  @include respond(md) {
+    padding: $gutter * 2;
+  }
+}
+
+@each $name, $size in $breakpoints {
+  .container-#{$name} {
+    max-width: $size;
+  }
+}
+
+// line comment with a { brace
+.footer { color: #666; }

@@ -1,0 +1,3 @@
+1-1|thrift_struct|Empty|Empty
+2-2|thrift_struct|Ping|Ping
+3-3|thrift_union|Shape|Shape

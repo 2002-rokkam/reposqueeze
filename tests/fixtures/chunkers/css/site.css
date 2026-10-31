@@ -1,0 +1,59 @@
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --brand: #0a66c2;
+  --radius: 4px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #084d93;
+}
+
+.btn--ghost { background: transparent; color: var(--brand); }
+
+@media (max-width: 768px) {
+  .btn {
+    display: block;
+    width: 100%;
+  }
+  .nav {
+    flex-direction: column;
+  }
+}
+
+@font-face {
+  font-family: "Brand Sans";
+  src: url("/fonts/brand-sans.woff2") format("woff2"),
+       url("/fonts/brand-sans.woff") format("woff");
+  font-display: swap;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0i);
+  animation: spin 2s linear infinite;
+}

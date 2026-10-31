@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package shop.v1;
+
+import "google/protobuf/timestamp.proto";
+import "shop/v1/money.proto";
+
+option go_package = "example.com/shop/v1;shopv1";
+
+// OrderService manages customer orders.
+service OrderService {
+  // Creates an order.
+  rpc CreateOrder(CreateOrderRequest) returns (Order);
+  rpc GetOrder(GetOrderRequest) returns (Order) {
+    option (google.api.http) = { get: "/v1/orders/{id}" };
+  }
+  rpc ListOrders(ListOrdersRequest) returns (stream Order);
+}
+
+message Order {
+  string id = 1;
+  Money total = 2;
+  google.protobuf.Timestamp placed_at = 3;
+  Status status = 4;
+
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    OPEN = 1;
+    SHIPPED = 2;
+  }
+
+  oneof payment {
+    string card_token = 5;
+    string invoice_ref = 6;
+  }
+}
+
+message CreateOrderRequest {
+  repeated string item_ids = 1;
+}
+
+message GetOrderRequest { string id = 1; }
+message ListOrdersRequest { int32 page_size = 1; string page_token = 2; }

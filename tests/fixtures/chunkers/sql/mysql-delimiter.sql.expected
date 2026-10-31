@@ -1,0 +1,3 @@
+1-6|sql_statement|audit_log|create table
+10-17|sql_statement|log_message|create procedure
+19-23|sql_statement|audit_before_insert|create trigger

@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    image: acme/web:latest
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - NODE_ENV=production
+      - API_URL=http://api:3000
+    depends_on:
+      - api
+      - cache
+    networks:
+      - front
+
+  api:
+    build: ./api
+    environment:
+      DATABASE_URL: postgres://app:secret@db:5432/app
+      REDIS_URL: redis://cache:6379
+      LOG_LEVEL: info
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./api:/usr/src/app
+      - api-node-modules:/usr/src/app/node_modules
+    networks:
+      - front
+      - back
+
+  db:
+    image: postgres:16
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - back
+
+  cache:
+    image: redis:7-alpine
+    networks:
+      - back
+
+volumes:
+  db-data:
+  api-node-modules:
+
+networks:
+  front:
+  back:

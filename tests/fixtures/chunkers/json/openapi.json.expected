@@ -1,0 +1,10 @@
+3-6|json_key|info|info
+7-57|json_key|paths|paths
+8-40|json_key|paths./pets|paths > /pets
+9-25|json_key|GET /pets listPets|paths > /pets > get
+26-39|json_key|POST /pets createPet|paths > /pets > post
+41-56|json_key|GET /pets/{petId} showPetById|paths > /pets/{petId}
+58-82|json_key|components|components
+60-68|json_key|components.schemas.Pet|components > schemas > Pet
+69-76|json_key|components.schemas.NewPet|components > schemas > NewPet
+77-80|json_key|components.schemas.Pets|components > schemas > Pets

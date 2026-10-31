@@ -1,0 +1,8 @@
+1-3|md_section|intro|intro
+5-50|md_section|Squeezer|Squeezer
+11-35|md_section|Installation|Squeezer > Installation
+15-19|md_code|bash: # this is a comment, not a heading|Squeezer > Installation > code
+21-28|md_section|Docker|Squeezer > Installation > Docker
+30-35|md_section|From source|Squeezer > Installation > From source
+37-46|md_section|Usage|Squeezer > Usage
+48-50|md_section|License|Squeezer > License

@@ -1,0 +1,39 @@
+// Variables
+@primary: #3b82f6;
+@secondary: #64748b;
+@padding: 12px;
+
+.rounded(@radius: 4px) {
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.bordered(@width: 1px; @style: solid) when (@width > 0) {
+  border: @width @style @secondary;
+}
+
+.panel {
+  .rounded(8px);
+  .bordered(2px);
+  padding: @padding;
+  background: lighten(@primary, 40%);
+
+  .title {
+    color: @primary;
+    font-weight: 600;
+  }
+
+  &.is-active {
+    border-color: @primary;
+  }
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    padding: @padding * 2;
+  }
+}
+
+.selector-@{name} {
+  color: red;
+}

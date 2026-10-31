@@ -1,0 +1,4 @@
+6-8|tpl_block|block extrastyle|block extrastyle
+10-32|tpl_block|block content|block content
+13-27|html_element|table.orders|block content > div#orders > if orders > table.orders
+34-37|tpl_block|block footer|block footer

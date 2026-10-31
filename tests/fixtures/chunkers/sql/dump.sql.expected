@@ -1,0 +1,7 @@
+5-6|sql_statement|set statement_timeout, set client_encoding|
+8-8|sql_statement|pgcrypto|create extension
+10-17|sql_statement|public.touch_updated_at|create function
+19-24|sql_statement|public.accounts|create table
+26-26|sql_statement|accounts_touch|create trigger
+30-32|sql_statement|copy public.accounts|copy
+34-35|sql_statement|public.accounts|alter table

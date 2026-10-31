@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Acme Dashboard</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; }
+    .card { border: 1px solid #ddd; padding: 1rem; }
+  </style>
+</head>
+<body>
+  <!-- Primary navigation -->
+  <nav id="main-nav" class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/reports">Reports</a></li>
+      <li><a href="/settings">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="summary" class="card">
+      <h1>Weekly summary</h1>
+      <p>Totals for the last seven days.
+      <p>Numbers update every minute.
+    </section>
+
+    <form id="filter-form" action="/search" method="post">
+      <label for="q">Search</label>
+      <input type="text" name="q" id="q">
+      <select name="range">
+        <option value="7">7 days
+        <option value="30">30 days
+      </select>
+      <button type="submit">Go</button>
+    </form>
+  </main>
+
+  <script src="/static/app.js"></script>
+  <script>
+    document.getElementById('q').addEventListener('input', function (e) {
+      if (e.target.value.length < 3) { return; }
+      console.log('<div> is not a tag here');
+    });
+  </script>
+</body>
+</html>

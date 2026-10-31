@@ -1,0 +1,7 @@
+1-7|sql_statement|users|create table
+9-9|sql_statement|idx_users_email|create index
+11-17|sql_statement|orders|create table
+19-20|sql_statement|orders|alter table
+22-26|sql_statement|open_orders|create view
+28-30|sql_statement|users|
+32-32|sql_statement|legacy_users|drop table

@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Ada Lovelace",
+    "email": "ada@example.com",
+    "roles": ["admin", "author"],
+    "address": {
+      "city": "London",
+      "country": "UK"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Grace Hopper",
+    "email": "grace@example.com",
+    "roles": ["author"],
+    "address": {
+      "city": "New York",
+      "country": "US"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Linus Torvalds",
+    "email": "linus@example.com",
+    "roles": ["maintainer"],
+    "address": {
+      "city": "Portland",
+      "country": "US"
+    }
+  },
+  {
+    "title": "untitled record",
+    "tags": []
+  }
+]

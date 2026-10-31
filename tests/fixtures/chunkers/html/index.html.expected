@@ -1,0 +1,6 @@
+2-48|html_element|html|html
+3-11|html_element|head|html > head
+12-47|html_element|body|html > body
+13-20|html_element|nav#main-nav|html > body > nav#main-nav
+22-38|html_element|main.container|html > body > main.container
+41-46|html_script|script|html > body > script

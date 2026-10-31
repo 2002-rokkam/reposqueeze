@@ -1,0 +1,5 @@
+1-3|sql_statement|GetAuthor|select
+5-7|sql_statement|ListAuthors|select
+9-15|sql_statement|CreateAuthor|insert
+17-21|sql_statement|UpdateAuthor|update
+23-25|sql_statement|DeleteAuthor|delete

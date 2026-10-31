@@ -1,0 +1,4 @@
+2-29|xml_element|beans|beans
+12-17|xml_element|bean dataSource|beans > bean
+19-22|xml_element|bean invoiceService|beans > bean
+24-26|xml_element|bean invoiceRepository|beans > bean

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Home"
+        sling:resourceType="acme/components/page"
+        cq:template="/conf/acme/settings/wcm/templates/content-page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="acme/components/container"
+            layout="responsiveGrid">
+            <hero
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="acme/components/hero"
+                jcr:title="Welcome to ACME"
+                fragmentPath="/content/dam/acme/fragments/hero-home"/>
+            <teaser
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/teaser/v2/teaser"
+                jcr:title="Latest news"
+                linkURL="/content/acme/en/news"/>
+            <text
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/text/v2/text"
+                text="&lt;p&gt;Hello&lt;/p&gt;"
+                textIsRich="true"/>
+        </root>
+    </jcr:content>
+</jcr:root>

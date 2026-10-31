@@ -1,0 +1,6 @@
+1-30|gradle_block|pipeline|pipeline
+3-5|gradle_block|environment|pipeline > environment
+6-29|gradle_block|stages|pipeline > stages
+7-11|gradle_block|stage Build|pipeline > stages > stage Build
+12-22|gradle_block|stage Test|pipeline > stages > stage Test
+23-28|gradle_block|stage Deploy|pipeline > stages > stage Deploy

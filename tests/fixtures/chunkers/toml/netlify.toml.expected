@@ -1,0 +1,7 @@
+1-4|toml_table|build|build
+6-8|toml_table|build.environment|build > environment
+10-13|toml_table|redirects[0]|redirects
+15-18|toml_table|redirects[1]|redirects
+20-21|toml_table|headers[0]|headers
+22-24|toml_table|headers.values|headers > values
+26-27|toml_table|context.deploy-preview|context > deploy-preview

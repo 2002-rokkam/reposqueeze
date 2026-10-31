@@ -1,0 +1,20 @@
+rootProject.name = 'acme-platform'
+
+include 'core'
+include 'api'
+include 'worker'
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            library('guava', 'com.google.guava', 'guava').version('33.0.0-jre')
+        }
+    }
+}

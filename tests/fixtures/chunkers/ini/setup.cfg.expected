@@ -1,0 +1,5 @@
+1-6|ini_section|metadata|metadata
+8-15|ini_section|options|options
+17-23|ini_section|options.extras_require|options.extras_require
+25-27|ini_section|options.entry_points|options.entry_points
+29-31|ini_section|flake8|flake8

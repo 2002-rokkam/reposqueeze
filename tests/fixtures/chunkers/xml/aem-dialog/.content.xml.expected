@@ -1,0 +1,6 @@
+2-48|xml_element|jcr:root Hero|jcr:root
+10-45|xml_element|tabs granite/ui/components/coral/foundation/tabs|jcr:root > content > tabs
+20-24|xml_element|title ./jcr:title|jcr:root > content > tabs > properties > title
+25-29|xml_element|subtitle ./subtitle|jcr:root > content > tabs > properties > subtitle
+30-35|xml_element|image ./file|jcr:root > content > tabs > properties > image
+36-41|xml_element|cta ./ctaLink|jcr:root > content > tabs > properties > cta

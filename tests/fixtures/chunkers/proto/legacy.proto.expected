@@ -1,0 +1,4 @@
+1-3|proto_statement|syntax proto2, package legacy|
+5-14|proto_message|Envelope|Envelope
+16-18|proto_extend|Envelope|Envelope
+20-24|proto_enum|Kind|Kind

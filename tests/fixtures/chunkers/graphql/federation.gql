@@ -1,0 +1,20 @@
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
+
+type RootQuery {
+  node(id: ID!): Node
+}
+
+type RootMutation {
+  noop: Boolean
+}
+
+# A comment line with a { brace
+union Pet =
+  | Cat
+  | Dog
+
+type Cat { name: String }
+type Dog { name: String, barks: Boolean }

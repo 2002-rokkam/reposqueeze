@@ -1,0 +1,26 @@
+<header class="site-header">
+  <h1>{{title}}</h1>
+  {{> nav items=navItems}}
+</header>
+
+{{#if user}}
+  <section class="account">
+    <p>Welcome back, {{user.name}}!</p>
+    {{#each user.notifications}}
+      <div class="note {{this.level}}">
+        <strong>{{this.title}}</strong>
+        <span>{{this.body}}</span>
+      </div>
+    {{else}}
+      <p>No notifications.</p>
+    {{/each}}
+  </section>
+{{else}}
+  <section class="login">
+    <a href="/login">Sign in</a>
+  </section>
+{{/if}}
+
+{{#*inline "footerLink"}}
+  <a href="{{url}}">{{label}}</a>
+{{/inline}}

@@ -1,0 +1,6 @@
+1-5|cmake_command|cmake_minimum_required VERSION, project widget, option WIDGET_BUILD_TESTS, set CMAKE_CXX_STANDARD|
+7-12|cmake_command|add_library widget_core|add_library
+14-17|cmake_command|target_link_libraries widget_core|target_link_libraries
+19-23|cmake_function|widget_add_tool|widget_add_tool
+25-31|cmake_block|if(WIDGET_BUILD_TESTS)|if(WIDGET_BUILD_TESTS)
+33-34|cmake_command|widget_add_tool widgetc, message STATUS|

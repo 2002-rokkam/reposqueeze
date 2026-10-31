@@ -1,0 +1,30 @@
+defaults: &defaults
+  adapter: postgres
+  host: localhost
+  "quoted key": 'single: quoted'
+
+development:
+  <<: *defaults
+  database: app_development
+  options: {pool: 5,
+            timeout: 5000}
+
+production:
+  <<: *defaults
+  database: app_production
+  banner: >-
+    This is a folded block scalar
+    with several lines.
+
+    It keeps going after a blank line.
+  script: |+
+    echo one
+    # not a comment, scalar content
+    echo two
+
+  url: http://example.com:8080/path
+list_of_lists:
+  - - a
+    - b
+  - - c
+...

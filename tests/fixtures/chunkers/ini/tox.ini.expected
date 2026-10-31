@@ -1,0 +1,4 @@
+1-3|ini_section|tox|tox
+5-10|ini_section|testenv|testenv
+12-19|ini_section|testenv:lint|testenv:lint
+21-24|ini_section|pytest|pytest

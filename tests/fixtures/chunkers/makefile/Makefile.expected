@@ -1,0 +1,9 @@
+1-2|make_variable|CC|CC
+3-12|make_variable|CFLAGS, LDFLAGS, SRC, OBJ, include config.mk, .PHONY, all|
+14-16|make_target|bin/app|bin/app
+18-21|make_target|build/%.o|build/%.o
+23-26|make_target|test|test
+28-29|make_target|clean|clean
+31-32|make_target|install|install
+34-38|make_define|HELP_TEXT|HELP_TEXT
+41-42|make_target|help|help

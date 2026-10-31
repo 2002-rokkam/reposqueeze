@@ -1,0 +1,5 @@
+1-4|html_element|header.site-header|header.site-header
+6-22|tpl_block|if user|if user
+7-17|html_element|section.account|if user > section.account
+19-21|html_element|section.login|if user > section.login
+24-26|tpl_block|inline "footerLink"|inline "footerLink"

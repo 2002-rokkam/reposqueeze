@@ -1,0 +1,4 @@
+1-4|properties_key|server.port, server.servlet.context-path, server.compression.enabled|
+6-11|properties_key|spring.datasource.url, spring.datasource.username, spring.datasource.password, spring.datasource.driver-class-name, spr…|
+13-16|properties_key|spring.jpa.hibernate.ddl-auto, spring.jpa.open-in-view, spring.jpa.properties.hibernate.jdbc.time_zone|
+18-21|properties_key|logging.level.root, logging.level.com.acme.billing, logging.pattern.console|

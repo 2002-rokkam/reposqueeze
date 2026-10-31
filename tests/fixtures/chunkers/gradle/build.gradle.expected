@@ -1,0 +1,7 @@
+1-5|gradle_block|plugins|plugins
+7-9|gradle_statement|group = com.acme, version = 2.5.0, sourceCompatibility = JavaVersion.VERSION_17|
+11-14|gradle_block|repositories|repositories
+16-23|gradle_block|dependencies|dependencies
+25-29|gradle_block|tasks.register printVersion|tasks.register printVersion
+31-36|gradle_block|test|test
+38-44|gradle_block|publishing|publishing

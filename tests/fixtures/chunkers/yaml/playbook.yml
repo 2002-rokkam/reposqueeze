@@ -1,0 +1,38 @@
+---
+- name: Provision web servers
+  hosts: webservers
+  become: true
+  vars:
+    http_port: 80
+  tasks:
+    - name: Install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Write nginx config
+      ansible.builtin.template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+        mode: "0644"
+      notify: Restart nginx
+
+    - name: Ensure nginx is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
+- name: Configure database
+  hosts: dbservers
+  roles:
+    - postgres
+    - role: backup
+      vars:
+        retention_days: 14

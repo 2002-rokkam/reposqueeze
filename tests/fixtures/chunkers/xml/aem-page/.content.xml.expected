@@ -1,0 +1,5 @@
+2-30|xml_element|jcr:root cq:Page|jcr:root
+9-28|xml_element|root acme/components/container|jcr:root > jcr:content > root
+13-17|xml_element|hero Welcome to ACME|jcr:root > jcr:content > root > hero
+18-22|xml_element|teaser Latest news|jcr:root > jcr:content > root > teaser
+23-27|xml_element|text core/wcm/components/text/v2/text|jcr:root > jcr:content > root > text

@@ -1,0 +1,6 @@
+1-5|make_variable|BINARY, PKG, VERSION, .DEFAULT_GOAL|
+7-8|make_target|build|build
+10-11|make_target|test|test
+13-14|make_target|lint|lint
+16-17|make_target|docker-build docker-push|docker-build
+20-22|make_variable|EXE|

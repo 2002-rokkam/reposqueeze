@@ -1,0 +1,4 @@
+2-34|xml_element|androidx.constraintlayout.widget.ConstraintLayout|androidx.constraintlayout.widget.ConstraintLayout
+10-16|xml_element|TextView title|androidx.constraintlayout.widget.ConstraintLayout > TextView
+18-24|xml_element|EditText email_input|androidx.constraintlayout.widget.ConstraintLayout > EditText
+26-32|xml_element|Button submit_button|androidx.constraintlayout.widget.ConstraintLayout > Button

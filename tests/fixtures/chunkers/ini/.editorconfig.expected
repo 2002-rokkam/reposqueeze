@@ -1,0 +1,6 @@
+1-2|ini_key|root|root
+4-8|ini_section|*|*
+10-12|ini_section|*.{js,ts,json,yml}|*.{js,ts,json,yml}
+14-16|ini_section|*.py|*.py
+18-19|ini_section|Makefile|Makefile
+21-22|ini_section|*.md|*.md

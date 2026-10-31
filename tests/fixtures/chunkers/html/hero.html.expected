@@ -1,0 +1,4 @@
+1-3|html_template|template cta|template cta
+5-21|html_element|div.cmp-hero|div.cmp-hero
+10-14|html_element|div.cmp-hero__body|div.cmp-hero > div.cmp-hero__body
+15-19|html_element|ul.cmp-hero__links|div.cmp-hero > ul.cmp-hero__links
