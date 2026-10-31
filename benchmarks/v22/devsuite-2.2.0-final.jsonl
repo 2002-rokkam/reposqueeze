@@ -1,0 +1,10 @@
+{"budget":1500,"kind":"original","n":40,"complete":87.5,"recall":87.5,"meanTokens":1479}
+{"budget":1500,"kind":"dropout","n":40,"complete":85,"recall":85,"meanTokens":1478}
+{"budget":1500,"kind":"telegraphic","n":40,"complete":87.5,"recall":87.5,"meanTokens":1479}
+{"budget":1500,"kind":"reordered","n":40,"complete":85,"recall":85,"meanTokens":1479}
+{"budget":1500,"kind":"all","n":160,"complete":86.25,"recall":86.25,"meanTokens":1479}
+{"budget":3000,"kind":"original","n":40,"complete":95,"recall":95,"meanTokens":2942}
+{"budget":3000,"kind":"dropout","n":40,"complete":95,"recall":95,"meanTokens":2942}
+{"budget":3000,"kind":"telegraphic","n":40,"complete":95,"recall":95,"meanTokens":2942}
+{"budget":3000,"kind":"reordered","n":40,"complete":92.5,"recall":92.5,"meanTokens":2943}
+{"budget":3000,"kind":"all","n":160,"complete":94.38,"recall":94.38,"meanTokens":2942}

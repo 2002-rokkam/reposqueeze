@@ -150,16 +150,16 @@ Pointers are one-line references, not shown code, so two families are reported. 
 
 A plain-`ripgrep` reference (issue words scored by IDF, best line windows) scores 65.0% file-hit and 11.8% gold-line recall on the same instances. 13 of the 60 issues (21.7%) name a gold file explicitly, which favours every method. Per-language and per-repository tables are in [benchmarks/v22/swe-dev/report.md](benchmarks/v22/swe-dev/report.md). The "shown only" numbers are recomputed from the saved packs by [scripts/shown-only-metrics.py](scripts/shown-only-metrics.py), which also reproduces the harness numbers exactly for the original metric.
 
-FINAL_BUILD_SECTION
+> The SWE-bench numbers were measured on build `b7bc1c7`, the first 2.2 build (packing, ranking, tokenizer, MCP changes). Parsing, chunking, indexing, redaction, the repository map and the log compactor were merged afterwards. A re-run of the 60 instances on the final merged build did not finish because the shared machine was overloaded (timeouts at load average > 50), so it is not reported; the 40-question suite below was re-run on the final build.
 
 ### 2. Repository's own development suite (40 questions, 8 repositories, 4 query phrasings)
 
 | Budget | Phrasing | 2.1.0 complete evidence | 2.2 complete evidence |
 | ---: | --- | ---: | ---: |
-| 1,500 | all four (n = 160) | 81.25% | **88.75%** |
-| 3,000 | all four (n = 160) | 91.88% | 91.88% |
+| 1,500 | all four (n = 160) | 81.25% | **86.25%** |
+| 3,000 | all four (n = 160) | 91.88% | **94.38%** |
 
-"Complete" means every gold snippet appears in the pack. No regression; the gain is at the small budget. Mean pack size is the same (1,478 vs 1,469 tokens at 1,500). This suite was used during development, so it is a regression check, not an independent result. Files: [benchmarks/v22/](benchmarks/v22).
+"Complete" means every gold snippet appears in the pack. Measured on the final merged build; an earlier intermediate build scored 88.75% and 91.88%, so the small differences between 2.2 builds are within the noise of 40 questions. Mean pack size is unchanged (1,479 vs 1,469 tokens at 1,500; 2,942 vs 2,956 at 3,000). This suite was used during development, so it is a regression check, not an independent result. Files: [benchmarks/v22/](benchmarks/v22), script: `npm run bench:devsuite`.
 
 ### 3. Fixed overhead every client pays
 
