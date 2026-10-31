@@ -1,6 +1,7 @@
-import test, { type TestContext } from 'node:test';
+import test, { after, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, mkdir, symlink, rm } from 'node:fs/promises';
+import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -12,6 +13,11 @@ import { compactLog } from '../src/compact.js';
 import { compactJson } from '../src/structured.js';
 import { decode } from '@toon-format/toon';
 import { contextPackV2, queryViews, rankV2 } from '../src/v2.js';
+
+// Keep the persistent index caches of the fixture repositories out of the user's real cache directory.
+const cacheDir=mkdtempSync(join(tmpdir(),'reposqueeze-core-cache-'));
+process.env.REPOSQUEEZE_CACHE_DIR=cacheDir;
+after(()=>{rmSync(cacheDir,{recursive:true,force:true});});
 
 async function fixture(t: TestContext, files:Record<string,string>) {
   const root=await mkdtemp(join(tmpdir(),'reposqueeze-test-'));
@@ -52,7 +58,8 @@ test('large-repository cascade indexes all files, parses bounded candidates, and
     const repo=new Repository(root),first=await repo.snapshot('nebulaCheckpoint held-out-sentinel');
     assert.equal(first.indexMode,'cascade');assert.equal(first.totalFiles,240);assert(first.files.length<=100);assert(first.files.some(file=>file.path==='modules/m239.ts'));assert(!first.truncated);
     const second=await repo.snapshot('nebulaCheckpoint held-out-sentinel');
-    assert(second.warnings.some(warning=>/240 file sketches reused and 0 refreshed/.test(warning)));
+    assert(second.diagnostics!.some(note=>/240 file sketches reused and 0 refreshed/.test(note)));
+    assert(!second.warnings.some(warning=>/reused/.test(warning)),'cold/warm-dependent statistics must not appear in pack text');
   } finally {
     if(oldThreshold===undefined)delete process.env.REPOSQUEEZE_LARGE_THRESHOLD;else process.env.REPOSQUEEZE_LARGE_THRESHOLD=oldThreshold;
     if(oldCandidates===undefined)delete process.env.REPOSQUEEZE_MAX_CANDIDATES;else process.env.REPOSQUEEZE_MAX_CANDIDATES=oldCandidates;

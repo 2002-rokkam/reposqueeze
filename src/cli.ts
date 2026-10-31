@@ -4,7 +4,7 @@ import { resolve, dirname, join } from 'node:path';
 import { Repository } from './repository.js';
 import { Engine } from './engine.js';
 import { compactJson } from './structured.js';
-import { contextPack, expand, repositoryMap } from './context.js';
+import { contextPack, repositoryMap } from './context.js';
 import { compactLog } from './compact.js';
 import { serve } from './mcp.js';
 import { INSTRUCTIONS } from './instructions.js';
@@ -53,8 +53,7 @@ init creates .github/instructions/reposqueeze-v2.instructions.md without overwri
     if (!values.json) console.error(JSON.stringify(pack.stats));
     return;
   }
-  const s = await repo.snapshot(command==='expand'?(values.path??''):'__repository_map__');
-  if (command === 'map') console.log(repositoryMap(s,budget));
-  if (command === 'expand') console.log(expand(s,values.path ?? '',Number(values.start),Number(values.end),budget));
+  if (command === 'expand') { console.log(await repo.expand(values.path ?? '',Number(values.start),Number(values.end),budget)); return; }
+  console.log(repositoryMap(await repo.snapshot('__repository_map__'),budget));
 }
 main().catch(error => {console.error(`RepoSqueeze V2: ${error instanceof Error ? error.message : String(error)}`);process.exitCode=1;});

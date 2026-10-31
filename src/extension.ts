@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { Engine } from './engine.js';
-import { contextPack, expand, repositoryMap } from './context.js';
+import { repositoryMap } from './context.js';
 import { INSTRUCTIONS } from './instructions.js';
 
 interface ContextInput {query:string;budget?:number}
@@ -55,10 +55,10 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.lm.registerTool<ExpandInput>('reposqueeze_v2_expand',{
     async invoke(options,token) {
       if (token.isCancellationRequested) throw new vscode.CancellationError();
-      const s = await getRepo().snapshot(options.input.path);
-      if (token.isCancellationRequested) throw new vscode.CancellationError();
       const {path,start,end,budget} = options.input;
-      return new vscode.LanguageModelToolResult([new vscode.LanguageModelTextPart(expand(s,path,start,end,budget ?? defaultBudget()))]);
+      const text = await getRepo().expand(path,start,end,budget ?? defaultBudget());
+      if (token.isCancellationRequested) throw new vscode.CancellationError();
+      return new vscode.LanguageModelToolResult([new vscode.LanguageModelTextPart(text)]);
     }
   }));
 }

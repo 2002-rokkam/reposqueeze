@@ -2,7 +2,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 import { Repository } from './repository.js';
-import { expand, repositoryMap } from './context.js';
+import { repositoryMap } from './context.js';
 import { compactLog } from './compact.js';
 import { compactJson } from './structured.js';
 import { Engine } from './engine.js';
@@ -20,7 +20,7 @@ export async function serve(root: string, model?:string) {
   server.registerTool('reposqueeze_v2_expand', {
     description:'Read current exact source lines from an allowed repository path. Use for missing context or before edits. One-based ranges. Output reports any truncation.',
     inputSchema:{path:z.string().min(1),start:z.number().int().min(1),end:z.number().int().min(1),budget},annotations
-  },async ({path,start,end,budget}) => result(expand(await repo.snapshot(path),path,start,end,budget)));
+  },async ({path,start,end,budget}) => result(await repo.expand(path,start,end,budget)));
   server.registerTool('reposqueeze_v2_map', {
     description:'Return a bounded repository file/symbol map. Map omissions are explicit; this is not complete semantic understanding.', inputSchema:{budget},annotations
   },async ({budget}) => result(repositoryMap(await repo.snapshot('__repository_map__'),budget)));
