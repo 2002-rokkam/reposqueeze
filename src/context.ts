@@ -52,7 +52,7 @@ export function inputTokenCount(s: Snapshot): { tokens: number; estimated: boole
   let cached = estimates.get(s);
   if (cached) return cached;
   if (s.totalTokens !== undefined) {
-    cached = { tokens: s.totalTokens, estimated: false };
+    cached = { tokens: s.totalTokens, estimated: !!s.totalTokensEstimated };
   } else if (process.env.REPOSQUEEZE_EXACT_STATS === '1') {
     cached = { tokens: tokens(s.files.map(f => `--- ${f.path} ---\n${f.text}`).join('\n')), estimated: false };
   } else {

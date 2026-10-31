@@ -1,6 +1,7 @@
-import test, { type TestContext } from 'node:test';
+import test, { after, type TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, mkdir, symlink, rm } from 'node:fs/promises';
+import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -14,6 +15,11 @@ import { decode } from '@toon-format/toon';
 import { contextPackV2, queryViews, rankV2 } from '../src/v2.js';
 import { resolveFeatures } from '../src/features.js';
 
+// Keep the persistent index caches of the fixture repositories out of the user's real cache directory.
+const cacheDir=mkdtempSync(join(tmpdir(),'reposqueeze-core-cache-'));
+process.env.REPOSQUEEZE_CACHE_DIR=cacheDir;
+after(()=>{rmSync(cacheDir,{recursive:true,force:true});});
+
 async function fixture(t: TestContext, files:Record<string,string>) {
   const root=await mkdtemp(join(tmpdir(),'reposqueeze-test-'));
   t.after(()=>rm(root,{recursive:true,force:true}));
@@ -26,7 +32,8 @@ test('excludes ignored, secret, binary and symlinked files in non-git repositori
   await symlink(join(root,'main.ts'),join(root,'alias.ts'));
   const s=await new Repository(root).snapshot();
   assert(s.files.some(f=>f.path==='main.ts'));
-  for(const p of ['ignored/private.ts','src/local.ts','custom.txt','.env','key.pem','data.bin','secret-inline.ts','outside.txt','alias.ts']) assert(!s.files.some(f=>f.path===p),p);
+  const inline=s.files.find(f=>f.path==='secret-inline.ts');assert(inline,'files with secret-like values are kept with the value redacted');assert(!inline!.text.includes('abcdefghijklmnopqrstuvwxyz0123456789'));assert.match(inline!.text,/\[REDACTED:/);
+  for(const p of ['ignored/private.ts','src/local.ts','custom.txt','.env','key.pem','data.bin','outside.txt','alias.ts']) assert(!s.files.some(f=>f.path===p),p);
 });
 test('git scan includes untracked files, excludes tracked secrets, works in subdirectory',async t=>{
   const root=await fixture(t,{'.gitignore':'ignored.txt\n','main.py':'def alpha():\n    return 1\n','sub/feature.py':'def beta():\n    return 2\n','.env':'secret','ignored.txt':'secret'});
@@ -53,7 +60,8 @@ test('large-repository cascade indexes all files, parses bounded candidates, and
     const repo=new Repository(root),first=await repo.snapshot('nebulaCheckpoint held-out-sentinel');
     assert.equal(first.indexMode,'cascade');assert.equal(first.totalFiles,240);assert(first.files.length<=100);assert(first.files.some(file=>file.path==='modules/m239.ts'));assert(!first.truncated);
     const second=await repo.snapshot('nebulaCheckpoint held-out-sentinel');
-    assert(second.warnings.some(warning=>/240 file sketches reused and 0 refreshed/.test(warning)));
+    assert(second.diagnostics!.some(note=>/240 file sketches reused and 0 refreshed/.test(note)));
+    assert(!second.warnings.some(warning=>/reused/.test(warning)),'cold/warm-dependent statistics must not appear in pack text');
   } finally {
     if(oldThreshold===undefined)delete process.env.REPOSQUEEZE_LARGE_THRESHOLD;else process.env.REPOSQUEEZE_LARGE_THRESHOLD=oldThreshold;
     if(oldCandidates===undefined)delete process.env.REPOSQUEEZE_MAX_CANDIDATES;else process.env.REPOSQUEEZE_MAX_CANDIDATES=oldCandidates;

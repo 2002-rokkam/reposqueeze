@@ -28,7 +28,7 @@ function libcShim() {
   return Buffer.from([0x00, 0x61, 0x73, 0x6d, 1, 0, 0, 0, ...dylink, ...types, ...functions, ...exported, ...code]);
 }
 const inputs=new Set();
-for (const entry of ['cli', 'extension']) {
+for (const entry of ['cli', 'extension', 'index-worker']) {
   const result=await build({entryPoints: [`src/${entry}.ts`], outfile: `dist/${entry}.cjs`, bundle: true, platform: 'node', format: 'cjs', target: 'node20', external: ['vscode'], sourcemap: true, metafile:true,
     banner: entry === 'cli' ? {js: '#!/usr/bin/env node'} : undefined,
     define: { 'import.meta.url': 'importMetaUrl' },

@@ -27,7 +27,11 @@ export interface Snapshot {
   files: SourceFile[]; chunks: Chunk[]; revision: string; skipped: number; truncated: boolean;
   warnings: string[]; root: string; elapsedMs: number;
   totalFiles?: number; totalBytes?: number; totalTokens?: number; candidateFiles?: number;
+  // True when totalTokens is a sampled estimate rather than an exact o200k_base count (see REPOSQUEEZE_EXACT_STATS).
+  totalTokensEstimated?: boolean;
   indexMode?: 'full'|'cascade';
+  // Cache statistics that differ between cold and warm runs; kept out of `warnings`, which are embedded in pack text.
+  diagnostics?: string[];
   inventory?: {path:string;language:string;lines:number}[];
 }
 export interface Pack {

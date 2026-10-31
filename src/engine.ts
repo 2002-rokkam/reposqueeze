@@ -1,7 +1,6 @@
 import { Repository } from './repository.js';
 import { SemanticIndex } from './semantic.js';
 import { contextPackV2, rankV2 } from './v2.js';
-import { expand } from './context.js';
 import { resolveFeatures, type FeatureSet } from './features.js';
 import { checkBudget } from './tokens.js';
 import { condenseQuery } from './trace.js';
@@ -56,6 +55,6 @@ export class Engine extends Repository {
   }
 
   async expandRange(path: string, start: number, end: number, budget = 3000): Promise<string> {
-    return expand(await this.snapshot(path), path, start, end, budget);
+    return this.expand(path, start, end, budget);
   }
 }
