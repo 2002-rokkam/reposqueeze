@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname } from 'node:path';
 import { createHash } from 'node:crypto';
 import type { Chunk } from './types.js';
+import { chunkStructured } from './chunkers.js';
 
 const assetDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'assets');
 const languages: Record<string, string> = { '.js': 'javascript', '.mjs': 'javascript', '.cjs': 'javascript', '.jsx': 'javascript', '.ts': 'typescript', '.tsx': 'tsx', '.py': 'python', '.go': 'go', '.rs': 'rust', '.java': 'java', '.c': 'c', '.h': 'c', '.cpp': 'cpp', '.hpp': 'cpp', '.cs': 'c_sharp', '.rb': 'ruby' };
@@ -48,6 +49,9 @@ export async function parseSource(path: string, text: string): Promise<{chunks: 
       visit(tree.rootNode, 0);
       tree.delete();
     } catch { parsed = false; }
+  } else {
+    // Documentation, configuration, markup, SQL and build files: structure-aware spans instead of windows only.
+    for (const s of chunkStructured(path, text) ?? []) spans.push({start: s.start, end: s.end, name: s.name, kind: s.kind, refs: s.refs ?? []});
   }
   // Every line remains searchable, including imports, comments and unsupported languages.
   for (let start = 1; start <= lines.length; start += 48) {
