@@ -396,18 +396,14 @@ function blockFromResult(meta: FileMeta, result: FileIndexResult, dictionary: Te
   if (hash.length !== 32) throw new Error('file hash must be a sha256 hex digest');
   const termMap = Uint32Array.from(result.localTerms, term => dictionary.add(term));
   const remap = (ids: Uint32Array) => Uint32Array.from(ids, id => termMap[id]);
-  const refStart = new Uint32Array(result.chunkCount + 1), refIds: number[] = [];
-  result.refs.forEach((refs, i) => {
-    for (const ref of refs) refIds.push(strings.add(ref));
-    refStart[i + 1] = refIds.length;
-  });
+  const refMap = Uint32Array.from(result.refTable, ref => strings.add(ref));
   return {
     path: meta.path, hash: new Uint8Array(hash), size: meta.size, mtimeMs: meta.mtimeMs, language: strings.add(result.language), lines: result.lines,
     flags: result.parsed ? 1 : 0, tokenCount: meta.tokenCount, chunkCount: result.chunkCount, starts: result.starts, ends: result.ends,
     ids: Uint32Array.from(result.ids, id => strings.addUnique(id)), names: Uint32Array.from(result.names, name => strings.add(name)),
     kinds: Uint32Array.from(result.kinds, kind => strings.add(kind)), chunkLen: result.chunkLen,
     rowStart: result.rowStart, rowBase: 0, rowTerm: remap(result.rowTerm), rowTf: result.rowTf,
-    nameStart: result.nameStart, nameBase: 0, nameTerm: remap(result.nameTerm), refStart, refBase: 0, refIds: Uint32Array.from(refIds),
+    nameStart: result.nameStart, nameBase: 0, nameTerm: remap(result.nameTerm), refStart: result.refStart, refBase: 0, refIds: Uint32Array.from(result.refIds, id => refMap[id]),
     pathTerm: remap(result.pathTerm), overflow: result.tfOverflow ?? [], chunkExtras: result.chunkExtras ?? [], textOverrides: result.textOverrides ?? [], fileExtras: result.fileExtras
   };
 }

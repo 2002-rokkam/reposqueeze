@@ -5,8 +5,9 @@ import { dirname, isAbsolute, posix, relative, resolve, sep } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import ignore, { type Ignore } from 'ignore';
-import { indexFile, type FileIndexResult } from './file-indexer.js';
+import { type FileIndexResult } from './file-indexer.js';
 import { FileTable, StringTable, TextCache, type TableItem } from './file-table.js';
+import { AdaptiveIndexer } from './index-pool.js';
 import { hash, languageFor } from './parser.js';
 import { makeSketch, selectCandidates, SketchTable, type Sketch } from './scale.js';
 import { attachRowSet, TermDictionary } from './search-index.js';
@@ -25,6 +26,9 @@ export function allowedPath(path: string): boolean {
 }
 
 const READ_CONCURRENCY = 32, STAT_CONCURRENCY = 64;
+// Many small reads overlap well; the libuv default of four threads leaves file-system latency (slow disks, antivirus
+// hooks) unhidden. Honoured only if set before the first asynchronous file-system call of the process.
+process.env.UV_THREADPOOL_SIZE ||= '16';
 const TABLE_FILE = 'index-v1.bin', SKETCH_FILE = 'sketch-v1.bin', STATS_FILE = 'stats-v1.json';
 // Up to this many eligible files, and this many bytes, an unchanged size+mtime is not trusted: the file is re-read and
 // re-hashed (about 100 ms per 25 MB), so edits that preserve the modification time are never missed.
@@ -101,6 +105,9 @@ interface RepoState {
   sketches?: SketchTable;
   ratio?: { key: string; tokens: number; bytes: number };
   diagnostics: string[];
+  // Phase timings of the current snapshot (reported in diagnostics when REPOSQUEEZE_TIMINGS=1).
+  clock: number;
+  laps: string[];
 }
 
 export class Repository {
@@ -160,7 +167,7 @@ export class Repository {
   private stateFor(root: string): RepoState {
     let state = this.states.get(root);
     if (!state) {
-      state = { root, store: new CacheStore(root), diagnostics: [], text: new TextCache((path, expected) => this.loadTextSync(root, path, expected)) };
+      state = { root, store: new CacheStore(root), diagnostics: [], clock: 0, laps: [], text: new TextCache((path, expected) => this.loadTextSync(root, path, expected)) };
       this.states.set(root, state);
     }
     return state;
@@ -321,8 +328,12 @@ export class Repository {
     const root = await realpath(this.root);
     const state = this.stateFor(root);
     state.diagnostics = [];
+    state.laps = [];
+    state.clock = performance.now();
     const scan = await this.enumerate(root);
+    this.lap(state, 'enumerate');
     const eligible = await this.eligibleFiles(root, scan);
+    this.lap(state, 'stat');
     const thresholdValue = Number(process.env.REPOSQUEEZE_LARGE_THRESHOLD || 5000);
     const threshold = Number.isInteger(thresholdValue) && thresholdValue >= 10 ? thresholdValue : 5000;
     if (eligible.metadata.length <= threshold) return this.fullSnapshot(state, eligible, scan, start);
@@ -333,28 +344,45 @@ export class Repository {
     const { metadata } = eligible;
     const warnings = [...scan.warnings];
     const old = await this.loadTable(state);
+    this.lap(state, 'loadIndex');
+    // The sample measurement is CPU-bound; start it now so it overlaps with reading and parsing.
+    const ratio = process.env.REPOSQUEEZE_EXACT_STATS === '1' ? Promise.resolve(undefined) : this.tokenRatio(state, metadata);
     const verify = metadata.length <= VERIFY_FILE_LIMIT && eligible.totalBytes <= VERIFY_MAX_BYTES;
     const outcome = await this.indexFiles(state, metadata, { old, verify });
+    this.lap(state, 'verify+parse');
     const unchanged = outcome.items.length === old.fileCount && outcome.items.every((item, i) => 'source' in item && item.source === old && item.file === i);
     let table = old;
     if (!unchanged) table = FileTable.assemble(old.dictionary, old.strings, outcome.items);
     if (!unchanged || outcome.touched) await this.saveTable(state, table);
+    this.lap(state, 'assemble+save');
     const truncated = eligible.truncated;
     if (truncated) warnings.push('Repository exceeds safety limits (100,000 files / 2 GiB indexed text / 2 MiB per file / depth 60); index is incomplete.');
     if (!verify) warnings.push('Index reuse trusts file size and modification time above 5,000 files or 256 MiB; set REPOSQUEEZE_REFRESH_INDEX=1 after timestamp-preserving external edits.');
     const fallback = this.fallbackCount(table);
     if (fallback) warnings.push(`${fallback} source files have parse errors or unavailable grammars; line-window search remains active.`);
     const { files, chunks, rows } = table.materialize(state.text);
-    const stat = await this.tokenStatistic(state, table.paths.map((path, i) => ({ path, size: table.sizes[i] })), () => table.tokenCounts);
+    this.lap(state, 'materialize');
+    const stat = this.tokenStatistic(table.paths.map((path, i) => ({ path, size: table.sizes[i] })), table.tokenCounts, await ratio);
+    this.lap(state, 'statistic');
     const snapshot: Snapshot = {
       root: state.root, files, chunks, revision: hash(files.map(file => `${file.path}:${file.hash}`).join('\n')).slice(0, 16), warnings,
       skipped: eligible.skipped + outcome.skipped, truncated, elapsedMs: performance.now() - start, totalFiles: files.length, totalBytes: eligible.totalBytes,
       totalTokens: stat.total, totalTokensEstimated: stat.estimated, candidateFiles: files.length, indexMode: 'full',
       inventory: files.map((file, i) => ({ path: file.path, language: file.language, lines: table.lines[i] })),
-      diagnostics: [...state.diagnostics, `${outcome.reused} indexed files reused, ${outcome.parsed} parsed`]
+      diagnostics: [...state.diagnostics, `${outcome.reused} indexed files reused, ${outcome.parsed} parsed`, ...this.timingNotes(state)]
     };
     attachRowSet(snapshot, rows);
     return snapshot;
+  }
+
+  private lap(state: RepoState, label: string): void {
+    const now = performance.now();
+    state.laps.push(`${label} ${Math.round(now - state.clock)}ms`);
+    state.clock = now;
+  }
+
+  private timingNotes(state: RepoState): string[] {
+    return process.env.REPOSQUEEZE_TIMINGS === '1' ? [`timings: ${state.laps.join(', ')}`] : [];
   }
 
   private fallbackCount(table: FileTable): number {
@@ -370,9 +398,10 @@ export class Repository {
     const previous = await this.loadSketches(state);
     const directories = new Map<string, Promise<boolean>>();
     let reused = 0, refreshed = 0;
-    const built = await mapLimit(metadata, READ_CONCURRENCY, async (meta): Promise<Sketch | null> => {
+    // A number stands for an unchanged sketch of `previous` (its file number); sketches are copied only if the table changes.
+    const built = await mapLimit(metadata, READ_CONCURRENCY, async (meta): Promise<number | Sketch | null> => {
       const known = previous.fileOf(meta.path);
-      if (!force && known >= 0 && previous.sizes[known] === meta.size && previous.mtimes[known] === meta.mtimeMs && !(exact && previous.tokenCounts[known] < 0)) { reused++; return previous.sketchAt(known); }
+      if (!force && known >= 0 && previous.sizes[known] === meta.size && previous.mtimes[known] === meta.mtimeMs && !(exact && previous.tokenCounts[known] < 0)) { reused++; return known; }
       try {
         const bytes = await this.readBytes(state.root, meta, directories);
         const text = await this.readText(state.root, meta, bytes);
@@ -380,45 +409,53 @@ export class Repository {
         return makeSketch(meta.path, text, meta.size, meta.mtimeMs, sha256(bytes), exact ? fileTokens(meta.path, text) : -1);
       } catch { skipped++; return null; }
     });
-    const sketchList = built.filter((sketch): sketch is Sketch => sketch !== null);
+    const kept = built.filter((sketch): sketch is number | Sketch => sketch !== null);
     let sketches = previous;
-    if (refreshed || sketchList.length !== previous.count) {
-      sketches = SketchTable.from(sketchList);
+    if (refreshed || kept.length !== previous.count || kept.some((sketch, i) => sketch !== i)) {
+      sketches = SketchTable.from(kept.map(sketch => typeof sketch === 'number' ? previous.sketchAt(sketch) : sketch));
       await this.saveSketches(state, sketches);
     }
+    this.lap(state, 'sketches');
+    const sketchFiles = sketches.paths.map((path, i) => ({ path, size: sketches.sizes[i] }));
+    const ratio = exact ? Promise.resolve(undefined) : this.tokenRatio(state, sketchFiles);
 
     const selected = selectCandidates(sketches, query);
+    this.lap(state, 'select');
     const metaByPath = new Map(metadata.map(meta => [meta.path, meta]));
     const candidates = selected.map(file => metaByPath.get(sketches.paths[file])).filter((meta): meta is CandidateMeta => !!meta);
     const old = await this.loadTable(state);
     const outcome = await this.indexFiles(state, candidates, { old, verify: true });
+    this.lap(state, 'candidates');
     skipped += outcome.skipped;
     const table = FileTable.assemble(old.dictionary, old.strings, outcome.items);
     if (outcome.parsed || outcome.touched) {
       // Remember parsed candidates across queries (bounded), most recent first.
       const inCandidates = new Set(table.paths);
-      const kept: TableItem[] = [];
-      for (let file = 0; file < old.fileCount && outcome.items.length + kept.length < MAX_PARSED_FILES; file++) {
-        if (!inCandidates.has(old.paths[file]) && metaByPath.has(old.paths[file])) kept.push({ source: old, file });
+      const remembered: TableItem[] = [];
+      for (let file = 0; file < old.fileCount && outcome.items.length + remembered.length < MAX_PARSED_FILES; file++) {
+        if (!inCandidates.has(old.paths[file]) && metaByPath.has(old.paths[file])) remembered.push({ source: old, file });
       }
-      await this.saveTable(state, FileTable.assemble(old.dictionary, old.strings, [...outcome.items, ...kept]));
+      await this.saveTable(state, FileTable.assemble(old.dictionary, old.strings, [...outcome.items, ...remembered]));
     }
+    this.lap(state, 'save');
 
     const warnings = [...scan.warnings];
     const { files, chunks, rows } = table.materialize(state.text);
+    this.lap(state, 'materialize');
     warnings.push(`Large-repository cascade: ${files.length.toLocaleString()} candidates parsed from ${sketches.count.toLocaleString()} eligible files.`);
     warnings.push('File sketches contain hashes, counts and term fingerprints only; returned evidence is re-read verbatim from current source. Set REPOSQUEEZE_REFRESH_INDEX=1 after timestamp-preserving external edits.');
     if (!scan.git) warnings.push('Use a Git working tree for the strongest change detection and ignore behavior at this scale.');
     if (eligible.truncated) warnings.push('Repository exceeds safety limits (100,000 files / 2 GiB indexed text / 2 MiB per file / depth 60); index is incomplete.');
     const fallback = this.fallbackCount(table);
     if (fallback) warnings.push(`${fallback} candidate files have parse errors or unavailable grammars; line-window search remains active.`);
-    const stat = await this.tokenStatistic(state, sketches.paths.map((path, i) => ({ path, size: sketches.sizes[i] })), () => sketches.tokenCounts);
+    const stat = this.tokenStatistic(sketchFiles, sketches.tokenCounts, await ratio);
+    this.lap(state, 'statistic');
     const snapshot: Snapshot = {
-      root: state.root, files, chunks, revision: hash(sketches.paths.map((path, i) => `${path}:${sketches.digestHex(i)}`).join('\n')).slice(0, 16), warnings, skipped,
+      root: state.root, files, chunks, revision: sketches.revision(), warnings, skipped,
       truncated: eligible.truncated, elapsedMs: performance.now() - start, totalFiles: sketches.count, totalBytes: eligible.totalBytes,
       totalTokens: stat.total, totalTokensEstimated: stat.estimated, candidateFiles: files.length, indexMode: 'cascade',
-      inventory: sketches.paths.map((path, i) => ({ path, language: sketches.languageNames[sketches.languageIds[i]], lines: sketches.lines[i] })),
-      diagnostics: [...state.diagnostics, `${reused.toLocaleString()} file sketches reused and ${refreshed.toLocaleString()} refreshed`, `${outcome.reused} candidates reused from the index cache, ${outcome.parsed} parsed`]
+      inventory: sketches.inventory(),
+      diagnostics: [...state.diagnostics, `${reused.toLocaleString()} file sketches reused and ${refreshed.toLocaleString()} refreshed`, `${outcome.reused} candidates reused from the index cache, ${outcome.parsed} parsed`, ...this.timingNotes(state)]
     };
     attachRowSet(snapshot, rows);
     return snapshot;
@@ -436,29 +473,36 @@ export class Repository {
     const { old, verify } = options;
     const force = process.env.REPOSQUEEZE_REFRESH_INDEX === '1', exact = process.env.REPOSQUEEZE_EXACT_STATS === '1';
     const directories = new Map<string, Promise<boolean>>();
+    const indexer = new AdaptiveIndexer();
     let skipped = 0, parsed = 0, reused = 0, touched = false;
-    const results = await mapLimit(metas, READ_CONCURRENCY, async (meta): Promise<TableItem | null> => {
-      const known = old.fileOf(meta.path);
-      const needsCount = exact && known >= 0 && old.tokenCounts[known] < 0;
-      if (known >= 0 && !force && !verify && !needsCount && old.sizes[known] === meta.size && old.mtimes[known] === meta.mtimeMs) { reused++; return { source: old, file: known }; }
-      let bytes: Buffer;
-      try { bytes = await this.readBytes(state.root, meta, directories); } catch { skipped++; return null; }
-      const digest = sha256(bytes);
-      if (known >= 0 && !force && old.hashHex(known) === digest) {
-        if (old.sizes[known] !== meta.size || old.mtimes[known] !== meta.mtimeMs) { old.sizes[known] = meta.size; old.mtimes[known] = meta.mtimeMs; touched = true; }
-        if (needsCount) {
-          try { old.tokenCounts[known] = fileTokens(meta.path, await this.readText(state.root, meta, bytes)); touched = true; } catch { /* leave unknown */ }
+    let results: (TableItem | null)[];
+    try {
+      results = await mapLimit(metas, READ_CONCURRENCY, async (meta): Promise<TableItem | null> => {
+        const known = old.fileOf(meta.path);
+        const needsCount = exact && known >= 0 && old.tokenCounts[known] < 0;
+        if (known >= 0 && !force && !verify && !needsCount && old.sizes[known] === meta.size && old.mtimes[known] === meta.mtimeMs) { reused++; return { source: old, file: known }; }
+        let bytes: Buffer;
+        try { bytes = await this.readBytes(state.root, meta, directories); } catch { skipped++; return null; }
+        const digest = sha256(bytes);
+        if (known >= 0 && !force && old.hashHex(known) === digest) {
+          if (old.sizes[known] !== meta.size || old.mtimes[known] !== meta.mtimeMs) { old.sizes[known] = meta.size; old.mtimes[known] = meta.mtimeMs; touched = true; }
+          if (needsCount) {
+            try { old.tokenCounts[known] = fileTokens(meta.path, await this.readText(state.root, meta, bytes)); touched = true; } catch { /* leave unknown */ }
+          }
+          reused++;
+          return { source: old, file: known };
         }
-        reused++;
-        return { source: old, file: known };
-      }
-      let text: string;
-      try { text = await this.readText(state.root, meta, bytes); } catch { skipped++; return null; }
-      let result: FileIndexResult;
-      try { result = await indexFile(meta.path, text); } catch { skipped++; return null; }
-      parsed++;
-      return { meta: { path: meta.path, hash: digest, size: meta.size, mtimeMs: meta.mtimeMs, tokenCount: exact ? fileTokens(meta.path, text) : -1 }, result };
-    });
+        let text: string;
+        try { text = await this.readText(state.root, meta, bytes); } catch { skipped++; return null; }
+        let result: FileIndexResult;
+        try { result = await indexer.index(meta.path, text); } catch { skipped++; return null; }
+        parsed++;
+        return { meta: { path: meta.path, hash: digest, size: meta.size, mtimeMs: meta.mtimeMs, tokenCount: exact ? fileTokens(meta.path, text) : -1 }, result };
+      });
+    } finally {
+      await indexer.close();
+    }
+    if (indexer.degraded) state.diagnostics.push(`${indexer.degraded} files fell back to line windows (parser worker limit)`);
     return { items: results.filter((item): item is TableItem => item !== null), skipped, parsed, reused, touched };
   }
 
@@ -506,28 +550,24 @@ export class Repository {
   // -------------------------------------------------------------------------------------------------------------
 
   /**
-   * Total token count of the indexed files: exact (sum of cached per-file counts) when REPOSQUEEZE_EXACT_STATS=1,
-   * otherwise bytes times the tokens-per-byte ratio of a deterministic sample, cached per sample.
+   * Tokens-per-byte ratio of a deterministic sample of files, cached per sample (in memory and in the cache directory).
+   * Never rejects: when nothing can be measured it resolves to undefined. Started early so the (CPU-bound) tokenization
+   * overlaps with parsing on worker threads.
    */
-  private async tokenStatistic(state: RepoState, files: { path: string; size: number }[], counts: () => Float64Array): Promise<{ total: number; estimated: boolean }> {
-    if (!files.length) return { total: 0, estimated: false };
-    if (process.env.REPOSQUEEZE_EXACT_STATS === '1') {
-      const exact = counts();
-      let total = 0, known = true;
-      for (let i = 0; i < files.length; i++) { if (exact[i] < 0) known = false; else total += exact[i]; }
-      if (known) return { total, estimated: false };
-    }
-    const sample = chooseSample(files);
-    const key = sha256(Buffer.from(sample.map(file => file.path).join('\n'))).slice(0, 32);
-    let ratio = state.ratio?.key === key ? state.ratio : undefined;
-    if (!ratio) {
+  private async tokenRatio(state: RepoState, files: readonly { path: string; size: number }[]): Promise<{ tokens: number; bytes: number } | undefined> {
+    try {
+      const sample = chooseSample(files);
+      if (!sample.length) return undefined;
+      const key = sha256(Buffer.from(sample.map(file => file.path).join('\n'))).slice(0, 32);
+      if (state.ratio?.key === key) return state.ratio;
       const stored = await state.store.read(STATS_FILE, 4096);
       try {
         const parsed = stored ? JSON.parse(stored.toString('utf8')) as { version?: number; key?: string; tokens?: number; bytes?: number } : undefined;
-        if (parsed?.version === 1 && parsed.key === key && Number.isFinite(parsed.tokens) && Number.isFinite(parsed.bytes) && parsed.bytes! > 0) ratio = { key, tokens: parsed.tokens!, bytes: parsed.bytes! };
+        if (parsed?.version === 1 && parsed.key === key && Number.isFinite(parsed.tokens) && Number.isFinite(parsed.bytes) && parsed.bytes! > 0) {
+          state.ratio = { key, tokens: parsed.tokens!, bytes: parsed.bytes! };
+          return state.ratio;
+        }
       } catch { /* recompute */ }
-    }
-    if (!ratio) {
       let sampleTokens = 0, sampleBytes = 0;
       const directories = new Map<string, Promise<boolean>>();
       const texts = await mapLimit(sample, 16, async file => {
@@ -541,11 +581,27 @@ export class Repository {
         sampleTokens += fileTokens(item.path, item.text);
         sampleBytes += Buffer.byteLength(fileHeader(item.path) + item.text);
       }
-      ratio = { key, tokens: sampleTokens, bytes: sampleBytes };
-      if (sampleBytes > 0) await state.store.write(STATS_FILE, [Buffer.from(JSON.stringify({ version: 1, ...ratio }))]);
+      if (sampleBytes <= 0) return undefined;
+      state.ratio = { key, tokens: sampleTokens, bytes: sampleBytes };
+      await state.store.write(STATS_FILE, [Buffer.from(JSON.stringify({ version: 1, ...state.ratio }))]);
+      return state.ratio;
+    } catch {
+      return undefined;
     }
-    state.ratio = ratio;
-    return { total: ratio.bytes > 0 ? estimateTokens(files, ratio.tokens / ratio.bytes) : 0, estimated: true };
+  }
+
+  /**
+   * Total token count of the indexed files: the sum of cached exact per-file counts when REPOSQUEEZE_EXACT_STATS=1,
+   * otherwise bytes times the sample ratio (an estimate, flagged as such).
+   */
+  private tokenStatistic(files: readonly { path: string; size: number }[], exactCounts: Float64Array, ratio: { tokens: number; bytes: number } | undefined): { total: number; estimated: boolean } {
+    if (!files.length) return { total: 0, estimated: false };
+    if (process.env.REPOSQUEEZE_EXACT_STATS === '1') {
+      let total = 0, known = true;
+      for (let i = 0; i < files.length; i++) { if (exactCounts[i] < 0) known = false; else total += exactCounts[i]; }
+      if (known) return { total, estimated: false };
+    }
+    return { total: ratio ? estimateTokens(files, ratio.tokens / ratio.bytes) : 0, estimated: true };
   }
 }
 

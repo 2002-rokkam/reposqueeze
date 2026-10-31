@@ -195,6 +195,8 @@ export interface RetrieveOptions {
   pathWeight?: number;
   k1?: number;
   b?: number;
+  /** BM25+ lower bound: added to every matching term's saturated frequency part, times idf. Default 0. */
+  delta?: number;
   /** Number of results; default 300. Use Infinity for every chunk with a positive score. */
   limit?: number;
   /**
@@ -204,7 +206,8 @@ export interface RetrieveOptions {
   bonus?: ReadonlyMap<number, number>;
 }
 
-interface Selection { chunk: Chunk; score: number }
+export interface WeightedTerm { term: string; weight: number }
+export interface Retrieved { chunk: Chunk; score: number }
 
 export class SearchIndex {
   readonly chunkCount: number;
@@ -222,6 +225,9 @@ export class SearchIndex {
   private readonly norms = new Map<string, Float64Array>();
   private score?: Float64Array;
   private stamp?: Uint32Array;
+  private nameMark?: Uint32Array;
+  private pathMark?: Uint32Array;
+  private markCounter = 0;
   private touched?: Uint32Array;
   private generation = 0;
   private chunkStart?: Uint32Array;
@@ -318,16 +324,27 @@ export class SearchIndex {
   /** Token count (duplicates included) of a chunk: path words + symbol words + body words. */
   chunkLength(index: number): number { return this.rows.chunkLen[index]; }
 
-  termFrequency(index: number, term: string): number {
-    const id = this.rows.dictionary.idOf(term);
-    if (id < 0) return 0;
+  /** Row number of a chunk given either its position in this index or the chunk object itself (-1 when foreign). */
+  private rowOf(chunk: Chunk | number): number { return typeof chunk === 'number' ? chunk : this.indexOf(chunk); }
+
+  /** Occurrences of a term in a chunk (path and symbol words included, like chunk.terms). */
+  termFrequency(chunk: Chunk | number, term: string): number {
+    const index = this.rowOf(chunk), id = this.rows.dictionary.idOf(term);
+    if (id < 0 || index < 0 || index >= this.chunkCount) return 0;
     const { rowStart, rowTerm, rowTf, tfOverflow } = this.rows;
     for (let e = rowStart[index]; e < rowStart[index + 1]; e++) {
       if (rowTerm[e] === id) return rowTf[e] === TF_LIMIT ? tfOverflow?.get(e) ?? TF_LIMIT : rowTf[e];
     }
     return 0;
   }
-  hasTerm(index: number, term: string): boolean { return this.termFrequency(index, term) > 0; }
+  hasTerm(chunk: Chunk | number, term: string): boolean { return this.termFrequency(chunk, term) > 0; }
+
+  /** Unique terms of a chunk, in first-occurrence order of its term list. */
+  chunkTerms(chunk: Chunk | number): string[] {
+    const index = this.rowOf(chunk);
+    if (index < 0 || index >= this.chunkCount) return [];
+    return Array.from(this.termIds(index), id => this.rows.dictionary.termOf(id));
+  }
 
   /** Distinct term ids of a chunk, in row order. */
   termIds(index: number): Uint32Array { return this.rows.rowTerm.subarray(this.rows.rowStart[index], this.rows.rowStart[index + 1]); }
@@ -385,14 +402,15 @@ export class SearchIndex {
    * Chunks are accumulated in index order per term, so floating-point sums are reproducible and bit-identical to the
    * baseline. Results are sorted by score, then path (localeCompare), then start line, then index order.
    */
-  retrieve(queryTerms: readonly string[], options: RetrieveOptions = {}): Selection[] {
+  retrieve(query: readonly (string | WeightedTerm)[], options: RetrieveOptions = {}): Retrieved[] {
     const symbolWeight = options.symbolWeight ?? 2, pathWeight = options.pathWeight ?? 0.4;
-    const k1 = options.k1 ?? 1.2, b = options.b ?? 0.75, limit = options.limit ?? 300;
+    const k1 = options.k1 ?? 1.2, b = options.b ?? 0.75, limit = options.limit ?? 300, delta = options.delta ?? 0;
     const n = this.chunkCount;
     if (!n || limit <= 0) return [];
     this.ensureOrder();
     const norm = this.lengthNorm(k1, b), kPlusOne = k1 + 1;
     const score = (this.score ??= new Float64Array(n)), stamp = (this.stamp ??= new Uint32Array(n)), touched = (this.touched ??= new Uint32Array(n));
+    const nameMark = (this.nameMark ??= new Uint32Array(n)), pathMark = (this.pathMark ??= new Uint32Array(n));
     if (++this.generation === 0xffffffff) { stamp.fill(0); this.generation = 1; }
     const generation = this.generation;
     let count = 0;
@@ -402,21 +420,31 @@ export class SearchIndex {
     };
 
     const seen = new Set<string>();
-    for (const term of queryTerms) {
+    for (const entry of query) {
+      const term = typeof entry === 'string' ? entry : entry.term;
+      const weight = typeof entry === 'string' ? 1 : entry.weight;
       if (seen.has(term)) continue;
       seen.add(term);
       const id = this.rows.dictionary.idOf(term);
       if (id < 0 || id >= this.termCount) continue;
       const first = this.postStart[id], last = this.postStart[id + 1];
       const idf = this.idfFor(last - first);
+      if (++this.markCounter === 0xffffffff) { nameMark.fill(0); pathMark.fill(0); this.markCounter = 1; }
+      const mark = this.markCounter;
+      for (let p = this.nameStart[id]; p < this.nameStart[id + 1]; p++) nameMark[this.nameChunk[p]] = mark;
+      for (let p = this.pathStart[id]; p < this.pathStart[id + 1]; p++) pathMark[this.pathChunk[p]] = mark;
+      // Name and path bonuses only apply to chunks that contain the term, and are summed per chunk in the order of
+      // the baseline formula (frequency part, name, path) so that scores stay bit-identical to it.
       for (let p = first; p < last; p++) {
         const c = this.postChunk[p];
         let f = this.postTf[p];
         if (f === TF_LIMIT) f = this.postOverflow?.get(p) ?? f;
-        add(c, idf * f * kPlusOne / (f + norm[c]));
+        let gain = idf * f * kPlusOne / (f + norm[c]);
+        if (delta) gain += idf * delta;
+        if (nameMark[c] === mark) gain += idf * symbolWeight;
+        if (pathMark[c] === mark) gain += idf * pathWeight;
+        add(c, gain * weight);
       }
-      for (let p = this.nameStart[id]; p < this.nameStart[id + 1]; p++) add(this.nameChunk[p], idf * symbolWeight);
-      for (let p = this.pathStart[id]; p < this.pathStart[id + 1]; p++) add(this.pathChunk[p], idf * pathWeight);
     }
     if (options.bonus) for (const [c, amount] of options.bonus) if (c >= 0 && c < n) add(c, amount);
 

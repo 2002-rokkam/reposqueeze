@@ -1,5 +1,6 @@
 // File sketches for the large-repository cascade: one cheap record per eligible file (hash, counts, sorted term
 // fingerprints), kept in typed arrays and persisted next to the parsed-file index. Sketches never contain source text.
+import { createHash } from 'node:crypto';
 import { languageFor } from './parser.js';
 import { termHash } from './search-index.js';
 import { CacheCorruptError, decodeContainer, encodeContainer } from './store.js';
@@ -71,8 +72,19 @@ export class SketchTable {
   /** File numbers in String.prototype.localeCompare order of their paths (used to pad candidate lists). */
   pathOrder = new Uint32Array(0);
   private index?: Map<string, number>;
+  private cachedRevision?: string;
+  private cachedInventory?: { path: string; language: string; lines: number }[];
 
   get count(): number { return this.paths.length; }
+
+  /** Digest of every path and content hash, as the snapshot revision of a cascade-mode repository. */
+  revision(): string {
+    return this.cachedRevision ??= createHash('sha256').update(this.paths.map((path, i) => `${path}:${this.digestHex(i)}`).join('\n')).digest('hex').slice(0, 16);
+  }
+
+  inventory(): { path: string; language: string; lines: number }[] {
+    return this.cachedInventory ??= this.paths.map((path, i) => ({ path, language: this.languageNames[this.languageIds[i]], lines: this.lines[i] }));
+  }
 
   fileOf(path: string): number {
     if (!this.index) this.index = new Map(this.paths.map((entry, i) => [entry, i]));

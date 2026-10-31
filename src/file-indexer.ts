@@ -1,6 +1,6 @@
 // Per-file indexing: parse a file (black-box `parseSource`) and turn its chunks into dictionary-ready term rows.
 // Pure and self-contained so it can run on the main thread or inside a worker thread.
-import { languageFor, parseSource } from './parser.js';
+import { hash, languageFor, parseSource } from './parser.js';
 import { terms as tokenize } from './tokenize.js';
 import type { Chunk } from './types.js';
 
@@ -17,7 +17,9 @@ export interface FileIndexResult {
   ids: string[];
   names: string[];
   kinds: string[];
-  refs: string[][];
+  refTable: string[];
+  refStart: Uint32Array;
+  refIds: Uint32Array;
   /** Unknown optional chunk fields (signature, scope, doc, ...) by chunk number, JSON-normalized. */
   chunkExtras?: [number, Record<string, unknown>][];
   /** Chunks whose text is not the exact line range of the file text (kept verbatim). */
@@ -66,6 +68,29 @@ export function lineStarts(text: string): Int32Array {
   return starts;
 }
 
+type Parse = (path: string, text: string) => Promise<{ chunks: Chunk[]; parsed: boolean }>;
+
+/**
+ * Line-window chunking only (64-line windows every 48 lines, split every 80 lines like the parser's window spans).
+ * The safety net for a file the real parser could not process within its resource limits: the file stays searchable.
+ */
+export async function windowParse(path: string, text: string): Promise<{ chunks: Chunk[]; parsed: boolean }> {
+  const lines = text.split('\n'), chunks: Chunk[] = [], seen = new Set<string>();
+  for (let first = 1; first <= lines.length; first += 48) {
+    const spanEnd = Math.min(lines.length, first + 63);
+    for (let start = first; start <= spanEnd; start += 80) {
+      const end = Math.min(spanEnd, start + 95), key = `${start}:${end}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const body = lines.slice(start - 1, end).join('\n');
+      if (!body.trim()) continue;
+      chunks.push({ id: hash(`${path}:${start}:${end}:${body}`).slice(0, 16), path, start, end, name: '', kind: 'window', text: body, terms: [], refs: [] });
+      if (end === spanEnd) break;
+    }
+  }
+  return { chunks, parsed: false };
+}
+
 /**
  * Parses `text` and builds the term rows of every chunk.
  *
@@ -73,13 +98,13 @@ export function lineStarts(text: string): Int32Array {
  * crosses a line break, so each distinct line range between chunk boundaries is tokenized once and the per-chunk counts
  * are sums of those segments; chunks overlap heavily, which makes this about twice as cheap as tokenizing every chunk.
  */
-export async function indexFile(path: string, text: string): Promise<FileIndexResult> {
-  const parse = await parseSource(path, text);
-  const result = parse as unknown as Record<string, unknown>;
+export async function indexFile(path: string, text: string, parse: Parse = parseSource): Promise<FileIndexResult> {
+  const parsedFile = await parse(path, text);
+  const result = parsedFile as unknown as Record<string, unknown>;
   const starts = lineStarts(text), lineCount = starts.length;
   const sliceLines = (first: number, last: number) => text.slice(starts[first - 1], last < lineCount ? starts[last] - 1 : text.length);
 
-  const chunks = (parse.chunks as Chunk[]).filter(chunk => Number.isInteger(chunk.start) && Number.isInteger(chunk.end) && chunk.start >= 1 && chunk.end >= chunk.start && chunk.end <= lineCount);
+  const chunks = (parsedFile.chunks as Chunk[]).filter(chunk => Number.isInteger(chunk.start) && Number.isInteger(chunk.end) && chunk.start >= 1 && chunk.end >= chunk.start && chunk.end <= lineCount);
   const localIds = new Map<string, number>(), localTerms: string[] = [];
   const idOf = (term: string) => {
     let id = localIds.get(term);
@@ -140,6 +165,20 @@ export async function indexFile(path: string, text: string): Promise<FileIndexRe
     nameStart[i + 1] = nameTerm.length;
   });
 
+  // References (identifiers a definition mentions) are dictionary-coded per file so the many repeats are not shipped or stored twice.
+  const refIndex = new Map<string, number>(), refTable: string[] = [], refStart = new Uint32Array(chunks.length + 1), refIds: number[] = [];
+  chunks.forEach((chunk, i) => {
+    if (Array.isArray(chunk.refs)) {
+      for (const ref of chunk.refs) {
+        if (typeof ref !== 'string') continue;
+        let id = refIndex.get(ref);
+        if (id === undefined) { id = refTable.length; refIndex.set(ref, id); refTable.push(ref); }
+        refIds.push(id);
+      }
+    }
+    refStart[i + 1] = refIds.length;
+  });
+
   const chunkExtras: [number, Record<string, unknown>][] = [];
   chunks.forEach((chunk, i) => {
     const extras = extraFields(chunk, KNOWN_CHUNK_FIELDS);
@@ -148,7 +187,7 @@ export async function indexFile(path: string, text: string): Promise<FileIndexRe
 
   return {
     language: languageFor(path),
-    parsed: !!parse.parsed,
+    parsed: !!parsedFile.parsed,
     lines: lineCount,
     fileExtras: extraFields(result, KNOWN_RESULT_FIELDS),
     chunkCount: chunks.length,
@@ -157,7 +196,9 @@ export async function indexFile(path: string, text: string): Promise<FileIndexRe
     ids: chunks.map(chunk => String(chunk.id)),
     names: chunks.map(chunk => String(chunk.name ?? '')),
     kinds: chunks.map(chunk => String(chunk.kind ?? '')),
-    refs: chunks.map(chunk => Array.isArray(chunk.refs) ? chunk.refs.filter(ref => typeof ref === 'string') : []),
+    refTable,
+    refStart,
+    refIds: Uint32Array.from(refIds),
     chunkExtras: chunkExtras.length ? chunkExtras : undefined,
     textOverrides: overrides.length ? overrides : undefined,
     localTerms,
