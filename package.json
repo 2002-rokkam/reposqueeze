@@ -49,7 +49,15 @@
     "bench:scale:development": "node --import tsx scripts/benchmark-scale.ts development",
     "bench:scale:test": "node --import tsx scripts/benchmark-scale.ts test",
     "bench:devsuite": "node --import tsx scripts/bench-devsuite.ts .",
-    "measure:overhead": "node --import tsx scripts/measure-overhead.ts"
+    "measure:overhead": "node --import tsx scripts/measure-overhead.ts",
+    "bench:v3:swe": "node --import tsx bench/run.ts",
+    "bench:v3:data": "node --import tsx bench/run.ts data",
+    "bench:v3:splits": "node --import tsx bench/run.ts splits",
+    "bench:v3:prepare": "node --import tsx bench/run.ts prepare",
+    "bench:v3:report": "node --import tsx bench/run.ts report",
+    "bench:v3:smoke": "node --import tsx bench/run.ts --dataset lite,multilingual --split dev --repos pallets/flask,psf/requests,mwaskom/seaborn,pytest-dev/pytest,marshmallow-code/marshmallow,pydicom/pydicom,django/django,sympy/sympy,sphinx-doc/sphinx,gin-gonic/gin,caddyserver/caddy,burntsushi/ripgrep,sharkdp/bat,tokio-rs/tokio,tokio-rs/axum,jqlang/jq,micropython/micropython,fmtlib/fmt,nlohmann/json,axios/axios,preactjs/preact,immutable-js/immutable-js,google/gson,briannesbitt/carbon,jekyll/jekyll,faker-ruby/faker --sample 30 --variant baseline --variant ripgrep-naive --budget 4000 --workers 2",
+    "bench:v3:test": "node --import tsx --test tests/bench-*.test.ts",
+    "bench:v3:check": "tsc --noEmit -p bench/tsconfig.json"
   },
   "activationEvents": [
     "onStartupFinished"

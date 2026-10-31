@@ -1,0 +1,5 @@
+{
+  "name": "ripgrep-naive",
+  "version": "1.0.0",
+  "description": "Reference retriever: ripgrep term matching, IDF-weighted distinct-term file ranking, grep-style line windows filled to the token budget"
+}
