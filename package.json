@@ -47,7 +47,9 @@
     "bench:v2:test": "node --import tsx scripts/benchmark-v2-arb.ts test",
     "bench:v2:summary": "node --import tsx scripts/summarize-v2.ts",
     "bench:scale:development": "node --import tsx scripts/benchmark-scale.ts development",
-    "bench:scale:test": "node --import tsx scripts/benchmark-scale.ts test"
+    "bench:scale:test": "node --import tsx scripts/benchmark-scale.ts test",
+    "bench:devsuite": "node --import tsx scripts/bench-devsuite.ts .",
+    "measure:overhead": "node --import tsx scripts/measure-overhead.ts"
   },
   "activationEvents": [
     "onStartupFinished"
