@@ -29,7 +29,7 @@ export interface WorkerResult {
   /** o200k_base tokens of pack.text, counted here independently of what the engine reports. */
   tokens: number;
   text: string;
-  evidence: { path: string; start: number; end: number; id?: string }[];
+  evidence: { path: string; start: number; end: number; id?: string; kind?: string }[];
   stats: Record<string, unknown>;
 }
 
@@ -74,11 +74,12 @@ async function execute(task: TaskMessage): Promise<WorkerResult> {
   const cpu = process.cpuUsage(cpuStart);
   if (!pack || typeof pack.text !== 'string') throw new Error('engine.context() did not return a pack with a text field');
   if (!Array.isArray(pack.evidence)) throw new Error('engine.context() did not return pack.evidence');
-  const evidence = pack.evidence.map((item: { path?: unknown; start?: unknown; end?: unknown; id?: unknown }) => ({
+  const evidence = pack.evidence.map((item: { path?: unknown; start?: unknown; end?: unknown; id?: unknown; kind?: unknown }) => ({
     path: repoRelative(String(item.path ?? ''), task.repoRoot),
     start: Number(item.start),
     end: Number(item.end),
     ...(typeof item.id === 'string' ? { id: item.id } : {}),
+    ...(typeof item.kind === 'string' ? { kind: item.kind } : {}),
   }));
   return {
     type: 'result',

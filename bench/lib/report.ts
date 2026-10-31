@@ -28,8 +28,13 @@ export interface RunRow {
   /** Distinct files in order of first appearance in pack.evidence. */
   packedFiles: string[];
   numExcerpts: number;
-  evidence: { path: string; start: number; end: number }[];
+  evidence: { path: string; start: number; end: number; kind?: string }[];
   metrics: RetrievalMetrics;
+  /**
+   * The same metrics on evidence that shows code (kind != 'pointer'). `null`: unknown (pack written before
+   * evidence carried a kind and containing pointers); absent: older row, filled in by backfillShownMetrics.
+   */
+  shownMetrics?: RetrievalMetrics | null;
   /** Tokens of pack.text counted by the harness with o200k_base. */
   outputTokens: number;
   reportedOutputTokens: number | null;
@@ -114,6 +119,9 @@ export const METRICS: MetricDef[] = [
   { key: 'hit10', label: 'Hit@10', binary: true },
 ];
 
+/** Metrics recomputed without pointer entries; reported next to METRICS, never instead of them. */
+export const SHOWN_METRICS: MetricDef[] = METRICS.filter(m => m.key !== 'packLineHit');
+
 export interface VariantSummary {
   variant: string;
   n: number;
@@ -122,6 +130,8 @@ export interface VariantSummary {
   errors: number;
   budgetViolations: number;
   metrics: Record<string, Interval>;
+  /** Shown-only (pointers excluded) metrics; null when some completed row has an unknown evidence split. */
+  shownMetrics: Record<string, Interval> | null;
   outputTokens: number;
   seconds: { mean: number; p50: number; p90: number; max: number };
   /** CPU seconds of the worker process during the query (load-independent latency proxy). */
@@ -147,6 +157,8 @@ export interface PairSummary {
   b: string;
   n: number;
   rows: PairRow[];
+  /** Shown-only metrics (pointers excluded); null when either variant has an unknown evidence split. */
+  shownRows: PairRow[] | null;
 }
 
 export interface GroupCell {
@@ -178,10 +190,14 @@ export interface Report {
 
 const METRIC_KEYS = METRICS.map(m => m.key);
 const metricValue = (row: RunRow, key: keyof RetrievalMetrics) => (row.status === 'ok' ? Number(row.metrics[key] ?? 0) : 0);
+const shownValue = (row: RunRow, key: keyof RetrievalMetrics) => (row.status === 'ok' ? Number(row.shownMetrics?.[key] ?? 0) : 0);
+const hasShown = (rows: RunRow[]) => rows.every(r => r.status !== 'ok' || !!r.shownMetrics);
 const seconds = (row: RunRow) => row.ms / 1000;
 
 function summarize(variant: string, rows: RunRow[], resamples: number, seed: number): VariantSummary {
-  const intervals = bootstrapMeans(METRICS.map(m => rows.map(r => metricValue(r, m.key))), { resamples, seed });
+  const shown = hasShown(rows);
+  const columns = [...METRICS.map(m => rows.map(r => metricValue(r, m.key))), ...(shown ? SHOWN_METRICS.map(m => rows.map(r => shownValue(r, m.key))) : [])];
+  const intervals = bootstrapMeans(columns, { resamples, seed });
   const ok = rows.filter(r => r.status === 'ok');
   const times = ok.map(seconds);
   const cpu = ok.map(r => r.cpuMs).filter((x): x is number => typeof x === 'number').map(x => x / 1000);
@@ -195,6 +211,7 @@ function summarize(variant: string, rows: RunRow[], resamples: number, seed: num
     errors: rows.filter(r => r.status === 'error').length,
     budgetViolations: rows.filter(r => r.budgetViolation).length,
     metrics: Object.fromEntries(METRICS.map((m, i) => [m.key, intervals[i]])),
+    shownMetrics: shown ? Object.fromEntries(SHOWN_METRICS.map((m, i) => [m.key, intervals[METRICS.length + i]])) : null,
     outputTokens: mean(ok.map(r => r.outputTokens)),
     seconds: { mean: mean(times), p50: quantile(times, 0.5), p90: quantile(times, 0.9), max: times.length ? Math.max(...times) : Number.NaN },
     cpuSeconds: { mean: mean(cpu), p50: quantile(cpu, 0.5), p90: quantile(cpu, 0.9) },
@@ -203,32 +220,39 @@ function summarize(variant: string, rows: RunRow[], resamples: number, seed: num
   };
 }
 
+function pairRows(labels: { label: string; binary: boolean }[], allA: number[][], allB: number[][], intervals: Interval[]): PairRow[] {
+  return labels.map((meta, i) => ({
+    metric: meta.label,
+    binary: meta.binary,
+    meanA: mean(allA[i]),
+    meanB: mean(allB[i]),
+    diff: intervals[i].mean,
+    lo: intervals[i].lo,
+    hi: intervals[i].hi,
+    ...(meta.binary ? { mcnemar: (({ onlyA, onlyB, p }) => ({ onlyA, onlyB, p }))(mcnemar(allA[i], allB[i])) } : {}),
+  }));
+}
+
 function pair(a: string, b: string, rowsA: Map<string, RunRow>, rowsB: Map<string, RunRow>, resamples: number, seed: number): PairSummary {
   const ids = [...rowsA.keys()].filter(id => rowsB.has(id)).sort();
-  const columns = (map: Map<string, RunRow>) => METRICS.map(m => ids.map(id => metricValue(map.get(id)!, m.key)));
-  const colsA = columns(rowsA);
-  const colsB = columns(rowsB);
-  const extraA = [ids.map(id => rowsA.get(id)!.outputTokens), ids.map(id => seconds(rowsA.get(id)!))];
-  const extraB = [ids.map(id => rowsB.get(id)!.outputTokens), ids.map(id => seconds(rowsB.get(id)!))];
-  const allA = [...colsA, ...extraA];
-  const allB = [...colsB, ...extraB];
-  const diffs = allA.map((col, i) => col.map((x, j) => allB[i][j] - x));
-  const intervals = bootstrapMeans(diffs, { resamples, seed });
+  const pairedA = ids.map(id => rowsA.get(id)!);
+  const pairedB = ids.map(id => rowsB.get(id)!);
+  const columns = (rows: RunRow[], defs: MetricDef[], value: typeof metricValue) => defs.map(m => rows.map(r => value(r, m.key)));
+  const allA = [...columns(pairedA, METRICS, metricValue), pairedA.map(r => r.outputTokens), pairedA.map(seconds)];
+  const allB = [...columns(pairedB, METRICS, metricValue), pairedB.map(r => r.outputTokens), pairedB.map(seconds)];
   const labels = [...METRICS.map(m => ({ label: m.label, binary: m.binary })), { label: 'outputTokens', binary: false }, { label: 'seconds', binary: false }];
+  const shown = hasShown(pairedA) && hasShown(pairedB);
+  const shownA = shown ? columns(pairedA, SHOWN_METRICS, shownValue) : [];
+  const shownB = shown ? columns(pairedB, SHOWN_METRICS, shownValue) : [];
+  const diffs = [...allA, ...shownA].map((col, i) => col.map((x, j) => [...allB, ...shownB][i][j] - x));
+  const intervals = bootstrapMeans(diffs, { resamples, seed });
+  const shownLabels = SHOWN_METRICS.map(m => ({ label: m.label, binary: m.binary }));
   return {
     a,
     b,
     n: ids.length,
-    rows: labels.map((meta, i) => ({
-      metric: meta.label,
-      binary: meta.binary,
-      meanA: mean(allA[i]),
-      meanB: mean(allB[i]),
-      diff: intervals[i].mean,
-      lo: intervals[i].lo,
-      hi: intervals[i].hi,
-      ...(meta.binary ? { mcnemar: (({ onlyA, onlyB, p }) => ({ onlyA, onlyB, p }))(mcnemar(allA[i], allB[i])) } : {}),
-    })),
+    rows: pairRows(labels, allA, allB, intervals),
+    shownRows: shown ? pairRows(shownLabels, shownA, shownB, intervals.slice(labels.length)) : null,
   };
 }
 

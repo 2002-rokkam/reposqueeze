@@ -1,5 +1,6 @@
 import type { GroupTable, PairSummary, Report, VariantSummary } from './report.js';
-import { METRICS } from './report.js';
+import { METRICS, SHOWN_METRICS } from './report.js';
+import type { PairRow } from './report.js';
 import type { Interval } from './stats.js';
 
 const num = (x: number, digits = 3) => (Number.isFinite(x) ? x.toFixed(digits) : 'n/a');
@@ -28,9 +29,19 @@ function overall(summaries: VariantSummary[]): string {
   return table(headers, rows);
 }
 
-function pairs(summary: PairSummary): string {
+function shownOverall(summaries: VariantSummary[]): string {
+  const headers = ['variant', ...SHOWN_METRICS.map(m => m.label), 'note'];
+  const rows = summaries.map(s => [
+    s.variant,
+    ...SHOWN_METRICS.map(m => (s.shownMetrics ? withCi(s.shownMetrics[m.key]) : 'n/a')),
+    s.shownMetrics ? '' : 'evidence kinds not recorded and packs contain pointers',
+  ]);
+  return table(headers, rows);
+}
+
+function pairTable(summary: PairSummary, rows: PairRow[]): string {
   const headers = ['metric', summary.a, summary.b, `${summary.b} - ${summary.a} [95% CI]`, `only ${summary.a} / only ${summary.b}`, 'McNemar exact p'];
-  const rows = summary.rows.map(r => [
+  const body = rows.map(r => [
     r.metric,
     num(r.meanA, r.metric === 'outputTokens' || r.metric === 'seconds' ? 1 : 3),
     num(r.meanB, r.metric === 'outputTokens' || r.metric === 'seconds' ? 1 : 3),
@@ -38,7 +49,12 @@ function pairs(summary: PairSummary): string {
     r.mcnemar ? `${r.mcnemar.onlyA} / ${r.mcnemar.onlyB}` : '',
     r.mcnemar ? pValue(r.mcnemar.p) : '',
   ]);
-  return `Paired over ${summary.n} common instances.\n\n${table(headers, rows)}`;
+  return table(headers, body);
+}
+
+function pairs(summary: PairSummary): string {
+  const shown = summary.shownRows ? `\n\n**Shown-only metrics** (pointer entries excluded):\n\n${pairTable(summary, summary.shownRows)}` : '\n\nShown-only metrics: n/a (one variant has no evidence kinds).';
+  return `Paired over ${summary.n} common instances. **All-evidence metrics** (pointer entries count as packed):\n\n${pairTable(summary, summary.rows)}${shown}`;
 }
 
 function groups(t: GroupTable, variants: string[]): string {
@@ -99,7 +115,13 @@ export function renderMarkdown(report: Report, options: RenderOptions = {}): str
   out.push('');
   out.push('Means over all instances; a timeout or error counts as a zero for every retrieval metric (`fail` shows how many). Intervals are 95% percentile-bootstrap CIs over instances. Hit@k and MRR rank distinct files by first appearance in `pack.evidence`; line recall uses pre-image edit-site lines (removed lines plus context anchors around pure insertions). Seconds are `engine.context()` wall time over completed runs.');
   out.push('');
+  out.push('**All-evidence metrics** (every `pack.evidence` entry counts, including one-line pointers):');
+  out.push('');
   out.push(overall(report.summaries));
+  out.push('');
+  out.push('**Shown-only metrics**: the same metrics computed on evidence with `kind != \'pointer\'` (pointers are "Also relevant (not shown)" references, not source code):');
+  out.push('');
+  out.push(shownOverall(report.summaries));
   const violations = report.summaries.filter(s => s.budgetViolations);
   if (violations.length) out.push(`\n**Budget violations** (harness-counted tokens above the budget): ${violations.map(s => `${s.variant}=${s.budgetViolations}`).join(', ')}.`);
   out.push('');
@@ -107,7 +129,7 @@ export function renderMarkdown(report: Report, options: RenderOptions = {}): str
   if (report.pairs.length) {
     out.push('## Paired comparisons');
     out.push('');
-    for (const p of options.compact ? report.pairs.slice(0, 1) : report.pairs) {
+    for (const p of options.compact ? report.pairs.filter(x => x.a === report.variants[0]) : report.pairs) {
       out.push(`### ${p.b} vs ${p.a}`);
       out.push('');
       out.push(pairs(p));

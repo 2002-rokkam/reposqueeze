@@ -5,6 +5,8 @@ export interface EvidenceItem {
   start: number;
   end: number;
   id?: string;
+  /** 'excerpt' | 'window' | 'known' | 'pointer' | 'duplicate' (engines that do not report it: undefined). */
+  kind?: string;
 }
 
 export interface GoldSpec {
@@ -111,4 +113,12 @@ export function computeMetrics(evidence: EvidenceItem[], gold: GoldSpec[]): Retr
     hit10: hitAt(10),
     firstGoldRank: rank,
   };
+}
+
+/** Evidence that shows code to the reader: everything except one-line pointers ("Also relevant (not shown)"). */
+export const shownEvidence = <T extends { kind?: string }>(evidence: T[]): T[] => evidence.filter(item => item.kind !== 'pointer');
+
+/** The same metrics computed on shown evidence only (pointers carry a path and range but no code). */
+export function computeShownMetrics(evidence: EvidenceItem[], gold: GoldSpec[]): RetrievalMetrics {
+  return computeMetrics(shownEvidence(evidence), gold);
 }

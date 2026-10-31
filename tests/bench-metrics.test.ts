@@ -87,3 +87,24 @@ test('large evidence lists and Unicode paths are handled', () => {
   assert.equal(m.firstGoldRank, 500);
   assert.equal(m.hit10, 0);
 });
+
+test('shown-only metrics drop pointer entries and keep every other kind', async () => {
+  const { computeShownMetrics, shownEvidence } = await import('../bench/lib/metrics.js');
+  const evidence = [
+    { path: 'src/other.py', start: 1, end: 9, kind: 'excerpt' },
+    { path: 'src/a.py', start: 10, end: 14, kind: 'pointer' },
+    { path: 'src/b.py', start: 1, end: 9, kind: 'window' },
+    { path: 'src/c.py', start: 1, end: 2 },
+  ];
+  assert.equal(shownEvidence(evidence).length, 3);
+  const all = computeMetrics(evidence, gold);
+  const shown = computeShownMetrics(evidence, gold);
+  assert.equal(all.packFileRecall, 1);
+  assert.equal(shown.packFileRecall, 0.5);
+  assert.equal(all.firstGoldRank, 2);
+  assert.equal(shown.firstGoldRank, 2);
+  assert.ok(shown.goldLineRecall < all.goldLineRecall);
+  const onlyPointer = computeShownMetrics([{ path: 'src/a.py', start: 10, end: 14, kind: 'pointer' }], gold);
+  assert.deepEqual(onlyPointer, ZERO_METRICS);
+  assert.deepEqual(computeShownMetrics(evidence.map(({ kind: _k, ...rest }) => rest), gold), computeMetrics(evidence.map(({ kind: _k, ...rest }) => rest), gold));
+});

@@ -7,7 +7,8 @@ import { DATASETS, loadDataset, mergeInstances, type DatasetKey, type LoadedData
 import { prepareSplit, type InstanceSkipReason, type PreparedInstance } from './gold.js';
 import { retry, runGit } from './git.js';
 import { waitForLoad } from './load.js';
-import { computeMetrics, distinctFiles, ZERO_METRICS } from './metrics.js';
+import { backfillShownMetrics } from './shown.js';
+import { computeMetrics, computeShownMetrics, distinctFiles, ZERO_METRICS } from './metrics.js';
 import { REPO_ROOT } from './paths.js';
 import { buildReport, type DatasetStat, type Manifest, type Report, type RunRow } from './report.js';
 import { renderMarkdown } from './render.js';
@@ -130,10 +131,12 @@ export function buildRow(instance: PreparedInstance, variant: VariantSpec, outco
     return row;
   }
   const { result } = outcome;
-  row.evidence = result.evidence.map(({ path, start, end }) => ({ path, start, end }));
+  row.evidence = result.evidence.map(({ path, start, end, kind }) => ({ path, start, end, ...(kind ? { kind } : {}) }));
   row.packedFiles = distinctFiles(row.evidence);
   row.numExcerpts = row.evidence.length;
-  row.metrics = computeMetrics(row.evidence, instance.gold.map(g => ({ path: g.path, ranges: g.ranges })));
+  const gold = instance.gold.map(g => ({ path: g.path, ranges: g.ranges }));
+  row.metrics = computeMetrics(row.evidence, gold);
+  row.shownMetrics = computeShownMetrics(row.evidence, gold);
   row.outputTokens = result.tokens;
   const reported = result.stats.outputTokens;
   row.reportedOutputTokens = typeof reported === 'number' ? reported : null;
@@ -206,7 +209,7 @@ export async function writeReport(out: string, resamples: number): Promise<Repor
   const manifest = JSON.parse(await readFile(join(out, 'manifest.json'), 'utf8')) as Manifest;
   const rows = [...latestRows(await readRows(join(out, 'rows.jsonl'))).values()];
   const instances = new Set(JSON.parse(await readFile(join(out, 'instances.json'), 'utf8')).map((i: { id: string }) => i.id) as string[]);
-  const selectedRows = rows
+  const selectedRows = (await backfillShownMetrics(out, rows))
     .filter(r => instances.has(r.instance_id))
     .sort((a, b) => cmp(a.repo, b.repo) || cmp(a.instance_id, b.instance_id) || cmp(a.variant, b.variant));
   const report = buildReport(manifest, selectedRows, { resamples, seed: manifest.seed });
