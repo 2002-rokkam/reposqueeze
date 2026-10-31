@@ -1,0 +1,7 @@
+3-52|yaml_key|services|services
+4-19|yaml_key|services.web|services > web
+21-35|yaml_key|services.api|services > api
+37-47|yaml_key|services.db|services > db
+49-52|yaml_key|services.cache|services > cache
+54-56|yaml_key|volumes|volumes
+58-60|yaml_key|networks|networks

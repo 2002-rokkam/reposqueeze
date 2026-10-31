@@ -1,0 +1,6 @@
+1-7|thrift_statement|namespace java com.acme.billing, namespace py acme.billing, include common.thrift, typedef Timestamp, const MAX_ITEMS|
+9-13|thrift_enum|InvoiceStatus|InvoiceStatus
+15-19|thrift_struct|LineItem|LineItem
+21-27|thrift_struct|Invoice|Invoice
+29-31|thrift_exception|InvoiceNotFound|InvoiceNotFound
+33-38|thrift_service|BillingService|BillingService

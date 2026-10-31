@@ -1,0 +1,31 @@
+query GetUser($id: ID!, $withPosts: Boolean = false) {
+  user(id: $id) {
+    id
+    name
+    ...UserFields
+    posts @include(if: $withPosts) {
+      edges {
+        node { id title }
+      }
+    }
+  }
+}
+
+fragment UserFields on User {
+  email
+  role
+}
+
+mutation CreatePost($input: NewPost!) {
+  createPost(input: $input) {
+    id
+  }
+}
+
+subscription OnComment($postId: ID!) {
+  commentAdded(postId: $postId) { id body }
+}
+
+{
+  me { id }
+}

@@ -1,0 +1,37 @@
+= Operations Handbook
+Jane Doe
+:toc:
+
+== Introduction
+
+This handbook describes day-two operations.
+
+== Deployment
+
+=== Prerequisites
+
+Install the tooling first.
+
+[source,bash]
+----
+# not a heading
+== also not a heading
+terraform init
+terraform apply
+----
+
+=== Rollback
+
+Use xref:runbooks.adoc#rollback[the rollback runbook] or <<contacts>>.
+
+|===
+| Step | Owner
+| Freeze deploys | SRE
+| Revert release | Release manager
+| Announce | On-call
+|===
+
+[[contacts]]
+== Contacts
+
+On-call rotation is published weekly.

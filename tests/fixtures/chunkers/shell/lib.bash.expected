@@ -1,0 +1,4 @@
+6-9|sh_function|die|die
+11-19|sh_function|with_retries|with_retries
+21-27|sh_function|write_config|write_config
+30-33|sh_function|colorize|colorize

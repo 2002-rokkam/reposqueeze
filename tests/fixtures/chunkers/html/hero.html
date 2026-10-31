@@ -1,0 +1,21 @@
+<template data-sly-template.cta="${@ link, label}">
+    <a class="cmp-cta" href="${link}" data-sly-attribute.title="${label}">${label}</a>
+</template>
+
+<div data-sly-use.hero="com.acme.core.models.HeroModel"
+     data-sly-use.tpl="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${hero.title || hero.description}"
+     id="${hero.id}"
+     class="cmp-hero ${hero.style}">
+    <div class="cmp-hero__body" data-sly-test="${hero.title}">
+        <h1 class="cmp-hero__title">${hero.title}</h1>
+        <p class="cmp-hero__text">${hero.description @ context='html'}</p>
+        <div data-sly-call="${tpl.placeholder @ isEmpty=!hasContent}"></div>
+    </div>
+    <ul class="cmp-hero__links">
+        <li data-sly-list.item="${hero.links}">
+            <sly data-sly-call="${cta.cta @ link=item.url, label=item.label}"/>
+        </li>
+    </ul>
+    <sly data-sly-resource="${'par' @ resourceType='wcm/foundation/components/parsys'}"/>
+</div>

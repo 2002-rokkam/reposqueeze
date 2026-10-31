@@ -1,0 +1,37 @@
+{% extends "base_site.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Order history" %}{% endblock %}
+
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'orders/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div id="orders">
+    {% if orders %}
+      <table class="orders">
+        {% for order in orders %}
+          <tr class="{% cycle 'odd' 'even' %}">
+            <td>{{ order.number }}</td>
+            <td>{{ order.total|floatformat:2 }}</td>
+            <td>
+              {% if order.paid %}
+                {% trans "Paid" %}
+              {% else %}
+                {% trans "Open" %}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>{% trans "You have no orders yet." %}</p>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ block.super }}
+  <script src="{% static 'orders/orders.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'layouts/base.twig' %}
+
+{% macro price(amount, currency = 'EUR') %}
+  <span class="price">{{ amount|number_format(2) }} {{ currency }}</span>
+{% endmacro %}
+
+{% block body %}
+  <article class="product">
+    <h1>{{ product.name }}</h1>
+    {% for variant in product.variants %}
+      <div class="variant">
+        {{ _self.price(variant.price) }}
+        {% if variant.stock > 0 %}
+          <button data-id="{{ variant.id }}">Add to cart</button>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </article>
+{% endblock %}

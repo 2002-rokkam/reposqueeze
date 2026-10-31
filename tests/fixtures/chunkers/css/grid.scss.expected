@@ -1,0 +1,4 @@
+4-7|css_mixin|@mixin make-col|@mixin make-col
+10-12|css_rule|.col-#{$i}|.col-#{$i}
+15-26|css_rule|.row|.row
+29-31|css_rule|.shadowed|

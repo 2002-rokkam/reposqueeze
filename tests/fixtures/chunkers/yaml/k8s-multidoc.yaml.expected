@@ -1,0 +1,8 @@
+4-37|yaml_doc|Deployment/checkout|Deployment/checkout
+7-10|yaml_key|metadata|Deployment/checkout > metadata
+11-37|yaml_key|spec|Deployment/checkout > spec
+13-15|yaml_key|spec.selector|Deployment/checkout > spec > selector
+17-19|yaml_key|spec.template.metadata|Deployment/checkout > spec > template > metadata
+20-37|yaml_key|spec.template.spec|Deployment/checkout > spec > template > spec
+38-50|yaml_doc|Service/checkout|Service/checkout
+51-60|yaml_doc|ConfigMap/checkout-config|ConfigMap/checkout-config

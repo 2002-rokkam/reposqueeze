@@ -1,0 +1,24 @@
+{
+  // Base compiler settings shared by every package
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "build", /* emitted files */
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/*"],
+      "@test/*": ["tests/*"],
+    },
+    "types": ["node", "jest"],
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules", "dist"],
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/cli" },
+  ],
+}

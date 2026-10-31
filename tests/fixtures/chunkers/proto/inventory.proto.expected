@@ -1,0 +1,6 @@
+1-3|proto_statement|syntax proto3, package inventory|
+5-8|proto_service|Inventory|Inventory
+10-13|proto_message|ReserveRequest|ReserveRequest
+15-18|proto_message|ReserveReply|ReserveReply
+20-22|proto_message|ReleaseRequest|ReleaseRequest
+24-26|proto_message|ReleaseReply|ReleaseReply

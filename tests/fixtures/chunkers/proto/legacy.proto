@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+package legacy;
+
+message Envelope {
+  required string kind = 1;
+  optional bytes payload = 2 [default = "{}"];
+  extensions 100 to 199;
+
+  message Header {
+    optional string trace_id = 1;
+  }
+  optional Header header = 3;
+}
+
+extend Envelope {
+  optional int32 priority = 100;
+}
+
+enum Kind {
+  UNKNOWN = 0;
+  PING = 1;
+  PONG = 2;
+}

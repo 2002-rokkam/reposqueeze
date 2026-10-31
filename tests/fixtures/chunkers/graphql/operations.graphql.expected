@@ -1,0 +1,5 @@
+1-12|graphql_operation|GetUser|GetUser
+14-17|graphql_fragment|UserFields|UserFields
+19-23|graphql_operation|CreatePost|CreatePost
+25-27|graphql_operation|OnComment|OnComment
+29-31|graphql_operation|query|query

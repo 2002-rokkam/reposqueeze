@@ -1,0 +1,6 @@
+1-4|graphql_schema|schema|schema
+6-8|graphql_type|RootQuery|RootQuery
+10-12|graphql_type|RootMutation|RootMutation
+14-17|graphql_union|Pet|Pet
+19-19|graphql_type|Cat|Cat
+20-20|graphql_type|Dog|Dog

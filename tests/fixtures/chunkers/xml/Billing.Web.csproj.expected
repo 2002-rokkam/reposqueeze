@@ -1,0 +1,5 @@
+1-24|xml_element|Project|Project
+3-7|xml_element|PropertyGroup|Project > PropertyGroup
+9-14|xml_element|ItemGroup|Project > ItemGroup
+16-18|xml_element|ItemGroup|Project > ItemGroup
+20-22|xml_element|Target PrintVersion|Project > Target

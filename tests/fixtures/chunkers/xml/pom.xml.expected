@@ -1,0 +1,9 @@
+3-63|xml_element|project billing-service|project
+8-12|xml_element|parent org.springframework.boot:spring-boot-starter-parent|project > parent
+19-22|xml_element|properties|project > properties
+24-45|xml_element|dependencies|project > dependencies
+25-28|xml_element|dependency org.springframework.boot:spring-boot-starter-web|project > dependencies > dependency
+29-32|xml_element|dependency org.springframework.boot:spring-boot-starter-data-jpa|project > dependencies > dependency
+33-37|xml_element|dependency org.postgresql:postgresql|project > dependencies > dependency
+38-44|xml_element|dependency org.testcontainers:postgresql|project > dependencies > dependency
+47-62|xml_element|build|project > build

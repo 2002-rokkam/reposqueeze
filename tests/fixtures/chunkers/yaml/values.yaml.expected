@@ -1,0 +1,6 @@
+4-7|yaml_key|image|image
+9-15|yaml_key|serviceAccount|serviceAccount
+17-19|yaml_key|service|service
+21-29|yaml_key|ingress|ingress
+31-37|yaml_key|resources|resources
+39-43|yaml_key|autoscaling|autoscaling

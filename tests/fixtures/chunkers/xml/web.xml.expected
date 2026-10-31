@@ -1,0 +1,6 @@
+2-32|xml_element|web-app Legacy Portal|web-app
+5-8|xml_element|context-param contextConfigLocation|web-app > context-param
+10-17|xml_element|filter encodingFilter|web-app > filter
+18-21|xml_element|filter-mapping encodingFilter|web-app > filter-mapping
+23-27|xml_element|servlet dispatcher|web-app > servlet
+28-31|xml_element|servlet-mapping dispatcher|web-app > servlet-mapping

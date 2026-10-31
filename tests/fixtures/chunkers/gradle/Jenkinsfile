@@ -1,0 +1,30 @@
+pipeline {
+    agent { label 'linux' }
+    environment {
+        REGISTRY = 'registry.example.com'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh './gradlew assemble'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+                junit 'build/test-results/**/*.xml'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'build/reports/**'
+                }
+            }
+        }
+        stage('Deploy') {
+            when { branch 'main' }
+            steps {
+                echo "deploying ${env.BUILD_NUMBER} to ${REGISTRY}"
+            }
+        }
+    }
+}

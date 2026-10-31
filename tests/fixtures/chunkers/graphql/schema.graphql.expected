@@ -1,0 +1,10 @@
+1-10|graphql_type|User|User
+12-15|graphql_union|SearchResult|SearchResult
+17-17|graphql_scalar|DateTime|DateTime
+19-21|graphql_interface|Node|Node
+23-27|graphql_enum|Role|Role
+29-33|graphql_input|NewPost|NewPost
+35-38|graphql_type|Query|Query
+40-42|graphql_type|Mutation|Mutation
+44-46|graphql_extend|extend type Query|extend type Query
+48-48|graphql_directive|auth|auth

@@ -1,0 +1,21 @@
+2-6|json_key|name, version, description, private, main|
+7-24|json_key|scripts|scripts
+8-8|json_key|scripts.build|scripts > build
+9-9|json_key|scripts.clean|scripts > clean
+10-10|json_key|scripts.dev|scripts > dev
+11-11|json_key|scripts.lint|scripts > lint
+12-12|json_key|scripts.test|scripts > test
+13-13|json_key|scripts.test:watch|scripts > test:watch
+14-14|json_key|scripts.start|scripts > start
+15-15|json_key|scripts.prepare|scripts > prepare
+16-16|json_key|scripts.typecheck|scripts > typecheck
+17-17|json_key|scripts.format|scripts > format
+18-18|json_key|scripts.db:migrate|scripts > db:migrate
+19-19|json_key|scripts.db:seed|scripts > db:seed
+20-20|json_key|scripts.release|scripts > release
+21-21|json_key|scripts.docs|scripts > docs
+22-22|json_key|scripts.bench|scripts > bench
+23-23|json_key|scripts.postinstall|scripts > postinstall
+25-33|json_key|dependencies|dependencies
+34-46|json_key|devDependencies|devDependencies
+47-49|json_key|engines|engines

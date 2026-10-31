@@ -1,0 +1,8 @@
+1-9|toml_table|package widget-core|package
+11-16|toml_table|features|features
+18-23|toml_table|dependencies|dependencies
+25-27|toml_table|dev-dependencies|dev-dependencies
+29-30|toml_table|target.'cfg(unix)'.dependencies|target > cfg(unix) > dependencies
+32-34|toml_table|bench[0] throughput|bench
+36-38|toml_table|example[0] basic|example
+40-42|toml_table|profile.release|profile > release

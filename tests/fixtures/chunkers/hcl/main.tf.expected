@@ -1,0 +1,8 @@
+1-9|hcl_block|terraform|terraform
+11-13|hcl_provider|provider.aws|provider.aws
+15-21|hcl_locals|locals|locals
+23-27|hcl_resource|aws_s3_bucket.assets|aws_s3_bucket.assets
+29-34|hcl_resource|aws_s3_bucket_versioning.assets|aws_s3_bucket_versioning.assets
+36-41|hcl_data|data.aws_iam_policy_document.assets_read|data.aws_iam_policy_document.assets_read
+43-48|hcl_module|module.network|module.network
+50-62|hcl_resource|aws_instance.web|aws_instance.web

@@ -1,0 +1,7 @@
+3-6|yaml_key|on|on
+11-54|yaml_key|jobs|jobs
+12-20|yaml_key|jobs.lint|jobs > lint
+22-43|yaml_key|jobs.test|jobs > test
+25-28|yaml_key|jobs.test.strategy|jobs > test > strategy
+29-43|yaml_key|jobs.test.steps|jobs > test > steps
+45-54|yaml_key|jobs.release|jobs > release

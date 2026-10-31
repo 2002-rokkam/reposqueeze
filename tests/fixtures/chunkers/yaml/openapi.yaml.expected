@@ -1,0 +1,9 @@
+2-4|yaml_key|info|info
+7-44|yaml_key|paths|paths
+8-37|yaml_key|paths./orders|paths > /orders
+9-25|yaml_key|GET /orders listOrders|paths > /orders > get
+26-37|yaml_key|POST /orders createOrder|paths > /orders > post
+38-44|yaml_key|DELETE /orders/{orderId} cancelOrder|paths > /orders/{orderId}
+45-61|yaml_key|components|components
+47-53|yaml_key|components.schemas.Order|components > schemas > Order
+54-61|yaml_key|components.schemas.NewOrder|components > schemas > NewOrder

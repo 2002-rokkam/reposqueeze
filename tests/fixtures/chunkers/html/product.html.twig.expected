@@ -1,0 +1,2 @@
+3-5|tpl_block|macro price(amount, currency = 'EUR')|macro price(amount, currency = 'EUR')
+7-19|tpl_block|block body|block body

@@ -1,0 +1,48 @@
+"""
+A user of the system.
+"""
+type User implements Node & Actor @key(fields: "id") {
+  "The unique identifier"
+  id: ID!
+  name: String!
+  email: String
+  posts(first: Int = 10, after: String): PostConnection!
+}
+
+"""
+Something that can be searched.
+"""
+union SearchResult = User | Post | Comment
+
+scalar DateTime
+
+interface Node {
+  id: ID!
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+input NewPost {
+  title: String!
+  body: String!
+  tags: [String!] = []
+}
+
+type Query {
+  me: User
+  search(term: String!): [SearchResult!]!
+}
+
+type Mutation {
+  createPost(input: NewPost!): Post!
+}
+
+extend type Query {
+  health: Boolean!
+}
+
+directive @auth(role: Role = VIEWER) on FIELD_DEFINITION | OBJECT

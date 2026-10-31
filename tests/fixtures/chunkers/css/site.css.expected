@@ -1,0 +1,9 @@
+1-4|css_rule|*, *::before, *::after|*, *::before, *::after
+6-9|css_rule|:root|:root
+11-16|css_rule|html, body|html, body
+18-25|css_rule|.btn|.btn
+27-30|css_rule|.btn:hover, .btn:focus|.btn:hover, .btn:focus
+34-42|css_at_rule|@media (max-width: 768px)|@media (max-width: 768px)
+44-49|css_at_rule|@font-face|@font-face
+51-54|css_at_rule|@keyframes spin|@keyframes spin
+56-59|css_rule|.hero|.hero

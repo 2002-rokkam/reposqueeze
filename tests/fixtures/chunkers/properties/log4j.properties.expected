@@ -1,0 +1,1 @@
+1-13|properties_key|log4j.rootLogger, log4j.appender.stdout, log4j.appender.stdout.layout, log4j.appender.stdout.layout.ConversionPattern, …|

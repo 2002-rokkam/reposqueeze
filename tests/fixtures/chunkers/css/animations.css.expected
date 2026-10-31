@@ -1,0 +1,6 @@
+4-8|css_at_rule|@keyframes fade-in|@keyframes fade-in
+10-13|css_at_rule|@-webkit-keyframes fade-in|@-webkit-keyframes fade-in
+15-21|css_at_rule|@supports (display: grid) and (not (display: inline-grid))|@supports (display: grid) and (not (display: inline-grid))
+23-26|css_rule|.tooltip::after|.tooltip::after
+28-30|css_rule|.sprite|.sprite
+32-34|css_at_rule|@page :first|@page :first

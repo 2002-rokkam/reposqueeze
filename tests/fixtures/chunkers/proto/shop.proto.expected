@@ -1,0 +1,8 @@
+1-8|proto_statement|syntax proto3, package shop.v1, import google/protobuf/timestamp.proto, import shop/v1/money.proto, option go_package e…|
+10-18|proto_service|OrderService|OrderService
+20-36|proto_message|Order|Order
+26-30|proto_enum|Status|Order > Status
+32-35|proto_oneof|payment|Order > payment
+38-40|proto_message|CreateOrderRequest|CreateOrderRequest
+42-42|proto_message|GetOrderRequest|GetOrderRequest
+43-43|proto_message|ListOrdersRequest|ListOrdersRequest

@@ -1,0 +1,44 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'com.diffplug.spotless' version '6.25.0'
+}
+
+group = 'com.acme'
+version = '2.5.0'
+sourceCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.example.com/releases' }
+}
+
+dependencies {
+    api 'com.google.guava:guava:33.0.0-jre'
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+    runtimeOnly 'ch.qos.logback:logback-classic:1.5.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testImplementation project(':test-support')
+}
+
+tasks.register('printVersion') {
+    doLast {
+        println "version = ${project.version}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

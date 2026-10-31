@@ -1,0 +1,6 @@
+1-19|ini_section|PHP|PHP
+7-9|ini_key|allow_url_fopen|PHP > allow_url_fopen
+11-13|ini_key|memory_limit|PHP > memory_limit
+15-19|ini_key|variables_order|PHP > variables_order
+21-22|ini_section|CLI Server|CLI Server
+27-29|ini_section|mail function|mail function

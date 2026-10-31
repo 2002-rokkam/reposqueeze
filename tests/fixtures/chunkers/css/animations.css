@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@import url("//fonts.example.com/css?family=Inter:400,700");
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fade-in {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@supports (display: grid) and (not (display: inline-grid)) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: 1rem;
+  }
+}
+
+.tooltip::after {
+  content: "}{ not a block";
+  content: '\'';
+}
+
+.sprite {
+  background: url( 'sprite.png' ) no-repeat;
+}
+
+@page :first {
+  margin: 2cm;
+}

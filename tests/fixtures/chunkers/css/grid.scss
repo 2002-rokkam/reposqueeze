@@ -1,0 +1,32 @@
+$grid-columns: 12;
+$grid-gutter: 30px;
+
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+  max-width: percentage($size / $columns);
+}
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include make-col($i);
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$grid-gutter / 2;
+  margin-left: -$grid-gutter / 2;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: $grid-gutter / 2;
+    padding-left: $grid-gutter / 2;
+  }
+}
+
+@if $enable-shadows {
+  .shadowed { box-shadow: 0 0 4px rgba(#000, .2); }
+} @else {
+  .shadowed { box-shadow: none; }
+}

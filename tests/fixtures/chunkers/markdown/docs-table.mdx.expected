@@ -1,0 +1,4 @@
+1-3|md_section|import { Tabs } from '@site/src/components';|import { Tabs } from '@site/src/components';
+5-35|md_section|Configuration|Configuration
+9-20|md_section|Options reference|Configuration > Options reference
+22-35|md_section|Example|Configuration > Example

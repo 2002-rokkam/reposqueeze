@@ -1,0 +1,7 @@
+2-30|yaml_item|[0] Provision web servers|Provision web servers
+7-24|yaml_key|[0].tasks|Provision web servers > tasks
+8-11|yaml_item|[0].tasks[0] Install nginx|Provision web servers > tasks > Install nginx
+13-18|yaml_item|[0].tasks[1] Write nginx config|Provision web servers > tasks > Write nginx config
+20-24|yaml_item|[0].tasks[2] Ensure nginx is running|Provision web servers > tasks > Ensure nginx is running
+26-30|yaml_key|[0].handlers|Provision web servers > handlers
+32-38|yaml_item|[1] Configure database|Configure database

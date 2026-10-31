@@ -1,0 +1,2 @@
+4-10|docker_stage|build|build
+12-14|docker_stage|${BASE}|${BASE}
