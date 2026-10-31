@@ -1,0 +1,170 @@
+{
+  "schema": "rsq-bench-swe/1",
+  "command": "node --import tsx bench/run.ts --dataset lite,multilingual --split dev --repos axios/axios,briannesbitt/carbon,burntsushi/ripgrep,caddyserver/caddy,django/django,faker-ruby/faker,fmtlib/fmt,gin-gonic/gin,google/gson,immutable-js/immutable-js,jekyll/jekyll,jqlang/jq,marshmallow-code/marshmallow,micropython/micropython,mwaskom/seaborn,nlohmann/json,pallets/flask,preactjs/preact,psf/requests,pydicom/pydicom,pytest-dev/pytest,sharkdp/bat,sphinx-doc/sphinx,sympy/sympy,tokio-rs/axum,tokio-rs/tokio --sample 60 --offline --variant baseline --variant current --variant ripgrep-naive --budget 4000 --workers 2 --timeout 120 --max-load 80 --out /Users/rokkamreddy1/reposqueeze-lab/results/bench-swe/final-dev/main",
+  "startedAt": "2026-10-31T14:47:56.631Z",
+  "resumes": [],
+  "node": "v25.9.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpus": 8,
+  "memGiB": 16,
+  "harness": {
+    "gitSha": "4e351856fc3b0aae288073367c413534e75647cd",
+    "dirty": false
+  },
+  "split": "dev",
+  "seed": 1729,
+  "bootstrapResamples": 10000,
+  "budget": 4000,
+  "timeoutSec": 120,
+  "workers": 2,
+  "cloneMode": "full",
+  "corpus": {
+    "axios/axios": "full",
+    "briannesbitt/carbon": "full",
+    "caddyserver/caddy": "full",
+    "burntsushi/ripgrep": "full",
+    "faker-ruby/faker": "full",
+    "django/django": "full",
+    "gin-gonic/gin": "full",
+    "fmtlib/fmt": "full",
+    "google/gson": "full",
+    "immutable-js/immutable-js": "full",
+    "jekyll/jekyll": "full",
+    "jqlang/jq": "full",
+    "marshmallow-code/marshmallow": "full",
+    "micropython/micropython": "full",
+    "mwaskom/seaborn": "full",
+    "nlohmann/json": "full",
+    "pallets/flask": "full",
+    "preactjs/preact": "full",
+    "psf/requests": "full",
+    "pydicom/pydicom": "full",
+    "pytest-dev/pytest": "full",
+    "sharkdp/bat": "full",
+    "sphinx-doc/sphinx": "full",
+    "sympy/sympy": "full",
+    "tokio-rs/axum": "full",
+    "tokio-rs/tokio": "full"
+  },
+  "datasets": [
+    {
+      "key": "lite",
+      "hfId": "SWE-bench/SWE-bench_Lite",
+      "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+      "contentSha256": "168468da50ffec2fac4a7c3141876090f3d6f80aa78e01d04cca9b99ea27938d",
+      "files": [
+        {
+          "hfSplit": "dev",
+          "rows": 23,
+          "sha256": "534ef04f48a0667deffe33d021a9e889e246c966bf5dbb493aea1e5a5cf7ca0f"
+        },
+        {
+          "hfSplit": "test",
+          "rows": 300,
+          "sha256": "133a1c43e22f9dcb3a3df5d826cc82c5cf33dc2927510080af1c8b8383051766"
+        }
+      ],
+      "total": 323,
+      "dev": 167,
+      "test": 156,
+      "prepared": 167,
+      "selected": 19
+    },
+    {
+      "key": "multilingual",
+      "hfId": "SWE-bench/SWE-bench_Multilingual",
+      "revision": "846e647b9f33c0b51b739d005d13d85493c9af09",
+      "contentSha256": "23d209c7ffcfe2ac776352f6ad45555e916380ba1575b09539ce14a05d296ef5",
+      "files": [
+        {
+          "hfSplit": "test",
+          "rows": 300,
+          "sha256": "83441ebb91ffa12cb167d02ff816ba4d2d30afa5f036ade5f6ab56bee09e37ce"
+        }
+      ],
+      "total": 300,
+      "dev": 160,
+      "test": 140,
+      "prepared": 160,
+      "selected": 41
+    }
+  ],
+  "filters": {
+    "repos": [
+      "axios/axios",
+      "briannesbitt/carbon",
+      "burntsushi/ripgrep",
+      "caddyserver/caddy",
+      "django/django",
+      "faker-ruby/faker",
+      "fmtlib/fmt",
+      "gin-gonic/gin",
+      "google/gson",
+      "immutable-js/immutable-js",
+      "jekyll/jekyll",
+      "jqlang/jq",
+      "marshmallow-code/marshmallow",
+      "micropython/micropython",
+      "mwaskom/seaborn",
+      "nlohmann/json",
+      "pallets/flask",
+      "preactjs/preact",
+      "psf/requests",
+      "pydicom/pydicom",
+      "pytest-dev/pytest",
+      "sharkdp/bat",
+      "sphinx-doc/sphinx",
+      "sympy/sympy",
+      "tokio-rs/axum",
+      "tokio-rs/tokio"
+    ],
+    "sample": 60,
+    "sampleMode": "even"
+  },
+  "instanceCount": 60,
+  "instancesSha256": "2c565469f5620c56e5ef7d548d843aa2f350229c52859d25964fd4d57b0b32f2",
+  "skipped": {},
+  "unavailable": [],
+  "variants": [
+    {
+      "name": "baseline",
+      "root": "/Users/rokkamreddy1/reposqueeze-lab/baseline",
+      "env": {},
+      "truncate": 8000,
+      "gitSha": "25fe500f33177e1b75aa1f46080beaaaae53de0f",
+      "gitBranch": "HEAD",
+      "dirty": false,
+      "engineVersion": "2.1.0",
+      "fingerprint": "3c4d6c1f3d2b61ee4823a5e736ac5db7c542b746af6bc19f9eef67ab8e0a369d"
+    },
+    {
+      "name": "current",
+      "root": "/Users/rokkamreddy1/Desktop/reposqueeze",
+      "env": {},
+      "truncate": null,
+      "gitSha": "b7bc1c7a28f39e64fd17801755b850049ecf901a",
+      "gitBranch": "local/best-reposqueeze",
+      "dirty": false,
+      "engineVersion": "2.2.0",
+      "fingerprint": "ac37eeddd2fcb6b6838be39b79f9ff1cba10d1a5dc9d923b78bcd2f2d33c24d0"
+    },
+    {
+      "name": "ripgrep-naive",
+      "root": "/Users/rokkamreddy1/reposqueeze-lab/wt/bench-swe/bench/variants/ripgrep-naive",
+      "env": {},
+      "truncate": null,
+      "gitSha": "4e351856fc3b0aae288073367c413534e75647cd",
+      "gitBranch": "agent/bench-swe",
+      "dirty": false,
+      "engineVersion": "1.0.0",
+      "fingerprint": "daff62ce4da27a7367b292e2e6c39faba7f199c8fbded18e2635a2465500b62e"
+    }
+  ],
+  "notes": [
+    "Gold = pre-image files edited by the gold patch (tests and new files excluded); gold lines = removed lines plus context anchors around pure insertions.",
+    "Every (instance, variant) pair runs in a fresh child process on its own pristine checkout of the base commit; variants of one instance run sequentially in a hash-determined order.",
+    "Timeouts and engine errors count as zero for every retrieval metric and are reported separately."
+  ],
+  "finishedAt": "2026-10-31T15:17:02.866Z"
+}

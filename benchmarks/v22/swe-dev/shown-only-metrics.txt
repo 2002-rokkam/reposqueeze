@@ -1,0 +1,7 @@
+('baseline', 'all') n=60 fileHit=0.483 fileRecall=0.432 lineRecall=0.274
+('current', 'all') n=60 fileHit=0.817 fileRecall=0.747 lineRecall=0.528
+('current', 'strict') n=60 fileHit=0.633 fileRecall=0.538 lineRecall=0.332
+fileHit diff=0.150 CI[0.067,0.250]
+fileRecall diff=0.106 CI[0.041,0.181]
+lineRecall diff=0.058 CI[-0.031,0.151]
+McNemar fileHit onlyBaseline=0 onlyCurrent=9 p=0.0039
