@@ -3,15 +3,12 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, extname } from 'node:path';
 import { createHash } from 'node:crypto';
 import type { Chunk } from './types.js';
+import { terms } from './tokenize.js';
 
 const assetDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'assets');
 const languages: Record<string, string> = { '.js': 'javascript', '.mjs': 'javascript', '.cjs': 'javascript', '.jsx': 'javascript', '.ts': 'typescript', '.tsx': 'tsx', '.py': 'python', '.go': 'go', '.rs': 'rust', '.java': 'java', '.c': 'c', '.h': 'c', '.cpp': 'cpp', '.hpp': 'cpp', '.cs': 'c_sharp', '.rb': 'ruby' };
 const definitions = new Set(['function_declaration', 'function_definition', 'method_definition', 'method_declaration', 'function_item', 'class_declaration', 'class_definition', 'struct_item', 'interface_declaration', 'type_alias_declaration', 'type_declaration', 'enum_item', 'impl_item', 'lexical_declaration', 'variable_declaration', 'assignment', 'const_item', 'method', 'singleton_method', 'class', 'module']);
-const stop = new Set('the a an is are of to for from in on at and or how what where when why does do can with this that it by be as return const let var def function class public private import export true false null none use implementation code'.split(' '));
-export function terms(text: string): string[] {
-  const split = text.replace(/([a-z\d])([A-Z])/g, '$1 $2').toLowerCase();
-  return (split.match(/[\p{L}\p{N}]+/gu) ?? []).filter(t => t.length > 1 && !stop.has(t));
-}
+export { terms };
 export function hash(text: string): string { return createHash('sha256').update(text).digest('hex'); }
 export function languageFor(path: string): string { return languages[extname(path).toLowerCase()] ?? 'text'; }
 let init: Promise<void> | undefined;
