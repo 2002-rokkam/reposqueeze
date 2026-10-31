@@ -1,6 +1,6 @@
 // Sanity statistics for src/trace.ts on SWE-bench problem statements.
 //
-//   node --import tsx scripts/trace-stats.ts [--dir <rows dir>] [--out <json>] [--budgets 6000,3000,1500]
+//   node --import tsx scripts/trace-stats.ts [--dir <rows dir>] [--out <json>] [--budgets 6000,3000,1500] [--datasets lite,multi]
 //
 // Reads datasets-server row pages (lite_*.json, multi_*.json) from the rows directory. Only DEV instances are used:
 // an instance is DEV iff the first byte of SHA-256("rsq-v3:" + instance_id) is even. TEST rows are counted and dropped
@@ -24,6 +24,7 @@ function arg(name: string, fallback: string): string {
 
 const rowsDir = arg('dir', join(homedir(), 'reposqueeze-lab', 'tmp', 'trace'));
 const outFile = arg('out', join(homedir(), 'reposqueeze-lab', 'results', 'trace', 'trace-stats.json'));
+const datasetPrefixes = arg('datasets', 'lite,multi').split(',');
 const budgets = arg('budgets', '6000,3000,1500').split(',').map(Number).filter(n => n > 0);
 
 const isDev = (id: string): boolean => createHash('sha256').update(`rsq-v3:${id}`).digest()[0] % 2 === 0;
@@ -33,7 +34,7 @@ function loadDev(): { rows: (Row & { dataset: string })[]; dropped: number; trun
   let dropped = 0;
   let truncated = 0;
   if (!existsSync(rowsDir)) return { rows, dropped, truncated };
-  for (const file of readdirSync(rowsDir).filter(f => /^(?:lite|multi)_\d+\.json$/.test(f)).sort()) {
+  for (const file of readdirSync(rowsDir).filter(f => /^(?:lite|multi)_\d+\.json$/.test(f) && datasetPrefixes.some(prefix => f.startsWith(`${prefix}_`))).sort()) {
     const page = JSON.parse(readFileSync(join(rowsDir, file), 'utf8')) as { rows?: { row: Record<string, unknown>; truncated_cells?: string[] }[] };
     for (const entry of page.rows ?? []) {
       const id = String(entry.row.instance_id ?? '');

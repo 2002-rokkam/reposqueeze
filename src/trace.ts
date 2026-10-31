@@ -198,7 +198,7 @@ function isBlankBetween(text: string, from: number, to: number): boolean {
 }
 
 const TIMESTAMP_PREFIXES: RegExp[] = [
-  /^\[?\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:[.,]\d{1,9})?(?:Z|[+-]\d{2}(?::?\d{2})?)?\]?[ \t]+/,
+  /^\[?\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:[.,]\d{1,9})?(?: ?(?:Z|[+-]\d{2}(?::?\d{2})?))?\]?[ \t]+/,
   /^\[\d{2}:\d{2}:\d{2}(?:[.,]\d{1,9})?\][ \t]+/,
   /^\d{2}:\d{2}:\d{2}(?:[.,]\d{1,9})?[ \t]+/,
   /^\[\d{9,13}(?:\.\d+)?\][ \t]+/,
@@ -207,7 +207,7 @@ const COMPOSE_PREFIX = /^[\w.-]{1,50}[ \t]{0,3}\|[ \t]/;
 const XDIST_PREFIX = /^\[gw\d+\][ \t]*/;
 const PERCENT_PREFIX = /^\[ {0,2}\d{1,3}%\][ \t]*/;
 const SANITIZER_PREFIX = /^(?:==|--)\d+(?:==|--)[ \t]?/;
-const BRACKET_LEVEL_PREFIX = /^\[(?:ERROR|WARNING|WARN|INFO|DEBUG)\][ \t]*/;
+const BRACKET_LEVEL_PREFIX = /^\[(?:ERROR|WARNING|WARN|INFO|DEBUG|FATAL|TRACE|error|warning|warn|info|debug|fatal|trace)\]:?[ \t]*(?:#\d{1,3}[ \t]+)?/;
 const ACTIONS_PREFIX = /^##\[(?:error|warning|notice|group|debug)\][ \t]*/;
 
 /** Removes log decoration that precedes the payload: timestamps, quote markers, list bullets, CI prefixes. */
@@ -217,6 +217,7 @@ function stripLinePrefix(input: string): string {
     const before = s;
     const c = s.charCodeAt(0);
     if (c === 62 || c === 124) s = s.slice(1).trimStart();
+    else if (c === 96 && s.length > 3) s = s.slice(1).trimStart();
     else if ((c === 45 || c === 42 || c === 43 || c === 0x276f || c === 0x2192 || c === 0x2022) && isSpace(s.charCodeAt(1))) s = s.slice(2).trimStart();
     else if (c === 35 && (s.startsWith('# ./') || s.startsWith('# /'))) s = s.slice(2);
     else if (c === 35) s = dropFirst(s, [ACTIONS_PREFIX]);
@@ -636,7 +637,7 @@ function matchHash(t: string): Match | null | undefined {
       if (isFramePath(path)) {
         const call = rest.slice(n.end + 3);
         const open = call.indexOf('(');
-        return makeMatch(path, n.value, undefined, open > 0 ? call.slice(0, open) : call, 'php', 'first');
+        return makeMatch(path, n.value, undefined, (open > 0 ? call.slice(0, open) : call).replace(/\\{2,}/g, '\\'), 'php', 'first');
       }
     }
   }
@@ -678,9 +679,9 @@ function splitGoName(name: string): { func: string; qualifier?: string } {
   return { func, qualifier: name.slice(0, dot) };
 }
 
-function parseGoFuncLine(prevRaw: string): { func: string; qualifier?: string } | undefined {
-  if (!prevRaw || isSpace(prevRaw.charCodeAt(0))) return undefined;
-  let s = prevRaw.trim();
+function parseGoFuncLine(line: string): { func: string; qualifier?: string } | undefined {
+  if (!line) return undefined;
+  let s = line.trim();
   if (s.startsWith('created by ')) {
     s = s.slice(11);
     const goroutine = s.indexOf(' in goroutine');
@@ -713,12 +714,15 @@ function parseInClause(rest: string): { func?: string; message?: string } {
   return { func: text.trim() || undefined };
 }
 
-const DIAGNOSTIC = /^(?:fatal error|runtime error|error|warning|note|info|hint|remark|Error|Warning|Fatal)\b/;
+const DIAGNOSTIC = /^(?:fatal error|runtime error|error|warning|note|info|hint|remark|Error|Warning|Fatal|ERROR|FATAL|WARNING)\b/;
 const TOOL_CODE = /^[A-Z]{1,4}\d{2,5}\b/;
 
 function matchGoLocation(path: string, loc: Located, raw: string, rest: string, st: ParseState): Match | undefined {
-  if (!(rest.startsWith(' +0x') || (rest === '' && languageOfPath(path) === 'go' && isSpace(raw.charCodeAt(0))))) return undefined;
-  const parsed = parseGoFuncLine(st.prevRaw);
+  const traceLine = rest.startsWith(' +0x');
+  if (!(traceLine || (rest === '' && languageOfPath(path) === 'go' && isSpace(raw.charCodeAt(0))))) return undefined;
+  // Function lines are unindented unless the whole trace carries a log prefix (`  | `), which `+0x` lines can tell apart.
+  const previous = traceLine ? stripLinePrefix(st.prevRaw.trim()) : isSpace(st.prevRaw.charCodeAt(0)) ? '' : st.prevRaw;
+  const parsed = parseGoFuncLine(previous);
   const match = makeMatch(path, loc.line, undefined, parsed?.func, 'go', 'first');
   if (parsed?.qualifier) match.qualifier = parsed.qualifier;
   match.consumedPrev = parsed !== undefined;
@@ -803,7 +807,7 @@ function matchLocationLine(t: string, raw: string, st: ParseState): Match | null
   if (loc.line !== undefined && s.charCodeAt(loc.end - 1) === 93) {
     match.error = tail;
   } else if (diagnostic) {
-    if (!/^(?:warning|note|info|hint|remark|Warning)\b/.test(tail)) match.error = tail;
+    if (!/^(?:warning|note|info|hint|remark|Warning|WARNING)\b/.test(tail)) match.error = tail;
   } else {
     const header = exceptionHeader(tail);
     if (header) match.error = header;
@@ -1231,6 +1235,12 @@ function detectError(t: string, lineIndex: number, sink: Sink): boolean {
       addError(sink, t, priority, lineIndex);
       return true;
     }
+  }
+  const monolog = /^[\w-]{1,30}\.(?:ERROR|CRITICAL|ALERT|EMERGENCY): /.exec(t);
+  if (monolog) {
+    const context = t.indexOf(' {"', monolog[0].length);
+    addError(sink, context > 0 ? t.slice(0, context) : t, 2, lineIndex);
+    return true;
   }
   const assertion = t.indexOf(' Assertion `');
   if (assertion > 0 && t.endsWith(' failed.')) {
