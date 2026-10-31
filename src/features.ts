@@ -20,8 +20,8 @@ export const FEATURE_NAMES = [
 export type FeatureName = (typeof FEATURE_NAMES)[number];
 export type FeatureSet = ReadonlySet<FeatureName>;
 
-// Features that are not (yet) proven by the benchmarks stay out of the default set.
-export const DEFAULT_FEATURES: readonly FeatureName[] = FEATURE_NAMES;
+// `frames` and `git` use proposed boost constants that have not been validated on benchmark data yet, so they are opt-in (RSQ_FEATURES=+frames,+git).
+export const DEFAULT_FEATURES: readonly FeatureName[] = FEATURE_NAMES.filter(name => name !== 'frames' && name !== 'git');
 
 export function resolveFeatures(spec: string | undefined = process.env.RSQ_FEATURES, defaults: readonly FeatureName[] = DEFAULT_FEATURES): FeatureSet {
   const enabled = new Set<FeatureName>(defaults);

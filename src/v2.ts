@@ -3,6 +3,8 @@ import { resolveFeatures, type FeatureSet } from './features.js';
 import { SearchIndex, type Retrieved, type WeightedTerm } from './legacy-index.js';
 import { hash } from './parser.js';
 import { terms } from './tokenize.js';
+import { createFrameResolver, frameKind, orderFrames, parseQuery } from './trace.js';
+import type { GitSignals } from './gitsignals.js';
 import type { Chunk, Pack, Snapshot } from './types.js';
 
 export interface V2Ranked {
@@ -168,7 +170,37 @@ function expansionTerms(index: SearchIndex, top: readonly Chunk[], known: Readon
   return best.map(([term, weight]) => ({ term, weight: 0.5 * (weight / max) }));
 }
 
-export function rankV2(snapshot: Snapshot, query: string, settings: Settings = DEFAULTS, semanticScores?: Map<string, number>, features: FeatureSet = resolveFeatures()): V2Ranked[] {
+const frameResolvers = new WeakMap<Snapshot, ReturnType<typeof createFrameResolver>>();
+
+/** Files named by application frames of a stack trace in the query; the innermost application frame is boosted most. */
+function frameBoosts(snapshot: Snapshot, query: string): Map<string, number> {
+  const boosts = new Map<string, number>();
+  const parsed = parseQuery(query);
+  if (!parsed.isTrace) return boosts;
+  let resolve = frameResolvers.get(snapshot);
+  if (!resolve) frameResolvers.set(snapshot, (resolve = createFrameResolver(snapshot.inventory?.map(file => file.path) ?? snapshot.files.map(file => file.path))));
+  orderFrames(parsed)
+    .filter(frame => frameKind(frame) === 'app')
+    .forEach((frame, i) => {
+      for (const path of resolve!(frame).slice(0, 2)) boosts.set(path, Math.max(boosts.get(path) ?? 1, i === 0 ? 1.5 : 1.25));
+    });
+  return boosts;
+}
+
+/** Mild version-history prior: files with uncommitted work, recent commits, or co-change partners of the strongest files. */
+function gitBoosts(git: GitSignals, ranked: readonly V2Ranked[]): (path: string) => number {
+  const top = [...new Set(ranked.slice(0, 20).map(row => row.chunk.path))].slice(0, 3);
+  const partners = new Set(top.flatMap(path => git.coChanged(path, 5).map(partner => partner.path)));
+  return path => {
+    let boost = 1;
+    if (git.dirty.has(path)) boost *= 1.15;
+    if (git.ageDays(path) <= 30) boost *= 1.05;
+    if (partners.has(path) && !top.includes(path)) boost *= 1.05;
+    return boost;
+  };
+}
+
+export function rankV2(snapshot: Snapshot, query: string, settings: Settings = DEFAULTS, semanticScores?: Map<string, number>, features: FeatureSet = resolveFeatures(), git?: GitSignals): V2Ranked[] {
   const views = queryViews(query);
   if (!views.length) return [];
   const index = SearchIndex.build(snapshot);
@@ -234,7 +266,11 @@ export function rankV2(snapshot: Snapshot, query: string, settings: Settings = D
     if (features.has('priors')) score *= filePrior(chunk.path, query);
     rows.push({ chunk, score, stability, obligations: covered });
   }
-  return rows.sort((a, b) => b.score - a.score || b.stability - a.stability || a.chunk.path.localeCompare(b.chunk.path) || a.chunk.start - b.chunk.start);
+  const sorted = () => rows.sort((a, b) => b.score - a.score || b.stability - a.stability || a.chunk.path.localeCompare(b.chunk.path) || a.chunk.start - b.chunk.start);
+  const boosts = features.has('frames') ? frameBoosts(snapshot, query) : undefined;
+  const history = features.has('git') && git?.available ? gitBoosts(git, sorted()) : undefined;
+  if (boosts?.size || history) for (const row of rows) row.score *= (boosts?.get(row.chunk.path) ?? 1) * (history?.(row.chunk.path) ?? 1);
+  return sorted();
 }
 
 export function v2Diagnostics(snapshot: Snapshot, query: string, shownText: string, ranked: readonly V2Ranked[]) {
@@ -246,8 +282,8 @@ export function v2Diagnostics(snapshot: Snapshot, query: string, shownText: stri
   return { views: queryViews(query).length, obligations, missing, stability };
 }
 
-export function contextPackV2(snapshot: Snapshot, query: string, budget = 3000, known: string[] = [], settings: Settings = DEFAULTS, semanticScores?: Map<string, number>, features: FeatureSet = resolveFeatures()): Pack {
-  const ranked = rankV2(snapshot, query, settings, semanticScores, features);
+export function contextPackV2(snapshot: Snapshot, query: string, budget = 3000, known: string[] = [], settings: Settings = DEFAULTS, semanticScores?: Map<string, number>, features: FeatureSet = resolveFeatures(), git?: GitSignals): Pack {
+  const ranked = rankV2(snapshot, query, settings, semanticScores, features, git);
   const note = `V2 perturbation consensus: ${queryViews(query).length} deterministic query views; stability is a retrieval signal, not confidence.`;
   const pack = contextPack(snapshot, query, budget, settings, known, undefined, ranked, features.has('compactfmt') ? '' : note, features);
   pack.stats.v2 = v2Diagnostics(snapshot, query, pack.text, ranked);

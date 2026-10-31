@@ -4,6 +4,8 @@ import { contextPackV2, rankV2 } from './v2.js';
 import { expand } from './context.js';
 import { resolveFeatures, type FeatureSet } from './features.js';
 import { checkBudget } from './tokens.js';
+import { condenseQuery } from './trace.js';
+import { loadGitSignals } from './gitsignals.js';
 import type { Pack } from './types.js';
 
 export interface EngineOptions {
@@ -14,14 +16,8 @@ export interface EngineOptions {
 }
 
 const MAX_QUERY_CHARS = 8000;
-const CONDENSE_ABOVE = 1500;
 const HARD_QUERY_LIMIT = 1_000_000;
 
-// Reduces long pasted text (issues, logs) to the parts that carry retrieval signal.
-function condense(text: string): string {
-  if (text.length <= CONDENSE_ABOVE * 4) return text;
-  return `${text.slice(0, 5000)}\n${text.slice(-2500)}`;
-}
 
 export class Engine extends Repository {
   readonly features: FeatureSet;
@@ -41,7 +37,8 @@ export class Engine extends Repository {
     if (!raw) throw new Error('query must not be empty');
     if (raw.length > HARD_QUERY_LIMIT) throw new Error('query is longer than 1,000,000 characters');
     if (raw.length > MAX_QUERY_CHARS && !this.features.has('condense')) throw new Error('query must contain 1–8000 characters');
-    const text = this.features.has('condense') && raw.length > CONDENSE_ABOVE ? condense(raw) : raw;
+    // Pasted issues and logs above the limit are condensed to their high-signal parts instead of being rejected.
+    const text = raw.length > MAX_QUERY_CHARS ? condenseQuery(raw, 6000) : raw;
     const snapshot = await this.snapshot(text);
     let semanticScores: Map<string, number> | undefined;
     if (this.semantic) {
@@ -52,7 +49,8 @@ export class Engine extends Repository {
       semanticScores = await this.semantic.scores(snapshot, text, candidates);
     }
     // PCR is the default. Embeddings, when enabled, are fused as one more rank signal.
-    const pack = contextPackV2(snapshot, text, budget, known, undefined, semanticScores, this.features);
+    const git = this.features.has('git') ? await loadGitSignals(this.root) : undefined;
+    const pack = contextPackV2(snapshot, text, budget, known, undefined, semanticScores, this.features, git);
     pack.stats.elapsedMs = performance.now() - started;
     return pack;
   }

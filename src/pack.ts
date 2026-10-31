@@ -1,6 +1,7 @@
 import { terms } from './tokenize.js';
 import { hash } from './parser.js';
 import { fit, tokens } from './tokens.js';
+import { redactSecrets } from './redact.js';
 import type { FeatureSet } from './features.js';
 import type { Chunk, Pack, Snapshot } from './types.js';
 
@@ -156,8 +157,10 @@ class Candidate {
     readonly score: number,
     private readonly queryTerms: ReadonlySet<string>,
     private readonly idf: (term: string) => number,
+    redact = false,
   ) {
-    this.lines = chunk.text.split('\n');
+    // Redaction replaces secret values on their line, so line numbers and citations stay valid.
+    this.lines = (redact ? redactSecrets(chunk.text, { path: chunk.path }).text : chunk.text).split('\n');
     this.matched = [...new Set(terms(`${chunk.path} ${chunk.name} ${chunk.text}`))].filter(term => queryTerms.has(term));
     this.matchedIdf = this.matched.reduce((sum, term) => sum + idf(term), 0);
   }
@@ -219,7 +222,7 @@ export function packEvidence(input: PackInput): PackOutput {
   let reserved = 0;
   const room = (blockTokens: number) => used + blockTokens + 8 + reserved <= budget;
 
-  const candidates = input.ranked.slice(0, CANDIDATES).map(row => new Candidate(row.chunk, row.score, input.queryTerms, input.idf));
+  const candidates = input.ranked.slice(0, CANDIDATES).map(row => new Candidate(row.chunk, row.score, input.queryTerms, input.idf, features.has('redact')));
   // Identical chunks in several files (vendored copies, build outputs, duplicated modules) are shown once and the copies are named.
   const copies = new Map<Candidate, Candidate[]>();
   const firstOfText = new Map<string, Candidate>();
@@ -332,7 +335,7 @@ export function packEvidence(input: PackInput): PackOutput {
       const { chunk } = candidate;
       if (chunk.kind === 'window' && !chunk.name) continue;
       if (overlapFraction(chunk.start, chunk.end, taken(chunk.path)) > 0.35 || (perFile.get(chunk.path) ?? 0) >= 2) continue;
-      const line = `${chunk.path}:${chunk.start}-${chunk.end}  ${signatureOf(chunk)}\n`;
+      const line = `${chunk.path}:${chunk.start}-${chunk.end}  ${features.has('redact') ? redactSecrets(signatureOf(chunk)).text : signatureOf(chunk)}\n`;
       const next = (pointerSection || lead) + line;
       if (used + tokens(next) - tokens(pointerSection) + 8 > budget) continue;
       pointerSection = next;
