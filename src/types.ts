@@ -16,5 +16,5 @@ export interface Snapshot {
 export interface Pack {
   text: string;
   stats: { tokenizer: string; inputTokens: number; inputTokensEstimated?: boolean; outputTokens: number; reduction: number; selectedChunks: number; excerpts?: number; pointers?: number; totalChunks: number; files: number; candidateFiles?:number; indexMode?:'full'|'cascade'; elapsedMs: number; revision: string; budget: number; v2?: {views:number;obligations:string[];missing:string[];stability:number} };
-  evidence: { path: string; start: number; end: number; id: string; kind?: 'excerpt'|'window'|'known'|'pointer' }[];
+  evidence: { path: string; start: number; end: number; id: string; kind?: 'excerpt'|'window'|'known'|'pointer'|'duplicate' }[];
 }

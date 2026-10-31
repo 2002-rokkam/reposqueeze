@@ -100,3 +100,17 @@ test('excerpt receipts change with the shown text and complete excerpts reuse th
   assert.equal(complete.id, snapshot.chunks.find(c => c.start === complete.start && c.end === complete.end)!.id.slice(0, 8));
   assert.equal(complete.id.length, 8);
 });
+
+test('identical chunks in several files are shown once and the copies are named and reported as evidence', async t => {
+  const source = 'export function retryWithBackoff(operation) {\n  // retry the operation with exponential backoff\n  for (let attempt = 0; attempt < 5; attempt++) {\n    try { return operation(); } catch (error) { wait(2 ** attempt); }\n  }\n}\n';
+  const root = await fixture(t, { 'src/retry.js': source, 'public/retry.js': source, 'dist/vendor/retry.js': source, 'src/other.js': 'export const unrelated = 1;\n' });
+  const snapshot = await new Repository(root).snapshot();
+  const pack = contextPackV2(snapshot, 'retry with exponential backoff', 1500);
+  assert.equal(pack.text.split('export function retryWithBackoff').length - 1, 1, 'the code appears once');
+  assert.match(pack.text, /\(identical in [^)]*retry\.js/);
+  const copies = pack.evidence.filter(e => e.kind === 'duplicate');
+  assert.ok(copies.length >= 1);
+  for (const copy of copies) assert.ok(copy.start >= 1 && copy.end >= copy.start);
+  const legacy = contextPackV2(snapshot, 'retry with exponential backoff', 1500, [], DEFAULTS, undefined, resolveFeatures('none'));
+  assert.ok(legacy.text.split('export function retryWithBackoff').length - 1 >= 2, 'legacy format keeps repeating identical copies');
+});

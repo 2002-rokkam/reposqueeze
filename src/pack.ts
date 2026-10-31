@@ -220,11 +220,27 @@ export function packEvidence(input: PackInput): PackOutput {
   const room = (blockTokens: number) => used + blockTokens + 8 + reserved <= budget;
 
   const candidates = input.ranked.slice(0, CANDIDATES).map(row => new Candidate(row.chunk, row.score, input.queryTerms, input.idf));
+  // Identical chunks in several files (vendored copies, build outputs, duplicated modules) are shown once and the copies are named.
+  const copies = new Map<Candidate, Candidate[]>();
+  const firstOfText = new Map<string, Candidate>();
+  const unique = compact
+    ? candidates.filter(candidate => {
+        if (candidate.chunk.text.length < 40) return true;
+        const key = hash(candidate.chunk.text);
+        const first = firstOfText.get(key);
+        if (!first) {
+          firstOfText.set(key, candidate);
+          return true;
+        }
+        copies.set(first, [...(copies.get(first) ?? []), candidate]);
+        return false;
+      })
+    : candidates;
   const evidence: Pack['evidence'] = [];
   const spans = new Map<string, Span[]>();
   const perPath = new Map<string, number>();
   const covered = new Set<string>();
-  const remaining = [...candidates];
+  const remaining = [...unique];
   let deferred: Candidate[] = [];
   let excerpts = 0;
   let pointers = 0;
@@ -279,7 +295,9 @@ export function packEvidence(input: PackInput): PackOutput {
       }
       const ranges = describeRanges(rendering.segments);
       const id = rendering.complete ? chunk.id.slice(0, idLength) : receipt(chunk.path, ranges, rendering.body, idLength);
-      const header = compact ? `\n--- ${chunk.path}:${ranges} #${id}\n` : `\n--- ${JSON.stringify(chunk.path)}:${ranges} id=${id} ---\n`;
+      const same = copies.get(candidate) ?? [];
+      const sameNote = same.length ? ` (identical in ${same.slice(0, 3).map(copy => copy.chunk.path).join(', ')}${same.length > 3 ? ` +${same.length - 3}` : ''})` : '';
+      const header = compact ? `\n--- ${chunk.path}:${ranges} #${id}${sameNote}\n` : `\n--- ${JSON.stringify(chunk.path)}:${ranges} id=${id} ---\n`;
       const block = header + rendering.body + (compact ? '\n' : '\n--- END SOURCE ---\n');
       if (!room(tokens(block))) {
         deferred.push(candidate);
@@ -291,6 +309,10 @@ export function packEvidence(input: PackInput): PackOutput {
       for (const segment of rendering.segments) {
         alreadyShown.push(segment);
         evidence.push({ path: chunk.path, start: segment[0], end: segment[1], id, kind: rendering.complete ? 'excerpt' : 'window' });
+        for (const copy of same.slice(0, 3)) {
+          const shift = copy.chunk.start - chunk.start;
+          evidence.push({ path: copy.chunk.path, start: segment[0] + shift, end: segment[1] + shift, id, kind: 'duplicate' });
+        }
       }
       perPath.set(chunk.path, (perPath.get(chunk.path) ?? 0) + 1);
       for (const line of rendering.body.split('\n')) for (const term of terms(line)) covered.add(term);
