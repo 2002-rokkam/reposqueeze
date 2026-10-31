@@ -1,0 +1,1652 @@
+{
+  "version": 1,
+  "repos": {
+    "adobe__aem-core-wcm-components": {
+      "url": "https://github.com/adobe/aem-core-wcm-components",
+      "sha": "f5fcf1f19b3a23f0f47e5fa12364a180651b9b83",
+      "ecosystem": "java",
+      "category": "aem-osgi",
+      "gitFiles": 3578,
+      "eligibleEstimate": 3215,
+      "workTreeBytes": 25112613,
+      "topExtensions": [
+        {
+          "ext": ".xml",
+          "files": 1212
+        },
+        {
+          "ext": ".json",
+          "files": 547
+        },
+        {
+          "ext": ".java",
+          "files": 546
+        },
+        {
+          "ext": ".png",
+          "files": 270
+        }
+      ]
+    },
+    "ajaxorg__ace-builds": {
+      "url": "https://github.com/ajaxorg/ace-builds",
+      "sha": "c9ea63c0a0a436fbb477c918d6736644f77cab9f",
+      "ecosystem": "javascript",
+      "category": "minified-bundles",
+      "gitFiles": 2414,
+      "eligibleEstimate": 2291,
+      "workTreeBytes": 59913383,
+      "topExtensions": [
+        {
+          "ext": ".js",
+          "files": 1986
+        },
+        {
+          "ext": ".png",
+          "files": 123
+        },
+        {
+          "ext": ".css",
+          "files": 52
+        },
+        {
+          "ext": ".html",
+          "files": 23
+        }
+      ]
+    },
+    "angular__angular": {
+      "url": "https://github.com/angular/angular",
+      "sha": "74961c662420ea02a5872bfa1a0ee3284526b887",
+      "ecosystem": "typescript",
+      "category": "monorepo",
+      "gitFiles": 11701,
+      "eligibleEstimate": 11458,
+      "workTreeBytes": 120814176,
+      "topExtensions": [
+        {
+          "ext": ".ts",
+          "files": 6225
+        },
+        {
+          "ext": ".md",
+          "files": 1526
+        },
+        {
+          "ext": ".js",
+          "files": 859
+        },
+        {
+          "ext": ".bazel",
+          "files": 728
+        }
+      ]
+    },
+    "apache__kafka": {
+      "url": "https://github.com/apache/kafka",
+      "sha": "0b021e8c786eda5158ff8e5de142ae1fe32b52ef",
+      "ecosystem": "java",
+      "category": "application",
+      "gitFiles": 7647,
+      "eligibleEstimate": 7592,
+      "workTreeBytes": 88430222,
+      "topExtensions": [
+        {
+          "ext": ".java",
+          "files": 6284
+        },
+        {
+          "ext": ".json",
+          "files": 312
+        },
+        {
+          "ext": ".scala",
+          "files": 255
+        },
+        {
+          "ext": ".py",
+          "files": 185
+        }
+      ]
+    },
+    "apache__sling-org-apache-sling-api": {
+      "url": "https://github.com/apache/sling-org-apache-sling-api",
+      "sha": "bda2a83ec242a677ac15bc3333f3b36c5de5a0cf",
+      "ecosystem": "java",
+      "category": "aem-osgi",
+      "gitFiles": 224,
+      "eligibleEstimate": 224,
+      "workTreeBytes": 1465394,
+      "topExtensions": [
+        {
+          "ext": ".java",
+          "files": 211
+        },
+        {
+          "ext": ".md",
+          "files": 4
+        },
+        {
+          "ext": "(none)",
+          "files": 4
+        },
+        {
+          "ext": ".bnd",
+          "files": 1
+        }
+      ]
+    },
+    "apple__swift-nio": {
+      "url": "https://github.com/apple/swift-nio",
+      "sha": "108daca35da6a1b4ed8da29c1dfbd19668b9b8fc",
+      "ecosystem": "swift",
+      "category": "library",
+      "gitFiles": 767,
+      "eligibleEstimate": 767,
+      "workTreeBytes": 9303887,
+      "topExtensions": [
+        {
+          "ext": ".swift",
+          "files": 556
+        },
+        {
+          "ext": ".sh",
+          "files": 61
+        },
+        {
+          "ext": ".md",
+          "files": 42
+        },
+        {
+          "ext": ".c",
+          "files": 21
+        }
+      ]
+    },
+    "astral-sh__ruff": {
+      "url": "https://github.com/astral-sh/ruff",
+      "sha": "23a16fa018cf3b219c2edc7a2b739881e023a874",
+      "ecosystem": "rust",
+      "category": "application",
+      "gitFiles": 11282,
+      "eligibleEstimate": 10431,
+      "workTreeBytes": 94956406,
+      "topExtensions": [
+        {
+          "ext": ".snap",
+          "files": 3737
+        },
+        {
+          "ext": ".py",
+          "files": 3003
+        },
+        {
+          "ext": ".rs",
+          "files": 2036
+        },
+        {
+          "ext": ".pyi",
+          "files": 874
+        }
+      ]
+    },
+    "BurntSushi__ripgrep": {
+      "url": "https://github.com/BurntSushi/ripgrep",
+      "sha": "91f5d22ef48bde459d90a8c7dbeab416e97d0f2b",
+      "ecosystem": "rust",
+      "category": "application",
+      "gitFiles": 226,
+      "eligibleEstimate": 223,
+      "workTreeBytes": 3236824,
+      "topExtensions": [
+        {
+          "ext": ".rs",
+          "files": 102
+        },
+        {
+          "ext": "(none)",
+          "files": 46
+        },
+        {
+          "ext": ".md",
+          "files": 23
+        },
+        {
+          "ext": ".toml",
+          "files": 13
+        }
+      ]
+    },
+    "caddyserver__caddy": {
+      "url": "https://github.com/caddyserver/caddy",
+      "sha": "eb04ed52be5e66c467e9e614bd917b8bb4150d1b",
+      "ecosystem": "go",
+      "category": "application",
+      "gitFiles": 745,
+      "eligibleEstimate": 742,
+      "workTreeBytes": 5184315,
+      "topExtensions": [
+        {
+          "ext": ".go",
+          "files": 402
+        },
+        {
+          "ext": ".caddyfiletest",
+          "files": 260
+        },
+        {
+          "ext": ".txt",
+          "files": 36
+        },
+        {
+          "ext": ".yml",
+          "files": 14
+        }
+      ]
+    },
+    "clojure__clojure": {
+      "url": "https://github.com/clojure/clojure",
+      "sha": "33fb064dee4cf8decdae71ed93f1a6262f7a4c28",
+      "ecosystem": "clojure",
+      "category": "library",
+      "gitFiles": 354,
+      "eligibleEstimate": 354,
+      "workTreeBytes": 3971552,
+      "topExtensions": [
+        {
+          "ext": ".java",
+          "files": 191
+        },
+        {
+          "ext": ".clj",
+          "files": 142
+        },
+        {
+          "ext": ".xml",
+          "files": 4
+        },
+        {
+          "ext": ".yml",
+          "files": 4
+        }
+      ]
+    },
+    "curl__curl": {
+      "url": "https://github.com/curl/curl",
+      "sha": "31c911efe5652725e930f4d2e60c9060e5f6646d",
+      "ecosystem": "c",
+      "category": "library",
+      "gitFiles": 4547,
+      "eligibleEstimate": 4544,
+      "workTreeBytes": 18304458,
+      "topExtensions": [
+        {
+          "ext": "(none)",
+          "files": 2172
+        },
+        {
+          "ext": ".md",
+          "files": 930
+        },
+        {
+          "ext": ".c",
+          "files": 807
+        },
+        {
+          "ext": ".h",
+          "files": 254
+        }
+      ]
+    },
+    "DefinitelyTyped__DefinitelyTyped": {
+      "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+      "sha": "e78db989e58227175ec2efe747f328cb10e5a359",
+      "ecosystem": "typescript",
+      "category": "many-tiny-files",
+      "gitFiles": 62340,
+      "eligibleEstimate": 62146,
+      "workTreeBytes": 288822081,
+      "topExtensions": [
+        {
+          "ext": ".ts",
+          "files": 32488
+        },
+        {
+          "ext": ".json",
+          "files": 19880
+        },
+        {
+          "ext": "(none)",
+          "files": 8981
+        },
+        {
+          "ext": ".tsx",
+          "files": 733
+        }
+      ]
+    },
+    "django__django": {
+      "url": "https://github.com/django/django",
+      "sha": "a05e16a7230fe33d3f43f4a3aaed103cebb42efc",
+      "ecosystem": "python",
+      "category": "framework",
+      "gitFiles": 7085,
+      "eligibleEstimate": 6951,
+      "workTreeBytes": 46233656,
+      "topExtensions": [
+        {
+          "ext": ".py",
+          "files": 2939
+        },
+        {
+          "ext": ".po",
+          "files": 1274
+        },
+        {
+          "ext": ".mo",
+          "files": 1263
+        },
+        {
+          "ext": ".txt",
+          "files": 731
+        }
+      ]
+    },
+    "dotnet__aspnetcore": {
+      "url": "https://github.com/dotnet/aspnetcore",
+      "sha": "4f556f73a610b386e5ec29355a300e493d30c4c5",
+      "ecosystem": "csharp",
+      "category": "framework",
+      "gitFiles": 17751,
+      "eligibleEstimate": 16962,
+      "workTreeBytes": 210907910,
+      "topExtensions": [
+        {
+          "ext": ".cs",
+          "files": 10729
+        },
+        {
+          "ext": ".json",
+          "files": 967
+        },
+        {
+          "ext": ".razor",
+          "files": 850
+        },
+        {
+          "ext": ".cshtml",
+          "files": 755
+        }
+      ]
+    },
+    "dotnet__runtime": {
+      "url": "https://github.com/dotnet/runtime",
+      "sha": "0f7855c7deda12f06266dde03b5b74db5c0dbeb7",
+      "ecosystem": "csharp",
+      "category": "runtime",
+      "gitFiles": 58680,
+      "eligibleEstimate": 58004,
+      "workTreeBytes": 699372426,
+      "topExtensions": [
+        {
+          "ext": ".cs",
+          "files": 33252
+        },
+        {
+          "ext": ".csproj",
+          "files": 5384
+        },
+        {
+          "ext": ".il",
+          "files": 3804
+        },
+        {
+          "ext": ".ilproj",
+          "files": 2880
+        }
+      ]
+    },
+    "expressjs__express": {
+      "url": "https://github.com/expressjs/express",
+      "sha": "1c6f1b0fe4000977b9a7b4f34097e4d527dd9824",
+      "ecosystem": "javascript",
+      "category": "library",
+      "gitFiles": 216,
+      "eligibleEstimate": 215,
+      "workTreeBytes": 726782,
+      "topExtensions": [
+        {
+          "ext": ".js",
+          "files": 142
+        },
+        {
+          "ext": ".ejs",
+          "files": 21
+        },
+        {
+          "ext": ".txt",
+          "files": 11
+        },
+        {
+          "ext": ".html",
+          "files": 8
+        }
+      ]
+    },
+    "facebook__react": {
+      "url": "https://github.com/facebook/react",
+      "sha": "e84e14927537821acfa553c9995a655d23bbf755",
+      "ecosystem": "javascript",
+      "category": "monorepo",
+      "gitFiles": 7300,
+      "eligibleEstimate": 7135,
+      "workTreeBytes": 40763702,
+      "topExtensions": [
+        {
+          "ext": ".js",
+          "files": 3909
+        },
+        {
+          "ext": ".md",
+          "files": 2036
+        },
+        {
+          "ext": ".ts",
+          "files": 431
+        },
+        {
+          "ext": ".json",
+          "files": 153
+        }
+      ]
+    },
+    "fivethirtyeight__data": {
+      "url": "https://github.com/fivethirtyeight/data",
+      "sha": "4c1ff5e3aef1816ae04af63218015066e186c147",
+      "ecosystem": "csv",
+      "category": "data-heavy",
+      "gitFiles": 899,
+      "eligibleEstimate": 891,
+      "workTreeBytes": 355847083,
+      "topExtensions": [
+        {
+          "ext": ".csv",
+          "files": 505
+        },
+        {
+          "ext": ".md",
+          "files": 175
+        },
+        {
+          "ext": ".tsv",
+          "files": 115
+        },
+        {
+          "ext": ".txt",
+          "files": 51
+        }
+      ]
+    },
+    "flutter__flutter": {
+      "url": "https://github.com/flutter/flutter",
+      "sha": "ee8b48245d7a4c261be74d05786ba46ac690a91d",
+      "ecosystem": "dart",
+      "category": "framework",
+      "gitFiles": 16299,
+      "eligibleEstimate": 15445,
+      "workTreeBytes": 161007092,
+      "topExtensions": [
+        {
+          "ext": ".dart",
+          "files": 6610
+        },
+        {
+          "ext": ".h",
+          "files": 1775
+        },
+        {
+          "ext": ".cc",
+          "files": 1764
+        },
+        {
+          "ext": ".png",
+          "files": 586
+        }
+      ]
+    },
+    "fmtlib__fmt": {
+      "url": "https://github.com/fmtlib/fmt",
+      "sha": "8362a1be157fd6885f79d7e8c4fa7479d886e592",
+      "ecosystem": "cpp",
+      "category": "library",
+      "gitFiles": 145,
+      "eligibleEstimate": 144,
+      "workTreeBytes": 3168458,
+      "topExtensions": [
+        {
+          "ext": ".cc",
+          "files": 47
+        },
+        {
+          "ext": ".h",
+          "files": 26
+        },
+        {
+          "ext": "(none)",
+          "files": 14
+        },
+        {
+          "ext": ".md",
+          "files": 12
+        }
+      ]
+    },
+    "folke__lazy.nvim": {
+      "url": "https://github.com/folke/lazy.nvim",
+      "sha": "306a05526ada86a7b30af95c5cc81ffba93fef97",
+      "ecosystem": "lua",
+      "category": "library",
+      "gitFiles": 97,
+      "eligibleEstimate": 97,
+      "workTreeBytes": 2609514,
+      "topExtensions": [
+        {
+          "ext": ".lua",
+          "files": 65
+        },
+        {
+          "ext": ".yml",
+          "files": 12
+        },
+        {
+          "ext": "(none)",
+          "files": 8
+        },
+        {
+          "ext": ".md",
+          "files": 4
+        }
+      ]
+    },
+    "gin-gonic__gin": {
+      "url": "https://github.com/gin-gonic/gin",
+      "sha": "0f09c3a9b4626d9fe9979cf4d0521d6ae32ab646",
+      "ecosystem": "go",
+      "category": "library",
+      "gitFiles": 130,
+      "eligibleEstimate": 128,
+      "workTreeBytes": 886166,
+      "topExtensions": [
+        {
+          "ext": ".go",
+          "files": 99
+        },
+        {
+          "ext": ".md",
+          "files": 9
+        },
+        {
+          "ext": ".yml",
+          "files": 8
+        },
+        {
+          "ext": ".yaml",
+          "files": 3
+        }
+      ]
+    },
+    "git__git": {
+      "url": "https://github.com/git/git",
+      "sha": "50fe5cc63f9cd6e89b87a2c9ccf96a444f4cfdb7",
+      "ecosystem": "c",
+      "category": "application",
+      "gitFiles": 4857,
+      "eligibleEstimate": 4845,
+      "workTreeBytes": 50347766,
+      "topExtensions": [
+        {
+          "ext": ".sh",
+          "files": 1305
+        },
+        {
+          "ext": ".adoc",
+          "files": 948
+        },
+        {
+          "ext": ".c",
+          "files": 641
+        },
+        {
+          "ext": "(none)",
+          "files": 586
+        }
+      ]
+    },
+    "golang__go": {
+      "url": "https://github.com/golang/go",
+      "sha": "67ced031087a7dfe99211535fc923fdc80e8bd9f",
+      "ecosystem": "go",
+      "category": "compiler",
+      "gitFiles": 16146,
+      "eligibleEstimate": 14757,
+      "workTreeBytes": 155575260,
+      "topExtensions": [
+        {
+          "ext": ".go",
+          "files": 11879
+        },
+        {
+          "ext": ".txt",
+          "files": 1501
+        },
+        {
+          "ext": ".s",
+          "files": 664
+        },
+        {
+          "ext": ".crt",
+          "files": 407
+        }
+      ]
+    },
+    "google__guava": {
+      "url": "https://github.com/google/guava",
+      "sha": "c0a8a1edc69393e8141424037571d9825f5fc0f4",
+      "ecosystem": "java",
+      "category": "library",
+      "gitFiles": 3363,
+      "eligibleEstimate": 3362,
+      "workTreeBytes": 35664199,
+      "topExtensions": [
+        {
+          "ext": ".java",
+          "files": 3275
+        },
+        {
+          "ext": ".xml",
+          "files": 33
+        },
+        {
+          "ext": ".txt",
+          "files": 13
+        },
+        {
+          "ext": "(none)",
+          "files": 10
+        }
+      ]
+    },
+    "grpc__grpc": {
+      "url": "https://github.com/grpc/grpc",
+      "sha": "df3dd4dcb1409c826341a0df6eb808f741e58dea",
+      "ecosystem": "cpp",
+      "category": "generated-code",
+      "gitFiles": 10754,
+      "eligibleEstimate": 10564,
+      "workTreeBytes": 82588571,
+      "topExtensions": [
+        {
+          "ext": ".py",
+          "files": 2756
+        },
+        {
+          "ext": ".h",
+          "files": 2202
+        },
+        {
+          "ext": ".cc",
+          "files": 1912
+        },
+        {
+          "ext": "(none)",
+          "files": 501
+        }
+      ]
+    },
+    "hashicorp__terraform": {
+      "url": "https://github.com/hashicorp/terraform",
+      "sha": "d40e1b2dfcd7ce883f2fddafa518a54a32a20a29",
+      "ecosystem": "go",
+      "category": "application",
+      "gitFiles": 5620,
+      "eligibleEstimate": 5578,
+      "workTreeBytes": 27059260,
+      "topExtensions": [
+        {
+          "ext": ".go",
+          "files": 2065
+        },
+        {
+          "ext": ".tf",
+          "files": 1789
+        },
+        {
+          "ext": ".hcl",
+          "files": 563
+        },
+        {
+          "ext": ".json",
+          "files": 417
+        }
+      ]
+    },
+    "highlightjs__cdn-release": {
+      "url": "https://github.com/highlightjs/cdn-release",
+      "sha": "47245af257d8d54d3f5181df0c0ec7e0113af3ec",
+      "ecosystem": "javascript",
+      "category": "minified-bundles",
+      "gitFiles": 444,
+      "eligibleEstimate": 5,
+      "workTreeBytes": 1761386,
+      "topExtensions": [
+        {
+          "ext": ".css",
+          "files": 241
+        },
+        {
+          "ext": ".js",
+          "files": 193
+        },
+        {
+          "ext": "(none)",
+          "files": 4
+        },
+        {
+          "ext": ".md",
+          "files": 3
+        }
+      ]
+    },
+    "home-assistant__core": {
+      "url": "https://github.com/home-assistant/core",
+      "sha": "36a94bcb6f75b4a09b5427e81de76ffe8ba8ae6a",
+      "ecosystem": "python",
+      "category": "application",
+      "gitFiles": 30249,
+      "eligibleEstimate": 30196,
+      "workTreeBytes": 223272036,
+      "topExtensions": [
+        {
+          "ext": ".py",
+          "files": 20313
+        },
+        {
+          "ext": ".json",
+          "files": 6326
+        },
+        {
+          "ext": ".ambr",
+          "files": 2176
+        },
+        {
+          "ext": ".yaml",
+          "files": 1035
+        }
+      ]
+    },
+    "JamesNK__Newtonsoft.Json": {
+      "url": "https://github.com/JamesNK/Newtonsoft.Json",
+      "sha": "52fa3aef1f2cadcd3a3f874251eddc98d3efbbaa",
+      "ecosystem": "csharp",
+      "category": "library",
+      "gitFiles": 1176,
+      "eligibleEstimate": 1169,
+      "workTreeBytes": 16729609,
+      "topExtensions": [
+        {
+          "ext": ".cs",
+          "files": 951
+        },
+        {
+          "ext": ".aml",
+          "files": 153
+        },
+        {
+          "ext": ".json",
+          "files": 25
+        },
+        {
+          "ext": ".md",
+          "files": 5
+        }
+      ]
+    },
+    "koalaman__shellcheck": {
+      "url": "https://github.com/koalaman/shellcheck",
+      "sha": "919d37c4d77a7ce16cfc76ebdd781dd6e8081fa5",
+      "ecosystem": "haskell",
+      "category": "application",
+      "gitFiles": 92,
+      "eligibleEstimate": 82,
+      "workTreeBytes": 1307882,
+      "topExtensions": [
+        {
+          "ext": "(none)",
+          "files": 41
+        },
+        {
+          "ext": ".hs",
+          "files": 31
+        },
+        {
+          "ext": ".md",
+          "files": 7
+        },
+        {
+          "ext": ".png",
+          "files": 3
+        }
+      ]
+    },
+    "kubernetes__kubernetes": {
+      "url": "https://github.com/kubernetes/kubernetes",
+      "sha": "209a140de51eae5b6142b3b3c4c39dbd2ca4b882",
+      "ecosystem": "go",
+      "category": "monorepo",
+      "gitFiles": 31647,
+      "eligibleEstimate": 26091,
+      "workTreeBytes": 280682682,
+      "topExtensions": [
+        {
+          "ext": ".go",
+          "files": 18104
+        },
+        {
+          "ext": ".yaml",
+          "files": 6533
+        },
+        {
+          "ext": "(none)",
+          "files": 2996
+        },
+        {
+          "ext": ".json",
+          "files": 1236
+        }
+      ]
+    },
+    "kubernetes__website": {
+      "url": "https://github.com/kubernetes/website",
+      "sha": "36ba46787d3d2ecfa2fef76ecf9fb416843ac4b9",
+      "ecosystem": "markdown",
+      "category": "docs-heavy",
+      "gitFiles": 12892,
+      "eligibleEstimate": 11881,
+      "workTreeBytes": 520085249,
+      "topExtensions": [
+        {
+          "ext": ".md",
+          "files": 8417
+        },
+        {
+          "ext": ".yaml",
+          "files": 2250
+        },
+        {
+          "ext": ".png",
+          "files": 719
+        },
+        {
+          "ext": ".svg",
+          "files": 463
+        }
+      ]
+    },
+    "laravel__framework": {
+      "url": "https://github.com/laravel/framework",
+      "sha": "4bfe20a39407f383ce7c6090c820abd847e9eeb6",
+      "ecosystem": "php",
+      "category": "framework",
+      "gitFiles": 3494,
+      "eligibleEstimate": 3468,
+      "workTreeBytes": 27245761,
+      "topExtensions": [
+        {
+          "ext": ".php",
+          "files": 3175
+        },
+        {
+          "ext": ".stub",
+          "files": 88
+        },
+        {
+          "ext": ".yml",
+          "files": 56
+        },
+        {
+          "ext": ".json",
+          "files": 50
+        }
+      ]
+    },
+    "llvm__llvm-project": {
+      "url": "https://github.com/llvm/llvm-project",
+      "sha": "ac9879eef5db5a4d6bb104d6e94272e8a1905355",
+      "ecosystem": "cpp",
+      "category": "compiler",
+      "gitFiles": 189173,
+      "eligibleEstimate": 188480,
+      "workTreeBytes": 2414089071,
+      "topExtensions": [
+        {
+          "ext": ".ll",
+          "files": 49286
+        },
+        {
+          "ext": ".cpp",
+          "files": 40207
+        },
+        {
+          "ext": ".h",
+          "files": 18254
+        },
+        {
+          "ext": ".c",
+          "files": 14604
+        }
+      ]
+    },
+    "microsoft__TypeScript": {
+      "url": "https://github.com/microsoft/TypeScript",
+      "sha": "6161772c1370bdd4a82f808e6823bd755eb1870d",
+      "ecosystem": "typescript",
+      "category": "compiler",
+      "gitFiles": 68201,
+      "eligibleEstimate": 67982,
+      "workTreeBytes": 219367414,
+      "topExtensions": [
+        {
+          "ext": ".js",
+          "files": 13423
+        },
+        {
+          "ext": ".ts",
+          "files": 13116
+        },
+        {
+          "ext": ".symbols",
+          "files": 13068
+        },
+        {
+          "ext": ".types",
+          "files": 13068
+        }
+      ]
+    },
+    "microsoft__vscode": {
+      "url": "https://github.com/microsoft/vscode",
+      "sha": "97d01924531421f671b69342f629ba0f9f0f1e2e",
+      "ecosystem": "typescript",
+      "category": "application",
+      "gitFiles": 20729,
+      "eligibleEstimate": 19799,
+      "workTreeBytes": 325011624,
+      "topExtensions": [
+        {
+          "ext": ".ts",
+          "files": 15098
+        },
+        {
+          "ext": ".json",
+          "files": 1206
+        },
+        {
+          "ext": ".yaml",
+          "files": 689
+        },
+        {
+          "ext": ".css",
+          "files": 535
+        }
+      ]
+    },
+    "mojolicious__mojo": {
+      "url": "https://github.com/mojolicious/mojo",
+      "sha": "4146e4024939cfbe39d159b5e908c36f6ad6188a",
+      "ecosystem": "perl",
+      "category": "framework",
+      "gitFiles": 409,
+      "eligibleEstimate": 391,
+      "workTreeBytes": 4223383,
+      "topExtensions": [
+        {
+          "ext": ".pm",
+          "files": 151
+        },
+        {
+          "ext": ".t",
+          "files": 110
+        },
+        {
+          "ext": ".ep",
+          "files": 16
+        },
+        {
+          "ext": ".txt",
+          "files": 15
+        }
+      ]
+    },
+    "nginx__nginx": {
+      "url": "https://github.com/nginx/nginx",
+      "sha": "67290bfea61c81347464539f5e6d0a7cebec1fc8",
+      "ecosystem": "c",
+      "category": "application",
+      "gitFiles": 544,
+      "eligibleEstimate": 543,
+      "workTreeBytes": 8223250,
+      "topExtensions": [
+        {
+          "ext": ".c",
+          "files": 268
+        },
+        {
+          "ext": ".h",
+          "files": 142
+        },
+        {
+          "ext": "(none)",
+          "files": 73
+        },
+        {
+          "ext": ".yml",
+          "files": 10
+        }
+      ]
+    },
+    "nlohmann__json": {
+      "url": "https://github.com/nlohmann/json",
+      "sha": "755bb16d7a80436646380b5f871b93c6a443a3b7",
+      "ecosystem": "cpp",
+      "category": "single-header",
+      "gitFiles": 1609,
+      "eligibleEstimate": 1593,
+      "workTreeBytes": 22613009,
+      "topExtensions": [
+        {
+          "ext": ".cpp",
+          "files": 512
+        },
+        {
+          "ext": ".md",
+          "files": 425
+        },
+        {
+          "ext": ".output",
+          "files": 335
+        },
+        {
+          "ext": ".hpp",
+          "files": 106
+        }
+      ]
+    },
+    "nodejs__node": {
+      "url": "https://github.com/nodejs/node",
+      "sha": "d44625a4b80c672215b469906ce583ce7eeeebaf",
+      "ecosystem": "javascript",
+      "category": "runtime",
+      "gitFiles": 56763,
+      "eligibleEstimate": 52214,
+      "workTreeBytes": 731769611,
+      "topExtensions": [
+        {
+          "ext": ".js",
+          "files": 22598
+        },
+        {
+          "ext": ".h",
+          "files": 9743
+        },
+        {
+          "ext": ".cc",
+          "files": 3130
+        },
+        {
+          "ext": ".c",
+          "files": 3121
+        }
+      ]
+    },
+    "ocaml__ocaml": {
+      "url": "https://github.com/ocaml/ocaml",
+      "sha": "a76fb1de949d320f35ce29d84d8181a7e2541f22",
+      "ecosystem": "ocaml",
+      "category": "compiler",
+      "gitFiles": 5029,
+      "eligibleEstimate": 5022,
+      "workTreeBytes": 33488432,
+      "topExtensions": [
+        {
+          "ext": ".ml",
+          "files": 2448
+        },
+        {
+          "ext": ".reference",
+          "files": 992
+        },
+        {
+          "ext": ".mli",
+          "files": 638
+        },
+        {
+          "ext": ".c",
+          "files": 318
+        }
+      ]
+    },
+    "ohmyzsh__ohmyzsh": {
+      "url": "https://github.com/ohmyzsh/ohmyzsh",
+      "sha": "17a2b4c3a5855524ad4772a17ada0dc474e2fdf3",
+      "ecosystem": "shell",
+      "category": "application",
+      "gitFiles": 1198,
+      "eligibleEstimate": 1175,
+      "workTreeBytes": 7637520,
+      "topExtensions": [
+        {
+          "ext": ".md",
+          "files": 398
+        },
+        {
+          "ext": ".zsh",
+          "files": 395
+        },
+        {
+          "ext": "(none)",
+          "files": 170
+        },
+        {
+          "ext": ".zsh-theme",
+          "files": 144
+        }
+      ]
+    },
+    "pallets__flask": {
+      "url": "https://github.com/pallets/flask",
+      "sha": "49943b5a94413a530761350f04e896f76e8d620e",
+      "ecosystem": "python",
+      "category": "library",
+      "gitFiles": 236,
+      "eligibleEstimate": 229,
+      "workTreeBytes": 1787493,
+      "topExtensions": [
+        {
+          "ext": ".py",
+          "files": 83
+        },
+        {
+          "ext": ".rst",
+          "files": 79
+        },
+        {
+          "ext": ".html",
+          "files": 20
+        },
+        {
+          "ext": ".txt",
+          "files": 10
+        }
+      ]
+    },
+    "phoenixframework__phoenix": {
+      "url": "https://github.com/phoenixframework/phoenix",
+      "sha": "84f2486ba6296a2b47bf97095a586f0408b37a0a",
+      "ecosystem": "elixir",
+      "category": "framework",
+      "gitFiles": 510,
+      "eligibleEstimate": 485,
+      "workTreeBytes": 4404788,
+      "topExtensions": [
+        {
+          "ext": ".eex",
+          "files": 157
+        },
+        {
+          "ext": ".exs",
+          "files": 117
+        },
+        {
+          "ext": ".ex",
+          "files": 90
+        },
+        {
+          "ext": ".md",
+          "files": 60
+        }
+      ]
+    },
+    "prometheus__prometheus": {
+      "url": "https://github.com/prometheus/prometheus",
+      "sha": "9e28ec50ba751345a1f01a4fdc0d6887f533a37b",
+      "ecosystem": "go",
+      "category": "application",
+      "gitFiles": 1726,
+      "eligibleEstimate": 1706,
+      "workTreeBytes": 30743004,
+      "topExtensions": [
+        {
+          "ext": ".go",
+          "files": 756
+        },
+        {
+          "ext": ".yml",
+          "files": 324
+        },
+        {
+          "ext": ".tsx",
+          "files": 149
+        },
+        {
+          "ext": ".ts",
+          "files": 100
+        }
+      ]
+    },
+    "psf__requests": {
+      "url": "https://github.com/psf/requests",
+      "sha": "3c7baaa05ab4aa49cc819ce3a819d260de19c157",
+      "ecosystem": "python",
+      "category": "library",
+      "gitFiles": 130,
+      "eligibleEstimate": 118,
+      "workTreeBytes": 4451532,
+      "topExtensions": [
+        {
+          "ext": ".py",
+          "files": 37
+        },
+        {
+          "ext": "(none)",
+          "files": 20
+        },
+        {
+          "ext": ".rst",
+          "files": 16
+        },
+        {
+          "ext": ".md",
+          "files": 13
+        }
+      ]
+    },
+    "python__cpython": {
+      "url": "https://github.com/python/cpython",
+      "sha": "3fb88e94db547e9dbed97de68da87bcf9335a53a",
+      "ecosystem": "python",
+      "category": "compiler",
+      "gitFiles": 5874,
+      "eligibleEstimate": 5720,
+      "workTreeBytes": 129946619,
+      "topExtensions": [
+        {
+          "ext": ".py",
+          "files": 2384
+        },
+        {
+          "ext": ".rst",
+          "files": 974
+        },
+        {
+          "ext": ".h",
+          "files": 660
+        },
+        {
+          "ext": ".c",
+          "files": 493
+        }
+      ]
+    },
+    "rails__rails": {
+      "url": "https://github.com/rails/rails",
+      "sha": "9854e1c0eccab547704385dbad17ba6f72ac339a",
+      "ecosystem": "ruby",
+      "category": "framework",
+      "gitFiles": 5022,
+      "eligibleEstimate": 4931,
+      "workTreeBytes": 40516093,
+      "topExtensions": [
+        {
+          "ext": ".rb",
+          "files": 3481
+        },
+        {
+          "ext": ".erb",
+          "files": 515
+        },
+        {
+          "ext": ".yml",
+          "files": 206
+        },
+        {
+          "ext": ".tt",
+          "files": 165
+        }
+      ]
+    },
+    "redis__redis": {
+      "url": "https://github.com/redis/redis",
+      "sha": "6a5fee67583480de1fec323649f43fd000001b49",
+      "ecosystem": "c",
+      "category": "application",
+      "gitFiles": 1956,
+      "eligibleEstimate": 1951,
+      "workTreeBytes": 24894278,
+      "topExtensions": [
+        {
+          "ext": ".c",
+          "files": 503
+        },
+        {
+          "ext": ".json",
+          "files": 478
+        },
+        {
+          "ext": ".h",
+          "files": 344
+        },
+        {
+          "ext": ".tcl",
+          "files": 246
+        }
+      ]
+    },
+    "rust-lang__rust": {
+      "url": "https://github.com/rust-lang/rust",
+      "sha": "92b5b8c87c61b20adc9001b41baf587634a74734",
+      "ecosystem": "rust",
+      "category": "compiler",
+      "gitFiles": 64078,
+      "eligibleEstimate": 62458,
+      "workTreeBytes": 229543631,
+      "topExtensions": [
+        {
+          "ext": ".rs",
+          "files": 39451
+        },
+        {
+          "ext": ".stderr",
+          "files": 16349
+        },
+        {
+          "ext": ".md",
+          "files": 1490
+        },
+        {
+          "ext": ".fixed",
+          "files": 1440
+        }
+      ]
+    },
+    "scala__scala3": {
+      "url": "https://github.com/scala/scala3",
+      "sha": "3e003afbf3854d9b3189a51a47258d0b9e31e792",
+      "ecosystem": "scala",
+      "category": "compiler",
+      "gitFiles": 26860,
+      "eligibleEstimate": 26626,
+      "workTreeBytes": 47288631,
+      "topExtensions": [
+        {
+          "ext": ".scala",
+          "files": 19133
+        },
+        {
+          "ext": ".check",
+          "files": 4442
+        },
+        {
+          "ext": ".java",
+          "files": 910
+        },
+        {
+          "ext": ".md",
+          "files": 746
+        }
+      ]
+    },
+    "spring-projects__spring-boot": {
+      "url": "https://github.com/spring-projects/spring-boot",
+      "sha": "bcd4641c9b36fb377712fe26c3f1d3472db41e1e",
+      "ecosystem": "java",
+      "category": "framework",
+      "gitFiles": 11970,
+      "eligibleEstimate": 11400,
+      "workTreeBytes": 34833915,
+      "topExtensions": [
+        {
+          "ext": ".java",
+          "files": 8709
+        },
+        {
+          "ext": ".gradle",
+          "files": 740
+        },
+        {
+          "ext": ".kt",
+          "files": 438
+        },
+        {
+          "ext": ".xml",
+          "files": 314
+        }
+      ]
+    },
+    "square__okhttp": {
+      "url": "https://github.com/square/okhttp",
+      "sha": "16fb6aef3aee1c4645fc8d24af01f8a4dc128ebf",
+      "ecosystem": "kotlin",
+      "category": "library",
+      "gitFiles": 846,
+      "eligibleEstimate": 834,
+      "workTreeBytes": 7931858,
+      "topExtensions": [
+        {
+          "ext": ".kt",
+          "files": 575
+        },
+        {
+          "ext": ".java",
+          "files": 71
+        },
+        {
+          "ext": ".md",
+          "files": 55
+        },
+        {
+          "ext": ".kts",
+          "files": 44
+        }
+      ]
+    },
+    "symfony__symfony": {
+      "url": "https://github.com/symfony/symfony",
+      "sha": "f0eb8d04e5f5f2cae300131551c9fb584cf4ed22",
+      "ecosystem": "php",
+      "category": "framework",
+      "gitFiles": 16761,
+      "eligibleEstimate": 16678,
+      "workTreeBytes": 103534377,
+      "topExtensions": [
+        {
+          "ext": ".php",
+          "files": 12957
+        },
+        {
+          "ext": "(none)",
+          "files": 700
+        },
+        {
+          "ext": ".yml",
+          "files": 660
+        },
+        {
+          "ext": ".md",
+          "files": 529
+        }
+      ]
+    },
+    "terraform-aws-modules__terraform-aws-vpc": {
+      "url": "https://github.com/terraform-aws-modules/terraform-aws-vpc",
+      "sha": "b3abd6df2ecf052451a361ed55b8f06f8742a795",
+      "ecosystem": "hcl",
+      "category": "infrastructure",
+      "gitFiles": 111,
+      "eligibleEstimate": 111,
+      "workTreeBytes": 934669,
+      "topExtensions": [
+        {
+          "ext": ".tf",
+          "files": 77
+        },
+        {
+          "ext": ".md",
+          "files": 24
+        },
+        {
+          "ext": ".yml",
+          "files": 4
+        },
+        {
+          "ext": "(none)",
+          "files": 3
+        }
+      ]
+    },
+    "tiangolo__fastapi": {
+      "url": "https://github.com/tiangolo/fastapi",
+      "sha": "79cab5bed28b24d92c185d236feb33f5783dfeb3",
+      "ecosystem": "python",
+      "category": "docs-heavy",
+      "gitFiles": 3233,
+      "eligibleEstimate": 3044,
+      "workTreeBytes": 35440623,
+      "topExtensions": [
+        {
+          "ext": ".md",
+          "files": 1705
+        },
+        {
+          "ext": ".py",
+          "files": 1219
+        },
+        {
+          "ext": ".png",
+          "files": 184
+        },
+        {
+          "ext": ".svg",
+          "files": 56
+        }
+      ]
+    },
+    "tokio-rs__tokio": {
+      "url": "https://github.com/tokio-rs/tokio",
+      "sha": "6470b5e4b8e943ad014383a5bf6a93ba415678a3",
+      "ecosystem": "rust",
+      "category": "library",
+      "gitFiles": 890,
+      "eligibleEstimate": 890,
+      "workTreeBytes": 6428512,
+      "topExtensions": [
+        {
+          "ext": ".rs",
+          "files": 814
+        },
+        {
+          "ext": ".md",
+          "files": 29
+        },
+        {
+          "ext": ".toml",
+          "files": 18
+        },
+        {
+          "ext": ".yml",
+          "files": 11
+        }
+      ]
+    },
+    "torvalds__linux": {
+      "url": "https://github.com/torvalds/linux",
+      "sha": "36aad21d50d1af3f6954bb0c988257a908202477",
+      "ecosystem": "c",
+      "category": "os-kernel",
+      "gitFiles": 97345,
+      "eligibleEstimate": 97113,
+      "workTreeBytes": 1675589006,
+      "topExtensions": [
+        {
+          "ext": ".c",
+          "files": 37757
+        },
+        {
+          "ext": ".h",
+          "files": 27308
+        },
+        {
+          "ext": "(none)",
+          "files": 7518
+        },
+        {
+          "ext": ".yaml",
+          "files": 5960
+        }
+      ]
+    },
+    "vitejs__vite": {
+      "url": "https://github.com/vitejs/vite",
+      "sha": "90bc034a97e7eccd0f3cbc69904fffa625a4c34d",
+      "ecosystem": "typescript",
+      "category": "monorepo",
+      "gitFiles": 2916,
+      "eligibleEstimate": 2784,
+      "workTreeBytes": 17733226,
+      "topExtensions": [
+        {
+          "ext": ".js",
+          "files": 980
+        },
+        {
+          "ext": ".ts",
+          "files": 591
+        },
+        {
+          "ext": ".json",
+          "files": 408
+        },
+        {
+          "ext": ".css",
+          "files": 208
+        }
+      ]
+    },
+    "ziglang__zig": {
+      "url": "https://github.com/ziglang/zig",
+      "sha": "738d2be9d6b6ef3ff3559130c05159ef53336224",
+      "ecosystem": "zig",
+      "category": "compiler",
+      "gitFiles": 20545,
+      "eligibleEstimate": 20537,
+      "workTreeBytes": 224379606,
+      "topExtensions": [
+        {
+          "ext": ".h",
+          "files": 11492
+        },
+        {
+          "ext": ".zig",
+          "files": 2950
+        },
+        {
+          "ext": ".def",
+          "files": 2653
+        },
+        {
+          "ext": ".c",
+          "files": 2322
+        }
+      ]
+    }
+  }
+}

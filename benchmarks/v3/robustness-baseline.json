@@ -1,0 +1,343 @@
+{
+  "schema": 1,
+  "variant": "baseline",
+  "variantEnv": {},
+  "machine": {
+    "node": null,
+    "platform": null,
+    "adversarialLoadStart": null,
+    "adversarialLoadEnd": null,
+    "corpusLoad": {
+      "median": 39.4,
+      "p95": 48.8,
+      "max": 51.6
+    }
+  },
+  "corpus": {
+    "repos": 7,
+    "ecosystems": {
+      "cpp": 1,
+      "csharp": 1,
+      "go": 1,
+      "java": 1,
+      "javascript": 1,
+      "python": 1,
+      "rust": 1
+    },
+    "commands": 112,
+    "outcomes": {
+      "ok": 105,
+      "skipped": 7
+    },
+    "crashes": [],
+    "timeouts": [],
+    "budgetChecks": 105,
+    "budgetViolations": [],
+    "selfReportChecks": 77,
+    "selfReportMismatches": [],
+    "determinismChecks": 28,
+    "nondeterministic": [],
+    "frames": {
+      "total": 719,
+      "notVerbatim": 0,
+      "badPaths": 0,
+      "receiptsChecked": 719,
+      "receiptsMatching": 719
+    },
+    "expandChecks": {
+      "total": 14,
+      "parsed": 14,
+      "verbatim": 14,
+      "missingNotice": 0
+    },
+    "truncation": {
+      "overLimit": 0,
+      "flaggedIncomplete": 0,
+      "unflagged": []
+    },
+    "indexedVsListed": {
+      "repos": 7,
+      "medianRatio": 0.991,
+      "minRatio": 0.885
+    },
+    "secretFindings": [],
+    "secretLineLeaks": [],
+    "latency": [
+      {
+        "bucket": "<500",
+        "repos": 6,
+        "coldWallSec": {
+          "n": 6,
+          "median": 7.99,
+          "p95": 25.63,
+          "max": 28.79
+        },
+        "coldCpuSec": {
+          "n": 6,
+          "median": 3.45,
+          "p95": 6.84,
+          "max": 7.07
+        },
+        "warmWallSec": {
+          "n": 6,
+          "median": 8.01,
+          "p95": 16.34,
+          "max": 18.16
+        },
+        "warmCpuSec": {
+          "n": 6,
+          "median": 3.55,
+          "p95": 6.6,
+          "max": 6.84
+        },
+        "mapWallSec": {
+          "n": 6,
+          "median": 4.66,
+          "p95": 5.18,
+          "max": 5.25
+        },
+        "expandWallSec": {
+          "n": 6,
+          "median": 4.59,
+          "p95": 7.15,
+          "max": 7.32
+        },
+        "peakRssMiB": {
+          "n": 6,
+          "median": 525.75,
+          "p95": 1075.13,
+          "max": 1130.4
+        },
+        "indexMiB": {
+          "n": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "medianLoad1": 38.5
+      },
+      {
+        "bucket": "500-2k",
+        "repos": 1,
+        "coldWallSec": {
+          "n": 1,
+          "median": 90.98,
+          "p95": 90.98,
+          "max": 90.98
+        },
+        "coldCpuSec": {
+          "n": 1,
+          "median": 15.64,
+          "p95": 15.64,
+          "max": 15.64
+        },
+        "warmWallSec": {
+          "n": 1,
+          "median": 60.06,
+          "p95": 60.06,
+          "max": 60.06
+        },
+        "warmCpuSec": {
+          "n": 1,
+          "median": 15.26,
+          "p95": 15.26,
+          "max": 15.26
+        },
+        "mapWallSec": {
+          "n": 1,
+          "median": 18.64,
+          "p95": 18.64,
+          "max": 18.64
+        },
+        "expandWallSec": {
+          "n": 1,
+          "median": 15.98,
+          "p95": 15.98,
+          "max": 15.98
+        },
+        "peakRssMiB": {
+          "n": 1,
+          "median": 542.2,
+          "p95": 542.2,
+          "max": 542.2
+        },
+        "indexMiB": {
+          "n": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "medianLoad1": 44.7
+      }
+    ],
+    "load": {
+      "median": 39.4,
+      "p95": 48.8,
+      "max": 51.6
+    },
+    "table": [
+      {
+        "repo": "gin-gonic__gin",
+        "mode": "git",
+        "ecosystem": "go",
+        "category": "library",
+        "files": 130,
+        "eligibleEstimate": 128,
+        "mib": 0.8,
+        "sha": "0f09c3a9b4",
+        "bucket": "<500",
+        "indexedFiles": 128,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 2.2,
+        "coldCpuSec": 1.81,
+        "warmWallSec": 2.4,
+        "warmCpuSec": 1.87,
+        "peakRssMiB": 399,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "psf__requests",
+        "mode": "git",
+        "ecosystem": "python",
+        "category": "library",
+        "files": 130,
+        "eligibleEstimate": 118,
+        "mib": 4.2,
+        "sha": "3c7baaa05a",
+        "bucket": "<500",
+        "indexedFiles": 115,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 6.3,
+        "coldCpuSec": 2.85,
+        "warmWallSec": 6.2,
+        "warmCpuSec": 3.03,
+        "peakRssMiB": 385,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "fmtlib__fmt",
+        "mode": "git",
+        "ecosystem": "cpp",
+        "category": "library",
+        "files": 145,
+        "eligibleEstimate": 144,
+        "mib": 3,
+        "sha": "8362a1be15",
+        "bucket": "<500",
+        "indexedFiles": 144,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 16.2,
+        "coldCpuSec": 6.15,
+        "warmWallSec": 10.9,
+        "warmCpuSec": 5.87,
+        "peakRssMiB": 1130,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "expressjs__express",
+        "mode": "git",
+        "ecosystem": "javascript",
+        "category": "library",
+        "files": 216,
+        "eligibleEstimate": 215,
+        "mib": 0.7,
+        "sha": "1c6f1b0fe4",
+        "bucket": "<500",
+        "indexedFiles": 215,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 5.1,
+        "coldCpuSec": 2.35,
+        "warmWallSec": 3.3,
+        "warmCpuSec": 2.51,
+        "peakRssMiB": 909,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "apache__sling-org-apache-sling-api",
+        "mode": "git",
+        "ecosystem": "java",
+        "category": "aem-osgi",
+        "files": 224,
+        "eligibleEstimate": 224,
+        "mib": 1.4,
+        "sha": "bda2a83ec2",
+        "bucket": "<500",
+        "indexedFiles": 224,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 9.7,
+        "coldCpuSec": 4.04,
+        "warmWallSec": 9.8,
+        "warmCpuSec": 4.07,
+        "peakRssMiB": 394,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "BurntSushi__ripgrep",
+        "mode": "git",
+        "ecosystem": "rust",
+        "category": "application",
+        "files": 226,
+        "eligibleEstimate": 223,
+        "mib": 3.1,
+        "sha": "91f5d22ef4",
+        "bucket": "<500",
+        "indexedFiles": 215,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 28.8,
+        "coldCpuSec": 7.07,
+        "warmWallSec": 18.2,
+        "warmCpuSec": 6.84,
+        "peakRssMiB": 653,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "JamesNK__Newtonsoft.Json",
+        "mode": "git",
+        "ecosystem": "csharp",
+        "category": "library",
+        "files": 1176,
+        "eligibleEstimate": 1169,
+        "mib": 16,
+        "sha": "52fa3aef1f",
+        "bucket": "500-2k",
+        "indexedFiles": 1166,
+        "incomplete": false,
+        "indexMode": "full",
+        "coldWallSec": 91,
+        "coldCpuSec": 15.64,
+        "warmWallSec": 60.1,
+        "warmCpuSec": 15.26,
+        "peakRssMiB": 542,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      }
+    ]
+  },
+  "adversarial": {
+    "total": 0,
+    "counts": {},
+    "byCategory": [],
+    "failures": [],
+    "warnings": [],
+    "errors": []
+  }
+}

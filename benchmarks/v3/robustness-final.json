@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "variant": "final",
+  "variantEnv": {},
+  "machine": {
+    "node": null,
+    "platform": null,
+    "adversarialLoadStart": null,
+    "adversarialLoadEnd": null,
+    "corpusLoad": {
+      "median": 46.2,
+      "p95": 57.5,
+      "max": 59.9
+    }
+  },
+  "corpus": {
+    "repos": 2,
+    "ecosystems": {
+      "go": 1,
+      "python": 1
+    },
+    "commands": 32,
+    "outcomes": {
+      "ok": 30,
+      "skipped": 2
+    },
+    "crashes": [],
+    "timeouts": [],
+    "budgetChecks": 30,
+    "budgetViolations": [],
+    "selfReportChecks": 22,
+    "selfReportMismatches": [
+      {
+        "repo": "gin-gonic__gin",
+        "command": "context:identifier:b1000:json:json"
+      }
+    ],
+    "determinismChecks": 8,
+    "nondeterministic": [
+      {
+        "repo": "gin-gonic__gin",
+        "check": "context cold vs warm"
+      },
+      {
+        "repo": "gin-gonic__gin",
+        "check": "context warm vs warm"
+      },
+      {
+        "repo": "gin-gonic__gin",
+        "check": "map run 1 vs run 2"
+      },
+      {
+        "repo": "psf__requests",
+        "check": "map run 1 vs run 2"
+      }
+    ],
+    "frames": {
+      "total": 0,
+      "notVerbatim": 0,
+      "badPaths": 0,
+      "receiptsChecked": 0,
+      "receiptsMatching": 0
+    },
+    "expandChecks": {
+      "total": 4,
+      "parsed": 4,
+      "verbatim": 4,
+      "missingNotice": 0
+    },
+    "truncation": {
+      "overLimit": 0,
+      "flaggedIncomplete": 0,
+      "unflagged": []
+    },
+    "indexedVsListed": {
+      "repos": 0,
+      "medianRatio": null,
+      "minRatio": null
+    },
+    "secretFindings": [],
+    "secretLineLeaks": [],
+    "latency": [
+      {
+        "bucket": "<500",
+        "repos": 2,
+        "coldWallSec": {
+          "n": 2,
+          "median": 31.04,
+          "p95": 34.53,
+          "max": 34.91
+        },
+        "coldCpuSec": {
+          "n": 2,
+          "median": 5.6,
+          "p95": 5.76,
+          "max": 5.78
+        },
+        "warmWallSec": {
+          "n": 2,
+          "median": 33.1,
+          "p95": 43.26,
+          "max": 44.38
+        },
+        "warmCpuSec": {
+          "n": 1,
+          "median": 2.48,
+          "p95": 2.48,
+          "max": 2.48
+        },
+        "mapWallSec": {
+          "n": 2,
+          "median": 29.96,
+          "p95": 45.33,
+          "max": 47.04
+        },
+        "expandWallSec": {
+          "n": 2,
+          "median": 10.64,
+          "p95": 16.69,
+          "max": 17.37
+        },
+        "peakRssMiB": {
+          "n": 2,
+          "median": 433.9,
+          "p95": 444.79,
+          "max": 446
+        },
+        "indexMiB": {
+          "n": 0,
+          "median": null,
+          "p95": null,
+          "max": null
+        },
+        "medianLoad1": 46.2
+      }
+    ],
+    "load": {
+      "median": 46.2,
+      "p95": 57.5,
+      "max": 59.9
+    },
+    "table": [
+      {
+        "repo": "gin-gonic__gin",
+        "mode": "git",
+        "ecosystem": "go",
+        "category": "library",
+        "files": 130,
+        "eligibleEstimate": 128,
+        "mib": 0.8,
+        "sha": "0f09c3a9b4",
+        "bucket": "<500",
+        "indexedFiles": null,
+        "incomplete": null,
+        "indexMode": null,
+        "coldWallSec": 27.2,
+        "coldCpuSec": 5.78,
+        "warmWallSec": 44.4,
+        "warmCpuSec": null,
+        "peakRssMiB": 446,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      },
+      {
+        "repo": "psf__requests",
+        "mode": "git",
+        "ecosystem": "python",
+        "category": "library",
+        "files": 130,
+        "eligibleEstimate": 118,
+        "mib": 4.2,
+        "sha": "3c7baaa05a",
+        "bucket": "<500",
+        "indexedFiles": null,
+        "incomplete": null,
+        "indexMode": null,
+        "coldWallSec": 34.9,
+        "coldCpuSec": 5.41,
+        "warmWallSec": 21.8,
+        "warmCpuSec": 2.48,
+        "peakRssMiB": 422,
+        "indexMiB": 0,
+        "bad": 0,
+        "commandsOk": "15/16"
+      }
+    ]
+  },
+  "adversarial": {
+    "total": 0,
+    "counts": {},
+    "byCategory": [],
+    "failures": [],
+    "warnings": [],
+    "errors": []
+  }
+}
