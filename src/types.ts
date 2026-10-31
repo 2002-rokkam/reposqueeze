@@ -1,6 +1,7 @@
 export interface Chunk {
   id: string; path: string; start: number; end: number; name: string; kind: string;
   text: string; terms: string[]; refs: string[];
+  signature?: string; scope?: string; doc?: string;
 }
 export interface SourceFile {
   path: string; text: string; hash: string; language: string; chunks: Chunk[]; parsed: boolean;
@@ -14,6 +15,6 @@ export interface Snapshot {
 }
 export interface Pack {
   text: string;
-  stats: { tokenizer: string; inputTokens: number; outputTokens: number; reduction: number; selectedChunks: number; totalChunks: number; files: number; candidateFiles?:number; indexMode?:'full'|'cascade'; elapsedMs: number; revision: string; budget: number; v2?: {views:number;obligations:string[];missing:string[];stability:number} };
-  evidence: { path: string; start: number; end: number; id: string }[];
+  stats: { tokenizer: string; inputTokens: number; inputTokensEstimated?: boolean; outputTokens: number; reduction: number; selectedChunks: number; excerpts?: number; pointers?: number; totalChunks: number; files: number; candidateFiles?:number; indexMode?:'full'|'cascade'; elapsedMs: number; revision: string; budget: number; v2?: {views:number;obligations:string[];missing:string[];stability:number} };
+  evidence: { path: string; start: number; end: number; id: string; kind?: 'excerpt'|'window'|'known'|'pointer' }[];
 }

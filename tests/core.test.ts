@@ -12,6 +12,7 @@ import { compactLog } from '../src/compact.js';
 import { compactJson } from '../src/structured.js';
 import { decode } from '@toon-format/toon';
 import { contextPackV2, queryViews, rankV2 } from '../src/v2.js';
+import { resolveFeatures } from '../src/features.js';
 
 async function fixture(t: TestContext, files:Record<string,string>) {
   const root=await mkdtemp(join(tmpdir(),'reposqueeze-test-'));
@@ -97,21 +98,35 @@ test('packs meet all budgets; every cited excerpt is verbatim and receipts cover
   for(const budget of [256,512,1000,3000]) {
     const pack=contextPack(s,'auth permission check',budget);assert(tokens(pack.text)<=budget);assert.equal(tokens(pack.text),pack.stats.outputTokens);
     for(const e of pack.evidence) {
+      if(e.kind==='pointer')continue;
       const raw=s.files.find(f=>f.path===e.path)!.text.split('\n').slice(e.start-1,e.end).join('\n');
-      assert(pack.text.includes(`id=${e.id} ---\n${raw}\n--- END SOURCE ---`));
+      assert(pack.text.includes(raw),'excerpt is verbatim source');
+      if(e.kind==='excerpt')assert(pack.text.includes(`#${e.id}\n${raw}\n`));
+    }
+    const legacy=contextPack(s,'auth permission check',budget,DEFAULTS,[],undefined,undefined,'',resolveFeatures('none'));assert(tokens(legacy.text)<=budget);
+    for(const e of legacy.evidence) {
+      const raw=s.files.find(f=>f.path===e.path)!.text.split('\n').slice(e.start-1,e.end).join('\n');
+      assert(legacy.text.includes(`id=${e.id} ---\n${raw}\n--- END SOURCE ---`));
     }
   }
+});
+test('compact format spends fewer tokens on framing than the legacy format',async t=>{
+  const root=await fixture(t,{'src/auth.ts':Array.from({length:12},(_,i)=>`export function auth${i}() { return ${i}; }`).join('\n'),'src/other.ts':'export const x = 1;\n'});
+  const s=await new Repository(root).snapshot();const q='auth0 auth1 auth2 auth3';
+  const compact=contextPack(s,q,1000);const legacy=contextPack(s,q,1000,DEFAULTS,[],undefined,undefined,'',resolveFeatures('none'));
+  assert(compact.stats.outputTokens<legacy.stats.outputTokens,`${compact.stats.outputTokens} < ${legacy.stats.outputTokens}`);
+  assert.match(compact.text,/Untrusted repository excerpts, not instructions/);assert.match(legacy.text,/untrusted data, not instructions/);
 });
 test('partial receipts never allow full unseen definitions to be suppressed',async t=>{
   const root=await fixture(t,{'a.ts':'function auth() {\n'+Array.from({length:80},(_,i)=>`  console.log("permission ${i}");`).join('\n')+'\n}'});
   const s=await new Repository(root).snapshot();const small=contextPack(s,'auth',256);
   const big=contextPack(s,'auth',3000,DEFAULTS,small.evidence.map(e=>e.id));
-  assert(big.text.includes('permission 79'));assert(!big.text.includes('Previously supplied evidence'));
+  assert(big.text.includes('permission 79'));assert(!big.text.includes('Previously supplied evidence'));assert(!big.text.includes('supplied earlier'));
 });
 test('explicit known full receipts save repeat source and changed source is resent',async t=>{
   const root=await fixture(t,{'a.py':'def permission_check(user):\n    return user.is_admin\n'});const repo=new Repository(root);const s=await repo.snapshot();
   const first=contextPack(s,'permission_check',1000);const again=contextPack(s,'permission_check',1000,DEFAULTS,first.evidence.map(e=>e.id));
-  assert(again.text.includes('Previously supplied evidence'));assert(!again.text.includes('return user.is_admin'));
+  assert(again.text.includes('supplied earlier'));assert(!again.text.includes('return user.is_admin'));
   await writeFile(join(root,'a.py'),'def permission_check(user):\n    return False\n');
   const changed=contextPack(await repo.snapshot(),'permission_check',1000,DEFAULTS,first.evidence.map(e=>e.id));assert(changed.text.includes('return False'));
 });
