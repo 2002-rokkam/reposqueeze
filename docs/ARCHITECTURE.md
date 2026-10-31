@@ -1,55 +1,58 @@
-# RepoSqueeze V2 architecture
+# RepoSqueeze architecture (2.2)
 
 ```mermaid
-flowchart LR
-  A[Repository files] --> B[Ignore and safety filters]
-  B --> C[Hash, parse and chunk]
-  Q[Task or trace] --> D[Up to six deterministic query views]
-  C --> E[Lexical and structural ranker]
-  D --> E
-  E --> F[Chunk and file rank consensus]
-  Q --> G[Rare evidence obligations]
-  Q --> H[Trace-aware source inversion]
-  F --> I[Budgeted source packing]
-  G --> I
-  H --> I
-  I --> J[Verbatim excerpts, line citations and receipts]
-  J --> K[Copilot, MCP client or CLI]
-  K --> L[Expand exact ranges when evidence is incomplete]
+flowchart TB
+  subgraph Index
+    A[Repository files] --> B[Enumerate: git ls-files or bounded walk]
+    B --> C[Filters: ignore rules, binary, size, symlinks, secret paths]
+    C --> D[Read + redact secret values in place]
+    D --> E[Chunk: tree-sitter (20 languages) or structural chunkers]
+    E --> F[(Cache outside the repo:<br/>per-file entries, term rows, dictionary)]
+    F --> G[Inverted index over chunks]
+  end
+  subgraph Query
+    Q[Task, error, trace] --> Q1[Condense if > 8,000 chars]
+    Q1 --> Q2[Up to 6 deterministic views]
+    Q2 --> R[BM25 per view]
+    G --> R
+    R --> S[Fusion + feedback + identifier/phrase + priors<br/>(+ optional frames, git)]
+    S --> T[Packing under the token budget]
+  end
+  T --> U[Excerpts, pointers, receipts]
 ```
 
-## Index and source fidelity
+## Index
 
-The current repository is the source of truth. Tree-sitter extracts structural units and identifiers for supported languages; overlapping line windows provide coverage for large definitions, unsupported files and parse failures. Source is cached only by its content hash. Every snapshot enumerates and hashes current files, so edits and deletion invalidate the affected entries.
+* **Enumeration.** Git (`ls-files --cached --others --exclude-standard`) when available, otherwise a bounded directory walk honouring nested `.gitignore` and `.reposqueeze-v2ignore`. Limits: 100,000 files, 2 GiB, 2 MiB per file, depth 60.
+* **Text pipeline.** One hook (`Repository.textFromBytes`) turns bytes into the text that is chunked, indexed, hashed and shown. It rejects binaries and replaces secret values with `[REDACTED:<rule>]` without changing the number of lines, so citations stay valid. Changing its output requires bumping `TEXT_PIPELINE_VERSION`.
+* **Chunking.** `parser.ts` uses web-tree-sitter for 20 languages. Definitions include leading doc comments and decorators and carry `signature`, `scope` and `doc`. Long definitions are split into overlapping pieces; every file also gets 64-line windows so nothing is unsearchable. Generated or minified files get bounded chunking. `chunkers.ts` supplies structural spans (headings, keys, elements, rules, statements, stages, targets) for Markdown, JSON, YAML, TOML, XML (including Maven and AEM `.content.xml`), HTML, CSS, SQL, Dockerfile, Makefile, shell, protobuf and HCL.
+* **Persistence.** `store.ts` keeps the cache outside the repository (`REPOSQUEEZE_CACHE_DIR`, XDG or platform cache directory, keyed by the repository's real path). Files are checksummed containers written atomically with private permissions; every loaded field is validated, and any cache failure degrades to in-memory operation. Entries are keyed by path, content hash, parser, tokenizer and text-pipeline versions. For repositories up to 5,000 files the content hash is re-verified on every run; above that, size and modification time are trusted (`REPOSQUEEZE_REFRESH_INDEX=1` overrides).
+* **Large repositories.** Above 5,000 eligible files a per-file term sketch selects 600–1,800 candidate files that are then parsed; the rest of the pipeline is unchanged.
+* **Search index.** `search-index.ts` holds per-chunk term rows and postings in typed arrays. `retrieve()` computes BM25 (k1 = 1.2, b = 0.75) plus bonuses for terms in the symbol name and path, and accepts weighted terms.
 
-The returned evidence is copied from current source rather than rewritten as a prose summary. Each range has a path, one-based lines and a content receipt. Expansion re-reads the current file and applies the same path, secret, size and symlink filters.
+## Ranking (`v2.ts`)
 
-## Perturbation-consensus retrieval
+1. **Views.** The query is tokenized (`tokenize.ts`: camelCase and acronym splitting, snake_case, joined identifiers, Porter stemming, hash blobs dropped). Up to six deterministic views are built: the original, diagnostic lines, identifier-like words and three leave-one-bucket-out views.
+2. **Fusion.** Reciprocal-rank fusion over chunk and file ranks (perturbation-consensus retrieval). Stability, the share of views in which a chunk stays near the top, is a diagnostic, not a confidence.
+3. **Signals (default on).** Pseudo-relevance feedback terms from the first-pass top chunks; definitions whose names are literally mentioned; adjacent query-word pairs; priors that down-weight tests, docs and vendored or generated paths unless the query asks for them; trace mode that prefers implementation files over the tests named in a failure.
+4. **Signals (opt-in).** `frames`: files named by application frames of a parsed stack trace (`trace.ts`). `git`: files with uncommitted work, recent commits and co-change partners (`gitsignals.ts`).
+5. **Obligations.** Rare query terms are listed and reported when no returned excerpt contains them.
 
-PCR constructs up to six deterministic views: the complete request, diagnostic lines, identifier-heavy text and three leave-one-term-bucket-out views. Each view passes through the same BM25-style lexical ranker with bounded identifier, path and reference signals. Reciprocal ranks are accumulated at both chunk and file level. A stability value records how often a chunk remains near the top across views.
+## Packing (`pack.ts`)
 
-Rare query terms that occur in the corpus become evidence obligations. Packing favors coverage but reports obligations it cannot include. For failure traces, visible test paths guide navigation and same-stem implementation files receive a bounded boost. Test chunks receive a penalty unless the request explicitly concerns tests.
+Greedy selection by marginal value: a candidate's score is scaled by the share of its matched terms (IDF-weighted) not yet on the page and by a per-file crowding factor. Rendering order for a candidate: whole chunk if it fits and is moderate, otherwise the highest-scoring contiguous window (48 → 6 lines) with the enclosing declaration kept as a separate range and an explicit `…[a-b omitted]` marker. Parts of a chunk that overlap already shown lines are never re-printed. Identical chunk texts in several files are printed once and the copies named. About 12% of the budget (at most 400 tokens) is held back for "Also relevant (not shown)" pointers, and unused reservation returns to excerpts. The final text is checked against the budget with the same tokenizer that reports `outputTokens`.
 
-Optional local embeddings are an additional rank signal after PCR. They are requested only from Ollama on `127.0.0.1:11434`; cached vectors live under `.reposqueeze-v2/` and are keyed by content and model identity. PCR itself requires no model or network call.
+Receipts are 8-hex digests of the displayed range; complete excerpts reuse their chunk id so a client can pass `known` ids to avoid re-sending text it still holds.
 
-## Budget and recovery
+## Other components
 
-Packing removes heavily overlapping ranges, rewards query coverage and file diversity, and counts the final serialized text including headings and omission instructions. If a whole chunk does not fit, smaller contiguous windows are considered. The configured `o200k_base` count limits only tool output; it does not include provider prompts, tool schemas, reasoning, retries or later reads.
+* `repomap.ts`: file-level PageRank over the definition/reference graph, personalised by optional focus terms, rendered as signatures with directory-prefix compression and fitted to the budget; `skeleton.ts` renders a range as signatures plus query lines; `symbols.ts` provides name search and per-file outlines.
+* `compact.ts` + `logs/`: log compaction with volatile-token normalisation, template mining, stack-trace folding, test-runner awareness and explicit omission markers. `structured.ts`: verified lossless JSON/TOON choice.
+* `semantic.ts`: optional Ollama embeddings of the 300 strongest lexical candidates, cached outside the repository.
+* `mcp.ts`, `cli.ts`, `extension.ts`: three thin front ends over the same `Engine`.
 
-Consensus can agree on the wrong code. Stability is therefore a retrieval diagnostic rather than calibrated confidence. Missing obligations or weak evidence tell the caller to expand exact ranges or use ordinary repository search.
+## Invariants (tested)
 
-## Integrations and writes
+Output never exceeds the budget; excerpts are exact source lines of the indexed (redacted) text; identical inputs give identical bytes cold, warm and after restart; no file inside the repository is written; paths outside the root, symlinks and secret paths are refused; every elision or redaction is marked.
 
-The CLI, stdio MCP server and VS Code native tools share the same engine. Repository search, map and expansion calls are read-only. `reposqueeze-v2 init` and the VS Code setup command can create `.github/instructions/reposqueeze-v2.instructions.md`; they refuse to overwrite an existing file.
-
-V2 uses separate command IDs, settings, cache paths and MCP tool names from V1. Both packages can be installed at once.
-
-## Large-repository cascade
-
-Parsing every definition in a 50,000-file repository for every question is wasteful. Above 5,000 eligible files, RepoSqueeze builds a compressed file-sketch index under `.reposqueeze-v2/`. Each entry contains the path, content hash, size, modification time, language, line count, exact local token count and sorted hashes of normalized terms. Source text is not stored in the index.
-
-The query is evaluated against every sketch using corpus rarity plus path and foundation-file signals. The strongest bounded candidate set is re-read from disk, checked again for secrets and symlinks, parsed with Tree-sitter and then passed to PCR. This separates cheap repository-wide filtering from expensive structural ranking.
-
-The approach follows the established large-code-search principle of a persistent cheap index followed by exact verification. [Zoekt](https://github.com/sourcegraph/zoekt/blob/main/doc/design.md) and [GitHub Code Search](https://github.blog/engineering/architecture-optimization/the-technology-behind-githubs-new-code-search/) use positional n-gram indexes at a much larger scale; RepoSqueeze uses smaller per-file term sketches because its output is a limited context pack rather than a general regular-expression search service.
-
-Modification time and size avoid rereading unchanged files. Exact evidence is always re-read. Timestamp-preserving external edits require `REPOSQUEEZE_REFRESH_INDEX=1`; this boundary is reported in every cascade-mode context pack.
+Rationale and the techniques that were considered or rejected, with sources: [V3_RESEARCH.md](V3_RESEARCH.md). Older 2.1 design notes: [V2_RESEARCH.md](V2_RESEARCH.md).
