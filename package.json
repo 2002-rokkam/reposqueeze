@@ -2,7 +2,7 @@
   "name": "reposqueeze-v2",
   "displayName": "RepoSqueeze V2",
   "description": "Robust, local repository context using perturbation-consensus retrieval for Copilot and MCP coding agents.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "publisher": "2002-rokkam",
   "license": "MIT",
   "type": "module",
@@ -38,7 +38,7 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "bench": "node --import tsx scripts/benchmark.ts",
     "bench:fetch": "node scripts/fetch-bench.mjs",
-    "package": "npm run build && vsce package --no-dependencies --allow-missing-repository -o releases/reposqueeze-v2-2.1.0.vsix",
+    "package": "npm run build && vsce package --no-dependencies --allow-missing-repository -o releases/reposqueeze-v2-2.2.0.vsix",
     "prepare": "npm run build",
     "test:editor": "node scripts/test-extension.mjs",
     "bench:live": "node --import tsx scripts/live-eval.ts",
@@ -86,7 +86,12 @@
         "reposqueezeV2.semanticModel": {
           "type": "string",
           "default": "",
-          "description": "Optional local Ollama embedding model (for example all-minilm). Sends indexed code only to localhost:11434 and stores vectors in .reposqueeze-v2/. Empty disables embeddings."
+          "description": "Optional local Ollama embedding model (for example all-minilm). Sends only the strongest lexical candidates to localhost:11434 and caches vectors outside the repository. Empty disables embeddings."
+        },
+        "reposqueezeV2.features": {
+          "type": "string",
+          "default": "",
+          "description": "Advanced: feature switches such as \"-prf,-git\" (same syntax as the RSQ_FEATURES environment variable). Empty keeps the defaults."
         }
       }
     },
@@ -94,7 +99,7 @@
       {
         "name": "reposqueeze_v2_context",
         "displayName": "RepoSqueeze V2 Context",
-        "modelDescription": "Retrieve a compact repository map and query-relevant, verbatim source excerpts before broad file reads. Local read-only search. Includes citations and explicit omissions. Use reposqueeze_v2_expand to inspect missing context before editing. Search can miss semantic matches.",
+        "modelDescription": "Find the code for a task, error or question. Returns verbatim, line-cited source excerpts within a token budget. Local, read-only, not exhaustive: expand before editing.",
         "canBeReferencedInPrompt": true,
         "toolReferenceName": "reposqueezeV2",
         "inputSchema": {
@@ -118,7 +123,7 @@
       {
         "name": "reposqueeze_v2_expand",
         "displayName": "RepoSqueeze V2 Expand",
-        "modelDescription": "Read an exact current source range by repository-relative path and one-based line numbers. Respects the same file exclusions as context search. Use this to verify complete definitions before edits.",
+        "modelDescription": "Read exact current source lines (one-based, inclusive) of one repository file.",
         "canBeReferencedInPrompt": true,
         "toolReferenceName": "squeezeRead",
         "inputSchema": {
@@ -146,6 +151,30 @@
             "start",
             "end"
           ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "reposqueeze_v2_map",
+        "displayName": "RepoSqueeze V2 Map",
+        "modelDescription": "Repository map; with path, the outline of that file; with query, definitions whose names match.",
+        "canBeReferencedInPrompt": true,
+        "toolReferenceName": "squeezeMap",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "query": {
+              "type": "string"
+            },
+            "budget": {
+              "type": "integer",
+              "minimum": 256,
+              "maximum": 32000
+            }
+          },
           "additionalProperties": false
         }
       }
