@@ -3,6 +3,7 @@ import { SearchIndex } from './legacy-index.js';
 import { checkBudget, fit, tokens, TOKENIZER } from './tokens.js';
 import { resolveFeatures, type FeatureSet } from './features.js';
 import { packEvidence, type Ranked } from './pack.js';
+import { buildRepoMap } from './repomap.js';
 import type { Chunk, Pack, Snapshot } from './types.js';
 
 export interface Settings {
@@ -38,23 +39,10 @@ export function rank(snapshot: Snapshot, query: string, settings = DEFAULTS): Ra
   return rows.sort((a, b) => b.score - a.score || a.chunk.path.localeCompare(b.chunk.path) || a.chunk.start - b.chunk.start);
 }
 
-export function repositoryMap(s: Snapshot, budget = 1500): string {
+/** Importance-ranked repository map (reference-graph PageRank) that fits the token budget. */
+export function repositoryMap(s: Snapshot, budget = 1500, focusTerms: readonly string[] = []): string {
   checkBudget(budget);
-  const inventory = s.inventory ?? s.files.map(f => ({ path: f.path, language: f.language, lines: f.text.split('\n').length }));
-  const langs = new Map<string, number>();
-  for (const f of inventory) langs.set(f.language, (langs.get(f.language) ?? 0) + 1);
-  const parsed = new Map(s.files.map(file => [file.path, file]));
-  const lines = [
-    `REPOSITORY MAP ${s.revision}`,
-    `${(s.totalFiles ?? s.files.length).toLocaleString()} files; ${s.chunks.length} candidate chunks; ${s.skipped} excluded; incomplete=${s.truncated}; mode=${s.indexMode ?? 'full'}.`,
-    `Languages: ${[...langs].map(([k, v]) => `${k}:${v}`).join(', ')}`,
-    ...s.warnings,
-  ];
-  for (const f of inventory) {
-    const names = [...new Set((parsed.get(f.path)?.chunks ?? []).map(c => c.name).filter(Boolean))];
-    lines.push(`${f.path} (${f.lines} lines)${names.length ? ': ' + names.slice(0, 8).join(', ') + (names.length > 8 ? ', …' : '') : ''}`);
-  }
-  return fit(lines.join('\n'), budget, '\n[Map omitted remaining entries; query context for specific areas.]');
+  return buildRepoMap(s, { budget, focusTerms }).text;
 }
 
 const estimates = new WeakMap<Snapshot, { tokens: number; estimated: boolean }>();

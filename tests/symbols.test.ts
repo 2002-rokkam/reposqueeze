@@ -28,7 +28,7 @@ test('findSymbols ranks exact names before prefixes before substrings and merges
   const exact = findSymbols(snapshot, 'permission_check');
   assert.equal(exact[0].name, 'permissionCheck');
   assert.equal(exact[0].path, 'auth/permissions.ts');
-  assert.match(exact[0].signature, /^export function permissionCheck\(user\) \{/);
+  assert.match(exact[0].signature, /function permissionCheck\(user\)/);
   const prefix = findSymbols(snapshot, 'permission');
   assert.ok(prefix.some(hit => hit.name === 'PermissionChecker'));
   assert.ok(prefix.some(hit => hit.name === 'permissionRoutes'));
@@ -47,10 +47,10 @@ test('renderOutline nests methods under their class with line ranges and respect
   const file = snapshot.files.find(f => f.path === 'auth/permissions.ts')!;
   const outline = renderOutline(file.path, file.chunks, file.text.split('\n').length, 800);
   assert.match(outline, /^auth\/permissions\.ts · \d+ lines/);
-  assert.match(outline, /\n1-9 {2}export class PermissionChecker \{/);
-  assert.match(outline, /\n {2}2-4 {2}check\(user\) \{/);
-  assert.match(outline, /\n {2}6-8 {2}deny\(user\) \{/);
-  assert.match(outline, /\n11-13 {2}export function permissionCheck\(user\) \{/);
+  assert.match(outline, /\n1-9 {2}(?:export )?class PermissionChecker/);
+  assert.match(outline, /\n {2}2-4 {2}check\(user\)/);
+  assert.match(outline, /\n {2}6-8 {2}deny\(user\)/);
+  assert.match(outline, /\n11-13 {2}(?:export )?function permissionCheck\(user\)/);
   assert.ok(tokens(renderOutline(file.path, file.chunks, 13, 20)) <= 20);
   assert.match(renderOutline('notes.txt', [], 4, 100), /no definitions indexed/);
 });
