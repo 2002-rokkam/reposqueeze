@@ -1,6 +1,6 @@
 # SWE retrieval benchmark: DEV split
 
-- Command: `node --import tsx bench/run.ts --dataset lite,multilingual --split dev --repos axios/axios,briannesbitt/carbon,burntsushi/ripgrep,caddyserver/caddy,django/django,faker-ruby/faker,fmtlib/fmt,gin-gonic/gin,google/gson,immutable-js/immutable-js,jekyll/jekyll,jqlang/jq,marshmallow-code/marshmallow,micropython/micropython,mwaskom/seaborn,nlohmann/json,pallets/flask,preactjs/preact,psf/requests,pydicom/pydicom,pytest-dev/pytest,sharkdp/bat,sphinx-doc/sphinx,sympy/sympy,tokio-rs/axum,tokio-rs/tokio --sample 60 --offline --variant baseline --variant current --variant ripgrep-naive --budget 4000 --workers 2 --timeout 120 --max-load 80 --out /Users/rokkamreddy1/reposqueeze-lab/results/bench-swe/final-dev/main`
+- Command: `node --import tsx bench/run.ts --dataset lite,multilingual --split dev --repos axios/axios,briannesbitt/carbon,burntsushi/ripgrep,caddyserver/caddy,django/django,faker-ruby/faker,fmtlib/fmt,gin-gonic/gin,google/gson,immutable-js/immutable-js,jekyll/jekyll,jqlang/jq,marshmallow-code/marshmallow,micropython/micropython,mwaskom/seaborn,nlohmann/json,pallets/flask,preactjs/preact,psf/requests,pydicom/pydicom,pytest-dev/pytest,sharkdp/bat,sphinx-doc/sphinx,sympy/sympy,tokio-rs/axum,tokio-rs/tokio --sample 60 --offline --variant baseline --variant current --variant ripgrep-naive --budget 4000 --workers 2 --timeout 120 --max-load 80 --out ~/reposqueeze-lab/results/bench-swe/final-dev/main`
 - Started: 2026-10-31T14:47:56.631Z, finished: 2026-10-31T15:17:02.866Z
 - Environment: Node v25.9.0, darwin/arm64, 8 cores, 16 GiB RAM, 2 worker(s), 120 s task timeout
 - Budget: 4000 o200k_base tokens; bootstrap: 10,000 resamples, seed 1729; harness 4e351856fc3b
@@ -21,9 +21,9 @@ No instance was skipped during gold extraction.
 
 | variant | path | git SHA | dirty | engine version | env | query truncation | src fingerprint |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| baseline | /Users/rokkamreddy1/reposqueeze-lab/baseline | 25fe500f3317 | no | 2.1.0 | - | 8000 chars | 3c4d6c1f3d2b |
-| current | /Users/rokkamreddy1/Desktop/reposqueeze | b7bc1c7a28f3 | no | 2.2.0 | - | none | ac37eeddd2fc |
-| ripgrep-naive | /Users/rokkamreddy1/reposqueeze-lab/wt/bench-swe/bench/variants/ripgrep-naive | 4e351856fc3b | no | 1.0.0 | - | none | daff62ce4da2 |
+| baseline | <baseline-2.1.0> | 25fe500f3317 | no | 2.1.0 | - | 8000 chars | 3c4d6c1f3d2b |
+| current | <checkout> | b7bc1c7a28f3 | no | 2.2.0 | - | none | ac37eeddd2fc |
+| ripgrep-naive | bench/variants/ripgrep-naive | 4e351856fc3b | no | 1.0.0 | - | none | daff62ce4da2 |
 
 ## Overall
 

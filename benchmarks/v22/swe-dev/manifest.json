@@ -1,6 +1,6 @@
 {
   "schema": "rsq-bench-swe/1",
-  "command": "node --import tsx bench/run.ts --dataset lite,multilingual --split dev --repos axios/axios,briannesbitt/carbon,burntsushi/ripgrep,caddyserver/caddy,django/django,faker-ruby/faker,fmtlib/fmt,gin-gonic/gin,google/gson,immutable-js/immutable-js,jekyll/jekyll,jqlang/jq,marshmallow-code/marshmallow,micropython/micropython,mwaskom/seaborn,nlohmann/json,pallets/flask,preactjs/preact,psf/requests,pydicom/pydicom,pytest-dev/pytest,sharkdp/bat,sphinx-doc/sphinx,sympy/sympy,tokio-rs/axum,tokio-rs/tokio --sample 60 --offline --variant baseline --variant current --variant ripgrep-naive --budget 4000 --workers 2 --timeout 120 --max-load 80 --out /Users/rokkamreddy1/reposqueeze-lab/results/bench-swe/final-dev/main",
+  "command": "node --import tsx bench/run.ts --dataset lite,multilingual --split dev --repos axios/axios,briannesbitt/carbon,burntsushi/ripgrep,caddyserver/caddy,django/django,faker-ruby/faker,fmtlib/fmt,gin-gonic/gin,google/gson,immutable-js/immutable-js,jekyll/jekyll,jqlang/jq,marshmallow-code/marshmallow,micropython/micropython,mwaskom/seaborn,nlohmann/json,pallets/flask,preactjs/preact,psf/requests,pydicom/pydicom,pytest-dev/pytest,sharkdp/bat,sphinx-doc/sphinx,sympy/sympy,tokio-rs/axum,tokio-rs/tokio --sample 60 --offline --variant baseline --variant current --variant ripgrep-naive --budget 4000 --workers 2 --timeout 120 --max-load 80 --out ~/reposqueeze-lab/results/bench-swe/final-dev/main",
   "startedAt": "2026-10-31T14:47:56.631Z",
   "resumes": [],
   "node": "v25.9.0",
@@ -129,7 +129,7 @@
   "variants": [
     {
       "name": "baseline",
-      "root": "/Users/rokkamreddy1/reposqueeze-lab/baseline",
+      "root": "<baseline-2.1.0>",
       "env": {},
       "truncate": 8000,
       "gitSha": "25fe500f33177e1b75aa1f46080beaaaae53de0f",
@@ -140,7 +140,7 @@
     },
     {
       "name": "current",
-      "root": "/Users/rokkamreddy1/Desktop/reposqueeze",
+      "root": "<checkout>",
       "env": {},
       "truncate": null,
       "gitSha": "b7bc1c7a28f39e64fd17801755b850049ecf901a",
@@ -151,7 +151,7 @@
     },
     {
       "name": "ripgrep-naive",
-      "root": "/Users/rokkamreddy1/reposqueeze-lab/wt/bench-swe/bench/variants/ripgrep-naive",
+      "root": "bench/variants/ripgrep-naive",
       "env": {},
       "truncate": null,
       "gitSha": "4e351856fc3b0aae288073367c413534e75647cd",
